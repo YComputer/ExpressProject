@@ -1,0 +1,37 @@
+{
+  "name": "ExpressProject",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "express": "~4.10.6",
+    "express-session":"*",
+    "body-parser": "~1.10.1",
+    "cookie-parser": "~1.3.3",
+    "connect-redis": "3.0.2",
+    "morgan": "~1.5.1",
+    "serve-favicon": "~2.2.0",
+    "debug": "~2.1.1",
+    "jade": "~1.8.2",
+    "redis": "*",
+    "ioredis": "1.15.1",
+    "formidable" : "*",
+    "mysql": "*",
+    "jugglingdb": "https://github.com/1602/jugglingdb/archive/master.tar.gz",
+    "uuid": "^2.0.1",
+    "orm":"*",
+    "mongodb":"*",
+    "winston":"*",
+    "mongoose":"4.6.3",
+    "bcryptjs": "2.3.0",
+    "moment": "2.15.2",
+    "log4js": "*",
+    "eventproxy": "0.3.4",
+    "validator": "5.1.0",
+    "utility": "1.6.0",
+    "ejs-mate": "2.3.0",
+    "formidable":"1.0.17"
+  }
+}

@@ -1,0 +1,29 @@
+//
+   Created by hr on 2016/9/22.
+extends user
+block count
+   div.container
+      div.row
+         div(class="col-xs-6 col-md-8 col-center-block")
+            table.table
+               caption 账户信息
+               thead
+                  tr
+                     th
+                     th
+               tbody#detailinfo
+                  tr
+                     th 用户名
+                     th #{username}
+                  tr
+                     th 密码
+                     th #{password}
+                  tr
+                     th 注册时间
+                     th #{create_time}
+                  tr
+                     th 上次登录地点
+                     th #{last_login_address}
+                  tr
+                     th 账号状态
+                     th #{count_status}

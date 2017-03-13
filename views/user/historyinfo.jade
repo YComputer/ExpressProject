@@ -1,0 +1,20 @@
+//
+   Created by hr on 2016/9/25.
+extends user
+block count
+   div.container
+      div.row
+         div(class="col-xs-6 col-md-8 col-center-block")
+            table.table
+               caption 历史信息
+               thead
+                  tr
+                     th    时间
+                     th    动作
+                     th    对象
+               tbody#detailinfo
+                  - each obj in list
+                     tr
+                        th #{obj.time}
+                        th #{obj.event_type}
+                        th #{obj.event_target}

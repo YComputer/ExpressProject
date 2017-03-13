@@ -1,0 +1,22 @@
+//
+   Created by hr on 2016/10/7.
+
+extends ../layout
+block content
+   div.container
+      div.row
+         div(class="col-center-block list-group")
+            - each obj in list
+               div(class="list-group-item container")
+                  div.row
+                     div(class="col-xs-4")
+                        div(style="position:relative;left:5px;top:5px")
+                           div(class="button" style="position:absolute;left:30%;top:30%;")
+                              img(class="img-responsive" src=obj.picture_path href="#")
+                     div(class="col-xs-4")
+                        h3(class="list-group-item-heading")=obj.name
+                        p(class="list-group-item-text")=obj.description
+                        p(class="list-group-item-text")=obj.study_goal
+                        p(class="list-group-item-text")=obj.precondition
+                        p(class="list-group-item-text")=obj.price
+                        p(class="list-group-item-text")=obj.period

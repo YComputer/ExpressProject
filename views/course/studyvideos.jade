@@ -1,0 +1,26 @@
+//
+   Created by hr on 2016/9/26.
+
+extends ../layout
+block content
+   //script(src="/javascripts/courselist.js")
+   div.container
+      div.row
+         div(class="col-center-block list-group")
+            - each obj in list
+               div(class="list-group-item container")
+                  div.row
+                     div(class="col-xs-4")
+                        //div(style="position:relative;left:50%;top:50%")
+                        div(style="position:relative;left:5px;top:5px")
+                           video(src=obj.video_path  autoplay="autoplay")
+                           div(class="button" style="position:absolute;left:30%;top:30%;")
+                              a(class="twitter" onclick="play()")
+                                 img(src="/images/twitter.png")
+                           //div(class="col-center-block" style="position:absolute;left:50%;top:50%;")
+                              a(class="glyphicon glyphicon-play button big") 播放
+                              //button(class="glyphicon glyphicon-play big")
+                     div(class="col-xs-4")
+                        h3(class="list-group-item-heading")=obj.name
+                        p(class="list-group-item-text")=obj.description
+

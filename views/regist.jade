@@ -1,0 +1,44 @@
+//
+   Created by hr on 2016/9/4.
+
+extends layout
+block content
+   script(src="/javascripts/regist.js" type="text/javascript")
+   div.row
+      div.col-sm-12
+         legend 用户注册
+         div.row
+            div.col-md-6
+               form.form-horizontal(method="post" onsubmit="return check();")
+                  fieldset
+                     div.control-group
+                        label.control-label(for="username") 用户名
+                        div.row
+                           div.col-md-5
+                              input#username(class="input-xlarge focused" type="text" name="username"  placeholder="邮箱或手机号码")
+                           div.col-md-7
+                              p(id="usernamehint" style="display:none")
+                     div.control-group
+                        label.control-label(for="password") 密码
+                        div.row
+                           div.col-md-5
+                              input#password.input-xlarge(type="text" name="password" placeholder="设置至少8位密码")
+                           div.col-md-7
+                              p(id="passwordhint" style="display:none")
+                     div.control-group
+                        label.control-label(for="password-repeat") 重复输入密码
+                        div.row
+                           div.col-md-5
+                              input#password-repeat.input-xlarge(type="text" name="password-repeat")
+                           div.col-md-5
+                              p(id="passwordrepeathint" style="display:none")
+                     div.form-actions
+                        button#submitregist( class="btn btn-primary") 注册
+               div#registHint( class="alert alert-success" role="alert" style="display:none")
+               hr(size="1" color="#999999")
+               div
+                  span 已有A++账号
+                  span
+                     a(href="/login") 立即登录
+            div.col-md-6
+               img(src="/images/IMG_20160514_142855.jpg" class="img-responsive" alt="Responsive image")
