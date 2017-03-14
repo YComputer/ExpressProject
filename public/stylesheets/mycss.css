@@ -30,11 +30,10 @@ html, body {
     margin: 0 auto -142px;
 }
 .footer, .push {
-    height: 142px;
+    height: 170px;
 }
 .footer{
     text-align:center;
-    line-height: 142px;
 }
 
 .buttons {
@@ -47,7 +46,6 @@ html, body {
     height: 64px;
     display: inline-block;
     position: relative;
-    line-height: 64px;
     background-color: #eaeaea;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#eaeaea));
     background-image: -webkit-linear-gradient(top, #f6f6f6, #eaeaea);
@@ -108,4 +106,21 @@ html, body {
 
 .about {
     height: 100px;
+}
+
+.weibocode {
+    height: 100px;
+}
+
+.weixincode {
+    height: 100px;
+}
+
+.infoline {
+    height: 146px;
+}
+
+.leavecomment {
+    border: 1px solid grey;
+    height: 100%;
 }
