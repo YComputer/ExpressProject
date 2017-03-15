@@ -40,7 +40,20 @@ exports.listAll = function(req, res, next){
 exports.getallartical = function(req,res,next){
     artical.getall(function(docs){
         res.send(docs);
-        res.render("/composition/works",{hello:docs[0].title});
+        res.render("composition/works",{hello:docs[0].title});
+    })
+}
+
+exports.showDetail = function(req,res,next){
+    var id = req.params.workid;
+    Work.getdetail(id,function(err,docs){
+        if(err){
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        //res.send(docs[0]);
+        res.render('composition/work',{work:docs[0]});
     })
 }
 

@@ -9,9 +9,13 @@ a {
   color: black;
 }
 
-div{
-  color: antiquewhite;
+
+
+p{
+    color:black;
 }
+
+
 
 * {
     margin: 0;
@@ -38,6 +42,18 @@ html, body {
 
 .buttons {
     margin-top: 160px;
+}
+
+a{
+    color: black;
+}
+
+h3{
+    color: black;
+}
+
+h4{
+    color: black;
 }
 
 .buttons a {

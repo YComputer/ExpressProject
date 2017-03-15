@@ -19,6 +19,7 @@ router.post('/signin', sign.login);  // 登录校验
 router.get('/active_account', sign.activeAccount);  //帐号激活
 //router.get('/works',auth.userRequired, works.listAll); //查看所有作品
 router.get('/works',works.listAll); //查看所有作品
+router.get('/works/:workid',works.showDetail);
 router.get('/user',user.listInfo);
 router.post('/upload_work',works.upload);
 router.get('/test/study/artical',works.getallartical);

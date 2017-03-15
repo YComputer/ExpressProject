@@ -4,19 +4,53 @@
 extends ../layout
 block content
     div.container
-        div(class="modal fade" id='myModal')
-            div(class="modal-dialog")
-                div(class="modal-content")
-                    p "{#hello}"
-                    //
-        //button(class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal") 打开模态
+        //- div(class="modal fade" id='myModal')
+        //-     div(class="modal-dialog")
+        //-         div(class="modal-content")
+        //-             p "{#hello}"
+        //-             //
+        //- //button(class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal") 打开模态
+        div(style="margin-bottom:20px")
+            label(for="xfile" class="btn btn-info btn-xs")
+                span(class="fa fa-plus" style="font-size:20px") 上传作品
+            input(id="xfile" type="file" name="files" style="display:none")
         - each obj in list
             div.row
-                div
-                    embed(width="480" height="360" src=obj.sourcePath)
-                div(display="inline")
-                    h3 示例作品
-                    p 南京小学生李煜辰小朋友的作品
-
+                div(class="col-md-3" style="margin-bottom:20px")
+                    div(style="background:write")
+                        div
+                            a(href='/works/'+obj._id)
+                                img(src="/images/coffie.jpg" style="max-width:100%" alt="image1")
+                            //embed(width="auto" height="auto" src=obj.sourcePath)
+                        div
+                            a(href='/works/'+obj._id)
+                                h3 示例作品
+                            div(class="row")
+                                div(class="col-md-8")
+                                    a(href="#/user/id") 作者：sdfsf
+                                div(class="col-md-4")
+                                    span 
+                                        p 28715
+                div(class="col-md-3" style="background:write")
+                    div
+                        img(src="/images/coffie.jpg" style="max-width:100%" alt="image1")
+                        //embed(width="auto" height="auto" src=obj.sourcePath)
+                    div(display="inline")
+                        h3 示例作品
+                        p 南京小学生李煜辰小朋友的作品
+                div(class="col-md-3" style="background:write")
+                    div
+                        img(src="/images/coffie.jpg" style="max-width:100%" alt="image1")
+                        //embed(width="auto" height="auto" src=obj.sourcePath)
+                    div(display="inline")
+                        h3 示例作品
+                        p 南京小学生李煜辰小朋友的作品
+                div(class="col-md-3" style="background:write")
+                    div
+                        img(src="/images/coffie.jpg" style="max-width:100%" alt="image1")
+                        //embed(width="auto" height="auto" src=obj.sourcePath)
+                    div(display="inline")
+                        h3 示例作品
+                        p 南京小学生李煜辰小朋友的作品
 
 

@@ -21,6 +21,10 @@ exports.getAllWorkByUserId = function ( id, callback) {
     Work.find({author:id},null,{sort:[{'uploadTime':-1}]},callback);
 }
 
+exports.getdetail = function(id, callback){
+    Work.find({_id:id},callback);
+}
+
 exports.newAndSave = function (name, path, description, author, callback) {
     var work            = new Work();
     work.name           = name;
