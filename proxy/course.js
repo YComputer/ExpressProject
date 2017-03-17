@@ -9,3 +9,7 @@ exports.listAllCourse = function (_courseType, callback) {
     _courseType = parseInt(_courseType);
     CourseModel.find({ courseType: _courseType }, callback);
 };
+
+exports.getCourseDetail = function (_courseId, callback) {
+    CourseModel.find({ _id: _courseId }, callback);
+}

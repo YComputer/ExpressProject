@@ -1,51 +1,32 @@
-//
-   Created by hr on 2016/10/7.
-
 extends ../layout
 block content
-   div.container
-      div.row
-            ul(class="nav nav-tabs")
-                li(class="active")
-                    a(href="/course/1") 入门课程
-                li 
-                    a(href="/course/1") 游戏入门
-                li
-                    a(href="/course/1") 高阶游戏
-                li
-                    a(href="/course/1") 初级算法
-                li
-                    a(href="/course/1") 高阶算法
-      div.row(style="border-bottom:3px grey solid")
-        div(class="col-md-8")
-            - each obj in list
-                div(style="padding-left:10px;padding-right:10px")
-                    div.row(style="border-bottom:1px #f3f3f3 solid;height:50px; padding:15px;")
-                        div(class="col-md-10")
-                            p 初识Scratch
-                        div(class="col-md-2")
-                            span(class="glyphicon glyphicon glyphicon-star-empty")
-                            span(class="glyphicon glyphicon glyphicon-star-empty")
-                            span(class="glyphicon glyphicon glyphicon-star-empty")
-                            span(class="glyphicon glyphicon glyphicon-star-empty")
-                            span(class="glyphicon glyphicon glyphicon-star-empty")
-        div(class="col-md-1" style="height:100px; width:1px; border-left:1px grey solid")
-
-        div(class="col-md-3")
-            h4 课程概要
-            p 发达是的发送到发送到阿斯蒂芬阿斯蒂芬大师傅
-        //-  div(class="col-center-block list-group")
-        //-     - each obj in list
-        //-        div(class="list-group-item container")
-        //-           div.row
-        //-              div(class="col-xs-4")
-        //-                 div(style="position:relative;left:5px;top:5px")
-        //-                    div(class="button" style="position:absolute;left:30%;top:30%;")
-        //-                       img(class="img-responsive" src=obj.picture_path href="#")
-        //-              div(class="col-xs-4")
-        //-                 h3(class="list-group-item-heading")=obj.name
-        //-                 p(class="list-group-item-text")=obj.description
-        //-                 p(class="list-group-item-text")=obj.study_goal
-        //-                 p(class="list-group-item-text")=obj.precondition
-        //-                 p(class="list-group-item-text")=obj.price
-        //-                 p(class="list-group-item-text")=obj.period
+        div.container
+            div.row
+                div(class="col-md-8")
+                    video(src=course.coursePath)
+                div(class="col-md-4")
+                    div
+                        h4 课程简介：
+                        p #{course.discription}
+            div
+                button(style="display:inline" class="btn")
+                    span(class="glyphicon glyphicon-thumbs-up") 
+                button(style="display:inline" class="btn")
+                    span(class="glyphicon glyphicon-thumbs-down") 
+                button(style="display:inline" class="btn") 收藏
+                button(style="display:inline" class="btn") 打赏
+                a #{course.watchCount}次浏览
+            div(class="col-md-8")
+                h4 所有评论：  
+                //- - each obj in list
+                div
+                        div.row
+                            div(class="col-md-4")
+                                p 作者：
+                                    a(href="user/id") haha
+                            div(class="col-md-3")
+                                p 2017年 2月12日 
+                            div(class="col-md-1")
+                                p 沙发
+                        div  
+                            p jfdsjl东方闪电是梵蒂冈地方刚发的公司的风格十多个风格第三方第三方公司的风格水电费公司的风格水电费锅煽豆腐锅煽豆腐公司的改善的地方锅煽豆腐个k ajdslkfjasdfj alskdjlkasdj flkjaslkd jlk

@@ -1,0 +1,314 @@
+[2017-03-17 23:29:19.573] [ERROR] scratch - { CastError: Cast to ObjectId failed for value "undefined" at path "_id"
+    at MongooseError.CastError (F:\git\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+    at ObjectId.cast (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:147:13)
+    at ObjectId.castForQuery (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:187:15)
+    at cast (F:\git\ExpressProject\node_modules\mongoose\lib\cast.js:225:32)
+    at Query.cast (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:2685:10)
+    at Query.find (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:1139:10)
+    at Function.find (F:\git\ExpressProject\node_modules\mongoose\lib\model.js:1195:13)
+    at Object.exports.getCourseDetail (F:\git\ExpressProject\proxy\course.js:14:17)
+    at exports.showCourseDetail (F:\git\ExpressProject\controller\coursers.js:27:12)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\git\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (F:\git\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at F:\git\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:330:14)
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:346:14)
+  message: 'Cast to ObjectId failed for value "undefined" at path "_id"',
+  name: 'CastError',
+  kind: 'ObjectId',
+  value: 'undefined',
+  path: '_id',
+  reason: undefined }
+[2017-03-17 23:29:35.930] [ERROR] scratch - { CastError: Cast to ObjectId failed for value "undefined" at path "_id"
+    at MongooseError.CastError (F:\git\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+    at ObjectId.cast (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:147:13)
+    at ObjectId.castForQuery (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:187:15)
+    at cast (F:\git\ExpressProject\node_modules\mongoose\lib\cast.js:225:32)
+    at Query.cast (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:2685:10)
+    at Query.find (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:1139:10)
+    at Function.find (F:\git\ExpressProject\node_modules\mongoose\lib\model.js:1195:13)
+    at Object.exports.getCourseDetail (F:\git\ExpressProject\proxy\course.js:14:17)
+    at exports.showCourseDetail (F:\git\ExpressProject\controller\coursers.js:27:12)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\git\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (F:\git\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at F:\git\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:330:14)
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:346:14)
+  message: 'Cast to ObjectId failed for value "undefined" at path "_id"',
+  name: 'CastError',
+  kind: 'ObjectId',
+  value: 'undefined',
+  path: '_id',
+  reason: undefined }
+[2017-03-17 23:54:50.407] [ERROR] scratch - { CastError: Cast to ObjectId failed for value "undefined" at path "_id"
+    at MongooseError.CastError (F:\git\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+    at ObjectId.cast (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:147:13)
+    at ObjectId.castForQuery (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:187:15)
+    at cast (F:\git\ExpressProject\node_modules\mongoose\lib\cast.js:225:32)
+    at Query.cast (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:2685:10)
+    at Query.find (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:1139:10)
+    at Function.find (F:\git\ExpressProject\node_modules\mongoose\lib\model.js:1195:13)
+    at Object.exports.getCourseDetail (F:\git\ExpressProject\proxy\course.js:14:17)
+    at exports.showCourseDetail (F:\git\ExpressProject\controller\coursers.js:27:12)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\git\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (F:\git\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at F:\git\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:330:14)
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:346:14)
+  message: 'Cast to ObjectId failed for value "undefined" at path "_id"',
+  name: 'CastError',
+  kind: 'ObjectId',
+  value: 'undefined',
+  path: '_id',
+  reason: undefined }
+[2017-03-17 23:55:57.600] [ERROR] scratch - { CastError: Cast to ObjectId failed for value "undefined" at path "_id"
+    at MongooseError.CastError (F:\git\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+    at ObjectId.cast (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:147:13)
+    at ObjectId.castForQuery (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:187:15)
+    at cast (F:\git\ExpressProject\node_modules\mongoose\lib\cast.js:225:32)
+    at Query.cast (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:2685:10)
+    at Query.find (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:1139:10)
+    at Function.find (F:\git\ExpressProject\node_modules\mongoose\lib\model.js:1195:13)
+    at Object.exports.getCourseDetail (F:\git\ExpressProject\proxy\course.js:14:17)
+    at exports.showCourseDetail (F:\git\ExpressProject\controller\coursers.js:27:12)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\git\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (F:\git\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at F:\git\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:330:14)
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:346:14)
+  message: 'Cast to ObjectId failed for value "undefined" at path "_id"',
+  name: 'CastError',
+  kind: 'ObjectId',
+  value: 'undefined',
+  path: '_id',
+  reason: undefined }
+[2017-03-17 23:57:16.689] [ERROR] scratch - { CastError: Cast to ObjectId failed for value "undefined" at path "_id"
+    at MongooseError.CastError (F:\git\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+    at ObjectId.cast (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:147:13)
+    at ObjectId.castForQuery (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:187:15)
+    at cast (F:\git\ExpressProject\node_modules\mongoose\lib\cast.js:225:32)
+    at Query.cast (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:2685:10)
+    at Query.find (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:1139:10)
+    at Function.find (F:\git\ExpressProject\node_modules\mongoose\lib\model.js:1195:13)
+    at Object.exports.getCourseDetail (F:\git\ExpressProject\proxy\course.js:14:17)
+    at exports.showCourseDetail (F:\git\ExpressProject\controller\coursers.js:27:12)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\git\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (F:\git\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at F:\git\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:330:14)
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:346:14)
+  message: 'Cast to ObjectId failed for value "undefined" at path "_id"',
+  name: 'CastError',
+  kind: 'ObjectId',
+  value: 'undefined',
+  path: '_id',
+  reason: undefined }
+[2017-03-18 00:03:49.982] [ERROR] scratch - { CastError: Cast to ObjectId failed for value "NaN" at path "_id"
+    at MongooseError.CastError (F:\git\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+    at ObjectId.cast (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:147:13)
+    at ObjectId.castForQuery (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:187:15)
+    at cast (F:\git\ExpressProject\node_modules\mongoose\lib\cast.js:225:32)
+    at Query.cast (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:2685:10)
+    at Query.find (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:1139:10)
+    at Function.find (F:\git\ExpressProject\node_modules\mongoose\lib\model.js:1195:13)
+    at Object.exports.getCourseDetail (F:\git\ExpressProject\proxy\course.js:14:17)
+    at exports.showCourseDetail (F:\git\ExpressProject\controller\coursers.js:27:12)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\git\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (F:\git\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at F:\git\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:330:14)
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:346:14)
+  message: 'Cast to ObjectId failed for value "NaN" at path "_id"',
+  name: 'CastError',
+  kind: 'ObjectId',
+  value: 'NaN',
+  path: '_id',
+  reason: undefined }
+[2017-03-18 00:03:55.029] [ERROR] scratch - { CastError: Cast to ObjectId failed for value "NaN" at path "_id"
+    at MongooseError.CastError (F:\git\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+    at ObjectId.cast (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:147:13)
+    at ObjectId.castForQuery (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:187:15)
+    at cast (F:\git\ExpressProject\node_modules\mongoose\lib\cast.js:225:32)
+    at Query.cast (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:2685:10)
+    at Query.find (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:1139:10)
+    at Function.find (F:\git\ExpressProject\node_modules\mongoose\lib\model.js:1195:13)
+    at Object.exports.getCourseDetail (F:\git\ExpressProject\proxy\course.js:14:17)
+    at exports.showCourseDetail (F:\git\ExpressProject\controller\coursers.js:27:12)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\git\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (F:\git\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at F:\git\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:330:14)
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:346:14)
+  message: 'Cast to ObjectId failed for value "NaN" at path "_id"',
+  name: 'CastError',
+  kind: 'ObjectId',
+  value: 'NaN',
+  path: '_id',
+  reason: undefined }
+[2017-03-18 00:08:11.336] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:08:11.336Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:13:21.105] [INFO] scratch - { _id: 58cab978484736f8bfe2e201,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:13:21.104Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:13:42.637] [INFO] scratch - { _id: 58cab978484736f8bfe2e201,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:13:42.636Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:22:19.006] [INFO] scratch - { _id: 58cab978484736f8bfe2e201,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:22:19.004Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:22:48.553] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:22:48.552Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:22:58.934] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:22:58.933Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:24:30.972] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:24:30.971Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:25:46.807] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:25:46.805Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:26:24.600] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:26:24.599Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:28:37.638] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:28:37.637Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:32:32.774] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:32:32.773Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:41:00.658] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:41:00.657Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:41:00.999] [ERROR] scratch - { CastError: Cast to ObjectId failed for value "hello scratch" at path "_id"
+    at MongooseError.CastError (F:\git\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+    at ObjectId.cast (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:147:13)
+    at ObjectId.castForQuery (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:187:15)
+    at cast (F:\git\ExpressProject\node_modules\mongoose\lib\cast.js:225:32)
+    at Query.cast (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:2685:10)
+    at Query.find (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:1139:10)
+    at Function.find (F:\git\ExpressProject\node_modules\mongoose\lib\model.js:1195:13)
+    at Object.exports.getCourseDetail (F:\git\ExpressProject\proxy\course.js:14:17)
+    at exports.showCourseDetail (F:\git\ExpressProject\controller\coursers.js:27:12)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\git\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (F:\git\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at F:\git\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:330:14)
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:346:14)
+  message: 'Cast to ObjectId failed for value "hello scratch" at path "_id"',
+  name: 'CastError',
+  kind: 'ObjectId',
+  value: 'hello scratch',
+  path: '_id',
+  reason: undefined }
+[2017-03-18 00:42:03.047] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:42:03.046Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }

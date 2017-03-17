@@ -23,6 +23,7 @@ router.get('/works', works.listAll); //查看所有作品
 router.get('/works/:workid', works.showDetail);  //查看作品详情
 
 router.get('/courses/:courseType', course.listAllCourse);
+router.get('/courses/:courseType/:courseId', course.showCourseDetail);
 router.get('/user', user.listInfo);
 router.post('/upload_work', works.upload);
 router.get('/test/study/artical', works.getallartical);
