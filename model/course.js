@@ -9,7 +9,7 @@ var CourseSchema = new Schema({
     detialContentPath: { type: String },
     coursePrise: { type: Number, default: 0 },
     courseType: { type: Number, default: 1 },
-    cursePath: { type: String },
+    courseVideoPath: { type: String },
     watchCount: { type: Number, default: 0 },
     praiseCount: { type: Number, default: 0 },
     difficultyLevel: { type: Number, default: 1 },

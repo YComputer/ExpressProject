@@ -312,3 +312,23 @@
   watchCount: 1762,
   courseType: 1,
   coursePrise: 25 }
+[2017-03-18 00:52:15.882] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  curseVideoPath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:52:15.880Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-18 00:53:48.319] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  courseVideoPath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-17T16:53:48.318Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
