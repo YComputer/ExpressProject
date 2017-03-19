@@ -8,6 +8,9 @@ var url = require("url");
 var fs = require("fs");
 var path = require("path");
 var formidable = require("formidable");
+var eventproxy = require('eventproxy');
+var Comment = require('../proxy/comment');
+var moment = require('moment');
 
 exports.listAll = function (req, res, next) {
 
@@ -27,14 +30,40 @@ exports.listAll = function (req, res, next) {
 
 exports.showDetail = function (req, res, next) {
     var id = req.params.workid;
+    var ep = new eventproxy();
+    ep.all("work", "comments", function (work, comments) {
+        res.render('composition/work', { work: work, commentList: comments });
+    })
+
     Work.getdetail(id, function (err, docs) {
         if (err) {
             logger.error(err);
             res.send(err);
             return next(err);
         }
-        //res.send(docs[0]);
-        res.render('composition/work', { work: docs[0] });
+        else {
+            ep.emit("work", docs[0]);
+        }
+    })
+    Comment.getAllComments(2, id, function (err, docs) {
+        if (err) {
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        else {
+            var commentsList = new Array();
+            for (var i = 0; i < docs.length; i++) {
+                var doc = {}
+                doc._id = docs[i]._id;
+                doc.commentContent = docs[i].commentContent;
+                doc.workId = docs[i].workId;
+                doc.commentType = docs[i].commentType;
+                doc.commentTime = moment(docs[i].commentTime).format('YYYY MMMM Do, hh:mm:ss a');
+                commentsList.push(doc);
+            }
+            ep.emit("comments", commentsList);
+        }
     })
 }
 

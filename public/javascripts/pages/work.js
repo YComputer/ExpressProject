@@ -1,12 +1,12 @@
 $(function () {
     $('#submit_comment_btn').on('click', function () {
-        var commentContent = $('#course_comment_text')[0].value;
+        var commentContent = $('#work_comment_text')[0].value;
         $.ajax({
             type: "POST",
             url: "/comments",
             data: {
-                type: 1,
-                id: currentCourseId,
+                type: 2,
+                id: currentWorkId,
                 commentTo: "",
                 content: commentContent
             },
@@ -16,7 +16,7 @@ $(function () {
     })
 
     var postCommentSuccess = function (data) {
-        var ul = $('#courseCommentList')[0];
+        var ul = $('#workCommentList')[0];
         ul.appendChild(create_li_item(data))
     }
 

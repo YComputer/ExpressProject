@@ -3,7 +3,13 @@ var utility = require('utility');
 var uuid = require('uuid');
 
 exports.getAllComments = function (commentType, id, callback) {
-    CommentModel.find({ commentType: parseInt(commentType), courseId: id }, callback);
+    if (parseInt(commentType) == 1) {
+        CommentModel.find({ commentType: 1, courseId: id }, callback);
+    }
+    else if (parseInt(commentType) == 2) {
+        CommentModel.find({ commentType: 2, workId: id }, callback);
+    }
+
     //{ sort: [{ 'commentTime': -1 }] }, 
 }
 
