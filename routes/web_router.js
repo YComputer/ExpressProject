@@ -10,11 +10,9 @@ var site = require('../controller/site');
 var auth = require('../middlewares/auth');
 var works = require('../controller/works');
 var course = require('../controller/coursers');
-<<<<<<< HEAD
-var message = require('../controller/message');
-=======
 var comment = require('../controller/comment');
->>>>>>> 14276691e70ce85c7ba4fc612b529ee7eb740b11
+var message = require('../controller/message');
+
 router.get('/', site.index);
 
 router.get('/signup', sign.showSignup);  // 跳转到注册页面
