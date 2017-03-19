@@ -23,7 +23,7 @@ exports.postComment = function (req, res, next) {
             res.send(false);
         }
         else {
-            res.send(true);
+            res.send(doc);
         }
     })
 }
