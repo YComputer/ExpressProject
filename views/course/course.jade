@@ -1,32 +1,47 @@
 extends ../layout
 block content
         div.container
+            script(src="/javascripts/pages/course.js")
             div.row
                 div(class="col-md-8")
-                    video(src='#{course.courseVideoPath}')
+                    script(type='text/javascript').
+                        currentCourseId = '#{course._id}'
+                    div(style="border:grey 1px solid;padding:5px")
+                        video#courseVideo(src='#{course.courseVideoPath}' style="width:100%")
+                        
+                        button#courseVideoPlayBtn(toolTips="点击播放" style="border-radius:50%; border:solid grey 0; font-size:60px;position:absolute;left:50%;top:50%;padding:0")
+                            div(style="width:80px;height:80px;")
+                                span(class="glyphicon glyphicon-play" tooltips="点击播放")  
+                    div
+                        button(style="display:inline" class="btn")
+                            span(class="glyphicon glyphicon-thumbs-up") 
+                        button(style="display:inline" class="btn")
+                            span(class="glyphicon glyphicon-thumbs-down") 
+                        button(style="display:inline" class="btn") 收藏
+                        button(style="display:inline" class="btn") 打赏
+                        a(style="position:absolute;right:20px;text-align:right") #{course.watchCount}次浏览
                 div(class="col-md-4")
                     div
                         h4 课程简介：
                         p #{course.discription}
-            div
-                button(style="display:inline" class="btn")
-                    span(class="glyphicon glyphicon-thumbs-up") 
-                button(style="display:inline" class="btn")
-                    span(class="glyphicon glyphicon-thumbs-down") 
-                button(style="display:inline" class="btn") 收藏
-                button(style="display:inline" class="btn") 打赏
-                a #{course.watchCount}次浏览
             div(class="col-md-8")
-                h4 所有评论：  
-                //- - each obj in list
                 div
-                        div.row
-                            div(class="col-md-4")
-                                p 作者：
-                                    a(href="user/id") haha
-                            div(class="col-md-3")
-                                p 2017年 2月12日 
-                            div(class="col-md-1")
-                                p 沙发
-                        div  
-                            p jfdsjl东方闪电是梵蒂冈地方刚发的公司的风格十多个风格第三方第三方公司的风格水电费公司的风格水电费锅煽豆腐锅煽豆腐公司的改善的地方锅煽豆腐个k ajdslkfjasdfj alskdjlkasdj flkjaslkd jlk
+                    textarea#course_comment_text(rows=4 style="width:100%;height:100px;margin-top:20px" placeholder="想说点什么就写在这儿吧")
+                    button#submit_comment_btn(class="btn" style="display:block;position:absolute;right:20px") 提交评论
+                br
+                h4 所有评论：
+                ul#commentList(class="list-group") 
+                    - each obj in commentList
+                        li(class="list-group-item")
+                            div
+                                    div.row
+                                        div(class="col-md-3")
+                                            p 作者：
+                                                a(href="user/id") #{obj.commentUser}
+                                        div(class="col-md-5")
+                                            p(style="display:inline") 时间：
+                                                p(style="display:inline") #{obj.commentTime}
+                                        div(class="col-md-1" style="position:absolute;right:20px")
+                                            p 沙发
+                                    div  
+                                        p #{obj.commentContent}

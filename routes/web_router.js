@@ -10,6 +10,7 @@ var site = require('../controller/site');
 var auth = require('../middlewares/auth');
 var works = require('../controller/works');
 var course = require('../controller/coursers');
+var comment = require('../controller/comment');
 router.get('/', site.index);
 
 router.get('/signup', sign.showSignup);  // 跳转到注册页面
@@ -24,6 +25,8 @@ router.get('/works/:workid', works.showDetail);  //查看作品详情
 
 router.get('/courses/:courseType', course.listAllCourse);
 router.get('/courses/:courseType/:courseId', course.showCourseDetail);
+
+router.post('/comments', comment.postComment);
 router.get('/user', user.listInfo);
 router.post('/upload_work', works.upload);
 router.get('/test/study/artical', works.getallartical);

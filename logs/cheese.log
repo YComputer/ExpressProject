@@ -41,3 +41,24 @@
   value: 'undefined',
   path: '_id',
   reason: undefined }
+[2017-03-19 14:42:36.987] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  courseVideoPath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-19T06:42:36.985Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-19 14:42:36.994] [INFO] scratch - []
+[2017-03-19 14:43:42.867] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  courseVideoPath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-19T06:43:36.644Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
