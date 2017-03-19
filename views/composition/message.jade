@@ -1,40 +1,61 @@
 //
    Created by yaohw on 2017-03-18 16:30:01.
 
-extends ../layout
-block content
-    div.container
-        //- div(class="modal fade" id='myModal')
-        //-     div(class="modal-dialog")
-        //-         div(class="modal-content")
-        //-             p "{#hello}"
-        //-             //
-        //- //button(class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal") 打开模态
-        div(style="margin-bottom:20px")
-            label(for="xfile" class="btn btn-info btn-xs")
-                span(class="fa fa-plus" style="font-size:20px") 上传作品
-            input(id="xfile" type="file" name="files" style="display:none")
-        - each obj in list
-            div.row
-                div(class="col-md-3" style="margin-bottom:20px")
-                    div(style="background:write")
-                        div
-                            a(href='/works/'+obj._id)
-                                img(src="/images/coffie.jpg" style="max-width:100%" alt="image1")
-                            //embed(width="auto" height="auto" src=obj.sourcePath)
-                        div
-                            a(href='/works/'+obj._id)
-                                h3 示例作品
-                            div(class="row")
-                                div(class="col-md-8")
-                                    a(href="#/user/id") 作者：sdfsf
-                                div(class="col-md-4")
-                                    span 
-                                        p 28715
 
-                    div
-                        img(src="/images/coffie.jpg" style="max-width:100%" alt="image1")
-                        //embed(width="auto" height="auto" src=obj.sourcePath)
-                    div(display="inline")
-                        h3 示例作品
-                        p 南京小学生李煜辰小朋友的作品
+div.container
+    legend 用户留言
+    div.row
+    div.col-md-2
+        form#messageForm.form-horizontal(method="post" action="BBS" )
+            fieldset
+                div.container-fluid
+                div
+                    label.control-label(for="username") 联系方式               
+                    div.col-md-1
+                        input#username.input-xlarge(type="text" name="username")
+                    div.col-md-1
+                        p.help-block(id="usernamehint" style="display:none")
+                div.container-fluid
+                div
+                    label.control-label(for="content") 留言
+                div.row
+                    div.col-md-1
+                        input#content.input-xlarge(type="text" name="content")
+                    div.col-md-1
+                        p.help-block(id="passwordhint" style="display:none")
+                div.container-fluid
+                button( class="btn btn-primary") 留言1
+                button( class="btn1") 留言2
+        hr(size="1" color="#999999")
+
+    script(type='text/javascript').
+        jQuery(document).ready(function() {
+            jQuery(".btn1").bind("click",function(){
+
+                var arr = $('#messageForm').serializeArray();               
+                alert($.param(arr));
+
+                var message = {
+                    username:$("#username").val(),
+                    content:$("#content").val()                    
+                };    
+
+
+                jQuery.ajax({
+                    type: 'post',
+                    url: '/BBS/',
+                    cache: false,
+                    data: message,
+                   
+                    success:function(data){    
+                            alert("发布成功！");              
+                            window.location.reload();      
+                    }
+                });
+
+            });
+        });
+ 
+
+
+            

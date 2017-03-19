@@ -66,18 +66,22 @@ exports.showMessage = function (req, res, next) {
 /**
  * 发布留言
  */
-// exports.publishMessage = function (req, res, next) {
-//    var info = url.parse(req.url,true).query.name;
-//     messageProxy.saveMessage(info,info,info,info,info,,function(err,messages){
-//         if(err){
-//             logger.error(err);
-//             res.send(err);
-//             return next(err);
-//         }
-//         else{
-//             res.render("composition/messages", {
-//                 list: messages
-//             });
-//          }
-//     })
-// }
+exports.publishMessage = function (req, res, next) {
+   var name =req.body.name;
+   var content =req.body.content;
+  // var t1= req.content;
+
+
+    messageProxy.saveMessage(name,content,name,content,name,function(err,messages){
+        if(err){
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        else{
+            res.render("composition/message", {
+                list: messages
+            });
+         }
+    })
+}
