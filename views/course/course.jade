@@ -4,7 +4,7 @@ block content
             script(src="/javascripts/pages/course.js")
             div.row
                 div(class="col-md-8")
-                    script(type='text/javascript').
+                    script(type='text/javascript')
                         currentCourseId = '#{course._id}'
                     div(style="border:grey 1px solid;padding:5px")
                         video#courseVideo(src='#{course.courseVideoPath}' style="width:100%")
