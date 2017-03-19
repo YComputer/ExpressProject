@@ -10,6 +10,7 @@ var site = require('../controller/site');
 var auth = require('../middlewares/auth');
 var works = require('../controller/works');
 var course = require('../controller/coursers');
+var message = require('../controller/message');
 router.get('/', site.index);
 
 router.get('/signup', sign.showSignup);  // 跳转到注册页面
@@ -30,6 +31,9 @@ router.get('/test/study/artical', works.getallartical);
 
 
 router.post('/userss', user.create);
+
+router.get('/BBS', message.listLastNMessages);//查看最新留言
+router.post('/BBS', message.publishMessage);//发布留言信息
 
 
 module.exports = router;
