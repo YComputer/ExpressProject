@@ -18,7 +18,7 @@ exports.listAllCourse = function (req, res, next) {
         }
         else {
             res.render("course/courses", {
-                list: docs
+                list: docs, coursetype: courseType
             });
         }
     });

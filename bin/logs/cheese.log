@@ -2091,3 +2091,363 @@
     __v: 0,
     commentTime: 2017-03-19T11:41:59.901Z,
     commentType: 1 } ]
+[2017-03-19 22:55:29.790] [INFO] scratch - { _id: 58cab978484736f8bfe2e201,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-19T14:55:29.789Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-19 22:55:29.800] [INFO] scratch - []
+[2017-03-19 22:55:30.263] [ERROR] scratch - { CastError: Cast to ObjectId failed for value "undefined" at path "_id"
+    at MongooseError.CastError (F:\git\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+    at ObjectId.cast (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:147:13)
+    at ObjectId.castForQuery (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:187:15)
+    at cast (F:\git\ExpressProject\node_modules\mongoose\lib\cast.js:225:32)
+    at Query.cast (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:2685:10)
+    at Query.find (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:1139:10)
+    at Function.find (F:\git\ExpressProject\node_modules\mongoose\lib\model.js:1195:13)
+    at Object.exports.getCourseDetail (F:\git\ExpressProject\proxy\course.js:14:17)
+    at exports.showCourseDetail (F:\git\ExpressProject\controller\coursers.js:34:12)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\git\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (F:\git\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at F:\git\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:330:14)
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:346:14)
+  message: 'Cast to ObjectId failed for value "undefined" at path "_id"',
+  name: 'CastError',
+  kind: 'ObjectId',
+  value: 'undefined',
+  path: '_id',
+  reason: undefined }
+[2017-03-19 22:55:30.273] [ERROR] scratch - { CastError: Cast to ObjectId failed for value "undefined" at path "courseId"
+    at MongooseError.CastError (F:\git\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+    at ObjectId.cast (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:147:13)
+    at ObjectId.castForQuery (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:187:15)
+    at cast (F:\git\ExpressProject\node_modules\mongoose\lib\cast.js:225:32)
+    at Query.cast (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:2685:10)
+    at Query.find (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:1139:10)
+    at Function.find (F:\git\ExpressProject\node_modules\mongoose\lib\model.js:1195:13)
+    at Object.exports.getAllComments (F:\git\ExpressProject\proxy\comment.js:7:22)
+    at exports.showCourseDetail (F:\git\ExpressProject\controller\coursers.js:45:13)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\git\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (F:\git\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at F:\git\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:330:14)
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:346:14)
+  message: 'Cast to ObjectId failed for value "undefined" at path "courseId"',
+  name: 'CastError',
+  kind: 'ObjectId',
+  value: 'undefined',
+  path: 'courseId',
+  reason: undefined }
+[2017-03-19 22:55:53.784] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  courseVideoPath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-19T14:55:53.783Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-19 22:55:53.792] [INFO] scratch - [ { _id: 58ce399406a7ca5bec4fc4ae,
+    commentContent: '不错',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T07:56:04.703Z,
+    commentType: 1 },
+  { _id: 58ce3a3706a7ca5bec4fc4af,
+    commentContent: 'gjhhghjgjgjh\nhjhjhklkj',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T07:58:47.907Z,
+    commentType: 1 },
+  { _id: 58ce40556033c943b0ff3035,
+    commentContent: '哈粉红色地方哈卡萨丁',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T08:24:53.980Z,
+    commentType: 1 },
+  { _id: 58ce5b36c759c25d60af6b51,
+    commentContent: 'hello撒反对',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T10:19:34.313Z,
+    commentType: 1 },
+  { _id: 58ce5b6cc759c25d60af6b52,
+    commentContent: 'niubility',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T10:20:28.154Z,
+    commentType: 1 },
+  { _id: 58ce6bccc759c25d60af6b53,
+    commentContent: '佛挡杀佛撒范德萨',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:30:20.723Z,
+    commentType: 1 },
+  { _id: 58ce6c2fc759c25d60af6b54,
+    commentContent: '从第三方士大夫',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:31:59.858Z,
+    commentType: 1 },
+  { _id: 58ce6c86c759c25d60af6b55,
+    commentContent: '发的说法的地方上的',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:33:26.737Z,
+    commentType: 1 },
+  { _id: 58ce6cacc759c25d60af6b56,
+    commentContent: '发送到发送到',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:34:04.641Z,
+    commentType: 1 },
+  { _id: 58ce6e41c759c25d60af6b57,
+    commentContent: 'fadfasd dsf sfds ',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:40:49.444Z,
+    commentType: 1 },
+  { _id: 58ce6e87c759c25d60af6b58,
+    commentContent: 'fasdfasd adsfa',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:41:59.901Z,
+    commentType: 1 },
+  { _id: 58ce786480400c47ac608c34,
+    commentContent: 'jkllkjlkjjlk',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T12:24:04.209Z,
+    commentType: 1 } ]
+[2017-03-19 22:58:16.194] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  courseVideoPath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-19T14:58:16.192Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-19 22:58:16.204] [INFO] scratch - [ { _id: 58ce399406a7ca5bec4fc4ae,
+    commentContent: '不错',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T07:56:04.703Z,
+    commentType: 1 },
+  { _id: 58ce3a3706a7ca5bec4fc4af,
+    commentContent: 'gjhhghjgjgjh\nhjhjhklkj',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T07:58:47.907Z,
+    commentType: 1 },
+  { _id: 58ce40556033c943b0ff3035,
+    commentContent: '哈粉红色地方哈卡萨丁',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T08:24:53.980Z,
+    commentType: 1 },
+  { _id: 58ce5b36c759c25d60af6b51,
+    commentContent: 'hello撒反对',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T10:19:34.313Z,
+    commentType: 1 },
+  { _id: 58ce5b6cc759c25d60af6b52,
+    commentContent: 'niubility',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T10:20:28.154Z,
+    commentType: 1 },
+  { _id: 58ce6bccc759c25d60af6b53,
+    commentContent: '佛挡杀佛撒范德萨',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:30:20.723Z,
+    commentType: 1 },
+  { _id: 58ce6c2fc759c25d60af6b54,
+    commentContent: '从第三方士大夫',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:31:59.858Z,
+    commentType: 1 },
+  { _id: 58ce6c86c759c25d60af6b55,
+    commentContent: '发的说法的地方上的',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:33:26.737Z,
+    commentType: 1 },
+  { _id: 58ce6cacc759c25d60af6b56,
+    commentContent: '发送到发送到',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:34:04.641Z,
+    commentType: 1 },
+  { _id: 58ce6e41c759c25d60af6b57,
+    commentContent: 'fadfasd dsf sfds ',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:40:49.444Z,
+    commentType: 1 },
+  { _id: 58ce6e87c759c25d60af6b58,
+    commentContent: 'fasdfasd adsfa',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:41:59.901Z,
+    commentType: 1 },
+  { _id: 58ce786480400c47ac608c34,
+    commentContent: 'jkllkjlkjjlk',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T12:24:04.209Z,
+    commentType: 1 } ]
+[2017-03-19 22:58:19.819] [INFO] scratch - { _id: 58cab978484736f8bfe2e20d,
+  title: 'hello scratch',
+  discription: 'fasfsadasd',
+  courseVideoPath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-19T14:58:19.818Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 1,
+  coursePrise: 25 }
+[2017-03-19 22:58:19.826] [INFO] scratch - [ { _id: 58ce399406a7ca5bec4fc4ae,
+    commentContent: '不错',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T07:56:04.703Z,
+    commentType: 1 },
+  { _id: 58ce3a3706a7ca5bec4fc4af,
+    commentContent: 'gjhhghjgjgjh\nhjhjhklkj',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T07:58:47.907Z,
+    commentType: 1 },
+  { _id: 58ce40556033c943b0ff3035,
+    commentContent: '哈粉红色地方哈卡萨丁',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T08:24:53.980Z,
+    commentType: 1 },
+  { _id: 58ce5b36c759c25d60af6b51,
+    commentContent: 'hello撒反对',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T10:19:34.313Z,
+    commentType: 1 },
+  { _id: 58ce5b6cc759c25d60af6b52,
+    commentContent: 'niubility',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T10:20:28.154Z,
+    commentType: 1 },
+  { _id: 58ce6bccc759c25d60af6b53,
+    commentContent: '佛挡杀佛撒范德萨',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:30:20.723Z,
+    commentType: 1 },
+  { _id: 58ce6c2fc759c25d60af6b54,
+    commentContent: '从第三方士大夫',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:31:59.858Z,
+    commentType: 1 },
+  { _id: 58ce6c86c759c25d60af6b55,
+    commentContent: '发的说法的地方上的',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:33:26.737Z,
+    commentType: 1 },
+  { _id: 58ce6cacc759c25d60af6b56,
+    commentContent: '发送到发送到',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:34:04.641Z,
+    commentType: 1 },
+  { _id: 58ce6e41c759c25d60af6b57,
+    commentContent: 'fadfasd dsf sfds ',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:40:49.444Z,
+    commentType: 1 },
+  { _id: 58ce6e87c759c25d60af6b58,
+    commentContent: 'fasdfasd adsfa',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T11:41:59.901Z,
+    commentType: 1 },
+  { _id: 58ce786480400c47ac608c34,
+    commentContent: 'jkllkjlkjjlk',
+    courseId: 58cab978484736f8bfe2e20d,
+    __v: 0,
+    commentTime: 2017-03-19T12:24:04.209Z,
+    commentType: 1 } ]
+[2017-03-19 23:26:20.925] [INFO] scratch - { _id: 58cab978484736f8bfe2e205,
+  title: '冒泡排序',
+  discription: 'fasfsadasd',
+  coursePath: '/video/1464190314146.mp4',
+  uploadTime: 2017-03-19T15:26:20.924Z,
+  difficultyLevel: 2,
+  praiseCount: 0,
+  watchCount: 1762,
+  courseType: 4,
+  coursePrise: 25 }
+[2017-03-19 23:26:20.935] [INFO] scratch - []
+[2017-03-19 23:26:21.361] [ERROR] scratch - { CastError: Cast to ObjectId failed for value "undefined" at path "_id"
+    at MongooseError.CastError (F:\git\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+    at ObjectId.cast (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:147:13)
+    at ObjectId.castForQuery (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:187:15)
+    at cast (F:\git\ExpressProject\node_modules\mongoose\lib\cast.js:225:32)
+    at Query.cast (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:2685:10)
+    at Query.find (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:1139:10)
+    at Function.find (F:\git\ExpressProject\node_modules\mongoose\lib\model.js:1195:13)
+    at Object.exports.getCourseDetail (F:\git\ExpressProject\proxy\course.js:14:17)
+    at exports.showCourseDetail (F:\git\ExpressProject\controller\coursers.js:34:12)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\git\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (F:\git\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at F:\git\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:330:14)
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:346:14)
+  message: 'Cast to ObjectId failed for value "undefined" at path "_id"',
+  name: 'CastError',
+  kind: 'ObjectId',
+  value: 'undefined',
+  path: '_id',
+  reason: undefined }
+[2017-03-19 23:26:21.372] [ERROR] scratch - { CastError: Cast to ObjectId failed for value "undefined" at path "courseId"
+    at MongooseError.CastError (F:\git\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+    at ObjectId.cast (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:147:13)
+    at ObjectId.castForQuery (F:\git\ExpressProject\node_modules\mongoose\lib\schema\objectid.js:187:15)
+    at cast (F:\git\ExpressProject\node_modules\mongoose\lib\cast.js:225:32)
+    at Query.cast (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:2685:10)
+    at Query.find (F:\git\ExpressProject\node_modules\mongoose\lib\query.js:1139:10)
+    at Function.find (F:\git\ExpressProject\node_modules\mongoose\lib\model.js:1195:13)
+    at Object.exports.getAllComments (F:\git\ExpressProject\proxy\comment.js:7:22)
+    at exports.showCourseDetail (F:\git\ExpressProject\controller\coursers.js:45:13)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (F:\git\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (F:\git\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (F:\git\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at F:\git\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:330:14)
+    at param (F:\git\ExpressProject\node_modules\express\lib\router\index.js:346:14)
+  message: 'Cast to ObjectId failed for value "undefined" at path "courseId"',
+  name: 'CastError',
+  kind: 'ObjectId',
+  value: 'undefined',
+  path: 'courseId',
+  reason: undefined }

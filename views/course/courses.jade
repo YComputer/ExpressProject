@@ -6,16 +6,33 @@ block content
    div.container
       div.row
             ul(class="nav nav-tabs")
-                li(class="active")
+                li#startcourse
                     a(href="/courses/1") 入门课程
-                li 
-                    a(href="/courses/1") 游戏入门
-                li
-                    a(href="/courses/1") 高阶游戏
-                li
-                    a(href="/courses/1") 初级算法
-                li
-                    a(href="/courses/1") 高阶算法
+                li#gamestart 
+                    a(href="/courses/2") 游戏入门
+                li#upgames
+                    a(href="/courses/3") 高阶游戏
+                li#startAlgorithm
+                    a(href="/courses/4") 初级算法
+                li#upAlgorithm
+                    a(href="/courses/5") 高阶算法
+                script(type='text/javascript').
+                    var type = '#{coursetype}'
+                    if(type=="1"){
+                        var li = $("#startcourse")[0].className = "active";
+                    }
+                    else if(type=="2"){
+                        $("#gamestart")[0].className = "active";
+                    }
+                    else if(type=="3"){
+                        $("#upgames")[0].className = "active";
+                    }
+                    else if(type=="4"){
+                        $("#startAlgorithm")[0].className = "active";
+                    }
+                    else if(type=="5"){
+                        $("#upAlgorithm")[0].className = "active";
+                    }
       div.row(style="border-bottom:3px grey solid")
         div(class="col-md-8")
             - each obj in list
@@ -23,7 +40,7 @@ block content
                     a(href="/courses/1/"+obj._id)
                         div.row(style="border-bottom:1px #f3f3f3 solid;height:50px; padding:15px;")
                             div(class="col-md-10")
-                                p 初识Scratch
+                                p #{obj.title}
                             div(class="col-md-2")
                                 span(class="glyphicon glyphicon glyphicon-star-empty")
                                 span(class="glyphicon glyphicon glyphicon-star-empty")
