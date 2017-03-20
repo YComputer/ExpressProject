@@ -11,7 +11,7 @@ var CourseSchema = new Schema({
     courseType: { type: Number, default: 1 },
     courseVideoPath: { type: String },
     watchCount: { type: Number, default: 0 },
-    praiseCount: { type: Number, default: 0 },
+    upCount: { type: Number, default: 0 },
     difficultyLevel: { type: Number, default: 1 },
     uploadTime: { type: Date, default: Date.now }
 });
