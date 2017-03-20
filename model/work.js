@@ -1,13 +1,13 @@
 /**
  * Created by hr on 2016/12/20.
  */
-var mongoose  = require('mongoose');
+var mongoose = require('mongoose');
 var BaseModel = require("./base_model");
-var Schema    = mongoose.Schema;
-var ObjectId  = Schema.ObjectId;
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
 var config = require('../config').config;
 mongoose.connect(config.mongo_db, {
-    server: {poolSize: 20}
+    server: { poolSize: 20 }
 }, function (err) {
     if (err) {
         logger.error('connect to %s error: ', config.mongo_db, err.message);
@@ -38,11 +38,12 @@ mongoose.connect(config.mongo_db, {
 
 
 var WorkSchema = new Schema({
-    name:           { type: String},
-    sourcePath:     {type:String},
-    description:    {type:String},
-    author:         {type:ObjectId},
-    uploadTime:     {type: Date, default: Date.now }
+    name: { type: String },
+    sourcePath: { type: String },
+    description: { type: String },
+    author: { type: ObjectId },
+    uploadTime: { type: Date, default: Date.now },
+    upCount: { type: Number, default: 0 }
 });
 
 //UserSchema.plugin(BaseModel);
@@ -75,7 +76,7 @@ var WorkSchema = new Schema({
 //UserSchema.index({score: -1});
 //UserSchema.index({accessToken: 1});
 
-WorkSchema.pre('save', function(next){
+WorkSchema.pre('save', function (next) {
     var now = new Date();
     this.uploadTime = now;
     next();

@@ -35,12 +35,12 @@ block content
                     }
       div.row(style="border-bottom:3px grey solid")
         div(class="col-md-8")
-            - each obj in list
+            - for(var i=0;i<list.length;i++)
                 div(style="padding-left:10px;padding-right:10px")
-                    a(href='/courses/'+coursetype+'/'+obj._id)
+                    a(href='/courses/'+coursetype+'/'+list[i]._id)
                         div.row(style="border-bottom:1px #f3f3f3 solid;height:50px; padding:15px;")
                             div(class="col-md-10")
-                                p #{obj.title}
+                                p #{list[i].title}
                             div(class="col-md-2")
                                 span(class="glyphicon glyphicon glyphicon-star-empty")
                                 span(class="glyphicon glyphicon glyphicon-star-empty")
@@ -52,18 +52,3 @@ block content
         div(class="col-md-3")
             h4 课程概要
             p 发达是的发送到发送到阿斯蒂芬阿斯蒂芬大师傅
-        //-  div(class="col-center-block list-group")
-        //-     - each obj in list
-        //-        div(class="list-group-item container")
-        //-           div.row
-        //-              div(class="col-xs-4")
-        //-                 div(style="position:relative;left:5px;top:5px")
-        //-                    div(class="button" style="position:absolute;left:30%;top:30%;")
-        //-                       img(class="img-responsive" src=obj.picture_path href="#")
-        //-              div(class="col-xs-4")
-        //-                 h3(class="list-group-item-heading")=obj.name
-        //-                 p(class="list-group-item-text")=obj.description
-        //-                 p(class="list-group-item-text")=obj.study_goal
-        //-                 p(class="list-group-item-text")=obj.precondition
-        //-                 p(class="list-group-item-text")=obj.price
-        //-                 p(class="list-group-item-text")=obj.period

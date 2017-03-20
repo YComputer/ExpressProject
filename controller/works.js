@@ -2,6 +2,7 @@
  * Created by hr on 2016/12/19.
  */
 var Work = require('../proxy/work');
+var User = require('../proxy/user');
 var artical = require('../proxy/artical');
 var logger = require('../common/logger');
 var url = require("url");
@@ -21,9 +22,30 @@ exports.listAll = function (req, res, next) {
             return next(err);
         }
         else {
-            res.render("composition/works", {
-                list: docs
+            var ep = new eventproxy();
+            ep.after('got_user', docs.length, function (workList) {
+                res.render("composition/works", {
+                    list: workList
+                });
             });
+            for (var i = 0; i < docs.length; i++) {
+                var doc = {};
+                doc._id = docs[i]._id;
+                doc.name = docs[i].name;
+                doc.upCount = docs[i].upCount;
+                doc.author = docs[i].author;
+                User.getUserById(doc.author, function (err1, users) {
+                    var userName;
+                    if (err1) {
+                        userName = "";
+                    }
+                    else {
+                        userName = users.name;
+                    }
+                    doc.authorName = userName;
+                    ep.emit("got_user", doc);
+                })
+            }
         }
     });
 }
