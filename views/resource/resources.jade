@@ -1,0 +1,28 @@
+//
+   Created by yaohw on 2017-03-20 23:07:00.
+
+extends ../layout
+block content
+   div.container
+      div.row
+            ul(class="nav nav-tabs")
+                li#all
+                    a(href="/resource/1") 所有
+                li#role 
+                    a(href="/resource/2") 角色
+                li#stage
+                    a(href="/resource/3") 舞台
+                li#audio
+                    a(href="/resource/4") 音频
+               
+                   
+      div.row(style="border-bottom:3px grey solid")
+        div(class="col-md-8")
+            - each obj in list
+                div(style="padding-left:10px;padding-right:10px")
+                    a(href="/resource/1/"+obj._id)
+                        div.row(style="border-bottom:1px #f3f3f3 solid;height:50px; padding:15px;")
+                            div(class="col-md-10")
+                                p #{obj.title}
+                            div(class="col-md-20")                               
+                                 p(class="list-group-item-text")=obj.description

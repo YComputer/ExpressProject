@@ -3,38 +3,75 @@
 
 extends ../layout
 block content
-    div.container
-        //- div(class="modal fade" id='myModal')
-        //-     div(class="modal-dialog")
-        //-         div(class="modal-content")
-        //-             p "{#hello}"
-        //-             //
-        //- //button(class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal") 打开模态
-        div(style="margin-bottom:20px")
-            label(for="xfile" class="btn btn-info btn-xs")
-                span(class="fa fa-plus" style="font-size:20px") 上传作品
-            input(id="xfile" type="file" name="files" style="display:none")
-        - each obj in list
+     div.row
+        div.col-sm-12
+            legend 用户留言
             div.row
-                div(class="col-md-3" style="margin-bottom:20px")
-                    div(style="background:write")
-                        div
-                            a(href='/works/'+obj._id)
-                                img(src="/images/coffie.jpg" style="max-width:100%" alt="image1")
-                            //embed(width="auto" height="auto" src=obj.sourcePath)
-                        div
-                            a(href='/works/'+obj._id)
-                                h3 示例作品
-                            div(class="row")
-                                div(class="col-md-8")
-                                    a(href="#/user/id") 作者：sdfsf
-                                div(class="col-md-4")
-                                    span 
-                                        p 28715
+                div.col-md-6                    
+                   
+                        fieldset
+                            div.container-fluid
+                                div
+                                    label.control-label(for="username") 用户名
+                                div.row
+                                    div.col-md-1
+                                        input#username.input-xlarge(type="text" name="name"   style="width:400px;")
+                                        
+                            div.container-fluid
+                                div
+                                    label.control-label(for="email") 邮箱
+                                div.row
+                                    div.col-md-1
+                                        input#email.input-xlarge(type="text" name="name"   style="width:400px;")
+                                        
+                            div.container-fluid
+                                div
+                                    label.control-label(for="tel") 电话
+                                div.row
+                                    div.col-md-1
+                                        input#tel.input-xlarge(type="text" name="name"   style="width:400px;")
+                                   
+                            div.container-fluid
+                                div
+                                    label.control-label(for="content") 内容
+                                div.row
+                                    div.col-md-1
+                                        textarea#content.input-xlarge(rows="5" style="width:400px;" name="content")
 
-                    div
-                        img(src="/images/coffie.jpg" style="max-width:100%" alt="image1")
-                        //embed(width="auto" height="auto" src=obj.sourcePath)
-                    div(display="inline")
-                        h3 示例作品
-                        p 南京小学生李煜辰小朋友的作品
+                            div.container-fluid
+                                button(id="newMessage" class="btn btn-primary" ) 留言
+
+      script(type='text/javascript').
+        jQuery(document).ready(function() {
+            jQuery("#newMessage").bind("click",function(){
+
+                var arr = $('#messageForm').serializeArray();               
+                alert($.param(arr));
+
+                var message = {
+                    username:$("#username").val(),
+                    email:$("#email").val(),
+                    tel:$("#tel").val(),
+                    content:$("#content").val()
+                                     
+                };    
+
+
+                jQuery.ajax({
+                    type: 'post',
+                    url: '/BBS/',
+                    cache: false,
+                    data: message,
+                   
+                    success:function(data){    
+                            alert("留言成功！");              
+                            window.location.reload();      
+                    }
+                });
+
+            });
+        });
+ 
+
+
+            

@@ -2,7 +2,7 @@
  * Created by hr on 2016/11/28.
  */
 //var mongoose   = require('mongoose');
-var UserModel  = require('../model/User');
+//var UserModel  = require('../model/User');
 //var Message    = require('../proxy').Message;
 var config     = require('../config');
 //var eventproxy = require('eventproxy');
