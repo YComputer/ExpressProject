@@ -95,12 +95,12 @@ exports.upload = function (req, res, next) {
         var name = files.file.name;
 
         var sourceFile = files.file.path;
-        var destPath = path.join("F:\\ExpressProject\\public\\avatar\\", name);
+        var destPath = process.cwd() + '/' + name;
         var readStream = fs.createReadStream(sourceFile);
         var writeStream = fs.createWriteStream(destPath);
         readStream.pipe(writeStream);
 
-        logger.info("收到文件：" + files);
+        logger.info("收到文件：" + JSON.stringify(files));
         res.end();
     });
 }

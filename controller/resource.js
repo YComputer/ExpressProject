@@ -28,7 +28,9 @@ exports.listAllResource = function (req, res, next) {
         }
         else {
             logger.info(docs[0]);
-            res.render("resource/resources", docs);
+            res.render("resource/resources", {
+                list: docs, resourceType: resourceType
+            });
         }
     })
 }
