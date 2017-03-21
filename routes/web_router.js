@@ -12,6 +12,8 @@ var works = require('../controller/works');
 var course = require('../controller/coursers');
 var comment = require('../controller/comment');
 var message = require('../controller/message');
+var resource = require('../controller/resource');
+
 
 router.get('/', site.index);
 
@@ -36,8 +38,19 @@ router.get('/test/study/artical', works.getallartical);
 
 router.post('/userss', user.create);
 
-router.get('/BBS', message.listLastNMessages);//查看最新留言
+router.get('/BBS/LastMessages', message.listLastNMessages);//查看最新留言
+router.get('/BBS/message', message.showMessage);//新增留言
+router.get('/BBS', message.listAll);//查看留言板
+
+
 router.post('/BBS', message.publishMessage);//发布留言信息
 
+//资源访问路由
+router.get('/resource/:resourceType/:resourceId', resource.showResourceDetail);//查看资源详细信息
+router.get('/resource/:resourceType', resource.listAllResource);//查看指定类型资源
+router.get('/resource', resource.listAllResource);//查看所有资源
+
+
+router.post('/resource', resource.saveResource);//保存资源
 
 module.exports = router;

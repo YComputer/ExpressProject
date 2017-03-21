@@ -1,43 +1,59 @@
 //
    Created by yaohw on 2017-03-18 16:30:01.
 
+extends ../layout
+block content
+     div.row
+        div.col-sm-12
+            legend 用户留言
+            div.row
+                div.col-md-6                    
+                   
+                        fieldset
+                            div.container-fluid
+                                div
+                                    label.control-label(for="username") 用户名
+                                div.row
+                                    div.col-md-1
+                                        input#username.input-xlarge(type="text" name="name"   style="width:400px;")
+                                        
+                            div.container-fluid
+                                div
+                                    label.control-label(for="email") 邮箱
+                                div.row
+                                    div.col-md-1
+                                        input#email.input-xlarge(type="text" name="name"   style="width:400px;")
+                                        
+                            div.container-fluid
+                                div
+                                    label.control-label(for="tel") 电话
+                                div.row
+                                    div.col-md-1
+                                        input#tel.input-xlarge(type="text" name="name"   style="width:400px;")
+                                   
+                            div.container-fluid
+                                div
+                                    label.control-label(for="content") 内容
+                                div.row
+                                    div.col-md-1
+                                        textarea#content.input-xlarge(rows="5" style="width:400px;" name="content")
 
-div.container
-    legend 用户留言
-    div.row
-    div.col-md-2
-        form#messageForm.form-horizontal(method="post" action="BBS" )
-            fieldset
-                div.container-fluid
-                div
-                    label.control-label(for="username") 联系方式               
-                    div.col-md-1
-                        input#username.input-xlarge(type="text" name="username")
-                    div.col-md-1
-                        p.help-block(id="usernamehint" style="display:none")
-                div.container-fluid
-                div
-                    label.control-label(for="content") 留言
-                div.row
-                    div.col-md-1
-                        input#content.input-xlarge(type="text" name="content")
-                    div.col-md-1
-                        p.help-block(id="passwordhint" style="display:none")
-                div.container-fluid
-                button( class="btn btn-primary") 留言1
-                button( class="btn1") 留言2
-        hr(size="1" color="#999999")
+                            div.container-fluid
+                                button(id="newMessage" class="btn btn-primary" ) 留言
 
-    script(type='text/javascript').
+      script(type='text/javascript').
         jQuery(document).ready(function() {
-            jQuery(".btn1").bind("click",function(){
+            jQuery("#newMessage").bind("click",function(){
 
                 var arr = $('#messageForm').serializeArray();               
                 alert($.param(arr));
 
                 var message = {
                     username:$("#username").val(),
-                    content:$("#content").val()                    
+                    email:$("#email").val(),
+                    tel:$("#tel").val(),
+                    content:$("#content").val()
+                                     
                 };    
 
 
@@ -48,7 +64,7 @@ div.container
                     data: message,
                    
                     success:function(data){    
-                            alert("发布成功！");              
+                            alert("留言成功！");              
                             window.location.reload();      
                     }
                 });

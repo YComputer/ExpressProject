@@ -62,3 +62,138 @@
   watchCount: 1762,
   courseType: 1,
   coursePrise: 25 }
+[2017-03-20 22:05:46.750] [ERROR] scratch - { ValidationError: message validation failed
+    at MongooseError.ValidationError (d:\LiGit\ExpressProject\node_modules\mongoose\lib\error\validation.js:22:11)
+    at model.Document.invalidate (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:1430:32)
+    at model.Document.set (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:703:10)
+    at model.set [as author] (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:1732:25)
+    at Object.exports.saveMessage (d:\LiGit\ExpressProject\proxy\message.js:51:20)
+    at exports.publishMessage (d:\LiGit\ExpressProject\controller\message.js:80:18)
+    at Layer.handle [as handle_request] (d:\LiGit\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (d:\LiGit\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (d:\LiGit\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (d:\LiGit\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at Function.proto.process_params (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:311:12)
+    at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:227:12
+    at Function.match_layer (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:294:3)
+    at next (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:188:10)
+    at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:213:18
+  message: 'message validation failed',
+  name: 'ValidationError',
+  errors: 
+   { author: 
+      { CastError: Cast to ObjectID failed for value "user" at path "author"
+          at MongooseError.CastError (d:\LiGit\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+          at model.Document.set (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:704:7)
+          at model.set [as author] (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:1732:25)
+          at Object.exports.saveMessage (d:\LiGit\ExpressProject\proxy\message.js:51:20)
+          at exports.publishMessage (d:\LiGit\ExpressProject\controller\message.js:80:18)
+          at Layer.handle [as handle_request] (d:\LiGit\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+          at next (d:\LiGit\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+          at Route.dispatch (d:\LiGit\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+          at Layer.handle [as handle_request] (d:\LiGit\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+          at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:233:24
+          at Function.proto.process_params (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:311:12)
+          at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:227:12
+          at Function.match_layer (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:294:3)
+          at next (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:188:10)
+          at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:213:18
+          at Function.match_layer (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:294:3)
+        message: 'Cast to ObjectID failed for value "user" at path "author"',
+        name: 'CastError',
+        kind: 'ObjectID',
+        value: 'user',
+        path: 'author',
+        reason: [Object] } } }
+[2017-03-20 22:08:36.571] [ERROR] scratch - { ValidationError: message validation failed
+    at MongooseError.ValidationError (d:\LiGit\ExpressProject\node_modules\mongoose\lib\error\validation.js:22:11)
+    at model.Document.invalidate (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:1430:32)
+    at model.Document.set (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:703:10)
+    at model.set [as author] (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:1732:25)
+    at Object.exports.saveMessage (d:\LiGit\ExpressProject\proxy\message.js:51:20)
+    at exports.publishMessage (d:\LiGit\ExpressProject\controller\message.js:80:18)
+    at Layer.handle [as handle_request] (d:\LiGit\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (d:\LiGit\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (d:\LiGit\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (d:\LiGit\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at Function.proto.process_params (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:311:12)
+    at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:227:12
+    at Function.match_layer (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:294:3)
+    at next (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:188:10)
+    at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:213:18
+  message: 'message validation failed',
+  name: 'ValidationError',
+  errors: 
+   { author: 
+      { CastError: Cast to ObjectID failed for value "1" at path "author"
+          at MongooseError.CastError (d:\LiGit\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+          at model.Document.set (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:704:7)
+          at model.set [as author] (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:1732:25)
+          at Object.exports.saveMessage (d:\LiGit\ExpressProject\proxy\message.js:51:20)
+          at exports.publishMessage (d:\LiGit\ExpressProject\controller\message.js:80:18)
+          at Layer.handle [as handle_request] (d:\LiGit\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+          at next (d:\LiGit\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+          at Route.dispatch (d:\LiGit\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+          at Layer.handle [as handle_request] (d:\LiGit\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+          at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:233:24
+          at Function.proto.process_params (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:311:12)
+          at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:227:12
+          at Function.match_layer (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:294:3)
+          at next (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:188:10)
+          at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:213:18
+          at Function.match_layer (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:294:3)
+        message: 'Cast to ObjectID failed for value "1" at path "author"',
+        name: 'CastError',
+        kind: 'ObjectID',
+        value: '1',
+        path: 'author',
+        reason: [Object] } } }
+[2017-03-20 22:09:11.098] [ERROR] scratch - { ValidationError: message validation failed
+    at MongooseError.ValidationError (d:\LiGit\ExpressProject\node_modules\mongoose\lib\error\validation.js:22:11)
+    at model.Document.invalidate (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:1430:32)
+    at model.Document.set (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:703:10)
+    at model.set [as author] (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:1732:25)
+    at Object.exports.saveMessage (d:\LiGit\ExpressProject\proxy\message.js:51:20)
+    at exports.publishMessage (d:\LiGit\ExpressProject\controller\message.js:80:18)
+    at Layer.handle [as handle_request] (d:\LiGit\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at next (d:\LiGit\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+    at Route.dispatch (d:\LiGit\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+    at Layer.handle [as handle_request] (d:\LiGit\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+    at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:233:24
+    at Function.proto.process_params (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:311:12)
+    at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:227:12
+    at Function.match_layer (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:294:3)
+    at next (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:188:10)
+    at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:213:18
+  message: 'message validation failed',
+  name: 'ValidationError',
+  errors: 
+   { author: 
+      { CastError: Cast to ObjectID failed for value "22" at path "author"
+          at MongooseError.CastError (d:\LiGit\ExpressProject\node_modules\mongoose\lib\error\cast.js:26:11)
+          at model.Document.set (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:704:7)
+          at model.set [as author] (d:\LiGit\ExpressProject\node_modules\mongoose\lib\document.js:1732:25)
+          at Object.exports.saveMessage (d:\LiGit\ExpressProject\proxy\message.js:51:20)
+          at exports.publishMessage (d:\LiGit\ExpressProject\controller\message.js:80:18)
+          at Layer.handle [as handle_request] (d:\LiGit\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+          at next (d:\LiGit\ExpressProject\node_modules\express\lib\router\route.js:100:13)
+          at Route.dispatch (d:\LiGit\ExpressProject\node_modules\express\lib\router\route.js:81:3)
+          at Layer.handle [as handle_request] (d:\LiGit\ExpressProject\node_modules\express\lib\router\layer.js:82:5)
+          at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:233:24
+          at Function.proto.process_params (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:311:12)
+          at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:227:12
+          at Function.match_layer (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:294:3)
+          at next (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:188:10)
+          at d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:213:18
+          at Function.match_layer (d:\LiGit\ExpressProject\node_modules\express\lib\router\index.js:294:3)
+        message: 'Cast to ObjectID failed for value "22" at path "author"',
+        name: 'CastError',
+        kind: 'ObjectID',
+        value: '22',
+        path: 'author',
+        reason: [Object] } } }
+[2017-03-21 00:28:20.232] [INFO] scratch - undefined
+[2017-03-21 00:40:18.696] [INFO] scratch - undefined
+[2017-03-21 00:44:42.714] [INFO] scratch - undefined

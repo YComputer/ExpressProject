@@ -2451,3 +2451,12 @@
   value: 'undefined',
   path: 'courseId',
   reason: undefined }
+[2017-03-21 00:29:15.324] [INFO] scratch - undefined
+[2017-03-21 00:29:19.570] [INFO] scratch - undefined
+[2017-03-21 00:31:05.903] [INFO] scratch - undefined
+[2017-03-21 00:33:38.996] [INFO] scratch - undefined
+[2017-03-21 00:35:50.141] [INFO] scratch - undefined
+[2017-03-21 00:38:23.119] [INFO] scratch - undefined
+[2017-03-21 00:43:34.101] [INFO] scratch - undefined
+[2017-03-21 00:45:39.397] [INFO] scratch - undefined
+[2017-03-21 00:46:25.361] [INFO] scratch - undefined

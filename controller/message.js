@@ -60,6 +60,9 @@ exports.showMessage = function (req, res, next) {
             res.render(err);
             return next(err);
         }
+        else {
+            res.render("composition/message");
+        }
     })
 }
 
@@ -67,21 +70,23 @@ exports.showMessage = function (req, res, next) {
  * 发布留言
  */
 exports.publishMessage = function (req, res, next) {
-   var name =req.body.name;
-   var content =req.body.content;
-  // var t1= req.content;
+    var body = req.body;
+    var name = body.username;
+    var content = body.content;
+    var author = body.username;
+    var email = body.email;
+    var tel = body.tel;
 
-
-    messageProxy.saveMessage(name,content,name,content,name,function(err,messages){
-        if(err){
+    messageProxy.saveMessage(name, content, author, email, tel, function (err, messages) {
+        if (err) {
             logger.error(err);
             res.send(err);
             return next(err);
         }
-        else{
-            res.render("composition/message", {
+        else {
+            res.render("composition/messages", {
                 list: messages
             });
-         }
+        }
     })
 }
