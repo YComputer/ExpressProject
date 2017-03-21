@@ -5,6 +5,8 @@ extends ../layout
 block content
     div.container
         div(style="margin-bottom:20px")
+            script(src="/javascripts/pages/works.js")
+            script(src="/javascripts/fileup.js")
             label(for="xfile" class="btn btn-info btn-xs")
                 span(class="fa fa-plus" style="font-size:20px") 上传作品
             input(id="xfile" type="file" name="files" style="display:none")

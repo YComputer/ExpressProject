@@ -60,24 +60,33 @@ exports.showMessage = function (req, res, next) {
             res.render(err);
             return next(err);
         }
+        else {
+            res.render("composition/message");
+        }
     })
 }
 
 /**
  * 发布留言
  */
-// exports.publishMessage = function (req, res, next) {
-//    var info = url.parse(req.url,true).query.name;
-//     messageProxy.saveMessage(info,info,info,info,info,,function(err,messages){
-//         if(err){
-//             logger.error(err);
-//             res.send(err);
-//             return next(err);
-//         }
-//         else{
-//             res.render("composition/messages", {
-//                 list: messages
-//             });
-//          }
-//     })
-// }
+exports.publishMessage = function (req, res, next) {
+    var body = req.body;
+    var name = body.username;
+    var content = body.content;
+    var author = body.username;
+    var email = body.email;
+    var tel = body.tel;
+
+    messageProxy.saveMessage(name, content, author, email, tel, function (err, messages) {
+        if (err) {
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        else {
+            res.render("composition/messages", {
+                list: messages
+            });
+        }
+    })
+}
