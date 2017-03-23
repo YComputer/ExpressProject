@@ -33,6 +33,7 @@ router.get('/courses/:courseType/:courseId', course.showCourseDetail);
 router.post('/comments', comment.postComment);
 router.get('/user', user.listInfo);
 router.post('/works', works.upload);
+router.post('/works/:workid',works.saveWork);
 router.get('/test/study/artical', works.getallartical);
 
 

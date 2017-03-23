@@ -140,3 +140,13 @@ h4{
     border: 1px solid grey;
     height: 100%;
 }
+#uploadResultModal{
+    display: none;
+    width:900px;
+    height:550px;
+    position:absolute;
+    padding:0px;
+    left: -webkit-calc(50% - 450px); 
+    top: -webkit-calc(50% - 275px);
+    background:white;
+}

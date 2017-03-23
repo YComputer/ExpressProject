@@ -39,6 +39,9 @@ exports.listAll = function (req, res, next) {
                     if (err1) {
                         userName = "";
                     }
+                    else if (users == undefined) {
+                        userName = "";
+                    }
                     else {
                         userName = users.name;
                     }
@@ -89,6 +92,8 @@ exports.showDetail = function (req, res, next) {
     })
 }
 
+
+
 exports.upload = function (req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
@@ -99,10 +104,34 @@ exports.upload = function (req, res, next) {
         var readStream = fs.createReadStream(sourceFile);
         var writeStream = fs.createWriteStream(destPath);
         readStream.pipe(writeStream);
-
         logger.info("收到文件：" + JSON.stringify(files));
-        res.end();
+        Work.newAndSave("name", destPath, "description", null, function (err, doc) {
+            if (err) {
+                logger.error(err);
+                res.send(err);
+                return next(err);
+            }
+            else {
+                res.send({ id: doc._id });
+            }
+        });
     });
+}
+
+exports.saveWork = function (req, res, next) {
+    var id = req.params.workid;
+    var name = req.body.name;
+    var description = req.body.description;
+    Work.save(id, name, description, function (err, doc) {
+        if (err) {
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        else {
+            res.send(doc);
+        }
+    })
 }
 
 
