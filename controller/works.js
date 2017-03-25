@@ -22,33 +22,43 @@ exports.listAll = function (req, res, next) {
             return next(err);
         }
         else {
-            var ep = new eventproxy();
-            ep.after('got_user', docs.length, function (workList) {
-                res.render("composition/works", {
-                    list: workList
-                });
-            });
+            var ids = [];
             for (var i = 0; i < docs.length; i++) {
-                var doc = {};
-                doc._id = docs[i]._id;
-                doc.name = docs[i].name;
-                doc.upCount = docs[i].upCount;
-                doc.author = docs[i].author;
-                User.getUserById(doc.author, function (err1, users) {
-                    var userName;
-                    if (err1) {
-                        userName = "";
-                    }
-                    else if (users == undefined) {
-                        userName = "";
-                    }
-                    else {
-                        userName = users.name;
-                    }
-                    doc.authorName = userName;
-                    ep.emit("got_user", doc);
-                })
+                ids[i] = docs[i]._id;
             }
+            User.getUsersByIds(ids, function (err1, users) {
+                if (err1) {
+                    logger.error(err);
+                    res.send(err);
+                    return next(err);
+                }
+                else {
+                    var workList = new Array();
+                    for (var j = 0; j < docs.length; j++) {
+                        var work = {};
+                        work._id = docs[j]._id;
+                        work.name = docs[j].name;
+                        work.upCount = docs[j].upCount;
+                        work.author = docs[j].author;
+                        var finduser = false;
+                        for (var k = 0; k < users.length; k++) {
+                            if ("" + work._id == "" + users[k]._id) {
+                                work.authorName = users[k].name;
+                                finduser = true;
+                                break;
+                            }
+                        }
+                        if (!finduser) {
+                            work.authorName = "游客";
+                        }
+                        workList.push(work);
+                        //work.description = docs[j].description;
+                    }
+                    res.render("composition/works", {
+                        list: workList
+                    });
+                }
+            })
         }
     });
 }
