@@ -4,6 +4,7 @@
 extends ../layout
 block content
    div.container
+      script(src="/javascripts/pages/courses.js")
       div.row
             ul(class="nav nav-tabs")
                 li#startcourse
@@ -36,19 +37,52 @@ block content
       div.row(style="border-bottom:3px grey solid")
         div(class="col-md-8")
             - for(var i=0;i<list.length;i++)
-                div(style="padding-left:10px;padding-right:10px")
+                div(class="courseListDiv" id=list[i]._id style="padding-left:10px;padding-right:10px")
                     a(href='/courses/'+coursetype+'/'+list[i]._id)
                         div.row(style="border-bottom:1px #f3f3f3 solid;height:50px; padding:15px;")
                             div(class="col-md-10")
                                 p #{list[i].title}
                             div(class="col-md-2")
-                                span(class="glyphicon glyphicon glyphicon-star-empty")
-                                span(class="glyphicon glyphicon glyphicon-star-empty")
-                                span(class="glyphicon glyphicon glyphicon-star-empty")
-                                span(class="glyphicon glyphicon glyphicon-star-empty")
-                                span(class="glyphicon glyphicon glyphicon-star-empty")
+                                - var difficultyLevel = list[i].difficultyLevel
+                                case difficultyLevel
+                                    when 0
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                    when 1
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                    when 2
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                    when 3
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                    when 4
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star-empty")
+                                    when 5
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star")
+                                        span(class="glyphicon glyphicon glyphicon-star")
         div(class="col-md-1" style="height:100px; width:1px; border-left:1px grey solid")
 
         div(class="col-md-3")
             h4 课程概要
-            p 发达是的发送到发送到阿斯蒂芬阿斯蒂芬大师傅
+            p(id="courseDescription") #{list[0].discription}

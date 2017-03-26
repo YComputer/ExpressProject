@@ -29,11 +29,11 @@ router.get('/works/:workid', works.showDetail);  //查看作品详情
 
 router.get('/courses/:courseType', course.listAllCourse);
 router.get('/courses/:courseType/:courseId', course.showCourseDetail);
-
+router.get('/courses/:courseType/:courseId/description', course.getCourseDescriptionById);
 router.post('/comments', comment.postComment);
 router.get('/user', user.listInfo);
 router.post('/works', works.upload);
-router.post('/works/:workid',works.saveWork);
+router.post('/works/:workid', works.saveWork);
 router.get('/test/study/artical', works.getallartical);
 
 

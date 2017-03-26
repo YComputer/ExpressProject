@@ -25,6 +25,21 @@ exports.listAllCourse = function (req, res, next) {
 
 }
 
+exports.getCourseDescriptionById = function (req, res, next) {
+    var courseId = req.params.courseId;
+    Course.getCourseDetail(courseId, function (err, docs) {
+        if (err) {
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        else {
+            logger.info(docs[0]);
+            res.send(docs[0].discription);
+        }
+    })
+}
+
 exports.showCourseDetail = function (req, res, next) {
     var courseId = req.params.courseId;
     var ep = new eventproxy();
