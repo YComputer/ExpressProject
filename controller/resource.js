@@ -40,6 +40,8 @@ exports.listAllResource = function (req, res, next) {
  */
 exports.showResourceDetail = function (req, res, next) {
     var resourceId = req.params.resourceId;
+    var resourceType = req.params.resourceType;
+    
     Resource.getResourceDetail(resourceId, function (err, docs) {
         if (err) {
             logger.error(err);
@@ -48,30 +50,53 @@ exports.showResourceDetail = function (req, res, next) {
         }
         else {
             logger.info(docs[0]);
-            res.render("resource/resource/:resourceId", docs[0]);
+            res.render("resource/resource", { resource: docs[0] });
         }
     })
 }
 
 /**
+ * 上传资源文件
+ */
+exports.upload = function (req, res, next) {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        var name = files.file.name;
+
+        var sourceFile = files.file.path;
+        var destPath = process.cwd() + '/' + name;
+        var readStream = fs.createReadStream(sourceFile);
+        var writeStream = fs.createWriteStream(destPath);
+        readStream.pipe(writeStream);
+        logger.info("收到文件：" + JSON.stringify(files));
+        Resource.saveResource("", name, "description", "auth", "1", destPath, function (err, doc) {
+            if (err) {
+                logger.error(err);
+                res.send(err);
+                return next(err);
+            }
+            else {
+                res.send({ id: doc._id });
+            }
+        });
+    });
+}
+
+
+/**
  * 保存资源
  */
 exports.saveResource = function (req, res, next) {
+    var id = req.params.resourceId;
     var body = req.body;
 
-    resource.title = title;
-    resource.discription = discription;
-    resource.auth = auth;
-    resource.resourceType = parseInt(resourceType);;
-    resource.resourcePath = resourcePath;
-
-    var title = body.title;
-    var discription = body.discription;
+    var title = body.resourceName;
+    var discription = body.description;
     var auth = body.auth;
     var resourceType = body.resourceType;
     var resourcePath = body.resourcePath;
 
-    Resource.saveResource(title, discription, auth, resourceType, resourcePath, function (err, doc) {
+    Resource.saveResource(id, title, discription, auth, resourceType, resourcePath, function (err, doc) {
         if (err) {
             logger.error(err);
             res.send(false);

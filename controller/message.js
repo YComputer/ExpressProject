@@ -73,19 +73,19 @@ exports.publishMessage = function (req, res, next) {
     var body = req.body;
     var name = body.username;
     var content = body.content;
-    var author = body.username;
+    var auth = body.username;
     var email = body.email;
     var tel = body.tel;
 
-    messageProxy.saveMessage(name, content, author, email, tel, function (err, messages) {
+    messageProxy.saveMessage(name, content, auth, email, tel, function (err, doc) {
         if (err) {
             logger.error(err);
             res.send(err);
             return next(err);
         }
         else {
-            res.render("composition/messages", {
-                list: messages
+            res.render("composition/message", {
+                message: doc[0]
             });
         }
     })

@@ -51,7 +51,7 @@ router.get('/resource/:resourceType/:resourceId', resource.showResourceDetail);/
 router.get('/resource/:resourceType', resource.listAllResource);//查看指定类型资源
 router.get('/resource', resource.listAllResource);//查看所有资源
 
-
-router.post('/resource', resource.saveResource);//保存资源
+router.post('/resource', resource.upload);//上传资源
+router.post('/resource/:resourceId', resource.saveResource);//保存资源
 
 module.exports = router;

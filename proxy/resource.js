@@ -26,6 +26,7 @@ exports.getResourceDetail = function (_resourceId, callback) {
 
 /**
  * 保存资源到数据库
+ *  id: { type: String },
  *  title: { type: String },
     discription: { type: String },
     auth: { type: String },
@@ -35,14 +36,52 @@ exports.getResourceDetail = function (_resourceId, callback) {
     praiseCount: { type: Number, default: 0 },
     uploadTime: { type: Date, default: Date.now }
  */
-exports.saveResource = function (title, discription, auth, resourcePath, resourceType, callback) {
-    var resource = new ResourceModel();
+exports.saveResource = function (id, title, discription, auth, resourceType, resourcePath, callback) {
 
-    resource.title = title;
-    resource.discription = discription;
-    resource.auth = auth;
-    resource.resourceType = parseInt(resourceType);;
-    resource.resourcePath = resourcePath;
+    var resource;
+    //id为空则直接新增，否则为更新
+    if (id) {
+        ResourceModel.findById(id, function (err, resource) {
+            if (err) {
+                return;
+            }
+            else {
+                if (title) {
+                    resource.title = title;
+                }
 
-    resource.save(callback);
+                if (discription) {
+                    resource.discription = discription;
+                }
+
+                if (auth) {
+                    resource.auth = auth;
+                }
+
+                if (resourceType) {
+
+                    resource.resourceType = resourceType;
+                }
+
+                if (resourcePath) {
+                    resource.resourcePath = resourcePath;
+                }
+
+
+                resource.save(callback);
+            }
+        })
+    } else {
+        resource = new ResourceModel();
+
+        resource.title = title;
+        resource.discription = discription;
+        resource.auth = auth;
+        resource.resourceType = parseInt(resourceType);;
+        resource.resourcePath = resourcePath;
+
+        resource.save(callback);
+
+    }
+
 }

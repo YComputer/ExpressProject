@@ -23,7 +23,7 @@ var config = require('../config').config;
 var MessageSchema = new Schema({
     title: { type: String },//主题
     content: { type: String },//内容
-    author: { type: ObjectId },//作者
+    author: { type: String },//作者
     email: { type: String },//邮箱
     tel: { type: String },//电话
     uploadTime: { type: Date, default: Date.now }//发布时间
