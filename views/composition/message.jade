@@ -1,7 +1,12 @@
 //
    Created by yaohw on 2017-03-18 16:30:01.
 
-div(class="message" style="margin:0px;")   
+div(class="message" style="margin:0px;") 
+        div.row            
+            label 留言
+        div.row 
+            ul#messageList(class="list-group")
+            
         div.row(style="display:none")
             div.col-md-2
                 label.control-label(for="username") 用户名
@@ -21,7 +26,7 @@ div(class="message" style="margin:0px;")
             div.col-md-2(style="display:none")
                     label.control-label(for="content") 内容
             div.col-md-2
-                    textarea#content.input-xlarge(rows="4" style="width:350px;" name="content")
+                    textarea#content.input-xlarge(rows="2" style="width:350px;" name="content")
         div.row(style="float:right;")  
             div.container-fluid
                     button(id="newMessage" class="btn btn-primary" ) 留言
@@ -29,16 +34,27 @@ div(class="message" style="margin:0px;")
 script(type='text/javascript').
         jQuery(document).ready(function() {
             jQuery("#newMessage").bind("click",function(){
+                var username=$("#username").val();
+                var email=$("#email").val();
+                var tel=$("#tel").val();
+                var content=$("#content").val();
 
-                var arr = $('#messageForm').serializeArray();               
-                alert($.param(arr));
+
+                if (content == "" || content == undefined) {
+                        alert("请填写留言！");   
+                        return;
+                }
+                //其他判断条件
+                if (content == "" || content == undefined) {
+                        alert("请正确的联系方式！");   
+                        return;
+                }
 
                 var message = {
-                    username:$("#username").val(),
-                    email:$("#email").val(),
-                    tel:$("#tel").val(),
-                    content:$("#content").val()
-                                     
+                    username:username,
+                    email:email,
+                    tel:tel,
+                    content:content                                     
                 };    
 
 
@@ -47,16 +63,35 @@ script(type='text/javascript').
                     url: '/BBS/',
                     cache: false,
                     data: message,
-                   
-                    success:function(data){    
-                            alert("留言成功！");              
-                            window.location.reload();      
-                    }
+
+                    success: postMessageSuccess,
+                    failed: postMessageFailed
                 });
 
             });
+            var postMessageSuccess = function (message) {
+                var ul = $('#messageList')[0];
+                ul.appendChild(create_li_item(message))
+            }
+
+            var create_li_item = function (message) {
+                var fragment = document.createDocumentFragment();
+                var li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.innerHTML = '<div>' +
+                    '<div class="col-md-2">' +                   
+                    '<p style="display:inline">' + 'message.auth' + ':</p></div>' +                   
+                    '<div><p>' + message.content + '</p></div>' +
+                    '</div>';
+                fragment.appendChild(li);
+                return fragment;
+            }
+
+            var postMessageFailed = function () {
+                alert("留言失败");
+            }
         });
- 
 
 
-            
+
+

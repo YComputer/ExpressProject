@@ -77,16 +77,18 @@ exports.publishMessage = function (req, res, next) {
     var email = body.email;
     var tel = body.tel;
 
+    if (content == "" || content == undefined) {
+        res.send(false);
+        return;
+    }
+    
     messageProxy.saveMessage(name, content, auth, email, tel, function (err, doc) {
         if (err) {
             logger.error(err);
-            res.send(err);
-            return next(err);
+            res.send(false);           
         }
         else {
-            res.render("composition/message", {
-                message: doc[0]
-            });
-        }
+           res.send(doc);
+        }  
     })
 }
