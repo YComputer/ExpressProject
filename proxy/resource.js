@@ -14,7 +14,14 @@ exports.listAllResource = function (_resourceType, callback) {
         _resourceType = 1;
     }
     _resourceType = parseInt(_resourceType);
-    ResourceModel.find({ resourceType: _resourceType }, callback);
+
+    if (_resourceType == 1) {
+        ResourceModel.find(callback);
+    } else {
+        ResourceModel.find({ resourceType: _resourceType }, callback);
+    }
+
+
 };
 
 /**
