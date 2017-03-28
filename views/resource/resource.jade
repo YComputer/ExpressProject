@@ -8,9 +8,10 @@ block content
             div.row
                 div(class="col-md-8")
                     script(type='text/javascript')
-                        currentResourceId = '#{resource._id}'
+                        resourceId = '#{resource._id}'
                     div(style="border:grey 1px solid;padding:5px")
-                        img(src="/images/IMG_20160512_133927.jpg" style="max-width:100%" alt="image0")                       
+                        embed(width="100%" height="600px" src=resource.resourcePath)
+                                          
                     div
                         button(style="display:inline" class="btn")
                             span(class="glyphicon glyphicon-thumbs-up") 
