@@ -102,7 +102,19 @@ exports.showDetail = function (req, res, next) {
     })
 }
 
-
+exports.downLoad = function (req, res, next) {
+    var id = req.params.workid;
+    Work.getWorkSourcePath(id, function (err, doc) {
+        if (err) {
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        else {
+            res.download(doc[0].sourcePath, doc[0].name);
+        }
+    })
+}
 
 exports.upload = function (req, res, next) {
     var form = new formidable.IncomingForm();

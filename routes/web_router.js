@@ -34,6 +34,7 @@ router.post('/comments', comment.postComment);
 router.get('/user', user.listInfo);
 router.post('/works', works.upload);
 router.post('/works/:workid', works.saveWork);
+router.get('/works/:workid/downresource', works.downLoad);
 router.get('/test/study/artical', works.getallartical);
 
 

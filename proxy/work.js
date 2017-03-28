@@ -21,6 +21,10 @@ exports.getAllWorkByUserId = function (id, callback) {
     Work.find({ author: id }, null, { sort: [{ 'uploadTime': -1 }] }, callback);
 }
 
+exports.getWorkSourcePath = function (id, callback) {
+    Work.find({ _id: id }, 'sourcePath name', callback);
+}
+
 exports.getdetail = function (id, callback) {
     Work.find({ _id: id }, callback);
 }
