@@ -45,19 +45,4 @@ $(function () {
         alert("failed")
     }
 
-    $('#downloadworksourcebtn').on("click", function () {
-        $.ajax({
-            type: "GET",
-            url: "/works/" + currentWorkId + "/downresource",
-            success: function (data) {
-                var file = new File([data], "hello world.sb2", { type: "text/plain;charset=utf-8" });
-
-                saveAs(file);
-                console.log("下载成功。");
-            },
-            failed: function (err) {
-                console.log("下载失败。");
-            }
-        });
-    })
 })
