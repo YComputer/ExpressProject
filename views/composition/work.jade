@@ -1,13 +1,55 @@
-extends ../layout
+﻿extends ../layout
 block content
     div.container
+              div(class=area id=title-area)
+               <div class=area id=player-area></div>
+               div(class=controls)
+                 <span class=stop></span>
+                 <span class=pause></span>
+                 <span class=flag title="Shift+click to enable turbo mode."></span>
+                 <div class=turbo>Turbo Mode</div>
+                 <span class=full-screen></span>
+               <div class=player></div>
+               <div class=internal-error>
+               </div>
+               <div class=title>
+               <div class=progress-bar></div>
+               <a target=_blank class=project-link title="View project on Server"></a>
         script(src="/javascripts/FileSaver.min.js")
+        script(src="/javascripts/fonts.js")
+        script(src="/javascripts/jszip.js")
+        script(src="/javascripts/phosphorus.js")
+        script(src="/javascripts/player.js")
         script(src="/javascripts/pages/work.js")
         div.row
             div(class="col-md-8")
-                script(type='text/javascript').
-                    currentWorkId = '#{work._id}'
-                embed(width="100%" height="600px" src=work.sourcePath)
+
+            script(type='text/javascript').
+                P.IO.PROJECT_URL = 'http://127.0.0.1:5000/';
+                 function show(id) {
+                      //     titleArea.style.height = id ? 0 : titleAreaHeight + 'px';
+                      //   playerArea.style.height = id ? playerAreaHeight + 'px' : 0
+
+                       if (!id) urlInput.focus();
+                 }
+
+                 function load(id) {
+                     if (id !== 'zip') {
+                        show(id);
+                     } else {
+                       id = '';
+                     }
+
+                     document.title = 'sulfurous';
+                     P.player.load(id, function (stage) {
+                     stage.triggerGreenFlag();
+                     }, function (title) {
+                     document.title = title ? title + ' \xb7 sulfurous' : 'sulfurous';
+                     });
+                 }
+                 currentWorkId  = '#{work._id}'
+ 
+                 load('works/'+ '#{work.id}'+'/downresource');
             div(class="col-md-4")
                 div
                     h4 题目： 
