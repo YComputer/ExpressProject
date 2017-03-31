@@ -15,6 +15,32 @@ $(function () {
         });
     })
 
+    $('#courseVideoPlayBtn').on('click', function () {
+        $('#courseVideo')[0].play();
+        $('#courseVideoPlayBtn')[0].style.display = "none";
+        $('#playspan')[0].style.display = "none";
+        $('#pausespan')[0].style.display = "inline";
+    })
+
+    $('#playspan').on('click', function () {
+        $('#playspan')[0].style.display = "none";
+        $('#pausespan')[0].style.display = "inline";
+        $('#courseVideo')[0].play();
+    })
+
+    $('#pausespan').on('click', function () {
+        $('#playspan')[0].style.display = "inline";
+        $('#pausespan')[0].style.display = "none";
+        $('#courseVideo')[0].pause();
+    })
+
+    $("#courseVideo").on(
+        "timeupdate",
+        function (event) {
+            $('#videotime')[0].innerHTML = "" + this.currentTime + "/" + this.duration;
+            //onTrackedVideoFrame(this.currentTime, this.duration);
+        });
+
     var postCommentSuccess = function (data) {
         var ul = $('#courseCommentList')[0];
         ul.appendChild(create_li_item(data))

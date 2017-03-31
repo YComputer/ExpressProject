@@ -8,10 +8,18 @@ block content
                         currentCourseId = '#{course._id}'
                     div(style="border:grey 1px solid;padding:5px")
                         video#courseVideo(src='#{course.courseVideoPath}' style="width:100%")
-                        
-                        button#courseVideoPlayBtn(toolTips="点击播放" style="border-radius:50%; border:solid grey 0; font-size:60px;position:absolute;left:50%;top:50%;padding:0")
-                            div(style="width:80px;height:80px;")
-                                span(class="glyphicon glyphicon-play" tooltips="点击播放")  
+                        div#courseVideoPlayBtn(style="background:grey;border-radius:5px; width:150px;height:40px; border:solid yellow 0; font-size:20px;position:absolute;left:50%;top:50%;padding:auto")
+                            span(class="glyphicon glyphicon-play")  点击播放
+                        div#videoplayprocess(class="progress")
+                            <div class="progress-bar" style="width:40%"></div>
+                        div#controlPanel(class="row" style="background:grey;width:100%;margin-left:2px")
+                            div(class="col-md-1")
+                                span#playspan(class="glyphicon glyphicon-play")
+                                span#pausespan(class="glyphicon glyphicon-pause" style="display:none")
+                            div(class="col-md-2")
+                                span#videotime 00.00 / 0:00
+                            div(class="col-md-1 pull-right")
+                                span(class="glyphicon glyphicon-resize-full")
                     div
                         button(style="display:inline" class="btn")
                             span(class="glyphicon glyphicon-thumbs-up") #{course.upCount}

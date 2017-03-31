@@ -111,9 +111,10 @@ exports.downLoad = function (req, res, next) {
             return next(err);
         }
         else {
-            res.download(doc[0].sourcePath, doc[0].name + '.sb2', function (err1) {
+            res.download(process.cwd() + '/..' + doc[0].sourcePath, doc[0].name + '.sb2', function (err1) {
                 if (err1) {
                     logger.error(err1);
+                    res.send(err1);
                 }
             });
         }
@@ -126,12 +127,13 @@ exports.upload = function (req, res, next) {
         var name = files.file.name;
 
         var sourceFile = files.file.path;
-        var destPath = process.cwd() + '/' + name;
+        var relativeDestPath = "/public/avatar/" + name;
+        var destPath = process.cwd() + '/..' + relativeDestPath;
         var readStream = fs.createReadStream(sourceFile);
         var writeStream = fs.createWriteStream(destPath);
         readStream.pipe(writeStream);
         logger.info("收到文件：" + JSON.stringify(files));
-        Work.newAndSave("name", destPath, "description", null, function (err, doc) {
+        Work.newAndSave("name", relativeDestPath, "description", null, function (err, doc) {
             if (err) {
                 logger.error(err);
                 res.send(err);
