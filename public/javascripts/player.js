@@ -169,7 +169,7 @@ P.player = (function () {
             stage.stopAll();
             stage.pause();
         }
-      //  while (player.firstChild) player.removeChild(player.lastChild);
+        while (player.firstChild) player.removeChild(player.lastChild);
         turbo.style.display = 'none';
         error.style.display = 'none';
         pause.className = 'pause';

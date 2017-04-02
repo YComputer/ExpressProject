@@ -46,7 +46,7 @@ block content
                           document.title = title ? title + ' \xb7 sulfurous' : 'sulfurous';
                         });
                      } else {
-                       alert("the file is not sb2")
+                       
                      }
                  
 
