@@ -8,10 +8,10 @@ block content
                         currentCourseId = '#{course._id}'
                     div(style="border:grey 1px solid;padding:5px")
                         video#courseVideo(src='#{course.courseVideoPath}' style="width:100%")
-                        div#courseVideoPlayBtn(style="background:grey;border-radius:5px; width:150px;height:40px; border:solid yellow 0; font-size:20px;position:absolute;left:50%;top:50%;padding:auto")
+                        div#courseVideoPlayBtn(style="background:grey;border-radius:5px; width:150px;height:40px; border:solid yellow 0; font-size:20px;position:absolute;left:40%;top:40%;padding:auto;cursor:pointer")
                             span(class="glyphicon glyphicon-play")  点击播放
                         div#videoplayprocess(class="progress")
-                            <div class="progress-bar" style="width:40%"></div>
+                            div#progress-bar(class="progress-bar")
                         div#controlPanel(class="row" style="background:grey;width:100%;margin-left:2px")
                             div(class="col-md-1")
                                 span#playspan(class="glyphicon glyphicon-play")
@@ -47,7 +47,12 @@ block content
                                         div(class="col-md-5")
                                             p(style="display:inline") 时间：
                                                 p(style="display:inline") #{obj.commentTime}
-                                        div(class="col-md-1" style="position:absolute;right:20px")
-                                            p 沙发
+                                        div(class="col-md-1 pull-right" )
+                                            - if (obj.index==0)
+                                                p 沙发
+                                            - else if (obj.index==1)
+                                                p 板凳
+                                            - else
+                                                p #{obj.index+1}楼
                                     div  
                                         p #{obj.commentContent}

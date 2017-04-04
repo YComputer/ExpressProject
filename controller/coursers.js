@@ -73,6 +73,7 @@ exports.showCourseDetail = function (req, res, next) {
                 doc.courseId = docs[i].courseId;
                 doc.commentType = docs[i].commentType;
                 doc.commentTime = moment(docs[i].commentTime).format('YYYY MMMM Do, hh:mm:ss a');
+                doc.index = i;
                 commentsList.push(doc);
             }
             ep.emit("comments", commentsList);
