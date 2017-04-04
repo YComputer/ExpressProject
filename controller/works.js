@@ -95,6 +95,7 @@ exports.showDetail = function (req, res, next) {
                 doc.workId = docs[i].workId;
                 doc.commentType = docs[i].commentType;
                 doc.commentTime = moment(docs[i].commentTime).format('YYYY MMMM Do, hh:mm:ss a');
+                doc.index = i;
                 commentsList.push(doc);
             }
             ep.emit("comments", commentsList);
