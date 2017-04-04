@@ -75,6 +75,8 @@ block content
             button(style="display:inline" class="btn") 打赏 
             a(href="/works/" + '#{work._id}' + "/downresource" class="btn") 
                 button(class="btn") 下载源码
+            a(href="/works/"+"#{work._id}"+ "/full" class="btn") 
+                button(class="btn") 全屏
             script(type='text/javascript').   
              load('works/'+ '#{work.id}'+'/downresource');
         div(class="col-md-8")
