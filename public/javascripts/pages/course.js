@@ -24,12 +24,14 @@ $(function () {
 
     $('#playspan').on('click', function () {
         $('#playspan')[0].style.display = "none";
+        $('#courseVideoPlayBtn')[0].style.display = "none";
         $('#pausespan')[0].style.display = "inline";
         $('#courseVideo')[0].play();
     })
 
     $('#pausespan').on('click', function () {
         $('#playspan')[0].style.display = "inline";
+        $('#courseVideoPlayBtn')[0].style.display = "block";
         $('#pausespan')[0].style.display = "none";
         $('#courseVideo')[0].pause();
     })
@@ -38,6 +40,8 @@ $(function () {
         "timeupdate",
         function (event) {
             $('#videotime')[0].innerHTML = "" + this.currentTime + "/" + this.duration;
+            var progerss = this.currentTime * 100 / this.duration;
+            $('#progress-bar')[0].style.width = '' + progerss + "%";
             //onTrackedVideoFrame(this.currentTime, this.duration);
         });
 
