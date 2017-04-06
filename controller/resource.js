@@ -10,8 +10,8 @@ var path = require("path");
 var formidable = require("formidable");
 var eventproxy = require('eventproxy');
 
-/**
- * 显示资源列表
+/**显示资源列表
+ * 
  */
 exports.listAllResource = function (req, res, next) {
     var resourceType = req.params.resourceType;
@@ -35,8 +35,8 @@ exports.listAllResource = function (req, res, next) {
     })
 }
 
-/**
- * 显示资源详细信息
+/**显示资源详细信息
+ * 
  */
 exports.showResourceDetail = function (req, res, next) {
     var resourceId = req.params.resourceId;
@@ -55,8 +55,8 @@ exports.showResourceDetail = function (req, res, next) {
     })
 }
 
-/**
- * 上传资源文件
+/**上传资源文件
+ * 
  */
 exports.upload = function (req, res, next) {
     var form = new formidable.IncomingForm();
@@ -64,12 +64,13 @@ exports.upload = function (req, res, next) {
         var name = files.file.name;
 
         var sourceFile = files.file.path;
-        var destPath = process.cwd() + '/' + name;
+        var relativeDestPath =  '/public/resource/' + name;
+        var destPath = process.cwd() + '/..' + relativeDestPath;
         var readStream = fs.createReadStream(sourceFile);
         var writeStream = fs.createWriteStream(destPath);
         readStream.pipe(writeStream);
         logger.info("收到文件：" + JSON.stringify(files));
-        Resource.saveResource("", name, "description", "auth", "1", destPath, function (err, doc) {
+        Resource.saveResource("", name, "description", "auth", "1", name, function (err, doc) {
             if (err) {
                 logger.error(err);
                 res.send(err);
@@ -83,26 +84,45 @@ exports.upload = function (req, res, next) {
 }
 
 
-/**
- * 保存资源
+/**保存资源
+ * 
  */
 exports.saveResource = function (req, res, next) {
     var id = req.params.resourceId;
     var body = req.body;
 
     var title = body.resourceName;
-    var discription = body.description;
+    var description = body.description;
     var auth = body.auth;
     var resourceType = body.resourceType;
     var resourcePath = body.resourcePath;
 
-    Resource.saveResource(id, title, discription, auth, resourceType, resourcePath, function (err, doc) {
+    Resource.saveResource(id, title, description, auth, resourceType, resourcePath, function (err, doc) {
         if (err) {
             logger.error(err);
             res.send(false);
         }
         else {
             res.send(doc);
+        }
+    })
+}
+
+exports.download = function (req, res, next) {
+    var id = req.params.resourceId;
+    Resource.getResourceDetail(id, function (err, doc) {
+        if (err) {
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        else {
+            res.download(process.cwd() + '/../public/resource/' + doc[0].resourcePath, function (err1) {
+                if (err1) {
+                    logger.error(err1);
+                     res.send(err1);
+                }
+            });
         }
     })
 }

@@ -6,8 +6,8 @@ var ResourceModel = require('../model/resource').ResourceModel;
 var utility = require('utility');
 var uuid = require('uuid');
 
-/**
- * 通过资源类型查询所有资源
+/** 通过资源类型查询所有资源
+ * 
  */
 exports.listAllResource = function (_resourceType, callback) {
     if (_resourceType == undefined) {
@@ -24,18 +24,17 @@ exports.listAllResource = function (_resourceType, callback) {
 
 };
 
-/**
- * 获取资源详细信息
+/** 获取资源详细信息
+ * 
  */
 exports.getResourceDetail = function (_resourceId, callback) {
     ResourceModel.find({ _id: _resourceId }, callback);
 }
 
-/**
- * 保存资源到数据库
+/** 保存资源到数据库 
  *  id: { type: String },
  *  title: { type: String },
-    discription: { type: String },
+    description: { type: String },
     auth: { type: String },
     resourcePath: { type: String },
     resourceType: { type: Number, default: 1 },
@@ -43,7 +42,7 @@ exports.getResourceDetail = function (_resourceId, callback) {
     praiseCount: { type: Number, default: 0 },
     uploadTime: { type: Date, default: Date.now }
  */
-exports.saveResource = function (id, title, discription, auth, resourceType, resourcePath, callback) {
+exports.saveResource = function (id, title, description, auth, resourceType, resourcePath, callback) {
 
     var resource;
     //id为空则直接新增，否则为更新
@@ -57,8 +56,8 @@ exports.saveResource = function (id, title, discription, auth, resourceType, res
                     resource.title = title;
                 }
 
-                if (discription) {
-                    resource.discription = discription;
+                if (description) {
+                    resource.description = description;
                 }
 
                 if (auth) {
@@ -82,7 +81,7 @@ exports.saveResource = function (id, title, discription, auth, resourceType, res
         resource = new ResourceModel();
 
         resource.title = title;
-        resource.discription = discription;
+        resource.description = description;
         resource.auth = auth;
         resource.resourceType = parseInt(resourceType);;
         resource.resourcePath = resourcePath;

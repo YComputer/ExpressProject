@@ -54,6 +54,7 @@ router.post('/BBS', message.publishMessage);//发布留言信息
 router.get('/resource/:resourceType/:resourceId', resource.showResourceDetail);//查看资源详细信息
 router.get('/resource/:resourceType', resource.listAllResource);//查看指定类型资源
 router.get('/resource', resource.listAllResource);//查看所有资源
+router.get('/resource/:resourceType/:resourceId/download', resource.download);//下载资源
 
 router.post('/resource', resource.upload);//上传资源
 router.post('/resource/:resourceId', resource.saveResource);//保存资源

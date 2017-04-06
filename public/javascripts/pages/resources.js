@@ -52,14 +52,14 @@ $(function () {
     $("#createResource").on('click', function () {
         var resourceType = $('input[name="resourceType"]:checked').val();
         var resourceName = $("#resourceName")[0].value;
-        var resourceDiscription = $("#resourceDiscription")[0].value;
+        var resourceDescription = $("#resourceDescription")[0].value;
         $.ajax({
             url: "/resource/" + responseId,
             method: "post",
             data: {
                 resourceType: resourceType,
                 resourceName: resourceName,
-                description: resourceDiscription
+                description: resourceDescription
             },
             success: function (data) {
                 alert("保存成功");
