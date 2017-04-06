@@ -10,7 +10,7 @@ block content
                     script(type='text/javascript')
                         resourceId = '#{resource._id}'
                     div(style="border:grey 1px solid;padding:5px")
-                        embed(width="100%" height="600px" src=resource.resourcePath)
+                        embed(width="100%" height="600px" src= "/resource/"+resource.resourcePath)
                                           
                     div
                         button(style="display:inline" class="btn")
@@ -19,6 +19,8 @@ block content
                             span(class="glyphicon glyphicon-thumbs-down") 
                         button(style="display:inline" class="btn") 收藏
                         button(style="display:inline" class="btn") 打赏
+                        a(href="/resource/"  + '#{resource.resourceType}' +'/'+ '#{resource._id}' + "/download" class="btn") 
+                            button(class="btn") 下载资源 
                         a(style="position:absolute;right:20px;text-align:right") #{resource.watchCount}次浏览
                 div(class="col-md-4")
                     div

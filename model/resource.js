@@ -9,7 +9,7 @@ var config = require('../config').config;
 
 var ResourceSchema = new Schema({
     title: { type: String },
-    discription: { type: String },
+    description: { type: String },
     auth: { type: String },
     resourcePath: { type: String },
     resourceType: { type: Number, default: 1 },
