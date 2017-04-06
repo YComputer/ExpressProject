@@ -1,15 +1,15 @@
 /**
  * Created by hr on 2016/11/24.
  */
-var validator      = require('validator');
-var eventproxy     = require('eventproxy');
-var config         = require('../config');
-var User           = require('../proxy/user');
+var validator = require('validator');
+var eventproxy = require('eventproxy');
+var config = require('../config');
+var User = require('../proxy/user');
 //var mail           = require('../common/mail');
-var tools          = require('../common/tools');
+var tools = require('../common/tools');
 //var utility        = require('utility');
 var authMiddleWare = require('../middlewares/auth');
-var uuid           = require('uuid');
+var uuid = require('uuid');
 
 /**
  * 显示注册页面
@@ -21,22 +21,41 @@ exports.showSignup = function (req, res) {
 };
 
 /**
+ * 显示登录页面
+ * @param req
+ * @param res
+ */
+exports.showLogin = function (req, res) {
+    //req.session._loginReferer = req.headers.referer;
+    res.render('sign/signin');
+};
+
+exports.newsignup = function (req, res) {
+    res.render('sign/newSignup');
+}
+
+exports.newsignin = function (req, res) {
+    res.render('sign/newSignin');
+}
+
+/**
  * 注册
  * @param req
  * @param res
  * @param next
  */
 exports.signup = function (req, res, next) {
-    var loginname = validator.trim(req.body.loginname).toLowerCase();
-    var email     = validator.trim(req.body.email).toLowerCase();
-    var pass      = validator.trim(req.body.pass);
-    var rePass    = validator.trim(req.body.re_pass);
+    var loginname = req.body.loginname;
+    var email = req.body.email;
+    var pass = req.body.pass;
+    var rePass = req.body.re_pass;
 
     var ep = new eventproxy();
     ep.fail(next);
     ep.on('prop_err', function (msg) {
-        res.status(422);
-        res.render('sign/signup', {error: msg, loginname: loginname, email: email});
+        //res.status(422);
+        res.send({ error: msg });
+        //res.render('sign/newsignup', { error: msg, loginname: loginname, email: email });
     });
 
     // 验证信息的正确性
@@ -59,10 +78,12 @@ exports.signup = function (req, res, next) {
     }
     // END 验证信息的正确性
 
-    User.getUsersByQuery({'$or': [
-        {'loginname': loginname},
-        {'email': email}
-    ]}, {}, function (err, users) {
+    User.getUsersByQuery({
+        '$or': [
+            { 'loginname': loginname },
+            { 'email': email }
+        ]
+    }, {}, function (err, users) {
         if (err) {
             return next(err);
         }
@@ -79,24 +100,18 @@ exports.signup = function (req, res, next) {
                 }
                 // 发送激活邮件
                 //mail.sendActiveMail(email, utility.md5(email + passhash + config.session_secret), loginname);
-                res.render('sign/signup', {
-                    success: '欢迎加入 ' + config.name + '！我们已给您的注册邮箱发送了一封邮件，请点击里面的链接来激活您的帐号。'
-                });
+                // res.render('sign/signup', {
+                //     success: '欢迎加入 ' + config.name + '！我们已给您的注册邮箱发送了一封邮件，请点击里面的链接来激活您的帐号。'
+                // });
+                res.send({ message: "successed" });
+                //res.redirect('index');
             });
 
         }));
     });
 }
 
-/**
- * 显示登录页面
- * @param req
- * @param res
- */
-exports.showLogin = function (req, res) {
-    //req.session._loginReferer = req.headers.referer;
-    res.render('sign/signin');
-};
+
 
 var notJump = [
     '/active_account', //active page
@@ -113,9 +128,9 @@ var notJump = [
  */
 exports.login = function (req, res, next) {
     var loginname = validator.trim(req.body.name).toLowerCase();
-    var pass      = validator.trim(req.body.pass);
+    var pass = validator.trim(req.body.pass);
 
-    var ep        = new eventproxy();
+    var ep = new eventproxy();
     ep.fail(next);
 
     if (!loginname || !pass) {
@@ -177,7 +192,7 @@ exports.login = function (req, res, next) {
  * @param res
  * @param next
  */
-exports.signout = function (req, res, next) {}
+exports.signout = function (req, res, next) { }
 
 /**
  * 激活账户
@@ -185,4 +200,4 @@ exports.signout = function (req, res, next) {}
  * @param res
  * @param next
  */
-exports.activeAccount = function (req, res, next) {}
+exports.activeAccount = function (req, res, next) { }

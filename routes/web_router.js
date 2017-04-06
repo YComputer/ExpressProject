@@ -16,6 +16,8 @@ var resource = require('../controller/resource');
 
 
 router.get('/', site.index);
+router.get('/newsignin', sign.newsignin);
+router.get('/newsignup', sign.newsignup);
 
 router.get('/signup', sign.showSignup);  // 跳转到注册页面
 router.post('/signup', sign.signup);  // 提交注册信息
@@ -26,7 +28,7 @@ router.get('/active_account', sign.activeAccount);  //帐号激活
 //router.get('/works',auth.userRequired, works.listAll); //查看所有作品
 router.get('/works', works.listAll); //查看所有作品
 router.get('/works/:workid', works.showDetail);  //查看作品详情
-router.get('/works/:workid/full', works.showFull);  
+router.get('/works/:workid/full', works.showFull);
 
 router.get('/courses/:courseType', course.listAllCourse);
 router.get('/courses/:courseType/:courseId', course.showCourseDetail);
