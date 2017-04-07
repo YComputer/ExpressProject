@@ -4,30 +4,32 @@
 nav(class="navbar navbar-inverse navbar-fixed-top")
    div.container
       div.row
-         div.col-md-2
+         div.col-md-4
             div(class="navbar-header")
                a(class="navbar-brand" href="/" style="margin:0;padding:0")
-                  img(class="img-responsive" src="/images/1A++.PNG")
-                  
-               //button(type="button" class="navbar-navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
-                  
+                  img(class="img-responsive" src="/images/1A++.PNG") 
+               a(style="margin:auto;font-size: 40px;color: grey;font:") 编程课堂              
          div(class="pull-right")
             div(class="navbar-collapse collapse")
                ul(class="nav navbar-nav")
                   li
-                     a(href="/signin") 登录
-                  li
-                     a(href="/signup") 注册
-                  li
-                     a(class="glyphicon glyphicon-user" href="/resource") 资源
+                     a(class="glyphicon glyphicon-gift" href="/resource") 资源
                   li
                      a(class="glyphicon glyphicon-list" href="/courses/1") 课程
                   li
                      a(class="glyphicon glyphicon-heart" href="/works") 作品
                   li
                      a(class="glyphicon glyphicon-th" href="/course") 在线课堂
-         //div(class="col-md-2 col-md-offset-5")
-         //   div(class="navbar-header" style="float:right")
-         //      //button(type="button" class="btn btn-default btn-lg")
-         //      span(class="glyphicon glyphicon-user glyphicon" href="/users/countinfo")
-
+                  li
+                     a(href="/newsignin") 登录
+                  li
+                     a(href="/newsignup") 注册
+                  li
+                     div(class='dropdown')
+                        a(class="btn dropdown-toggle glyphicon glyphicon-user" id="dropdownMenu1" data-toggle="dropdown" style="font-size: 30px;color: rgb(212, 106, 64);")
+                        ul(class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1")
+                              li(role="presentation")
+                                    a( role="menuitem" tabindex="-1" href="#") 主页
+                              li( role="presentation" class="divider")
+                              li( role="presentation")
+                                    a(role="menuitem" tabindex="-1" href="#" class="glyphicon glyphicon-log-out") 退出登录

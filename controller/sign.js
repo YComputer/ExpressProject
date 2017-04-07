@@ -127,15 +127,15 @@ var notJump = [
  * @param next
  */
 exports.login = function (req, res, next) {
-    var loginname = validator.trim(req.body.name).toLowerCase();
-    var pass = validator.trim(req.body.pass);
+    var loginname = req.body.loginname;
+    var pass = req.body.pass;
 
     var ep = new eventproxy();
     ep.fail(next);
 
     if (!loginname || !pass) {
         res.status(422);
-        return res.render('sign/signin', { error: '信息不完整。' });
+        return res.send({ error: '请填写用户名和密码' });
     }
 
     var getUser;
@@ -172,15 +172,15 @@ exports.login = function (req, res, next) {
             // store session cookie
             authMiddleWare.gen_session(user, res);
             //check at some page just jump to home page
-            var refer = req.session._loginReferer || '/test';
-            for (var i = 0, len = notJump.length; i !== len; ++i) {
-                if (refer.indexOf(notJump[i]) >= 0) {
-                    refer = '/';
-                    break;
-                }
-            }
+            // var refer = req.session._loginReferer || '/test';
+            // for (var i = 0, len = notJump.length; i !== len; ++i) {
+            //     if (refer.indexOf(notJump[i]) >= 0) {
+            //         refer = '/';
+            //         break;
+            //     }
+            // }
             req.session.user = user
-            res.redirect(refer);
+            res.send({ message: "successed" });
         }));
     });
 

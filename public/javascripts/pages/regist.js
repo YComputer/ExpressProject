@@ -27,7 +27,7 @@ $(function () {
                 else {
                     //window.history.back(-1);
 
-                    window.location.href = "/";
+                    window.location.href = "/newsignin";
                 }
             },
             error: function (err) {
@@ -39,18 +39,6 @@ $(function () {
         });
     });
 
-
-    $('#hidden_frame').load(function () {
-        var text = $(this).contents().find("body").text();
-        // 根据后台返回值处理结果
-        var j = $.parseJSON(text);
-        if (j.status != 0) {
-            alert(j.msg);
-        } else {
-            alert('导入成功');
-            //location.href='BookResourceList.jsp'
-        }
-    });
 
     $('#submitregist').on('click', function () {
         //$('#media')[0].play();
