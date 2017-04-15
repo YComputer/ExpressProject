@@ -87,8 +87,8 @@ exports.publishMessage = function (req, res, next) {
             logger.error(err);
             res.send(false);           
         }
-        else {
-           res.send(doc);
+        else {           
+           res.send(content);
         }  
     })
 }

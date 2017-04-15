@@ -1,0 +1,31 @@
+
+div#floatTools(class="rides-cs" style="height:246px;")
+  
+   div(class="floatL")
+      a#aFloatTools_Show(style="display:block; top:20px" class="btnOpen" title="查看在线客服"  href="javascript:void(0);")
+         
+      a#aFloatTools_Hide(style="display:none; top:20px" class="btnCtn" title="关闭在线客服"  href="javascript:void(0);")
+         
+
+
+   div#divFloatToolsView(class="floatR" style="display: none;height:250px;width: 250px;")
+      div(class="cn"  style="height: 200px;")
+            h2( class="titZx") 在线留言
+            ul#messageList( style="height:100px;overflow:auto;")
+
+            div.row(style="display:none")
+                div.col-md-1
+                    label.control-label(for="tel") 电话
+                div.col-md-1
+                    input#tel.input-xlarge(type="text" name="name"   style="width:200px;")
+            div.row(style="margin:0px;")               
+                div.col-md-1(style="display:none")
+                        label.control-label(for="content") 内容
+                div
+                        textarea#content.input(rows="2" style="font-size:11px;line-height:20px;width:150px;float:left;margin-left:10px;" name="content")
+                        button(id="newMessage" class="btn btn-primary" style="float:right;margin-right:10px;") 留言
+            div.row(style="float:right;display:none")  
+                    div.container-fluid(style="margin-right:10px;")  
+                        button(id="newMessage" class="btn btn-primary" ) 留言
+    
+   script(src="/javascripts/pages/floatmessage.js")
