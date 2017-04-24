@@ -8,15 +8,15 @@ block content
       div.row
             ul(class="nav nav-tabs")
                 li#startcourse
-                    a(href="/courses/1") 入门课程
+                    a(href="/courses/1") scratch鍏ラ棬
                 li#gamestart 
-                    a(href="/courses/2") 游戏入门
+                    a(href="/courses/2") 娓告垙鍏ラ棬
                 li#upgames
-                    a(href="/courses/3") 高阶游戏
+                    a(href="/courses/3") 楂樼骇娓告垙
                 li#startAlgorithm
-                    a(href="/courses/4") 初级算法
+                    a(href="/courses/4") 鍒濈骇绠楁硶
                 li#upAlgorithm
-                    a(href="/courses/5") 高阶算法
+                    a(href="/courses/5") 楂樼骇绠楁硶
                 script(type='text/javascript').
                     var type = '#{coursetype}'
                     if(type=="1"){
@@ -84,5 +84,5 @@ block content
         div(class="col-md-1" style="height:100px; width:1px; border-left:1px grey solid")
 
         div(class="col-md-3")
-            h4 课程概要
+            h4 璇剧▼璇存槑
             p(id="courseDescription") #{list[0].discription}
