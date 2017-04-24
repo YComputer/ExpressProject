@@ -1,0 +1,19 @@
+#scratch {
+    display: block
+}
+
+#scratch .scratch_unsupported {
+    display: none;
+    margin: 10px
+}
+
+#scratch-loader,
+#scratch .scratch_loading {
+    position: absolute;
+    top: 0;
+    background-image: url(../images/ajax_loader_blue_48.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%
+}

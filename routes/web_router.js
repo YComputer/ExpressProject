@@ -13,6 +13,7 @@ var course = require('../controller/coursers');
 var comment = require('../controller/comment');
 var message = require('../controller/message');
 var resource = require('../controller/resource');
+var create = require('../controller/create');
 
 
 router.get('/', site.index);
@@ -29,6 +30,7 @@ router.get('/active_account', sign.activeAccount);  //帐号激活
 router.get('/works', works.listAll); //查看所有作品
 router.get('/works/:workid', works.showDetail);  //查看作品详情
 router.get('/works/:workid/full', works.showFull);
+router.get('/create', create.showEditor);
 
 router.get('/courses/:courseType', course.listAllCourse);
 router.get('/courses/:courseType/:courseId', course.showCourseDetail);
