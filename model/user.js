@@ -1,9 +1,9 @@
 /**
  * Created by hr on 2016/11/23.
  */
-var mongoose  = require('mongoose');
+var mongoose = require('mongoose');
 var BaseModel = require("./base_model");
-var Schema    = mongoose.Schema;
+var Schema = mongoose.Schema;
 var config = require('../config').config;
 // mongoose.connect(config.mongo_db, {
 //     server: {poolSize: 20}
@@ -35,21 +35,29 @@ var config = require('../config').config;
 //         process.exit(1);
 //     }
 // });
-
+var UserInfoSchema = new Schema({
+    name: { type: String },
+    sex: { type: Number, default: 0 },  //0男孩 1女孩
+    age: { type: Number },
+    Address: { type: String },
+    province: { type: String },
+    city: { type: String },
+    phoneNumber: { type: String },
+})
 
 var UserSchema = new Schema({
-    name: { type: String},
-    loginname: { type: String},
+    name: { type: String },
+    loginname: { type: String },
     pass: { type: String },
-    email: { type: String},
+    email: { type: String },
     url: { type: String },
-    profile_image_url: {type: String},
+    profile_image_url: { type: String },
     location: { type: String },
     signature: { type: String },
     profile: { type: String },
     weibo: { type: String },
     avatar: { type: String },
-    is_block: {type: Boolean, default: false},
+    is_block: { type: Boolean, default: false },
 
     score: { type: Number, default: 0 },
     create_at: { type: Date, default: Date.now },
@@ -58,14 +66,14 @@ var UserSchema = new Schema({
     level: { type: String },
     active: { type: Boolean, default: false },
 
-    receive_reply_mail: {type: Boolean, default: false },
+    receive_reply_mail: { type: Boolean, default: false },
     receive_at_mail: { type: Boolean, default: false },
     from_wp: { type: Boolean },
 
-    retrieve_time: {type: Number},
-    retrieve_key: {type: String},
+    retrieve_time: { type: Number },
+    retrieve_key: { type: String },
 
-    accessToken: {type: String},
+    accessToken: { type: String },
 });
 
 //UserSchema.plugin(BaseModel);
@@ -93,12 +101,12 @@ var UserSchema = new Schema({
 //     return this.score > 700 || this.is_star;
 // });
 
-UserSchema.index({loginname: 1}, {unique: true});
-UserSchema.index({email: 1}, {unique: true});
-UserSchema.index({score: -1});
-UserSchema.index({accessToken: 1});
+UserSchema.index({ loginname: 1 }, { unique: true });
+UserSchema.index({ email: 1 }, { unique: true });
+UserSchema.index({ score: -1 });
+UserSchema.index({ accessToken: 1 });
 
-UserSchema.pre('save', function(next){
+UserSchema.pre('save', function (next) {
     var now = new Date();
     this.update_at = now;
     next();
