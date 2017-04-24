@@ -77,6 +77,8 @@ block content
                 button(class="btn") 下载源码
             a(href="/works/"+"#{work._id}"+ "/full" class="btn") 
                 button(class="btn") 全屏
+            a(href="/works/"+"#{work._id}"+"/evaluation" class="btn")
+                button(class="btn") 查看评估报告
             script(type='text/javascript').   
              load('works/'+ '#{work.id}'+'/downresource');
         div(class="col-md-8")

@@ -11,6 +11,7 @@ var path = require("path");
 var formidable = require("formidable");
 var eventproxy = require('eventproxy');
 var Comment = require('../proxy/comment');
+var Evaluation = require('../proxy/evaluation');
 var moment = require('moment');
 
 exports.listAll = function (req, res, next) {
@@ -66,7 +67,7 @@ exports.listAll = function (req, res, next) {
 exports.showDetail = function (req, res, next) {
     var id = req.params.workid;
     var ep = new eventproxy();
-    ep.all("work", "comments", function (work, comments) {
+    ep.all("work", "comments", "evaluation", function (work, comments) {
         res.render('composition/work', { work: work, commentList: comments });
     })
 
@@ -99,6 +100,21 @@ exports.showDetail = function (req, res, next) {
                 commentsList.push(doc);
             }
             ep.emit("comments", commentsList);
+        }
+    })
+    Evaluation.findByWorkId(id, function (err, docs) {
+        if (err) {
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        else {
+            if (docs != undefined && docs.length > 0) {
+                ep.emit("evaluation", docs[0]);
+            }
+            else {
+                ep.emit("evaluation", {});
+            }
         }
     })
 }
@@ -137,6 +153,25 @@ exports.showFull = function (req, res, next) {
                 commentsList.push(doc);
             }
             ep.emit("comments", commentsList);
+        }
+    })
+}
+
+exports.showEvaluation = function (req, res, next) {
+    var id = req.params.workid;
+    Evaluation.findByWorkId(id, function (err, docs) {
+        if (err) {
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        else {
+            if (docs != undefined && docs.length > 0) {
+                res.render("composition/evaluation", { evaluation: docs[0] });
+            }
+            else {
+                res.render("composition/evaluation", { evaluation: {} });
+            }
         }
     })
 }
@@ -189,6 +224,11 @@ exports.saveWork = function (req, res, next) {
     var id = req.params.workid;
     var name = req.body.name;
     var description = req.body.description;
+    var ep = new eventproxy();
+    ep.all("saved", "evaluated", function (work, evaluated) {
+        res.send(work);
+    })
+
     Work.save(id, name, description, function (err, doc) {
         if (err) {
             logger.error(err);
@@ -196,7 +236,17 @@ exports.saveWork = function (req, res, next) {
             return next(err);
         }
         else {
-            res.send(doc);
+            ep.emit("saved", doc);
+        }
+    })
+    Evaluation.newAndSave("", id, 10, function (err, doc) {
+        if (err) {
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        else {
+            ep.emit("evaluated", true);
         }
     })
 }
