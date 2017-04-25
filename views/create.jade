@@ -4,36 +4,8 @@ html
     meta(charset='utf8')
     meta(content='text/html', http-equiv='content-type')
     link(rel='stylesheet', href='/stylesheets/create.css')
-    script(src="/javascripts/jquery-3.1.1.min.js")
-    script(src="/javascripts/swfobject.js")
-    script.
-      var Scratch = Scratch || {};
-      Scratch.INIT_DATA = Scratch.INIT_DATA || {};
-      Scratch.INIT_DATA.ADMIN = false;
-      Scratch.INIT_DATA.LOGGED_IN_USER = {
-      options: {
-      permissions: [
-      ]
-      }
-      };
-      Scratch.INIT_DATA.comment_posting = true;
-      Scratch.INIT_DATA.BROWSERS_SUPPORTED = {
-      chrome: 35,
-      firefox: 31,
-      msie: 8,
-      safari: 7
-      };
-
-      Scratch.INIT_DATA.PROJECT = {
-      model: {
-      id: null,
-      creator: null,
-      title: 'Untitled',
-      isPrivate: true
-      },
-      is_new: true
-      }
-
+    script(src='/javascripts/jquery-3.1.1.min.js')
+    script(src='/javascripts/swfobject.js')
   body
     #scratch-loader
     #scratch(style='text-align:center;margin-top:30px;visibility:hidden;position:relative;')
@@ -50,86 +22,40 @@ html
         a(href='http://www.adobe.com/go/getflashplayer')
           img(src='//www.adobe.com/images/shared/download_buttons/get_flash_player.gif', alt='Get Adobe Flash player', target='_blank')
       .scratch_loading Loading...
-
-    //div
-      embed(id="scratch" width='1319', height='652', src='/swf/Scratch.swf', style='visibility: visible;', allowfullscreen='true')
+    //
+      divembed(id="scratch" width='1319', height='652', src='/swf/Scratch.swf', style='visibility: visible;', allowfullscreen='true')
     script(type='text/javascript').
       window.SWFready=$.Deferred(); // Deferred makes sure we don't call ASSetEditMode before SWF is ready.
       function JSeditorReady() {
       try {
       SWFready.resolve();
+      var Scratch = document.getElementById('scratch');
+      Scratch.ASshowEditor(1);
+      //Scratch.ASsetEditMode(1);
+      //Scratch.ASsetIsEditMode(0);
+      //Scratch.ASsetFrom('adventure');
+      //Scratch.ASsetSavedCallback("projectSaved");
+      //Scratch.ASsetBeforeSaveCallback("saveProject");
+      //Scratch.ASsetLibVersion('20160708');
+      //Scratch.ASloadBaseProject('/avatar/getApple.sb2', "接苹果");
+      $('#scratch-loader').hide();
       return true;
       } catch (error) {
-      console.error(error.message, "\\n", error.stack);
+      console.error(error.message, "\\\n", error.stack);
       throw error;
       }
       }
-      function handleEmbedStatus(e) {
-      $('#scratch-loader').hide();
-      if(!e.success) {
-      $('#scratch').css('marginTop', '10');
-      $('#scratch IMG.proj_thumb').css('width', '179px');
-      $('#scratch DIV.scratch_unsupported').show();
-      $('#scratch DIV.scratch_loading').hide();
-      }else{
-      $('#scratch').css('visibility', 'visible');
-      }
-      }
-      // The flashvars tell flash about the project data (and autostart=true)
-      var flashvars = {
-      autostart: 'false',
-      cloudToken: '',
-      cdnToken: 'bf5ce8ffb7e766d79418fca85e3995ce',
-      urlOverrides: {
-      sitePrefix: window.location.protocol + '//' + window.location.host + '/',
-      siteCdnPrefix: "http://cdn.scratch.mit.edu/",
-      assetPrefix: "http://assets.scratch.mit.edu/",
-      assetCdnPrefix: "http://cdn.assets.scratch.mit.edu/",
-      projectPrefix: "http://projects.scratch.mit.edu/",
-      projectCdnPrefix: "http://cdn.projects.scratch.mit.edu/",
-      internalAPI: "internalapi/",
-      siteAPI: "site-api/",
-      staticFiles: "scratchr2/static/"
-      },
-      inIE: (navigator.userAgent.indexOf('MSIE') > -1)
-      };
-      $.each(flashvars, function(prop, val) {
-      if($.isPlainObject(val))
-      flashvars[prop] = encodeURIComponent(JSON.stringify(val));
-      });
-      $.each(Scratch.INIT_DATA.PROJECT.model, function(i, val) {
-      if(val != null)
-      flashvars['project_'+i] = encodeURIComponent(val);
-      });
-      if(Scratch.INIT_DATA.PROJECT.is_new)
-      flashvars.project_isNew = true;
       var params = {
       allowscriptaccess: 'always',
       allowfullscreen: 'true',
       wmode: 'direct',
       menu: 'false'
       };
-      // url format flashvars for createSWF call (see
-      // https://github.com/LLK/scratchr2/blob/f42c289a5fa890d9c5562cc1fa54b0aea3dfa45e/static/js/swfobject.js#L673-L682)
-      for (var i in flashvars) {
-      if (typeof params.flashvars !== 'undefined') {
-      params.flashvars += '&' + i + '=' +flashvars[i];
-      } else {
-      params.flashvars = i + '=' + flashvars[i];
-      }
-      }
-     
-      var swfAtt = {
-      data: "//cdn.scratch.mit.edu/scratchr2/static/__bf5ce8ffb7e766d79418fca85e3995ce__/" + "Scratch.swf",
-      width: "100%",
-      height: "100%"
-      };
-      swfobject.addDomLoadEvent(function() {
-      // if not on ie, let browser try to handle flash loading
-      var swf = swfobject.createSWF(swfAtt, params, "scratch");
-      handleEmbedStatus({success: true, ref: swf});
+      //var flashvars = {
+      //project: '/avatar/getApple.sb2',
+      //autostart: 'false'
+      //};
+      var attributes = {};
+      swfobject.embedSWF('/swf/Scratch.swf', 'scratch', '100%', '100%', '10.0', false, null, params, attributes, null);
       document.getElementById('scratch').style.visibility = 'visible';
-      });
       //Dynamically add iframe for registration window
-
-            
