@@ -15,6 +15,8 @@ var message = require('../controller/message');
 var resource = require('../controller/resource');
 var create = require('../controller/create');
 
+var thumbnail = require('../controller/thumbnail');
+
 
 router.get('/', site.index);
 router.get('/newsignin', sign.newsignin);
@@ -43,6 +45,8 @@ router.post('/works/:workid', works.saveWork);
 router.get('/works/:workid/downresource', works.downLoad);
 router.get('/test/study/artical', works.getallartical);
 
+
+router.post('/thumbnail', thumbnail.upload); //上传缩略图
 
 router.post('/userss', user.create);
 

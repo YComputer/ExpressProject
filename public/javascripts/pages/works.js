@@ -8,6 +8,10 @@ $(function () {
     });
 
     input.addEventListener('change', function () {
+        //I think this line is bug, as we do not need to upload all the files we select from the button (we can cancel )
+        
+        // we need to put the code in unloader.on to show the sb2 file
+        
         uploader.add(this.files[0]);
         uploader.work();
     });
@@ -33,7 +37,7 @@ $(function () {
         document.title = 'run the sb2';
         var request = P.IO.loadSB2File(item.file);
         P.player.showProgress(request, function (stage) {
-            stage.triggerGreenFlag();
+        //    stage.triggerGreenFlag();
         });
         uploader.items = [];
         uploader.queue = [];
@@ -49,6 +53,7 @@ $(function () {
     })
 
     $("#createdWork").on('click', function () {
+       
         var workName = $("#worknametext")[0].value;
         var workDiscription = $("#workdiscription")[0].value;
         $.ajax({
@@ -59,11 +64,39 @@ $(function () {
                 description: workDiscription
             },
             success: function (data) {
+        
+                
+        var Pic = document.getElementsByTagName("canvas")[0];
+        var Pic1 = document.getElementsByTagName("canvas")[1];
+        var Pic2 = document.getElementsByTagName("canvas")[2];
+        
+        Pic.getContext("2d").drawImage(Pic1,0,0);
+        Pic.getContext("2d").drawImage(Pic2,0,0);
+                
+        Pic = Pic.toDataURL("image/png");
+        Pic = Pic.replace(/^data:image\/(png|jpg);base64,/, "");
+ 
+    // Sending the image data to Server
+                // alert(responseId);
+        $.ajax({
+           method: "post",
+           url: "/thumbnail",
+           data: { imageData :  Pic,
+                    responseId :responseId
+           },
+           success: function (msg) {
+            alert("缩略图上传完毕.");
+          }
+      });
+        
                 alert("保存成功");
             },
             error: function () {
                 alert("保存失败");
             }
         })
+     
+
+        
     })
 })

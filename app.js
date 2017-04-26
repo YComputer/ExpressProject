@@ -8,6 +8,7 @@ var config = require("./config").config;
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 
+//var bodyParser = require('body-parser');
 
 //var winston = require('winston');
 //var loggerss = new winston.Logger();
@@ -38,8 +39,11 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
 app.use(require('cookie-parser')(config.session_secret));
 //app.use(require('express-session'));
 app.use(express.static(path.join(__dirname, 'public')));
