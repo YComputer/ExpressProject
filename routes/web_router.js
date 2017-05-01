@@ -14,6 +14,7 @@ var comment = require('../controller/comment');
 var message = require('../controller/message');
 var resource = require('../controller/resource');
 var create = require('../controller/create');
+var static = require('../controller/static');
 
 var thumbnail = require('../controller/thumbnail');
 
@@ -22,10 +23,16 @@ router.get('/', site.index);
 router.get('/newsignin', sign.newsignin);
 router.get('/newsignup', sign.newsignup);
 
-router.get('/signup', sign.showSignup);  // 跳转到注册页面
+router.get('/static/aboutus',static.aboutus);
+router.get('/static/contactus',static.contactus);
+router.get('/static/joinus',static.joinus);
+router.get('/static/partner',static.partner);
+router.get('/static/serviceprotocol',static.serviceprotocol);
+router.get('/static/news',static.news);
+router.get('/static/otherproduct',static.otherproduct);
+
 router.post('/signup', sign.signup);  // 提交注册信息
 router.post('/signout', sign.signout);  // 登出
-router.get('/signin', sign.showLogin);  // 进入登录页面
 router.post('/signin', sign.login);  // 登录校验
 router.get('/active_account', sign.activeAccount);  //帐号激活
 //router.get('/works',auth.userRequired, works.listAll); //查看所有作品

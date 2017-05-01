@@ -9,16 +9,6 @@ var BaseModel = require("./base_model");
 
 var config = require('../config').config;
 
-//数据库连接
-// mongoose.connect(config.mongo_db, {
-//     server: { poolSize: 20 }
-// }, function (err) {
-//     if (err) {
-//         logger.error('connect to %s error: ', config.mongo_db, err.message);
-//         process.exit(1);
-//     }
-// });
-
 //留言板Schema
 var MessageSchema = new Schema({
     title: { type: String },//主题

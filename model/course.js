@@ -16,11 +16,6 @@ var CourseSchema = new Schema({
     uploadTime: { type: Date, default: Date.now }
 });
 
-
-// CourseSchema.index({loginname: 1}, {unique: true});
-// CourseSchema.index({email: 1}, {unique: true});
-// CourseSchema.index({score: -1});
-// CourseSchema.index({accessToken: 1});
 CourseSchema.pre('save', function (next) {
     var now = new Date();
     this.uploadTime = now;

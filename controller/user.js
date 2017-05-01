@@ -23,12 +23,12 @@ exports.create = function (req, res, next) {
 
 exports.listInfo = function (req, res, next) {
     if (req.session.user == undefined) {
-        res.render('sign/signin');
+        res.render('sign/newSignin');
         return;
     }
     var user_id = req.session.user._id;
     if (user_id == undefined) {
-        res.render('sign/signin');
+        res.render('sign/newSignin');
         return;
     }
 
