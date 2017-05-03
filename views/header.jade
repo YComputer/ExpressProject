@@ -4,7 +4,7 @@
 nav(class="navbar navbar-inverse navbar-fixed-top")
    div.container
       div.row
-         div.col-md-4
+         div.col-md-6
             div(class="navbar-header")
                a(class="navbar-brand" href="/" style="margin:0;padding:0")
                   img(class="img-responsive" src="/images/1A++.PNG") 
@@ -12,6 +12,8 @@ nav(class="navbar navbar-inverse navbar-fixed-top")
          div(class="pull-right")
             div(class="navbar-collapse collapse")
                ul(class="nav navbar-nav")
+                  li
+                     a(class="glyphicon glyphicon-pencil" href="/create" target="_blank") 创作
                   li
                      a(class="glyphicon glyphicon-gift" href="/resource") 资源
                   li
@@ -23,13 +25,11 @@ nav(class="navbar navbar-inverse navbar-fixed-top")
                   li
                      a(href="/newsignin") 登录
                   li
-                     a(href="/newsignup") 注册
-                  li
                      div(class='dropdown')
                         a(class="btn dropdown-toggle glyphicon glyphicon-user" id="dropdownMenu1" data-toggle="dropdown" style="font-size: 30px;color: rgb(212, 106, 64);")
                         ul(class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1")
                               li(role="presentation")
-                                    a( role="menuitem" tabindex="-1" href="#") 主页
+                                    a( role="menuitem" tabindex="-1" href="/user") 主页
                               li( role="presentation" class="divider")
                               li( role="presentation")
                                     a(role="menuitem" tabindex="-1" href="#" class="glyphicon glyphicon-log-out") 退出登录

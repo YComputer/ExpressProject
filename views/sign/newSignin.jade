@@ -21,8 +21,8 @@ html
                     div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:5px")
                         span( class="input-group-addon glyphicon glyphicon-lock" id="basic-addon1")
                         input(type="text" id="pass" class="form-control" placeholder="密码" aria-describedby="basic-addon1")
-                    a(href="/signup") 忘记密码
-                    a(href="/signup" class="pull-right") 注册
+                    a(href="/newsignup") 忘记密码
+                    a(href="/newsignup" class="pull-right") 注册
                     div(class="input-group" style="width:100%;margin-top:5px;margin-bottom:5px")
                         input#submitsignin( type="btn" style="width:100%" class="btn" value="登录" aria-describedby="basic-addon1")
                     div.row(style="width:100%;margin-top:50px;margin-bottom:20px")
@@ -37,12 +37,3 @@ html
                         div(class="col-md-2")
                             a
                                 img(src="/images/weibo_icon.png" style="margin-top:-25px;width:80px;height:80px")
-                //- p 用户名：
-                //-     input( type="text" name="name")
-                //- p 密码：
-                //-     input( type="text" name="pass")
-            //- script
-            //-     - if (typeof(error) !== 'undefined' && error)
-            //-         div(class="alert alert-error")
-            //-             a(class="close" data-dismiss="alert" href="#" value="&times;")
-            //-             strong #{error}

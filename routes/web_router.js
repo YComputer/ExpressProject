@@ -13,22 +13,34 @@ var course = require('../controller/coursers');
 var comment = require('../controller/comment');
 var message = require('../controller/message');
 var resource = require('../controller/resource');
+var create = require('../controller/create');
+var static = require('../controller/static');
+
+var thumbnail = require('../controller/thumbnail');
 
 
 router.get('/', site.index);
 router.get('/newsignin', sign.newsignin);
 router.get('/newsignup', sign.newsignup);
 
-router.get('/signup', sign.showSignup);  // 跳转到注册页面
+router.get('/static/aboutus',static.aboutus);
+router.get('/static/contactus',static.contactus);
+router.get('/static/joinus',static.joinus);
+router.get('/static/partner',static.partner);
+router.get('/static/serviceprotocol',static.serviceprotocol);
+router.get('/static/news',static.news);
+router.get('/static/otherproduct',static.otherproduct);
+
 router.post('/signup', sign.signup);  // 提交注册信息
 router.post('/signout', sign.signout);  // 登出
-router.get('/signin', sign.showLogin);  // 进入登录页面
 router.post('/signin', sign.login);  // 登录校验
 router.get('/active_account', sign.activeAccount);  //帐号激活
 //router.get('/works',auth.userRequired, works.listAll); //查看所有作品
 router.get('/works', works.listAll); //查看所有作品
 router.get('/works/:workid', works.showDetail);  //查看作品详情
-router.get('/works/:workid/full', works.showFull);
+router.get('/works/:workid/full', works.showFull);    //全屏播放作品
+router.get('/works/:workid/evaluation', works.showEvaluation);
+router.get('/create', create.showEditor);   //创作
 
 router.get('/courses/:courseType', course.listAllCourse);
 router.get('/courses/:courseType/:courseId', course.showCourseDetail);
@@ -40,6 +52,8 @@ router.post('/works/:workid', works.saveWork);
 router.get('/works/:workid/downresource', works.downLoad);
 router.get('/test/study/artical', works.getallartical);
 
+
+router.post('/thumbnail', thumbnail.upload); //上传缩略图
 
 router.post('/userss', user.create);
 

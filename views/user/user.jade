@@ -4,36 +4,71 @@
 extends ../layout
 block content
    div.container
-      div
-         label #{renderData.userinfo.name}
-      span
-         div
-            ul(id="filelist")
-            input(type="file" multiple)
-         button#submit 上传
-         button#cancel 取消
-         script(src="/javascripts/fileup.js")
-         script(src="/javascripts/uploadfile.js")
-      - each obj in renderData.postedworkes
-         div.row
-            div
-               embed(width="480" height="360" src=obj.sourcePath)
-            div(display="inline")
-               h3 示例作品
-               p 南京小学生李煜辰小朋友的作品
-
-
-      //br
-      //ul( class="nav nav-tabs" role="tablist" style="text-align:center;align:center")
-      //   li( role="presentation")
-      //      a( href="/users/countinfo") 账户信息
-      //   li( role="presentation")
-      //      a( href="/users/detailinfo") 个人资料
-      //   li( role="presentation")
-      //      a( href="historyinfo") 历史记录
-      //div.col-sm-8
-      //   block count
-
+      
+      div.row
+         div(class="col-md-2")
+            div.row
+                a(class="btn glyphicon glyphicon-user col-md-4 col-md-offset-2" id="dropdownMenu1" style="font-size: 100px;color: grey;")
+            div.row
+                p(class="col-md-4 col-md-offset-4" style="margin-top:-20px;") lijie
+            ul(class="row nav nav-tabs nav-stacked" style="margin-top:20px" data-offset-top="125")
+                li( class="active")
+                    a( href="#countinfo") 账户信息
+                li()
+                    a( href="#myInfo") 我的资料
+                li()
+                    a( href="#myWorks") 我的作品
+                li()
+                    a( href="#myCourse") 我的课程
+                li()
+                    a( href="#") 信箱
+                li()
+                    a( href="#myLearningCurve") 我的学习曲线
+         div(class="col-md-10")
+            div(id="countinfo")
+                div(class="page-header col-md-4 col-md-offset-4")
+                    h1 账户信息
+                div(class="col-md-12")
+                    - if('#{me.loginnameqz}'==undefined)
+                            p 没有找到账户信息
+                        - else
+                            div.row
+                                div(class="col-md-2")
+                                    登录名：
+                                div(class="col-md-10")
+                                    p #{me.loginname}
+                            div.row
+                                div(class="col-md-2")
+                                    用户名：
+                                div(class="col-md-10")
+                                    p #{me.name}
+                            div.row
+                                div(class="col-md-2")
+                                    注册时间：
+                                div(class="col-md-10")
+                                    p #{me.create_at}
+                            div.row
+                                div(class="col-md-2")
+                                    积分：
+                                div(class="col-md-10")
+                                    p #{me.score}
+                            div.row
+                                div(class="col-md-2")
+                                    注册邮箱：
+                                div(class="col-md-10")
+                                    p #{me.email}
+            div(id="myInfo")      
+                div(class="page-header col-md-4 col-md-offset-4")
+                    h1 我的资料
+            div(id="myWorks")
+                div(class="page-header col-md-4 col-md-offset-4" )
+                    h1 我的作品
+            div(id="myCourse")
+                div(class="page-header col-md-4 col-md-offset-4")
+                    h1 我的课程
+            div(id="myLearningCurve")
+                div(class="page-header col-md-4 col-md-offset-4")
+                    h1 我的课程
 
 
 

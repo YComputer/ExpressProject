@@ -1,0 +1,61 @@
+html
+  head
+    title A++
+    meta(charset='utf8')
+    meta(content='text/html', http-equiv='content-type')
+    link(rel='stylesheet', href='/stylesheets/create.css')
+    script(src='/javascripts/jquery-3.1.1.min.js')
+    script(src='/javascripts/swfobject.js')
+  body
+    #scratch-loader
+    #scratch(style='text-align:center;margin-top:30px;visibility:hidden;position:relative;')
+      .scratch_unsupported(style='display: none;')
+        p(style='color:#aaa;font-size:22px;margin-top:14px;line-height:28px;')
+          | Oh no! We're having trouble displaying this Scratch project.
+          br
+          |             If you are on a mobile phone or tablet, try visiting this project on a computer.
+          br
+          |             If you're on a computer, your Flash player might be disabled, missing, or out of date. Visit 
+          a(href='https://get.adobe.com/flashplayer/') this page
+          |  to update Flash.
+          br
+        a(href='http://www.adobe.com/go/getflashplayer')
+          img(src='//www.adobe.com/images/shared/download_buttons/get_flash_player.gif', alt='Get Adobe Flash player', target='_blank')
+      .scratch_loading Loading...
+    //
+      divembed(id="scratch" width='1319', height='652', src='/swf/Scratch.swf', style='visibility: visible;', allowfullscreen='true')
+    script(type='text/javascript').
+      window.SWFready=$.Deferred(); // Deferred makes sure we don't call ASSetEditMode before SWF is ready.
+      function JSeditorReady() {
+      try {
+      SWFready.resolve();
+      var Scratch = document.getElementById('scratch');
+      Scratch.ASshowEditor(1);
+      //Scratch.ASsetEditMode(1);
+      //Scratch.ASsetIsEditMode(0);
+      //Scratch.ASsetFrom('adventure');
+      //Scratch.ASsetSavedCallback("projectSaved");
+      //Scratch.ASsetBeforeSaveCallback("saveProject");
+      //Scratch.ASsetLibVersion('20160708');
+      //Scratch.ASloadBaseProject('/avatar/getApple.sb2', "接苹果");
+      $('#scratch-loader').hide();
+      return true;
+      } catch (error) {
+      console.error(error.message, "\\\n", error.stack);
+      throw error;
+      }
+      }
+      var params = {
+      allowscriptaccess: 'always',
+      allowfullscreen: 'true',
+      wmode: 'direct',
+      menu: 'false'
+      };
+      //var flashvars = {
+      //project: '/avatar/getApple.sb2',
+      //autostart: 'false'
+      //};
+      var attributes = {};
+      swfobject.embedSWF('/swf/Scratch.swf', 'scratch', '100%', '100%', '10.0', false, null, params, attributes, null);
+      document.getElementById('scratch').style.visibility = 'visible';
+      //Dynamically add iframe for registration window

@@ -16,24 +16,15 @@ var uuid = require('uuid');
  * @param req
  * @param res
  */
-exports.showSignup = function (req, res) {
-    res.render('sign/signup');
-};
+exports.newsignup = function (req, res) {
+    res.render('sign/newSignup');
+}
 
 /**
  * 显示登录页面
  * @param req
  * @param res
  */
-exports.showLogin = function (req, res) {
-    //req.session._loginReferer = req.headers.referer;
-    res.render('sign/signin');
-};
-
-exports.newsignup = function (req, res) {
-    res.render('sign/newSignup');
-}
-
 exports.newsignin = function (req, res) {
     res.render('sign/newSignin');
 }
