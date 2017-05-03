@@ -46,7 +46,7 @@ exports.saveResource = function (id, title, description, auth, resourceType, res
 
     var resource;
     //id为空则直接新增，否则为更新
-    if (id) {
+    if (id&& id.length>0) {
         ResourceModel.findById(id, function (err, resource) {
             if (err) {
                 return;
