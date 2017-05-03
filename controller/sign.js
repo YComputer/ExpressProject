@@ -11,6 +11,15 @@ var tools = require('../common/tools');
 var authMiddleWare = require('../middlewares/auth');
 var uuid = require('uuid');
 
+exports.checkLoginStatus = function (req, res) {
+    if (!req.session || !req.session.user || !req.session.user._id) {
+        return res.send(false);
+    }
+    else {
+        return res.send(true);
+    }
+}
+
 /**
  * 显示注册页面
  * @param req

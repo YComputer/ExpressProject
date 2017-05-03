@@ -22,14 +22,15 @@ var thumbnail = require('../controller/thumbnail');
 router.get('/', site.index);
 router.get('/newsignin', sign.newsignin);
 router.get('/newsignup', sign.newsignup);
+router.get('/checkLoginStatus', sign.checkLoginStatus);
 
-router.get('/static/aboutus',static.aboutus);
-router.get('/static/contactus',static.contactus);
-router.get('/static/joinus',static.joinus);
-router.get('/static/partner',static.partner);
-router.get('/static/serviceprotocol',static.serviceprotocol);
-router.get('/static/news',static.news);
-router.get('/static/otherproduct',static.otherproduct);
+router.get('/static/aboutus', static.aboutus);
+router.get('/static/contactus', static.contactus);
+router.get('/static/joinus', static.joinus);
+router.get('/static/partner', static.partner);
+router.get('/static/serviceprotocol', static.serviceprotocol);
+router.get('/static/news', static.news);
+router.get('/static/otherproduct', static.otherproduct);
 
 router.post('/signup', sign.signup);  // 提交注册信息
 router.post('/signout', sign.signout);  // 登出
@@ -50,7 +51,6 @@ router.get('/user', user.listInfo);
 router.post('/works', works.upload);
 router.post('/works/:workid', works.saveWork);
 router.get('/works/:workid/downresource', works.downLoad);
-router.get('/test/study/artical', works.getallartical);
 
 
 router.post('/thumbnail', thumbnail.upload); //上传缩略图

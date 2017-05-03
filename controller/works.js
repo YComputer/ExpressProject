@@ -198,6 +198,13 @@ exports.downLoad = function (req, res, next) {
 
 exports.upload = function (req, res, next) {
     var form = new formidable.IncomingForm();
+    var userId = undefined;
+    if (req.session.user) {
+        userId = req.session.user._id;
+    }
+    else {
+        userId = null;
+    }
     form.parse(req, function (err, fields, files) {
         var name = files.file.name;
 
@@ -209,7 +216,7 @@ exports.upload = function (req, res, next) {
         var writeStream = fs.createWriteStream(destPath);
         readStream.pipe(writeStream);
         logger.info("收到文件：" + JSON.stringify(files));
-        Work.newAndSave("name", relativeDestPath, "description", null, function (err, doc) {
+        Work.newAndSave("name", relativeDestPath, "description", userId, function (err, doc) {
             if (err) {
                 logger.error(err);
                 res.send(err);
@@ -253,10 +260,3 @@ exports.saveWork = function (req, res, next) {
     })
 }
 
-
-exports.getallartical = function (req, res, next) {
-    artical.getall(function (docs) {
-        res.send(docs);
-        res.render("composition/works", { hello: docs[0].title });
-    })
-}
