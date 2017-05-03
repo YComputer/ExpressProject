@@ -15,7 +15,7 @@ var eventproxy = require('eventproxy');
  */
 exports.listAllResource = function (req, res, next) {
     var resourceType = req.params.resourceType;
-    if (resourceType == undefined) {
+    if (resourceType == undefined||resourceType == NaN) {
         resourceType = 1;
     }
     resourceType = parseInt(resourceType);
@@ -64,8 +64,8 @@ exports.upload = function (req, res, next) {
         var name = files.file.name;
 
         var sourceFile = files.file.path;
-        var relativeDestPath =  '/public/resource/' + name;
-        var destPath = process.cwd() + '/..' + relativeDestPath;
+        var relativeDestPath =  '/public/resources/' + name;
+        var destPath = process.cwd()  + relativeDestPath;
         var readStream = fs.createReadStream(sourceFile);
         var writeStream = fs.createWriteStream(destPath);
         readStream.pipe(writeStream);

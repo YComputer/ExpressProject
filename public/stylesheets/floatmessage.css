@@ -1,0 +1,68 @@
+#float_left{
+    width: 40px;
+    height: 100px;
+    position: fixed;
+    bottom: 20%;
+    right: 40px;
+
+}
+#float_left ul li{
+    list-style: none;
+    width: 40px;
+    height: 40px;
+    background-image: url(/images/A++.png);
+    background-repeat: no-repeat;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+    transition: all 0.5s ease; 
+}
+#float_left .li1{
+    background-image: url(/images/weixin_icon.png);
+    background-repeat: no-repeat;
+    background-position: 0px -209px;
+}
+#float_left .li2{
+    background-position: -42px -168px;
+}
+#float_left .li3{
+    background-position: 0px -126px;
+}
+#float_left .li4{
+    background-position: -42px -84px;
+}
+#float_left .li5 {
+    background-position: -41px 0px;
+}
+#float_left .li6{
+    border-bottom: none;
+    background-position: 0px -42px;
+}
+#float_left .div-float{
+    width: 0px;
+    height: 40px;
+     background-image:  url(/images/weixin_icon.png);
+    background-color: #F6A702;
+    margin-left: 40px;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+}
+#float_left .li2:hover{
+    background-position: 0px -168px;
+}
+#float_left .li3:hover{
+    background-position: -42px -126px;
+}
+#float_left .li4:hover{
+    background-position: 0px -84px;
+}
+#float_left .li5:hover{
+    background-position: 0px 0px;
+}
+#float_left .li6:hover{
+    background-position:-41px -42px ;
+}
+#float_left li:hover .div1{
+    width: 80px;
+}

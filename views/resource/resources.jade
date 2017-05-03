@@ -41,9 +41,9 @@ block content
                      div(class="col-md-3" style="padding-left:10px;padding-right:10px")
                         div
                             a(href='/resource/'+list[i].resourceType+'/'+list[i]._id)
-                                img(src="/images/coffie.jpg" style="max-width:100%" alt="资源") 
+                                img(src='/resources/'+list[i].resourcePath style="max-width:100%" alt="资源") 
                             div.row                             
-                                 h3 #{list[i].resourceName}                       
+                                 h3 #{list[i].title}                       
                             div.row(style="border-bottom:1px #f3f3f3 solid;height:50px; padding:15px;")
 
                                     div(class="col-md-8")
@@ -56,9 +56,9 @@ block content
                          div(class="col-md-3" style="padding-left:10px;padding-right:10px")
                             div
                                 a(href='/resource/'+list[second].resourceType+'/'+list[second]._id)
-                                    img(src="/images/coffie.jpg" style="max-width:100%" alt="资源") 
+                                    img(src='/resources/'+list[second].resourcePath style="max-width:100%" alt="资源") 
                                 div.row                             
-                                    h3 #{list[second].resourceName}                                 
+                                   h3 #{list[second].title}                                 
                                 div.row(style="border-bottom:1px #f3f3f3 solid;height:50px; padding:15px;")
                                         div(class="col-md-8")
                                             a(href="#/user/id") 作者：#{list[second].auth} 
@@ -71,9 +71,9 @@ block content
                          div(class="col-md-3" style="padding-left:10px;padding-right:10px")
                             div
                                 a(href='/resource/'+list[third].resourceType+'/'+list[third]._id)
-                                    img(src="/images/coffie.jpg" style="max-width:100%" alt="资源")   
+                                    img(src='/resources/'+list[third].resourcePath style="max-width:100%" alt="资源")   
                                 div.row                             
-                                    h3 #{list[third].resourceName}                               
+                                    h3 #{list[third].title}                              
                                 div.row(style="border-bottom:1px #f3f3f3 solid;height:50px; padding:15px;")
                                         div(class="col-md-8")
                                             a(href="#/user/id") 作者：#{list[third].auth} 
@@ -86,9 +86,9 @@ block content
                          div(class="col-md-3" style="padding-left:10px;padding-right:10px")
                             div
                                 a(href='/resource/'+list[fourth].resourceType+'/'+list[fourth]._id)
-                                    img(src="/images/coffie.jpg" style="max-width:100%" alt="资源") 
+                                    img(src='/resources/'+list[fourth].resourcePath style="max-width:100%" alt="资源") 
                                 div.row                             
-                                    h3 #{list[fourth].resourceName}                                
+                                    h3 #{list[fourth].title}                                
                                 div.row(style="border-bottom:1px #f3f3f3 solid;height:50px; padding:15px;")
                                         div(class="col-md-8")
                                             a(href="#/user/id") 作者：#{list[fourth].auth} 
@@ -103,15 +103,9 @@ block content
             h3 上传资源
         div(class="modal-body row")
             div(class="col-md-7")
-                div(class='controls')
-                    div(class='progress-bar')
-                        span(class='stop')
-                        span(class='pause')
-                        span(class='playflag')
-                        div(class='turbo')
-                            span(class='full-screen')
                 div(style="border:solid 1px grey")
-                    div(class='player')
+                    div(class='player') 
+                        
             div(class="col-md-5" style="padding-right:10px")
                 div
                     span(class="input-group-addon") 资源类型：
@@ -124,10 +118,7 @@ block content
                 div
                     span(class="input-group-addon") 描述：
                     textarea(id="resourceDescription" type="text" style="height:200px" class="form-control" placeholder="简单描述一下吧")
-            script(src="/javascripts/fonts.js")
-            script(src="/javascripts/jszip.js")
-            script(src="/javascripts/phosphorus.js")
-            script(src="/javascripts/player.js")
+         
         div(class="modal-footer")
             button#createResource(class="btn") 创建
             button(class="btn" data-dismiss="modal") 取消上传
