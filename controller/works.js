@@ -185,7 +185,8 @@ exports.downLoad = function (req, res, next) {
             return next(err);
         }
         else {
-            res.download(process.cwd() + '/..' + doc[0].sourcePath, doc[0].name + '.sb2', function (err1) {
+            var url = path.resolve('./');
+            res.download(url + '/..' + doc[0].sourcePath, doc[0].name + '.sb2', function (err1) {
                 if (err1) {
                     logger.error(err1);
                     res.send(err1);
@@ -201,8 +202,9 @@ exports.upload = function (req, res, next) {
         var name = files.file.name;
 
         var sourceFile = files.file.path;
+        var url = path.resolve('./');
         var relativeDestPath = "/public/avatar/" + name;
-        var destPath = process.cwd() + '/..' + relativeDestPath;
+        var destPath = url + '/..' + relativeDestPath;
         var readStream = fs.createReadStream(sourceFile);
         var writeStream = fs.createWriteStream(destPath);
         readStream.pipe(writeStream);

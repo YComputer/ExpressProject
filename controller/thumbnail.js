@@ -16,7 +16,8 @@ exports.upload = function (req, res, next) {
     var picdata = req.body.imageData;
 
     var relativeDestPath = "/public/thumbnail/" + resId + ".png";
-    var destPath = process.cwd() + '/..' + relativeDestPath;
+    var url = path.resolve('./');
+    var destPath = url + '/..' + relativeDestPath;
 
     var dataBuffer = new Buffer(picdata, 'base64');
     fs.writeFile(destPath, dataBuffer, function (err) {
