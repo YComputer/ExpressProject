@@ -5,11 +5,32 @@
     margin-right: auto;
 }
 
-a {
+.a {
   color: black;
 }
 
+/*.navbar-inverse{
+    background: rgb(237,190,49);
+    background-image:-webkit-linear-gradient(top, rgb(237,190,49) 0%, rgb(237,190,49) 100%);
+    background-image:-webkit-gradient(linear, left top, left bottom, from(rgb(237,190,49)), to(rgb(237,190,49)));
+    background-image:linear-gradient(to bottom, rgb(237,190,49) 0%, rgb(237,190,49) 100%);
+}*/
 
+#container{
+    padding-top: 60px;
+}
+
+.footer > .a{
+    color:grey;
+}
+
+.footer > .p{
+    color:rgb(237，190，49);
+}
+
+#loginBtn_a{
+    padding-top: 20px
+}
 
 p{
     color:black;
@@ -22,9 +43,8 @@ p{
 }
 html, body {
     height: 100%;
-    padding-top:60px;
     padding-bottom:40px;
-    background: #eaeaea
+    background: rgb(255,255,255)
     /*background-image: url(../images/coffie.jpg);*/
 }
 .wrapper {
@@ -42,10 +62,6 @@ html, body {
 
 .buttons {
     margin-top: 160px;
-}
-
-a{
-    color: black;
 }
 
 h3{

@@ -4,7 +4,7 @@ img{border:0}
 ul{list-style:none}
 .header_l img{height:65px;margin-top:10px}
 select,input,img,select{vertical-align:middle}
-a{text-decoration:none;cursor:pointer;color:#000;font-weight:normal;}
+.a{text-decoration:none;cursor:pointer;color:#000;font-weight:normal;}
 a:hover{color:#0f91ed}
 
 .rides-cs {  font-size: 12px; background:#337ab7; position: fixed; top: 250px; right: 0px; _position: absolute; z-index: 1500; border-radius:6px 0px 0 6px;}

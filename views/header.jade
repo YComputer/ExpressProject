@@ -7,26 +7,32 @@ nav(class="navbar navbar-inverse navbar-fixed-top")
          div.col-md-6
             div(class="navbar-header")
                a(class="navbar-brand" href="/" style="margin:0;padding:0")
-                  img(class="img-responsive" src="/images/1A++.PNG") 
-               a(style="margin:auto;font-size: 40px;color: grey;font:") 编程课堂              
+                  div
+                        img(class="img-responsive" src="/images/logo.png") 
+                        a(style="margin-left:5px;font-size: 40px;color: rgb(34,51,65);font:") 编程课堂              
          div(class="pull-right")
             div(class="navbar-collapse collapse")
                ul(class="nav navbar-nav")
                   li
                      a(class="glyphicon glyphicon-pencil" href="/create" target="_blank") 创作
+                     a(href="/create") CREATE
                   li
                      a(class="glyphicon glyphicon-gift" href="/resource") 资源
+                     a(href="/resource") RESOURCE
                   li
                      a(class="glyphicon glyphicon-list" href="/courses/1") 课程
+                     a(href="/courses/1") COURSES
                   li
                      a(class="glyphicon glyphicon-heart" href="/works") 作品
+                     a(href="/works") WORKS
                   li
                      a(class="glyphicon glyphicon-th" href="/course") 在线课堂
+                     a(href="/course") CLASSES
                   li
                      a(id="loginBtn_a" href="/newsignin") 登录
                   li
-                     div(class='dropdown')
-                        a(class="btn dropdown-toggle glyphicon glyphicon-user" id="dropdownMenu1" data-toggle="dropdown" style="font-size: 30px;color: rgb(212, 106, 64);")
+                     div(class='dropdown' id="userbtn_dropdown")
+                        a(class="btn dropdown-toggle glyphicon glyphicon-user" id="dropdownMenu1" data-toggle="dropdown" style="font-size: 30px;color: rgb(34, 51, 65);")
                         ul(class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1")
                               li(role="presentation")
                                     a( role="menuitem" tabindex="-1" href="/user") 主页

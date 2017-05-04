@@ -14,9 +14,12 @@ $(function () {
         success: function (data) {
             if (data) {
                 $("#loginBtn_a")[0].style.display = "none";
+                $("#userbtn_dropdown")[0].style.display = "block";
             }
             else {
                 $("#loginBtn_a")[0].style.display = "block";
+                $("#userbtn_dropdown")[0].style.display = "none";
+
             }
         },
         error: function (err) {
