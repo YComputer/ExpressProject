@@ -20,12 +20,12 @@
     padding-top: 60px;
 }
 
-.footer > .a{
+.footer > a{
     color:grey;
 }
 
-.footer > .p{
-    color:rgb(237，190，49);
+.footer > p{
+    color:rgb(237,190,49);
 }
 
 #loginBtn_a{
@@ -36,7 +36,11 @@ p{
     color:black;
 }
 
-
+.staticlink{
+    color:rgb(237,190,49);
+    margin-top:10px;
+    margin-bottom: 5px;
+}
 
 * {
     margin: 0;
