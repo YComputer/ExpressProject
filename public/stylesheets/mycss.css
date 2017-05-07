@@ -28,6 +28,10 @@
     color:rgb(237,190,49);
 }
 
+#errdiv404 > p{
+    color: rgb(111,119,134);
+}
+
 #loginBtn_a{
     padding-top: 20px
 }
