@@ -6,77 +6,78 @@ block content
     div.container
         //link(rel='stylesheet' href='/stylesheets/player.css')
         //link(rel='stylesheet' href='/stylesheets/embed.css')
-        div(style="margin-bottom:20px")
+        div(style="margin-bottom:20px;margin-top:20px")
             script(src="/javascripts/fileup.js")
             script(src="/javascripts/pages/works.js")
             label(for="xfile" class="btn btn-info btn-xs")
                 span(class="fa fa-plus" style="font-size:20px") 上传作品
             input(id="xfile" type="file" name="files" style="display:none")
-        - for(var i=0; i<list.length;i=i+4)
-            div.row
-                    div(class="col-md-3" style="margin-bottom:20px")
-                        div(style="background:write")
-                            div
-                                a(href='/works/'+list[i]._id)
-                                    img(src="/thumbnail/"+ "#{list[i]._id}"+".png" style="max-width:100%" alt="image1")
-                                //embed(width="auto" height="auto" src=obj.sourcePath)
-                            div
-                                a(href='/works/'+list[i]._id)
-                                    h3 #{list[i].name}
-                                div(class="row")
-                                    div(class="col-md-10")
-                                        a(href="#/user/id") 作者：#{list[i].authorName}
-                                    div(class="col-md-2")
-                                        span 
-                                            p #{list[i].upCount}
-                    - if((i+1)<list.length)
-                        div(class="col-md-3" style="margin-bottom:20px")
-                            div(style="background:write")
-                                div
-                                    a(href='/works/'+list[i+1]._id)
-                                        img(src="/thumbnail/"+ "#{list[i+1]._id}"+".png" style="max-width:100%" alt="image1")
-                                    //embed(width="auto" height="auto" src=obj.sourcePath)
-                                div
-                                    a(href='/works/'+list[i+1]._id)
-                                        h3 #{list[i+1].name}
-                                    div(class="row")
-                                        div(class="col-md-10")
-                                            a(href="#/user/id") 作者：#{list[i+1].authorName}
-                                        div(class="col-md-2")
-                                            span 
-                                                p #{list[i+1].upCount}
-                    - if((i+2)<list.length)
-                        div(class="col-md-3" style="margin-bottom:20px")
-                            div(style="background:write")
-                                div
-                                    a(href='/works/'+list[i+2]._id)
-                                        img(src="/thumbnail/"+ "#{list[i+2]._id}"+".png" style="max-width:100%" alt="image1")
-                                    //embed(width="auto" height="auto" src=obj.sourcePath)
-                                div
-                                    a(href='/works/'+list[i+2]._id)
-                                        h3 #{list[i+2].name}
-                                    div(class="row")
-                                        div(class="col-md-10")
-                                            a(href="#/user/id") 作者：#{list[i+2].authorName}
-                                        div(class="col-md-2")
-                                            span 
-                                                p #{list[i+2].upCount}
-                    - if((i+3)<list.length)
-                        div(class="col-md-3" style="margin-bottom:20px")
-                            div(style="background:write")
-                                div
-                                    a(href='/works/'+list[i+3]._id)
-                                        img(src="/thumbnail/"+ "#{list[i+3]._id}"+".png" style="max-width:100%" alt="image1")
-                                    //embed(width="auto" height="auto" src=obj.sourcePath)
-                                div
-                                    a(href='/works/'+list[i+3]._id)
-                                        h3 #{list[i+3].name}
-                                    div(class="row")
-                                        div(class="col-md-10")
-                                            a(href="#/user/id") 作者：#{list[i+3].authorName}
-                                        div(class="col-md-2")
-                                            span 
-                                                p #{list[i+3].upCount}
+            div#allWorks(style="margin-top:20px")
+                - for(var i=0; i<list.length;i=i+4)
+                    div.row
+                            div(class="col-md-3" style="margin-bottom:20px")
+                                div(style="background:write")
+                                    div
+                                        a(href='/works/'+list[i]._id)
+                                            img(src="/thumbnail/"+ "#{list[i]._id}"+".png" style="max-width:100%" alt="image1")
+                                        //embed(width="auto" height="auto" src=obj.sourcePath)
+                                    div
+                                        a(href='/works/'+list[i]._id)
+                                            h3 #{list[i].name}
+                                        div(class="row")
+                                            div(class="col-md-10")
+                                                a(href="#/user/id") 作者：#{list[i].authorName}
+                                            div(class="col-md-2")
+                                                span 
+                                                    p #{list[i].upCount}
+                            - if((i+1)<list.length)
+                                div(class="col-md-3" style="margin-bottom:20px")
+                                    div(style="background:write")
+                                        div
+                                            a(href='/works/'+list[i+1]._id)
+                                                img(src="/thumbnail/"+ "#{list[i+1]._id}"+".png" style="max-width:100%" alt="image1")
+                                            //embed(width="auto" height="auto" src=obj.sourcePath)
+                                        div
+                                            a(href='/works/'+list[i+1]._id)
+                                                h3 #{list[i+1].name}
+                                            div(class="row")
+                                                div(class="col-md-10")
+                                                    a(href="#/user/id") 作者：#{list[i+1].authorName}
+                                                div(class="col-md-2")
+                                                    span 
+                                                        p #{list[i+1].upCount}
+                            - if((i+2)<list.length)
+                                div(class="col-md-3" style="margin-bottom:20px")
+                                    div(style="background:write")
+                                        div
+                                            a(href='/works/'+list[i+2]._id)
+                                                img(src="/thumbnail/"+ "#{list[i+2]._id}"+".png" style="max-width:100%" alt="image1")
+                                            //embed(width="auto" height="auto" src=obj.sourcePath)
+                                        div
+                                            a(href='/works/'+list[i+2]._id)
+                                                h3 #{list[i+2].name}
+                                            div(class="row")
+                                                div(class="col-md-10")
+                                                    a(href="#/user/id") 作者：#{list[i+2].authorName}
+                                                div(class="col-md-2")
+                                                    span 
+                                                        p #{list[i+2].upCount}
+                            - if((i+3)<list.length)
+                                div(class="col-md-3" style="margin-bottom:20px")
+                                    div(style="background:write")
+                                        div
+                                            a(href='/works/'+list[i+3]._id)
+                                                img(src="/thumbnail/"+ "#{list[i+3]._id}"+".png" style="max-width:100%" alt="image1")
+                                            //embed(width="auto" height="auto" src=obj.sourcePath)
+                                        div
+                                            a(href='/works/'+list[i+3]._id)
+                                                h3 #{list[i+3].name}
+                                            div(class="row")
+                                                div(class="col-md-10")
+                                                    a(href="#/user/id") 作者：#{list[i+3].authorName}
+                                                div(class="col-md-2")
+                                                    span 
+                                                        p #{list[i+3].upCount}
     
     
     div#uploadResultModal(class="modal")

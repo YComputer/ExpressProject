@@ -110,6 +110,35 @@ exports.newAndSave = function (name, loginname, pass, email, avatar_url, active,
     user.save(callback);
 };
 
+exports.updateUserInfo = function (user_id, name, sex, age, birth, address, province, city, school, gread, phoneNumber, callback) {
+    User.findOne({ _id: user_id }, function (err, doc) {
+        if (err) {
+            callback(err, null);
+        }
+        else {
+            doc.UserInfo = {};
+            doc.UserInfo.name = name;
+            doc.UserInfo.sex = sex;
+            doc.UserInfo.age = age;
+            doc.UserInfo.birth = birth;
+            doc.UserInfo.address = address;
+            doc.UserInfo.province = province;
+            doc.UserInfo.city = city;
+            doc.UserInfo.school = school;
+            doc.UserInfo.gread = gread;
+            doc.UserInfo.phoneNumber = phoneNumber;
+            doc.save(function (err, doc) {
+                if (err) {
+                    callback(err, null);
+                }
+                else {
+                    callback(null, "更新成功");
+                }
+            })
+        }
+    });
+}
+
 var makeGravatar = function (email) {
     return 'http://www.gravatar.com/avatar/' + utility.md5(email.toLowerCase()) + '?size=48';
 };

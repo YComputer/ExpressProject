@@ -6,6 +6,7 @@ block content
    div.container
       
       div.row
+         script(src="/javascripts/pages/user.js" type="text/javascript")
          div(class="col-md-2")
             div.row
                 a(class="btn glyphicon glyphicon-user col-md-4 col-md-offset-2" id="dropdownMenu1" style="font-size: 100px;color: grey;")
@@ -61,19 +62,19 @@ block content
                 div(class="col-md-12")
                     div(class="input-group")
                         span(class="input-group-addon") 姓名
-                        input(type="text" class="form-control" placeholder="twitterhandle")
+                        input#nameText(type="text" class="form-control" placeholder="twitterhandle")
                     div(class="input-group")
                         span(class="input-group-addon") 性别
-                        input(type="text" class="form-control" placeholder="twitterhandle")
+                        input#sexText(type="text" class="form-control" placeholder="twitterhandle")
                     div(class="input-group")
                         span(class="input-group-addon") 生日
-                        input(type="text" class="form-control" placeholder="twitterhandle")
+                        input#birthText(type="text" class="form-control" placeholder="twitterhandle")
                     div(class="input-group")
                         span(class="input-group-addon") 学校
-                        input(type="text" class="form-control" placeholder="twitterhandle")
+                        input#schoolText(type="text" class="form-control" placeholder="twitterhandle")
                     div(class="input-group")
                         span(class="input-group-addon") 年级
-                        input(type="text" class="form-control" placeholder="twitterhandle")
+                        input#greadText(type="text" class="form-control" placeholder="twitterhandle")
                     div(style="margin-top:15px")
                         button#updateUserInfoBtn(class="btn" style="display:block;margin-left:auto;margin-right:auto") 更新资料
             div(id="myWorks")

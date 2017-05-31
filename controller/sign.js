@@ -192,7 +192,22 @@ exports.login = function (req, res, next) {
  * @param res
  * @param next
  */
-exports.signout = function (req, res, next) { }
+exports.signout = function (req, res, next) {
+
+    if (req.session.user == undefined) {
+        res.render('sign/newSignin');
+        return;
+    }
+    var user_id = req.session.user._id;
+    if (user_id == undefined) {
+        res.render('sign/newSignin');
+        return;
+    }
+
+    req.session.user = undefined;
+    res.render('sign/newSignin');
+
+}
 
 /**
  * 激活账户

@@ -10,10 +10,13 @@ var UserInfoSchema = new Schema({
     name: { type: String },
     sex: { type: Number, default: 0 },  //0男孩 1女孩
     age: { type: Number },
+    birth: { type: Date },
     Address: { type: String },
     province: { type: String },
     city: { type: String },
     phoneNumber: { type: String },
+    school: { type: String },
+    gread: { type: String },
 })
 
 var UserSchema = new Schema({
@@ -29,6 +32,7 @@ var UserSchema = new Schema({
     weibo: { type: String },
     avatar: { type: String },
     is_block: { type: Boolean, default: false },
+    UserInfo: { type: UserInfoSchema },
 
     score: { type: Number, default: 0 },
     create_at: { type: Date, default: Date.now },

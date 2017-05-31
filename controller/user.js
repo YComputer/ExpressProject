@@ -58,3 +58,32 @@ exports.listInfo = function (req, res, next) {
         ep.emit('searchworkfinished', docs);
     })
 }
+
+exports.updateInfo = function (req, res, next) {
+    if (req.session.user == undefined) {
+        res.render('sign/newSignin');
+        return;
+    }
+    var user_id = req.session.user._id;
+    if (user_id == undefined) {
+        res.render('sign/newSignin');
+        return;
+    }
+
+    var name = req.query.name;
+    var sex = req.query.sex;
+    var birth = req.query.birth;
+    var school = req.query.school;
+    var gread = req.query.gread;
+
+    User.updateUserInfo(user_id, name, sex, 12, Date.now(), "法师打发", "江苏", "南京", "育才中学", "初一", "13776416562", function (err, data) {
+        if (err) {
+            res.send(false);
+        }
+        else {
+            res.send(true);
+        }
+    })
+
+
+}

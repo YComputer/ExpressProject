@@ -14,7 +14,19 @@ var uuid = require('uuid');
  * @param callback
  */
 exports.getAllWork = function (callback) {
-    Work.find({}, callback);
+    this.getNextPageWorks(0, callback);
+    //Work.find({}, callback);
+}
+
+exports.getTotalCount = function (callback) {
+    Work.count({}, callback);
+}
+
+exports.getNextPageWorks = function (pageid, callback) {
+    var query = Work.find({});
+    query.skip(pageid * 20);
+    query.limit(20)
+    query.exec(callback);
 }
 
 exports.getAllWorkByUserId = function (id, callback) {
