@@ -8,13 +8,14 @@ var fs = require("fs");
 var path = require("path");
 var eventproxy = require('eventproxy');
 var moment = require('moment');
+var config = require('../config');
 
 
 exports.upload = function (req, res, next) {
 
     var resId = req.body.responseId;
     var picdata = req.body.imageData;
-    var folder = path.resolve('./') + "/.." + "/public/thumbnail/";
+    var folder = config.config.project_base_path + "public/thumbnail/";
     fs.stat(folder, function (err, stat) {
         if (err) {
             fs.mkdir(folder, 0777, function () {
@@ -30,9 +31,9 @@ exports.upload = function (req, res, next) {
 }
 
 var save = function (resId, picdata, res) {
-    var relativeDestPath = "/public/thumbnail/" + resId + ".png";
-    var url = path.resolve('./');
-    var destPath = url + '/..' + relativeDestPath;
+    var relativeDestPath = "public/thumbnail/" + resId + ".png";
+    //var url = path.resolve('./');
+    var destPath = config.config.project_base_path + relativeDestPath;
 
     var dataBuffer = new Buffer(picdata, 'base64');
     fs.writeFile(destPath, dataBuffer, function (err) {

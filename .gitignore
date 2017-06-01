@@ -1,3 +1,6 @@
 *.log
 bin/*
 public/resource/*
+public/avatar/*
+public/thumbnail/*
+*.sb2

@@ -10,7 +10,7 @@ $(function () {
                 if (data) {
                     var count = data.data;
                     pageNum = count / pageSize
-                    conso.log("作品总数：" + count);
+                    console.log("作品总数：" + count);
                 }
                 else {
                     console.log("获取总数失败");
@@ -77,7 +77,7 @@ $(function () {
             + '<div style="background:write">'
             + '<div>'
             + '<a href="/works/' + work._id + '">'
-            + '<img src="/thumbnail/"' + work._id + '.png" style="max-width:100%" alt="image1"></img>'
+            + '<img src="/thumbnail/' + work._id + '.png" style="max-width:100%" alt="image1"></img>'
             + '</a>'
             + '</div>'
             + '<div>'

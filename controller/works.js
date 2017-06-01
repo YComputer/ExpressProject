@@ -13,6 +13,7 @@ var eventproxy = require('eventproxy');
 var Comment = require('../proxy/comment');
 var Evaluation = require('../proxy/evaluation');
 var moment = require('moment');
+var config = require('../config');
 
 exports.listAll = function (req, res, next) {
 
@@ -210,8 +211,8 @@ exports.upload = function (req, res, next) {
 
         var sourceFile = files.file.path;
         var url = path.resolve('./');
-        var relativeDestPath = "/public/avatar/" + name;
-        var destPath = url + '/..' + relativeDestPath;
+        var relativeDestPath = "public/avatar/" + name;
+        var destPath = config.config.project_base_path + relativeDestPath;
         var readStream = fs.createReadStream(sourceFile);
         var writeStream = fs.createWriteStream(destPath);
         readStream.pipe(writeStream);
