@@ -1,4 +1,6 @@
 $(function () {
+
+
     var pageSize = 20;
     var currentPage = 0;
     var pageNum = 1;
@@ -42,7 +44,6 @@ $(function () {
                         var html = generateNewRows(newPageWorks);
                         $("#allWorks").append(html);
                     }
-                    //alert("获取成功" + JSON.stringify(data));
                 }
                 else {
                     console.log("获取失败");
@@ -59,13 +60,13 @@ $(function () {
         for (var i = 0; i < works.length; i++) {
             var newcolumn = generateNewColumn(works[i]);
             innerHtml += newcolumn;
-            if (i != 0 && i % 4 == 0 && i + 1 < works.length) {
+            if (i != 0 && i % 4 == 3 && i + 1 < works.length) {
                 innerHtml += '</div><div class="row">';
             }
-            else if (i != 0 && i % 4 == 0 && i + 1 >= works.length) {
+            else if (i != 0 && i % 4 == 3 && i + 1 >= works.length) {
                 innerHtml += '</div>'
             }
-            else if (i % 4 != 0 && i + 1 >= works.length) {
+            else if (i % 4 != 3 && i + 1 >= works.length) {
                 innerHtml += '</div>'
             }
         }
@@ -77,7 +78,7 @@ $(function () {
             + '<div style="background:write">'
             + '<div>'
             + '<a href="/works/' + work._id + '">'
-            + '<img src="/thumbnail/' + work._id + '.png" style="max-width:100%" alt="image1"></img>'
+            + '<img src="/thumbnail/' + work._id + '.png" style="max-width:100%" onerror="thumbnail404(this);"></img>'
             + '</a>'
             + '</div>'
             + '<div>'

@@ -4,8 +4,8 @@
 extends ../layout
 block content
     div.container
-        //link(rel='stylesheet' href='/stylesheets/player.css')
-        //link(rel='stylesheet' href='/stylesheets/embed.css')
+
+
         div(style="margin-bottom:20px;margin-top:20px")
             script(src="/javascripts/fileup.js")
             script(src="/javascripts/pages/works.js")
@@ -19,8 +19,7 @@ block content
                                 div(style="background:write")
                                     div
                                         a(href='/works/'+list[i]._id)
-                                            img(src="/thumbnail/"+ "#{list[i]._id}"+".png" style="max-width:100%" alt="image1")
-                                        //embed(width="auto" height="auto" src=obj.sourcePath)
+                                            img(src="/thumbnail/"+ "#{list[i]._id}"+".png" style="max-width:100%")
                                     div
                                         a(href='/works/'+list[i]._id)
                                             h3 #{list[i].name}
@@ -35,8 +34,7 @@ block content
                                     div(style="background:write")
                                         div
                                             a(href='/works/'+list[i+1]._id)
-                                                img(src="/thumbnail/"+ "#{list[i+1]._id}"+".png" style="max-width:100%" alt="image1")
-                                            //embed(width="auto" height="auto" src=obj.sourcePath)
+                                                img(src="/thumbnail/"+ "#{list[i+1]._id}"+".png" style="max-width:100%")
                                         div
                                             a(href='/works/'+list[i+1]._id)
                                                 h3 #{list[i+1].name}
@@ -51,8 +49,7 @@ block content
                                     div(style="background:write")
                                         div
                                             a(href='/works/'+list[i+2]._id)
-                                                img(src="/thumbnail/"+ "#{list[i+2]._id}"+".png" style="max-width:100%" alt="image1")
-                                            //embed(width="auto" height="auto" src=obj.sourcePath)
+                                                img(src="/thumbnail/"+ "#{list[i+2]._id}"+".png" style="max-width:100%")
                                         div
                                             a(href='/works/'+list[i+2]._id)
                                                 h3 #{list[i+2].name}
@@ -67,8 +64,7 @@ block content
                                     div(style="background:write")
                                         div
                                             a(href='/works/'+list[i+3]._id)
-                                                img(src="/thumbnail/"+ "#{list[i+3]._id}"+".png" style="max-width:100%" alt="image1")
-                                            //embed(width="auto" height="auto" src=obj.sourcePath)
+                                                img(src="/thumbnail/"+ "#{list[i+3]._id}"+".png" style="max-width:100%")
                                         div
                                             a(href='/works/'+list[i+3]._id)
                                                 h3 #{list[i+3].name}
@@ -109,4 +105,12 @@ block content
         div(class="modal-footer")
             button#createdWork(class="btn") 创建
             button(class="btn" data-dismiss="modal") 取消上传
+    script.
+        $('img').bind('error', function () {
+            //$(this).hide();
+            $(this).attr("src", "images/6202.png");
+        });
+        var thumbnail404 = function (image) {
+            image.setAttribute("src", "images/6202.png");
+        }
 
