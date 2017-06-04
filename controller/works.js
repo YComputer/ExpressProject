@@ -187,7 +187,7 @@ exports.downLoad = function (req, res, next) {
         }
         else {
             var url = path.resolve('./');
-            res.download(url + '/..' + doc[0].sourcePath, doc[0].name + '.sb2', function (err1) {
+            res.download(config.config.project_base_path + doc[0].sourcePath, doc[0].name + '.sb2', function (err1) {
                 if (err1) {
                     logger.error(err1);
                     res.send(err1);
