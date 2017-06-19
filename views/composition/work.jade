@@ -1,4 +1,4 @@
-﻿extends ../layout
+extends ../layout
 block content
     div.container
               div(class=area id=title-area style="height:180px")
@@ -26,6 +26,7 @@ block content
 
             script(type='text/javascript').
                 P.IO.PROJECT_URL = 'http://127.0.0.1:5000/';
+                P.IO.SOUNDBANK_URL = 'http://127.0.0.1:5000/';
                  function show(id) {
                       //     titleArea.style.height = id ? 0 : titleAreaHeight + 'px';
                       //   playerArea.style.height = id ? playerAreaHeight + 'px' : 0
@@ -80,7 +81,7 @@ block content
             a(href="/works/"+"#{work._id}"+"/evaluation" class="btn")
                 button(class="btn") 查看评估报告
             script(type='text/javascript').   
-             load('works/'+ '#{work.id}'+'/downresource');
+             load('works/'+ '#{work._id}'+'/downresource');
         div(class="col-md-8")
             div
                 textarea#work_comment_text(rows=4 style="width:100%;height:100px;margin-top:20px" placeholder="想说点什么就写在这儿吧")

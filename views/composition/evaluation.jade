@@ -1,4 +1,124 @@
 extends ../layout
+body(style='text-align:center')
 block content
     div.container
-        p #{evaluation.evaluationscore}
+    script(src='/javascripts/dist/Chart.bundle.js')
+    script(src='/javascripts/dist/utils.js')
+    .div(style='width:800px; margin:0 auto;')
+      .row
+        .span12
+          h3
+            | 评估报告
+      .row
+        .span12
+          div(style='width:40%')
+            canvas#canvas
+          script.
+            var randomScalingFactor = function() {
+            return Math.round(Math.random() * 100);
+            };
+            var color = Chart.helpers.color;
+            var config = {
+            type: 'radar',
+            data: {
+            labels: ["正确性", "性能", "简洁度", "变量命名", "布局", "配色", "声音"],
+            datasets: [{
+            label: "当前成绩",
+            backgroundColor: color(window.chartColors.red).alpha(0.2).rgbString(),
+            borderColor: window.chartColors.red,
+            pointBackgroundColor: window.chartColors.red,
+            data: [
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor()
+            ]
+            }, {
+            label: "你的平均成绩",
+            backgroundColor: color(window.chartColors.yellow).alpha(0.2).rgbString(),
+            borderColor: window.chartColors.yellow,
+            pointBackgroundColor: window.chartColors.red,
+            data: [
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor()
+            ]
+            },{
+            label: "所有平均值",
+            backgroundColor: color(window.chartColors.blue).alpha(0.2).rgbString(),
+            borderColor: window.chartColors.blue,
+            pointBackgroundColor: window.chartColors.blue,
+            data: [
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor(),
+            randomScalingFactor()
+            ]
+            },]
+            },
+            options: {
+            legend: {
+            position: 'top',
+            },
+            title: {
+            display: true,
+            text: '成绩评估图'
+            },
+            scale: {
+            ticks: {
+            beginAtZero: true
+            }
+            }
+            }
+            };
+            window.onload = function() {
+            window.myRadar = new Chart(document.getElementById("canvas"), config);
+            };
+      .row
+        .span12
+          h2
+            | 具体解读
+          p
+            span.label(style='background-color:dimgrey') 正确性
+          p
+            em 逻辑正确，通过了所有测试
+          p
+            span.label(style='background-color:dimgrey') 性能
+          p
+            em 性能优秀，占用运算资源少，速度快
+          p
+            span.label(style='background-color:dimgrey') 简洁度
+          p
+            em 只有很少冗余，很不错
+          p
+            span.label(style='background-color:dimgrey') 变量命名
+          p
+            em 命名都有意义
+          p
+            span.label(style='background-color:dimgrey') 布局
+          p
+            em 布局合理，空间利用充分
+          p
+            span.label(style='background-color:dimgrey') 配色
+          p
+            em 配色缺乏美感
+          p
+            span.label(style='background-color:dimgrey') 声音
+          p
+            em 声音和谐
+      .row
+        .span12
+          h2
+            | 综合点评
+          p
+            | 布局，逻辑 表现良好， 还需要在 配色 上继续努力

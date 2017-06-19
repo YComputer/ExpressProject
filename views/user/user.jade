@@ -122,3 +122,84 @@ block content
             div(id="myLearningCurve")
                 div(class="page-header col-md-12")
                     h1 我的学习曲线
+                          #curvecontainer
+                          script(src='/javascripts/dist/Chart.bundle.js')
+                          script(src='/javascripts/dist/utils.js')
+                          style.
+                            canvas{
+                            -moz-user-select: none;
+                            -webkit-user-select: none;
+                            -ms-user-select: none;
+                            }
+                            .chart-container {
+                            width: 500px;
+                            margin-left: 40px;
+                            margin-right: 40px;
+                            margin-bottom: 40px;
+                            }
+                        script.
+                          var randomScalingFactor = function() {
+                          return Math.round(Math.random() * 100);
+                          };
+                          function createConfig(pointStyle, title) {
+                          return {
+                          type: 'line',
+                          data: {
+                          labels: ["January", "February", "March", "April", "May", "June", "July"],
+                          datasets: [{
+                          label: "成绩",
+                          backgroundColor: window.chartColors.red,
+                          borderColor: window.chartColors.red,
+                          data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
+                          fill: false,
+                          pointRadius: 10,
+                          pointHoverRadius: 15,
+                          showLine: true // no line shown
+                          }]
+                          },
+                          options: {
+                          responsive: true,
+                          title:{
+                          display:true,
+                          text: title
+                          },
+                          legend: {
+                          display: false
+                          },
+                          elements: {
+                          point: {
+                          pointStyle: pointStyle
+                          }
+                          }
+                          }
+                          };
+                          }
+                          window.onload = function() {
+                          strOfCanvas = ['正确性', '性能','简洁度','变量名','布局','配色','声音'];
+                          var crcontainer = document.querySelector('#curvecontainer');
+                          var paint = function(pointStyle, title) {
+                          var div = document.createElement('div');
+                          div.classList.add('chart-container');
+                          var canvas = document.createElement('canvas');
+                          div.appendChild(canvas);
+                          crcontainer.appendChild(div);
+                          var ctx = canvas.getContext('2d');
+                          var config = createConfig(pointStyle, title);
+                          new Chart(ctx, config);
+                          }
+                          pointStyle = [
+                          'circle',
+                          'triangle',
+                          'rect',
+                          'rectRounded',
+                          'rectRot',
+                          'cross',
+                          'crossRot',
+                          'star',
+                          'line',
+                          'dash'
+                          ];
+                          for (var i = 0; i < 7; i++ ){
+                          paint(pointStyle[i], strOfCanvas[i]);
+                          }
+                          };

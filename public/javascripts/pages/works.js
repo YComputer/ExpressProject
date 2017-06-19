@@ -105,6 +105,8 @@ $(function () {
     var input, uploader;
 
     input = $('#xfile')[0];
+    
+    var filesb;
 
     uploader = new FileUp({
         endpoint: '/works'
@@ -114,19 +116,7 @@ $(function () {
         //I think this line is bug, as we do not need to upload all the files we select from the button (we can cancel )
 
         // we need to put the code in unloader.on to show the sb2 file
-
-        uploader.add(this.files[0]);
-        uploader.work();
-    });
-
-    uploader.on('done', function (item) {
-
-    });
-
-    var responseId = "";
-
-    uploader.on("success", function (item) {
-        responseId = JSON.parse(item.xhr.response).id;
+        filesb = this.files[0];
         $('#uploadResultModal').modal("show");
         var autoStart = false;
         var lightContent = false;
@@ -138,27 +128,30 @@ $(function () {
         if (lightContent) document.body.className += ' light-content';
         document.body.className += hasUI ? ' has-ui' : ' hide-ui';
         document.title = 'run the sb2';
-        var request = P.IO.loadSB2File(item.file);
+        P.IO.SOUNDBANK_URL = 'http://127.0.0.1:5000/';
+        var request = P.IO.loadSB2File(this.files[0]);
         P.player.showProgress(request, function (stage) {
             //    stage.triggerGreenFlag();
         });
-        uploader.items = [];
-        uploader.queue = [];
-    })
+        //uploader.items = [];
+        //uploader.queue = [];
+        //uploader.add(this.files[0]);
+        //uploader.work();
+    });
 
-    uploader.on("error", function (item) {
-        uploader.items = [];
-        uploader.queue = [];
-    })
+    uploader.on('done', function (item) {
+            //alert("上传done");
+    });
 
-    uploader.on("abort", function (item) {
-        alert("文件上传中断。");
-    })
+    var responseId = "";
 
-    $("#createdWork").on('click', function () {
-
+    uploader.on("success", function (item) {
+        //alert("上传success");
+        responseId = JSON.parse(item.xhr.response).id;
+        
         var workName = $("#worknametext")[0].value;
         var workDiscription = $("#workdiscription")[0].value;
+        
         $.ajax({
             url: "/works/" + responseId,
             method: "post",
@@ -192,15 +185,31 @@ $(function () {
                         alert("缩略图上传完毕.");
                     }
                 });
+               
 
-                alert("保存成功");
+                alert("上传成功");
+                window.location.href='/works';
             },
             error: function () {
-                alert("保存失败");
+                alert("上传失败");
             }
         })
+      
+    })
 
+    uploader.on("error", function (item) {
+        uploader.items = [];
+        uploader.queue = [];
+    })
 
+    uploader.on("abort", function (item) {
+        alert("文件上传中断。");
+    })
 
+    $("#createdWork").on('click', function () {
+        //alert("strat")
+        uploader.add(filesb);
+        uploader.work();
+        //alert("over")
     })
 })
