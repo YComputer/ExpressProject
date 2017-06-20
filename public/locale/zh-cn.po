@@ -762,6 +762,86 @@ msgstr "复制"
 msgid "Post Project"
 msgstr "发布项目"
 
+msgid "Course"
+msgstr "课程"
+
+msgid "Course 1"
+msgstr "课程 1"
+
+msgid "Course 2"
+msgstr "课程 2"
+
+
+msgid "Course 3"
+msgstr "课程 3"
+
+msgid "Course 4"
+msgstr "课程 4"
+
+msgid "Course 5"
+msgstr "课程 5"
+
+msgid "Course 6"
+msgstr "课程 6"
+
+msgid "Course 7"
+msgstr "课程 7"
+
+msgid "Course 8"
+msgstr "课程 8"
+
+msgid "Course 9"
+msgstr "课程 9"
+
+msgid "Course 10"
+msgstr "课程 10"
+
+msgid "Course 11"
+msgstr "课程 11"
+
+msgid "Course 12"
+msgstr "课程 12"
+
+msgid "Course 13"
+msgstr "课程 13"
+
+msgid "Course 14"
+msgstr "课程 14"
+
+msgid "Assignment"
+msgstr "作业"
+
+msgid "Assignment 1"
+msgstr "作业 1"
+
+msgid "Assignment 2"
+msgstr "作业 2"
+
+
+msgid "Assignment 3"
+msgstr "作业 3"
+
+msgid "Assignment 4"
+msgstr "作业 4"
+
+msgid "Assignment 5"
+msgstr "作业 5"
+
+msgid "Assignment 6"
+msgstr "作业 6"
+
+msgid "Assignment 7"
+msgstr "作业 7"
+
+msgid "Assignment 8"
+msgstr "作业 8"
+
+msgid "Assignment 9"
+msgstr "作业 9"
+
+msgid "Assignment 10"
+msgstr "作业 10"
+
 msgid "Copying..."
 msgstr "正在复制..."
 
