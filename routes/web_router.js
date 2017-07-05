@@ -75,5 +75,7 @@ router.get('/resource/:resourceType/:resourceId/download', resource.download);//
 
 router.post('/resource', resource.upload);//上传资源
 router.post('/resource/:resourceId', resource.saveResource);//保存资源
+router.post('/resourceFavor', resource.saveResource);//收藏资源
+
 
 module.exports = router;

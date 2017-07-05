@@ -37,7 +37,7 @@ block content
                 span(class="fa fa-plus" style="font-size:20px") 上传资源
             input(id="xfile" type="file" name="files" style="display:none")
       - for(var i=0; i<list.length;i=i+4)
-             div.row(style="border-bottom:3px grey solid") 
+             div.row 
                      div(class="col-md-3" style="padding-left:10px;padding-right:10px")
                         div
                             a(href='/resource/'+list[i].resourceType+'/'+list[i]._id)
@@ -103,8 +103,9 @@ block content
             h3 上传资源
         div(class="modal-body row")
             div(class="col-md-7")
-                div(style="border:solid 1px grey")
-                    div(class='player') 
+                div(style="border:solid 1px grey; width:495px; height:302px;")
+                    div(class='player' ) 
+                        img#preview(class='previewimg' style="width:493px; height:300px;")
                         
             div(class="col-md-5" style="padding-right:10px")
                 div

@@ -9,6 +9,7 @@ var fs = require("fs");
 var path = require("path");
 var formidable = require("formidable");
 var eventproxy = require('eventproxy');
+var config = require('../config');
 
 /**显示资源列表
  * 
@@ -65,7 +66,7 @@ exports.upload = function (req, res, next) {
 
         var sourceFile = files.file.path;
         var relativeDestPath =  '/public/resources/' + name;
-        var destPath = process.cwd()  + relativeDestPath;
+        var destPath = config.config.project_base_path + relativeDestPath;
         var readStream = fs.createReadStream(sourceFile);
         var writeStream = fs.createWriteStream(destPath);
         readStream.pipe(writeStream);
@@ -117,7 +118,7 @@ exports.download = function (req, res, next) {
             return next(err);
         }
         else {
-            res.download(process.cwd() + '/../public/resource/' + doc[0].resourcePath, function (err1) {
+            res.download(config.config.project_base_path + '/../public/resource/' + doc[0].resourcePath, function (err1) {
                 if (err1) {
                     logger.error(err1);
                      res.send(err1);
