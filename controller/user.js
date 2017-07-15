@@ -6,6 +6,7 @@ var Work = require('../proxy/work');
 var logger = require('../common/logger');
 var eventproxy = require('eventproxy');
 var url = require("url");
+var clone = require('../common/tools').clone;
 
 exports.create = function (req, res, next) {
     var user_name = url.parse(req.url, true).query.name;
@@ -46,6 +47,13 @@ exports.listInfo = function (req, res, next) {
             logger.error("查找用户信息失败：", err);
         }
         //renderData["userinfo"] = doc;
+        var user = {
+            _id: doc._id,
+
+        };
+        // if (doc.UserInfo.sex == 1)
+        //     user.userInfo.sex = "女";
+        // else user.userInfo.sex = "男";
         ep.emit('searchuserinfofinished', doc);
     });
 
@@ -70,13 +78,24 @@ exports.updateInfo = function (req, res, next) {
         return;
     }
 
-    var name = req.query.name;
-    var sex = req.query.sex;
-    var birth = req.query.birth;
-    var school = req.query.school;
-    var gread = req.query.gread;
+    var name = req.body.name;
+    var sex = 0;
+    if (req.body.sex == "男")
+        sex = 0;
+    else if (req.body.sex == "女")
+        sex = 1;
 
-    User.updateUserInfo(user_id, name, sex, 12, Date.now(), "法师打发", "江苏", "南京", "育才中学", "初一", "13776416562", function (err, data) {
+    //var sex = req.body.sex;
+    var birth = req.body.birth;
+    var school = req.body.school;
+    var gread = req.body.gread;
+    var phone = req.body.phone;
+    var city = req.body.city;
+    var province = req.body.province;
+    var age = req.body.age;
+    var address = req.body.address;
+
+    User.updateUserInfo(user_id, name, sex, age, birth, address, province, city, school, gread, phone, function (err, data) {
         if (err) {
             res.send(false);
         }
@@ -86,4 +105,25 @@ exports.updateInfo = function (req, res, next) {
     })
 
 
+}
+
+exports.getUserName = function (req, res, next) {
+
+    if (req.session.user == undefined) {
+        res.send("游客");
+        return;
+    }
+    var user_id = req.session.user._id;
+    if (user_id == undefined) {
+        res.send("游客");
+        return;
+    }
+    User.getUserById(user_id, function (err, doc) {
+        if (err) {
+            res.send("游客");
+        }
+        else {
+            res.send(doc.name);
+        }
+    })
 }

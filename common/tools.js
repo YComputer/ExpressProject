@@ -28,3 +28,17 @@ exports.bhash = function (str, callback) {
 exports.bcompare = function (str, hash, callback) {
     bcrypt.compare(str, hash, callback);
 };
+
+var clone = function (myObj) {
+    if (typeof (myObj) != 'object') return myObj;
+    if (myObj == null) return myObj;
+
+    var myNewObj = new Object();
+
+    for (var i in myObj)
+        myNewObj[i] = clone(myObj[i]);
+
+    return myNewObj;
+}
+
+exports.clone = clone;

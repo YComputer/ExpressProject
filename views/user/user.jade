@@ -59,22 +59,40 @@ block content
             div(id="myInfo")      
                 div(class="page-header col-md-12")
                     h1 我的资料
-                div(class="col-md-12")
+                div(class="col-md-8")
                     div(class="input-group")
                         span(class="input-group-addon") 姓名
-                        input#nameText(type="text" class="form-control" placeholder="twitterhandle")
+                        input#nameText(type="text" class="form-control" placeholder="twitterhandle" value=me.UserInfo.name)
                     div(class="input-group")
                         span(class="input-group-addon") 性别
-                        input#sexText(type="text" class="form-control" placeholder="twitterhandle")
+                        - if(me.UserInfo.sex==0 )
+                            input#sexText(type="text" class="form-control" placeholder="twitterhandle" value="男")
+                        - else 
+                            input#sexText(type="text" class="form-control" placeholder="twitterhandle" value="女")
                     div(class="input-group")
                         span(class="input-group-addon") 生日
-                        input#birthText(type="text" class="form-control" placeholder="twitterhandle")
+                        input#birthText(type="text" class="form-control" placeholder="twitterhandle" value=me.UserInfo.birth)
                     div(class="input-group")
                         span(class="input-group-addon") 学校
-                        input#schoolText(type="text" class="form-control" placeholder="twitterhandle")
+                        input#schoolText(type="text" class="form-control" placeholder="twitterhandle" value=me.UserInfo.school)
                     div(class="input-group")
                         span(class="input-group-addon") 年级
-                        input#greadText(type="text" class="form-control" placeholder="twitterhandle")
+                        input#greadText(type="text" class="form-control" placeholder="twitterhandle" value=me.UserInfo.gread)
+                    div(class="input-group")
+                        span(class="input-group-addon") 省份
+                        input#provinceText(type="text" class="form-control" placeholder="twitterhandle" value=me.UserInfo.province)
+                    div(class="input-group")
+                        span(class="input-group-addon") 城市
+                        input#cityText(type="text" class="form-control" placeholder="twitterhandle" value=me.UserInfo.city)
+                    div(class="input-group")
+                        span(class="input-group-addon") 地址
+                        input#addressText(type="text" class="form-control" placeholder="twitterhandle" value=me.UserInfo.address)
+                    div(class="input-group")
+                        span(class="input-group-addon") 年龄
+                        input#ageText(type="text" class="form-control" placeholder="twitterhandle" value=me.UserInfo.age)
+                    div(class="input-group")
+                        span(class="input-group-addon") 联系电话
+                        input#phoneText(type="text" class="form-control" placeholder="twitterhandle" value=me.UserInfo.phoneNumber)
                     div(style="margin-top:15px")
                         button#updateUserInfoBtn(class="btn" style="display:block;margin-left:auto;margin-right:auto") 更新资料
             div(id="myWorks")

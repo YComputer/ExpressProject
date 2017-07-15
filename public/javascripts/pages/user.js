@@ -7,6 +7,11 @@ $(function () {
         var birth = $("#birthText")[0].value;
         var school = $("#schoolText")[0].value;
         var gread = $("#greadText")[0].value;
+        var phone = $("#phoneText")[0].value;
+        var province = $("#provinceText")[0].value;
+        var city = $("#cityText")[0].value;
+        var age = $("#ageText")[0].value;
+        var address = $("#addressText")[0].value;
         $.ajax({
             type: "POST",
             url: "/user/updateinfo",
@@ -15,7 +20,12 @@ $(function () {
                 sex: sex,
                 birth: birth,
                 school: school,
-                gread: gread
+                gread: gread,
+                phone: phone,
+                province: province,
+                city: city,
+                age: age,
+                address: address
             },
             success: function (data) {
                 if (data) {

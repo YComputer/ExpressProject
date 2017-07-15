@@ -13,11 +13,15 @@ exports.postComment = function (req, res, next) {
     var commentid = body.id;
     var commentTo = body.commentTo;
     var content = body.content;
+    var user_id = undefined;
+    if (req.session.user != undefined) {
+        user_id = req.session.user._id;
+    }
     if (content == "" || content == undefined) {
         res.send(false);
         return;
     }
-    Comment.saveComment(commentType, commentid, commentTo, content, function (err, doc) {
+    Comment.saveComment(commentType, commentid, commentTo, content, user_id, function (err, doc) {
         if (err) {
             logger.error(err);
             res.send(false);

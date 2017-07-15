@@ -823,9 +823,9 @@ var P = (function () {
                 IO.projectRequest.add(request);
             } else {
                 IO.projectRequest.add(
-                  IO.loadImage(IO.ASSET_URL + md5 + '/get/', function (result) {
-                      callback(result);
-                  }));
+                    IO.loadImage(IO.ASSET_URL + md5 + '/get/', function (result) {
+                        callback(result);
+                    }));
             }
         }
     };
@@ -1109,9 +1109,9 @@ var P = (function () {
         this.root.style.fontSize = '1px';
         this.root.style.background = '#fff';
         this.root.style.WebkitUserSelect =
-        this.root.style.MozUserSelect =
-        this.root.style.MSUserSelect =
-        this.root.style.WebkitUserSelect = 'none';
+            this.root.style.MozUserSelect =
+            this.root.style.MSUserSelect =
+            this.root.style.WebkitUserSelect = 'none';
 
         this.backdropCanvas = document.createElement('canvas');
         this.root.appendChild(this.backdropCanvas);
@@ -1136,8 +1136,8 @@ var P = (function () {
         this.canvas.tabIndex = 0;
         this.canvas.style.outline = 'none';
         this.backdropCanvas.style.position =
-        this.penCanvas.style.position =
-        this.canvas.style.position = 'absolute';
+            this.penCanvas.style.position =
+            this.canvas.style.position = 'absolute';
         this.backdropCanvas.style.width = '480px';
         this.penCanvas.style.width = '480px';
         this.canvas.style.width = '480px';
@@ -1219,7 +1219,7 @@ var P = (function () {
         this.root.appendChild(this.prompter);
         this.prompter.style.position = 'absolute';
         this.prompter.style.left =
-        this.prompter.style.right = '14em';
+            this.prompter.style.right = '14em';
         this.prompter.style.bottom = '6em';
         this.prompter.style.padding = '5em 30em 5em 5em';
         this.prompter.style.border = '3em solid rgb(46, 174, 223)';
@@ -1242,7 +1242,7 @@ var P = (function () {
         this.prompt.style.border = '0';
         this.prompt.style.background = '#eee';
         this.prompt.style.MozBoxSizing =
-        this.prompt.style.boxSizing = 'border-box';
+            this.prompt.style.boxSizing = 'border-box';
         this.prompt.style.font = '13em sans-serif';
         this.prompt.style.padding = '0 ' + (3 / 13) + 'em';
         this.prompt.style.outline = '0';
@@ -1251,9 +1251,9 @@ var P = (function () {
         this.prompt.style.height = '' + (20 / 13) + 'em';
         this.prompt.style.display = 'block';
         this.prompt.style.WebkitBorderRadius =
-        this.prompt.style.borderRadius = '0';
+            this.prompt.style.borderRadius = '0';
         this.prompt.style.WebkitBoxShadow =
-        this.prompt.style.boxShadow = 'inset ' + (1 / 13) + 'em ' + (1 / 13) + 'em ' + (2 / 13) + 'em rgba(0, 0, 0, .2), inset ' + (-1 / 13) + 'em ' + (-1 / 13) + 'em ' + (1 / 13) + 'em rgba(255, 255, 255, .2)';
+            this.prompt.style.boxShadow = 'inset ' + (1 / 13) + 'em ' + (1 / 13) + 'em ' + (2 / 13) + 'em rgba(0, 0, 0, .2), inset ' + (-1 / 13) + 'em ' + (-1 / 13) + 'em ' + (1 / 13) + 'em rgba(255, 255, 255, .2)';
         this.prompt.style.WebkitAppearance = 'none';
 
         this.promptButton = document.createElement('div');
@@ -1263,7 +1263,7 @@ var P = (function () {
         this.promptButton.style.position = 'absolute';
         this.promptButton.style.right = '4em';
         this.promptButton.style.bottom = '4em';
-        this.promptButton.style.background = 'url(icons.svg) -165em -37em';
+        this.promptButton.style.background = 'url(/images/icons.svg) -165em -37em';
         this.promptButton.style.backgroundSize = '320em 96em';
 
         this.prompt.addEventListener('keydown', function (e) {
@@ -1349,13 +1349,13 @@ var P = (function () {
             this.penContext.lineCap = 'round';
         }
         this.root.style.width =
-        this.canvas.style.width =
-        this.backdropCanvas.style.width =
-        this.penCanvas.style.width = (480 * zoom | 0) + 'px';
+            this.canvas.style.width =
+            this.backdropCanvas.style.width =
+            this.penCanvas.style.width = (480 * zoom | 0) + 'px';
         this.root.style.height =
-        this.canvas.style.height =
-        this.backdropCanvas.style.height =
-        this.penCanvas.style.height = (360 * zoom | 0) + 'px';
+            this.canvas.style.height =
+            this.backdropCanvas.style.height =
+            this.penCanvas.style.height = (360 * zoom | 0) + 'px';
         this.root.style.fontSize = zoom + 'px';
         this.zoom = zoom;
         this.updateBackdrop();
@@ -1819,8 +1819,8 @@ var P = (function () {
                     if (brightnessVal < 0) brightnessVal = -255 - brightnessVal;
 
                     imgData.data[0] =
-                    imgData.data[1] =
-                    imgData.data[2] = Math.abs(brightnessVal);
+                        imgData.data[1] =
+                        imgData.data[2] = Math.abs(brightnessVal);
                     imgData.data[3] = 255;
 
                     brightnessContext.putImageData(imgData, 0, 0);
@@ -2125,7 +2125,7 @@ var P = (function () {
             this.bubblePointer.style.position = 'absolute';
             this.bubblePointer.style.height = '' + (21 / 14) + 'em';
             this.bubblePointer.style.width = '' + (44 / 14) + 'em';
-            this.bubblePointer.style.background = 'url(icons.svg) ' + (-195 / 14) + 'em ' + (-4 / 14) + 'em';
+            this.bubblePointer.style.background = 'url(/images/icons.svg) ' + (-195 / 14) + 'em ' + (-4 / 14) + 'em';
             this.bubblePointer.style.backgroundSize = '' + (320 / 14) + 'em ' + (96 / 14) + 'em';
             this.stage.root.appendChild(this.bubble);
         }
@@ -2522,14 +2522,14 @@ P.compile = (function () {
     // DEBUG = true;
 
     var EVENT_SELECTORS = [
-      'procDef',
-      'whenClicked',
-      'whenCloned',
-      'whenGreenFlag',
-      'whenIReceive',
-      'whenKeyPressed',
-      'whenSceneStarts',
-      'whenSensorGreaterThan' // TODO
+        'procDef',
+        'whenClicked',
+        'whenCloned',
+        'whenGreenFlag',
+        'whenIReceive',
+        'whenKeyPressed',
+        'whenSceneStarts',
+        'whenSensorGreaterThan' // TODO
     ];
 
     var compileScripts = function (object) {
@@ -2611,8 +2611,8 @@ P.compile = (function () {
 
             var t = types[i];
             var kind =
-              t === '%n' || t === '%d' || t === '%c' ? 'num' :
-              t === '%b' ? 'bool' : '';
+                t === '%n' || t === '%d' || t === '%c' ? 'num' :
+                    t === '%b' ? 'bool' : '';
 
             if (kind === 'num' && usenum) {
                 return 'C.numargs[' + i + ']';
@@ -2635,12 +2635,12 @@ P.compile = (function () {
             } else if (typeof e === 'string') {
 
                 return '"' + e
-                  .replace(/\\/g, '\\\\')
-                  .replace(/\n/g, '\\n')
-                  .replace(/\r/g, '\\r')
-                  .replace(/"/g, '\\"')
-                  .replace(/\{/g, '\\x7b')
-                  .replace(/\}/g, '\\x7d') + '"';
+                    .replace(/\\/g, '\\\\')
+                    .replace(/\n/g, '\\n')
+                    .replace(/\r/g, '\\r')
+                    .replace(/"/g, '\\"')
+                    .replace(/\{/g, '\\x7b')
+                    .replace(/\}/g, '\\x7d') + '"';
 
             } else if (e[0] === 'getParam') { /* Data */
 
@@ -3028,14 +3028,14 @@ P.compile = (function () {
                 source += 'S.showNextCostume();\n';
 
             } else if (block[0] === 'showBackground:' ||
-                       block[0] === 'startScene') {
+                block[0] === 'startScene') {
 
                 source += 'self.setCostume(' + val(block[1]) + ');\n';
                 source += 'var threads = sceneChange();\n';
                 source += 'if (threads.indexOf(BASE) !== -1) return;\n';
 
             } else if (block[0] === 'nextBackground' ||
-                       block[0] === 'nextScene') {
+                block[0] === 'nextScene') {
 
                 source += 'S.showNextCostume();\n';
                 source += 'var threads = sceneChange();\n';

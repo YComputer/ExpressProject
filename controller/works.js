@@ -89,18 +89,44 @@ exports.showDetail = function (req, res, next) {
             return next(err);
         }
         else {
-            var commentsList = new Array();
+            var ids = [];
             for (var i = 0; i < docs.length; i++) {
-                var doc = {}
-                doc._id = docs[i]._id;
-                doc.commentContent = docs[i].commentContent;
-                doc.workId = docs[i].workId;
-                doc.commentType = docs[i].commentType;
-                doc.commentTime = moment(docs[i].commentTime).format('YYYY MMMM Do, hh:mm:ss a');
-                doc.index = i;
-                commentsList.push(doc);
+                ids[i] = docs[i].commentUser;
             }
-            ep.emit("comments", commentsList);
+
+            User.getUsersByIds(ids, function (err1, users) {
+                if (err1) {
+                    logger.error(err);
+                    res.send(err);
+                    return next(err);
+                }
+                else {
+
+                    var commentsList = new Array();
+                    for (var i = 0; i < docs.length; i++) {
+                        var doc = {}
+                        doc._id = docs[i]._id;
+                        var finduser = false;
+                        for (var k = 0; k < users.length; k++) {
+                            if ("" + docs[i].commentUser == "" + users[k]._id) {
+                                doc.commentUser = users[k].name;
+                                finduser = true;
+                                break;
+                            }
+                        }
+                        if (!finduser) {
+                            doc.commentUser = "游客";
+                        }
+                        doc.commentContent = docs[i].commentContent;
+                        doc.workId = docs[i].workId;
+                        doc.commentType = docs[i].commentType;
+                        doc.commentTime = moment(docs[i].commentTime).format('YYYY MMMM Do, hh:mm:ss a');
+                        doc.index = i;
+                        commentsList.push(doc);
+                    }
+                    ep.emit("comments", commentsList);
+                }
+            })
         }
     })
     Evaluation.findByWorkId(id, function (err, docs) {

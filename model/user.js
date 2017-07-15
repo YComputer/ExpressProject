@@ -11,7 +11,7 @@ var UserInfoSchema = new Schema({
     sex: { type: Number, default: 0 },  //0男孩 1女孩
     age: { type: Number },
     birth: { type: Date },
-    Address: { type: String },
+    address: { type: String },
     province: { type: String },
     city: { type: String },
     phoneNumber: { type: String },

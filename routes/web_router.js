@@ -33,7 +33,7 @@ router.get('/static/news', static.news);
 router.get('/static/otherproduct', static.otherproduct);
 
 router.post('/signup', sign.signup);  // 提交注册信息
-router.post('/signout', sign.signout);  // 登出
+router.get('/signout', sign.signout);  // 登出
 router.post('/signin', sign.login);  // 登录校验
 router.get('/active_account', sign.activeAccount);  //帐号激活
 //router.get('/works',auth.userRequired, works.listAll); //查看所有作品
@@ -50,6 +50,7 @@ router.get('/courses/:courseType/:courseId', course.showCourseDetail);
 router.get('/courses/:courseType/:courseId/description', course.getCourseDescriptionById);
 router.post('/comments', comment.postComment);
 router.get('/user', user.listInfo);
+router.get('/getusernamebyid', user.getUserName);
 router.post('/user/updateInfo', user.updateInfo);
 router.post('/works', works.upload);
 router.post('/works/:workid', works.saveWork);

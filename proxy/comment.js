@@ -13,7 +13,7 @@ exports.getAllComments = function (commentType, id, callback) {
     //{ sort: [{ 'commentTime': -1 }] }, 
 }
 
-exports.saveComment = function (commentType, id, commentTo, content, callback) {
+exports.saveComment = function (commentType, id, commentTo, content, commentUser, callback) {
     var comment = new CommentModel();
     var type = parseInt(commentType);
     comment.commentType = type;
@@ -27,5 +27,6 @@ exports.saveComment = function (commentType, id, commentTo, content, callback) {
     if (commentTo != undefined && commentTo != "") {
         comment.commentTo = commentTo;
     }
+    comment.commentUser = commentUser;
     comment.save(callback);
 }
