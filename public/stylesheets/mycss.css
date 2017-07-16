@@ -175,6 +175,12 @@ h4{
     background:white;
 }
 
+.loginForm {
+    background: rgb(34,51,65);
+    height: 100%;
+}
+
+
 /*.QQ_login{
     content: "\f1d6";
     background-image: url("/images/QQ_icon.png");

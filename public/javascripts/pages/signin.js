@@ -6,6 +6,12 @@ $(function () {
     $('#submitsignin').on('click', function () {
         var loginname = $('#loginname')[0].value;
         var pass = $('#pass')[0].value;
+        if(!loginname||!pass)
+        {
+             $('#signininfo')[0].style.visibility = "visible";
+             $('#signininfo')[0].innerHTML = "请输入用户名和密码";
+             return;
+        }
         $.ajax({
             url: '/signin',
             method: "post",
@@ -25,9 +31,9 @@ $(function () {
             },
             error: function (err) {
                 $('#signininfo')[0].style.visibility = "visible";
-                $('#signininfo')[0].innerHTML = "注册失败";
+                $('#signininfo')[0].innerHTML = "登录失败，请重试";
 
-                alert(JSON.stringify(err));
+                // alert(JSON.stringify(err));
             }
         });
     });
