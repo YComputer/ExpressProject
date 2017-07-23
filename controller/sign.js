@@ -11,6 +11,8 @@ var tools = require('../common/tools');
 var authMiddleWare = require('../middlewares/auth');
 var uuid = require('uuid');
 
+var mail = require('../common/mail');
+
 exports.checkLoginStatus = function (req, res) {
     if (!req.session || !req.session.user || !req.session.user._id) {
         return res.send(false);
@@ -147,7 +149,7 @@ exports.login = function (req, res, next) {
 
     ep.on('login_error', function (login_error) {
         res.status(403);
-        res.render('sign/signin', { error: '用户名或密码错误' });
+        res.render('sign/newSignin', { error: '用户名或密码错误' });
     });
 
     getUser(loginname, function (err, user) {
@@ -216,3 +218,117 @@ exports.signout = function (req, res, next) {
  * @param next
  */
 exports.activeAccount = function (req, res, next) { }
+
+/**
+ * 找回密码
+ * @param req
+ * @param res
+ */
+exports.findpwd = function (req, res) {
+    res.render('sign/findpwd');
+}
+
+/**
+ * 发送邮件-找回密码链接
+ * @param req
+ * @param res
+ */
+exports.sendResetPwdMail = function (req, res) {
+
+    var email = req.body.email;
+    var href = "";
+    User.getUserByMail(email, function (err, doc) {
+        if (err) {
+            res.send({ error: '该邮箱不存在' });
+
+        } else {
+            if (doc.length < 1) {
+                res.send({ error: '该邮箱不存在' });
+                return;
+            }
+            var userid = doc.id;
+            var key = doc.accessToken;
+            var expiredtime = Date.now().toString();
+            href = 'http://localhost:5000/resetpwd?' + 'userid=' + userid + '&key=' + key + '&expiredtime=' + expiredtime;
+            mail.sendResetPwdMail(email, href);
+            res.send({
+                data: 'success'
+            });
+        }
+    })
+
+
+}
+
+/**
+ * 重置密码页面
+ * @param req
+ * @param res
+ */
+exports.page_reset_pwd = function (req, res) {
+
+    var userid = req.query.userid;
+    var key = req.query.key;
+    var expiredtime = req.query.expiredtime;
+
+    //判断链接有效性
+    var validTime = 2 * 60 * 60 * 1000;
+    if (Date.now().toString() < expiredtime || Date.now().toString() - expiredtime > validTime) {
+        res.send({ error: '当前链接已失效' });
+        return;
+    }
+
+    res.render('sign/resetpwd', { userid: userid, key: key });
+}
+
+/**
+ * 重置密码
+ * @param req
+ * @param res
+ */
+exports.reset_pwd = function (req, res) {
+
+    var userid = req.body.userid;
+    // var email = req.body.email;
+    var pass = req.body.pass;
+    // var rePass = req.body.re_pass;
+
+    var ep = new eventproxy();
+    ep.fail(function () {
+        res.send({ error: '重置密码失败' });
+    });
+
+    ep.on('prop_err', function (msg) {
+        //res.status(422);
+        res.send({ error: msg });
+        //res.render('sign/newsignup', { error: msg, loginname: loginname, email: email });
+    });
+
+    // // 验证信息的正确性
+    // if ([userid, pass].some(function (item) { return item === ''; })) {
+    //     ep.emit('prop_err', '信息不完整。');
+    //     return;
+    // }
+
+    //密码加密
+    tools.bhash(pass, function (err, passhash) {
+        if (err) {
+            ep.emit("prop_err", '重置密码失败');
+        } else {
+            //重置密码-保存新密码
+            User.resetpwd(userid, passhash, function (err, doc) {
+                if (err) {
+                    ep.emit("prop_err", '重置密码失败');
+                } else {
+                    res.send({
+                        data: doc
+                    });
+                }
+            });
+        };
+
+
+    });
+
+
+};

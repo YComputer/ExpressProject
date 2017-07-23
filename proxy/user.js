@@ -148,3 +148,22 @@ exports.getGravatar = function (user) {
     return user.avatar || makeGravatar(user);
 };
 
+exports.resetpwd = function (user_id, passwd, callback) {
+    User.findOne({ _id: user_id }, function (err, doc) {
+        if (err) {
+            callback(err, null);
+        }
+        else {
+            doc.pass = passwd;
+            doc.save(function (err, doc) {
+                if (err) {
+                    callback(err, null);
+                }
+                else {
+                    callback(null, "更新成功");
+                }
+            })
+        }
+    });
+}
+
