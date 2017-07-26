@@ -27,7 +27,8 @@ html
                     div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:5px")
                         span( class="input-group-addon glyphicon glyphicon-lock" id="basic-addon1" style="top: 0px;")
                         input#code-verify(type="text" class="form-control" placeholder="验证码" aria-describedby="basic-addon1" style="width:200px;")
-                        img(class="img-responsive" src="/images/logo.png" style="width:150px; height:45px;float:right")
+                        a#verifycodePic
+                        //- img#verifycodePic(class="img-responsive" src="/images/logo.png" style="width:150px; height:45px;float:right")
                     a(href="/newsignin") 没忘记？                  
                     div(class="input-group" style="width:100%;margin-top:5px;margin-bottom:5px")                        
                         input#findpwd( type="btn" style="width:100%" class="btn" value="找回密码" aria-describedby="basic-addon1")

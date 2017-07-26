@@ -39,6 +39,8 @@ router.get('/findpwd', sign.findpwd);  // 找回密码
 router.post('/sendResetPwdMail', sign.sendResetPwdMail);  // 发送邮件-找回密码链接
 router.get('/resetpwd', sign.page_reset_pwd);  // 重置密码
 router.post('/resetpwd', sign.reset_pwd);  // 重置密码
+router.get('/genVerifycode', sign.genVerifycode);  // 获取验证码
+
 router.get('/active_account', sign.activeAccount);  //帐号激活
 //router.get('/works',auth.userRequired, works.listAll); //查看所有作品
 router.get('/works', works.listAll); //查看所有作品

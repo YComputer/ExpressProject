@@ -12,6 +12,7 @@ var authMiddleWare = require('../middlewares/auth');
 var uuid = require('uuid');
 
 var mail = require('../common/mail');
+var svgCaptcha = require("svg-captcha");
 
 exports.checkLoginStatus = function (req, res) {
     if (!req.session || !req.session.user || !req.session.user._id) {
@@ -236,7 +237,15 @@ exports.findpwd = function (req, res) {
 exports.sendResetPwdMail = function (req, res) {
 
     var email = req.body.email;
-    var href = "";
+    var verifycode = req.body.verifycode;
+    var href;
+
+    //检查验证码
+    if (verifycode != req.session["randomcode"]) {
+        res.send({ error: '验证码错误' });
+        return;
+    }
+
     User.getUserByMail(email, function (err, doc) {
         if (err) {
             res.send({ error: '该邮箱不存在' });
@@ -332,3 +341,27 @@ exports.reset_pwd = function (req, res) {
 
 
 };
+
+/**
+ *  验证码
+ */
+exports.genVerifycode = function (req, res) {
+
+    // 验证码，对了有两个属性，text是字符，data是svg代码  
+    var code = svgCaptcha.create({
+        // 翻转颜色  
+        inverse: false,
+        // 字体大小  
+        fontSize: 36,
+        // 噪声线条数  
+        noise: 3,
+        // 宽度  
+        width: 80,
+        // 高度  
+        height: 40,
+    });
+    // 保存到session,忽略大小写  
+    req.session["randomcode"] = code.text.toLowerCase();
+    // 返回数据直接放入页面元素展示即可  
+    res.send(code.data);
+}; 
