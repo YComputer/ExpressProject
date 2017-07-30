@@ -4,10 +4,12 @@ block content
         div.row
             div(class="col-md-8")
                 div
+                    link(rel="stylesheet" href="/stylesheets/player.css")
                     div(class="area" id="title-area" style="margin-top:10px")
                     div(class="area" id="player-area")
-                    div(class="controls")
-                        span(class="stop") ||
+                    div(class="controls" style="width:480px;")
+                        div(class="progress-bar")
+                        span(class="stop")
                         span(class="pause")
                         span(class="flag" title="Shift+click to enable turbo mode.")
                         div(class="turbo") Turbo Mode
@@ -15,8 +17,8 @@ block content
                     div(class="player")
                     div(class="internal-error")
                     div(class="title")
-                    div(class="progress-bar")
-                    a(target="_blank" class="project-link" title="View project on Server")
+                    
+                    //a(target="_blank" class="project-link" title="View project on Server")
                     script(src="/javascripts/FileSaver.min.js")
                     script(src="/javascripts/fonts.js")
                     script(src="/javascripts/jszip.js")
@@ -53,7 +55,7 @@ block content
                         }
                         currentWorkId  = '#{work._id}'
                 
-                div(style="margin-top:360px")
+                div
                     button(style="display:inline" class="btn")
                         span(class="glyphicon glyphicon-thumbs-up") 
                     button(style="display:inline" class="btn")

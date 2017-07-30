@@ -6,9 +6,19 @@ head
     meta(na:me='apple-mobile-web-app-capable', content='yes')
     meta(name='apple-mobile-web-app-status-bar-style', content='black')
     title 3D Remix: Experimental render-ordering using clones
-    link(rel='icon', type='image/png', href='http://newton.nes.aau.at/~sulfurous/favicon.ico')
+    //link(rel='icon', type='image/png', href='http://newton.nes.aau.at/~sulfurous/favicon.ico')
     link(rel='stylesheet', href='/stylesheets/app.css')
   body
+    //link(rel="stylesheet" href="/stylesheets/player.css")
+    //div(class="area" id="title-area" style="margin-top:10px")
+    //div(class="area" id="player-area")
+    //div(class="controls")
+    //    div(class="progress-bar")
+    //    span(class="stop")
+    //    span(class="pause")
+    //    span(class="flag" title="Shift+click to enable turbo mode.")
+    //    div(class="turbo") Turbo Mode
+    //    span(class="full-screen")
     .player(style='left: 241.667px; top: 0px;')
       div(style='position: absolute; overflow: hidden; width: 882px; height: 662px; font-size: 1.83889px; background: rgb(255, 255, 255); user-select: none; transform: translateZ(0px);')
         canvas(width='882', height='662', style='position: absolute; width: 882px; height: 662px;')
@@ -44,7 +54,7 @@ head
       location.replace(('' + location).replace(/^https:/, 'http:'));
       }
       var stage;
-      // var projectId = 17088932;
+      //var projectId = 17088932;
       var projectTitle = '';
       var turbo = false;
       var fullScreen = true;
@@ -55,7 +65,7 @@ head
       if (parts.length > 1) {
       switch (parts[0]) {
       case 'id':
-      projectId = Number(parts[1]);
+      //projectId = Number(parts[1]);
       break;
       case 'turbo':
       turbo = parts[1] !== 'false';
@@ -117,9 +127,9 @@ head
       request.onprogress = function (e) {
       progressBar.style.width = (10 + e.loaded / e.total * 90) + '%';
       };
-      P.IO.loadScratchr2ProjectTitle(projectId, function(title) {
-      document.title = projectTitle = title;
-      });
+      //P.IO.loadScratchr2ProjectTitle(projectId, function(title) {
+      //document.title = projectTitle = title;
+      //});
       }());
     // Exported by Scratch - http://scratch.mit.edu/
   div

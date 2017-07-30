@@ -17,3 +17,21 @@
     width: 100%;
     height: 100%
 }
+
+#uploadResultModal{
+    display: none;
+    width:900px;
+    height:550px;
+    position:absolute;
+    padding:0px;
+    left: -webkit-calc(50% - 450px); 
+    top: -webkit-calc(50% - 275px);
+    background:white;
+}
+
+body {
+    text-align: left;
+    color: #444;
+    font-size: 14px;
+    font-family: "microsoft yahei";
+}
