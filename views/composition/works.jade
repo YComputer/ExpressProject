@@ -4,8 +4,6 @@
 extends ../layout
 block content
     div.container
-
-
         div(style="margin-bottom:20px;margin-top:20px")
             script(src="/javascripts/fileup.js")
             script(src="/javascripts/pages/works.js")
@@ -106,6 +104,8 @@ block content
             button#createdWork(class="btn") 创建
             button(class="btn" data-dismiss="modal") 取消上传
     script.
+        P.IO.PROJECT_URL = '#{Url}';
+        P.IO.SOUNDBANK_URL = '#{Url}';
         $('img').bind('error', function () {
             //$(this).hide();
             $(this).attr("src", "/images/6202.png");

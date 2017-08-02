@@ -56,8 +56,9 @@ exports.listAll = function (req, res, next) {
                         workList.push(work);
                         //work.description = docs[j].description;
                     }
+                    var Url = config.config.host;
                     res.render("composition/works", {
-                        list: workList
+                        list: workList, Url: Url
                     });
                 }
             })
@@ -68,8 +69,8 @@ exports.listAll = function (req, res, next) {
 exports.showDetail = function (req, res, next) {
     var id = req.params.workid;
     var ep = new eventproxy();
-    ep.all("work", "comments", "evaluation", function (work, comments) {
-        res.render('composition/work', { work: work, commentList: comments });
+    ep.all("work", "comments", "Url", "evaluation", function (work, comments, Url) {
+        res.render('composition/work', { work: work, commentList: comments, Url: Url });
     })
 
     Work.getdetail(id, function (err, docs) {
@@ -82,6 +83,9 @@ exports.showDetail = function (req, res, next) {
             ep.emit("work", docs[0]);
         }
     })
+
+    ep.emit("Url", config.config.host)
+
     Comment.getAllComments(2, id, function (err, docs) {
         if (err) {
             logger.error(err);
@@ -148,10 +152,12 @@ exports.showDetail = function (req, res, next) {
 exports.showFull = function (req, res, next) {
     var id = req.params.workid;
     var ep = new eventproxy();
-    ep.all("work", "comments", function (work, comments) {
-        res.render('composition/showfullScreen', { work: work, commentList: comments });
+    ep.all("work", "comments", "Url", function (work, comments, Url) {
+        res.render('composition/showfullScreen', { work: work, commentList: comments, Url: Url });
     })
 
+    ep.emit("Url", config.config.host)
+    
     Work.getdetail(id, function (err, docs) {
         if (err) {
             logger.error(err);

@@ -189,7 +189,7 @@ P.player = (function() {
 
   function load(id, cb, titleCallback) {
     P.player.projectId = id;
-    P.player.projectURL = id ? 'https://scratch.mit.edu/projects/' + id + '/' : '';
+    P.player.projectURL = id ? P.IO.PROJECT_URL + id + '/' : '';
 	
     if (stage) {
       stage.stopAll();

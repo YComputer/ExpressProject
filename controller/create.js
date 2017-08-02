@@ -6,5 +6,5 @@ var config     = require('../config');
 var url = require("url");
 
 exports.showEditor = function(req, res, next){
-    res.render('create', { title: 'Create' });
+    res.render('create', { title: 'Create', Url : config.config.host });
 }

@@ -128,7 +128,8 @@ $(function () {
         if (lightContent) document.body.className += ' light-content';
         document.body.className += hasUI ? ' has-ui' : ' hide-ui';
         document.title = 'run the sb2';
-        P.IO.SOUNDBANK_URL = 'http://127.0.0.1:5000/';
+        //P.IO.PROJECT_URL = '#{Url}';
+        //P.IO.SOUNDBANK_URL = '#{Url}';
         var request = P.IO.loadSB2File(this.files[0]);
         P.player.showProgress(request, function (stage) {
             //    stage.triggerGreenFlag();

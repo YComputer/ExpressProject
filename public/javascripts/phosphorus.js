@@ -274,6 +274,7 @@ var P = (function() {
     IO.init(request);
 
     request.defer = true;
+      // get id + 'get'
     var url = IO.PROJECT_URL + id;
     request.add(IO.load(url).onLoad(function(contents) {
       try {

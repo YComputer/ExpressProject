@@ -26,8 +26,8 @@ block content
                     script(src="/javascripts/player.js")
                     script(src="/javascripts/pages/work.js")
                     script(type='text/javascript').
-                        P.IO.PROJECT_URL = 'http://127.0.0.1:5000/';
-                        P.IO.SOUNDBANK_URL = 'http://127.0.0.1:5000/';
+                        P.IO.PROJECT_URL = '#{Url}';
+                        P.IO.SOUNDBANK_URL = '#{Url}';
                         function show(id) {
                             //     titleArea.style.height = id ? 0 : titleAreaHeight + 'px';
                             //   playerArea.style.height = id ? playerAreaHeight + 'px' : 0
