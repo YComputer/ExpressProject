@@ -144,12 +144,11 @@ $(function () {
             //alert("上传done");
     });
 
-    var responseId = "";
-
     uploader.on("success", function (item) {
         //alert("上传success");
         responseId = JSON.parse(item.xhr.response).id;
         
+        var workRelativePath = responseId;
         var workName = $("#worknametext")[0].value;
         var workDiscription = $("#workdiscription")[0].value;
         
@@ -157,6 +156,7 @@ $(function () {
             url: "/works/" + responseId,
             method: "post",
             data: {
+                relativeDestPath: workRelativePath,
                 name: workName,
                 description: workDiscription
             },

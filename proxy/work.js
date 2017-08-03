@@ -29,9 +29,7 @@ exports.getNextPageWorks = function (pageid, callback) {
     query.exec(callback);
 }
 
-exports.getAllWorkByUserId = function (id, callback) {
-    Work.find({ author: id }, null, { sort: [{ 'uploadTime': -1 }] }, callback);
-}
+exports.getAllWorkByUserId 
 
 exports.getWorkSourcePath = function (id, callback) {
     Work.find({ _id: id }, 'sourcePath name', callback);
@@ -50,12 +48,13 @@ exports.newAndSave = function (name, path, description, author, callback) {
     work.save(callback);
 };
 
-exports.save = function (id, name, description, callback) {
+exports.save = function (id, path, name, description, callback) {
     Work.findById(id, function (err, work) {
         if (err) {
             return;
         }
         else {
+            work.sourcePath = path;
             work.name = name;
             work.description = description;
             work.save(callback);

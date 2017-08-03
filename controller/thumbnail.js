@@ -43,7 +43,7 @@ var save = function (resId, picdata, res) {
         else {
             logger.info("已保存缩略图：" + destPath);
         }
-        res.end({});
+        //res.end({});
     });
 }
 

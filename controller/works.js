@@ -239,39 +239,44 @@ exports.upload = function (req, res, next) {
         userId = null;
     }
     form.parse(req, function (err, fields, files) {
-        var name = files.file.name;
+   
 
-        var sourceFile = files.file.path;
-        var url = path.resolve('./');
-        var relativeDestPath = "public/avatar/" + name;
-        var destPath = config.config.project_base_path + relativeDestPath;
-        var readStream = fs.createReadStream(sourceFile);
-        var writeStream = fs.createWriteStream(destPath);
-        readStream.pipe(writeStream);
-        logger.info("收到文件：" + JSON.stringify(files));
-        Work.newAndSave("name", relativeDestPath, "description", userId, function (err, doc) {
+        var filename;
+        Work.newAndSave("name", "relativeDestPath", "description", userId, function (err, doc) {
             if (err) {
                 logger.error(err);
                 res.send(err);
                 return next(err);
             }
             else {
+                filename = doc._id.toString();
                 res.send({ id: doc._id });
+                var sourceFile = files.file.path;
+                var url = path.resolve('./');
+                var relativeDestPath = "public/avatar/" + filename+".sb2";
+                var destPath = config.config.project_base_path + relativeDestPath;
+                var readStream = fs.createReadStream(sourceFile);
+                var writeStream = fs.createWriteStream(destPath);
+                readStream.pipe(writeStream);
+                logger.info("收到文件：" + JSON.stringify(files));
             }
         });
+        
+
     });
 }
 
 exports.saveWork = function (req, res, next) {
     var id = req.params.workid;
     var name = req.body.name;
+    var relativeDestPath = "public/avatar/" + req.body.relativeDestPath+".sb2";
     var description = req.body.description;
     var ep = new eventproxy();
     ep.all("saved", "evaluated", function (work, evaluated) {
         res.send(work);
     })
 
-    Work.save(id, name, description, function (err, doc) {
+    Work.save(id, relativeDestPath, name, description, function (err, doc) {
         if (err) {
             logger.error(err);
             res.send(err);
