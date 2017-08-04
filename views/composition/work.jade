@@ -7,7 +7,7 @@ block content
                     link(rel="stylesheet" href="/stylesheets/player.css")
                     div(class="area" id="title-area" style="margin-top:10px")
                     div(class="area" id="player-area")
-                    div(class="controls" style="width:480px;")
+                    div(class="controls")
                         div(class="progress-bar")
                         span(class="stop")
                         span(class="pause")
@@ -43,7 +43,7 @@ block content
                             }
                             if ('#{work.sourcePath}'.indexOf('sb2') !== -1) {
                                 P.player.load(id, function (stage) {
-                                stage.triggerGreenFlag();
+                                //stage.triggerGreenFlag();
                                 }, function (title) {
                                 document.title = title ? title + ' \xb7 sulfurous' : 'sulfurous';
                                 });
@@ -55,7 +55,7 @@ block content
                         }
                         currentWorkId  = '#{work._id}'
                 
-                div
+                div#thumb-download-evluate
                     button(style="display:inline" class="btn")
                         span(class="glyphicon glyphicon-thumbs-up") 
                     button(style="display:inline" class="btn")
@@ -70,7 +70,7 @@ block content
                     script(type='text/javascript').   
                         load('works/'+ '#{work._id}'+'/downresource');
         
-                div
+                div#textareawork
                     textarea#work_comment_text(rows=4 style="width:100%;height:100px;margin-top:20px" placeholder="想说点什么就写在这儿吧")
                     button#submit_comment_btn(class="btn" style="display:block;position:absolute;right:20px") 提交评论
                 br
@@ -109,4 +109,9 @@ block content
                 div
                     p 说明
                     p #{work.description}
-        
+        script.
+            $(window).resize(function(e) {
+                var Pic = document.getElementsByTagName("canvas")[0];
+                 $(".controls").css({'width': (Pic.width + 'px')});
+            });
+

@@ -85,6 +85,7 @@ P.player = (function() {
     if (e) e.preventDefault();
     if (!stage) return;
     document.documentElement.classList.toggle('fs');
+    
     isFullScreen = !isFullScreen;
     if (!e || !e.shiftKey) {
       if (isFullScreen) {
@@ -115,6 +116,9 @@ P.player = (function() {
       stage.draw();
     }
     stage.focus();
+
+    var Pic = document.getElementsByTagName("canvas")[0];
+    $(".controls").css({'width': (Pic.width + 'px')});
   }
 
   function exitFullScreen(e) {
