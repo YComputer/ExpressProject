@@ -128,7 +128,8 @@ $(function () {
         if (lightContent) document.body.className += ' light-content';
         document.body.className += hasUI ? ' has-ui' : ' hide-ui';
         document.title = 'run the sb2';
-        P.IO.SOUNDBANK_URL = 'http://127.0.0.1:5000/';
+        //P.IO.PROJECT_URL = '#{Url}';
+        //P.IO.SOUNDBANK_URL = '#{Url}';
         var request = P.IO.loadSB2File(this.files[0]);
         P.player.showProgress(request, function (stage) {
             //    stage.triggerGreenFlag();
@@ -143,12 +144,11 @@ $(function () {
             //alert("上传done");
     });
 
-    var responseId = "";
-
     uploader.on("success", function (item) {
         //alert("上传success");
         responseId = JSON.parse(item.xhr.response).id;
         
+        var workRelativePath = responseId;
         var workName = $("#worknametext")[0].value;
         var workDiscription = $("#workdiscription")[0].value;
         
@@ -156,6 +156,7 @@ $(function () {
             url: "/works/" + responseId,
             method: "post",
             data: {
+                relativeDestPath: workRelativePath,
                 name: workName,
                 description: workDiscription
             },

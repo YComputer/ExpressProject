@@ -22,6 +22,7 @@
 .controls {
   position: relative;
   height: 32px;
+  width: 480px;
 }
 .controls span,
 .project-link {
@@ -138,4 +139,93 @@
 }
 .fs .player {
   box-shadow: none;
+}
+
+.fs .controls{
+   background-color: rgba(0, 0, 0, 1);
+   position: relative;
+   -webkit-transform-origin: 0 0;
+   -moz-transform-origin: 0 0;
+   -ms-transform-origin: 0 0;
+   -o-transform-origin: 0 0;
+   transform-origin: 0 0;
+}
+
+.fs #thumb-download-evluate{
+    display: none;
+}
+.fs #textareawork{
+    display: none;
+}
+.fs h4{
+    display: none;
+}
+.fs #workCommentList{
+    display: none;
+}
+.fs nav{
+  display: none;
+}
+
+.fs .foot{
+   display: none;
+}
+
+.fs .rides-cs{
+   display: none;  
+}
+.fs button{
+   visibility: hidden;
+}
+.fs .col-md-4{
+     display: none;  
+}
+
+.fs .staticlink{
+    visibility: hidden;
+}
+
+.fs textarea{
+    display: none;  
+}
+
+.fs .img{
+    display: none;
+}
+
+.fs .about{
+    display: none;
+}
+.fs .others{
+    display: none;
+}
+.fs .weibocode{
+    display: none;
+}
+.fs .weixincode{
+    display: none;
+}
+.fs .infoline{
+    display: none;
+}
+.fs .col-md-8{
+     padding-left: 0px;
+     padding-right: 0px;    
+     width: auto;
+}
+.fs #container{
+    padding-top: 0px;
+}
+.fs .container{
+   
+}
+
+.fs .container{
+    padding-top: 0px;
+}
+.fs .footer{
+    display: none;
+}
+.fs #title-area{
+    display: none;
 }
