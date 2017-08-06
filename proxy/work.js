@@ -29,8 +29,14 @@ exports.getNextPageWorks = function (pageid, callback) {
     query.exec(callback);
 }
 
-exports.getAllWorkByUserId = function (id, callback) {
-    Work.find({ author: id }, null, { sort: [{ 'uploadTime': -1 }] }, callback);
+exports.getAllWorkByUserId;
+
+exports.findAllWorkByKeyword = function (keyword, pageid, callback) {
+    var reg = new RegExp(keyword, 'i');
+    var query = Work.find({ name: { $regex: reg } });
+    query.skip(pageid * 20);
+    query.limit(20);
+    query.exec(callback);
 }
 
 exports.getWorkSourcePath = function (id, callback) {
@@ -50,12 +56,13 @@ exports.newAndSave = function (name, path, description, author, callback) {
     work.save(callback);
 };
 
-exports.save = function (id, name, description, callback) {
+exports.save = function (id, path, name, description, callback) {
     Work.findById(id, function (err, work) {
         if (err) {
             return;
         }
         else {
+            work.sourcePath = path;
             work.name = name;
             work.description = description;
             work.save(callback);

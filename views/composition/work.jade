@@ -7,7 +7,7 @@ block content
                     link(rel="stylesheet" href="/stylesheets/player.css")
                     div(class="area" id="title-area" style="margin-top:10px")
                     div(class="area" id="player-area")
-                    div(class="controls" style="width:480px;")
+                    div(class="controls")
                         div(class="progress-bar")
                         span(class="stop")
                         span(class="pause")
@@ -26,8 +26,8 @@ block content
                     script(src="/javascripts/player.js")
                     script(src="/javascripts/pages/work.js")
                     script(type='text/javascript').
-                        P.IO.PROJECT_URL = 'http://127.0.0.1:5000/';
-                        P.IO.SOUNDBANK_URL = 'http://127.0.0.1:5000/';
+                        P.IO.PROJECT_URL = '#{Url}';
+                        P.IO.SOUNDBANK_URL = '#{Url}';
                         function show(id) {
                             //     titleArea.style.height = id ? 0 : titleAreaHeight + 'px';
                             //   playerArea.style.height = id ? playerAreaHeight + 'px' : 0
@@ -43,7 +43,7 @@ block content
                             }
                             if ('#{work.sourcePath}'.indexOf('sb2') !== -1) {
                                 P.player.load(id, function (stage) {
-                                stage.triggerGreenFlag();
+                                //stage.triggerGreenFlag();
                                 }, function (title) {
                                 document.title = title ? title + ' \xb7 sulfurous' : 'sulfurous';
                                 });
@@ -55,8 +55,13 @@ block content
                         }
                         currentWorkId  = '#{work._id}'
                 
+
                 div
                     button#thumbs-up(style="display:inline" class="btn")
+
+                div#thumb-download-evluate
+                    button(style="display:inline" class="btn")
+
                         span(class="glyphicon glyphicon-thumbs-up") 
                         lable#thumbsUpCount #{work.upCount}
                         lable#thumbsUpNames(style="display:none") #{work.thumbsUp}
@@ -65,14 +70,14 @@ block content
                     //- button(style="display:inline" class="btn") 打赏 
                     a(href="/works/" + '#{work._id}' + "/downresource" class="btn") 
                         button(class="btn") 下载源码
-                    a(href="/works/"+"#{work._id}"+ "/full" class="btn") 
-                        button(class="btn") 全屏
-                    a(href="/works/"+"#{work._id}"+"/evaluation" class="btn")
+                    a(href="/works/"+"#{work._id}"+ "/full" class="btn" style="display:none") 
+                        button(class="btn" style="display:none") 全屏
+                    a(href="/works/"+"#{work._id}"+"/evaluation" class="btn" )
                         button(class="btn") 查看评估报告
                     script(type='text/javascript').   
                         load('works/'+ '#{work._id}'+'/downresource');
         
-                div
+                div#textareawork
                     textarea#work_comment_text(rows=4 style="width:100%;height:100px;margin-top:20px" placeholder="想说点什么就写在这儿吧")
                     button#submit_comment_btn(class="btn" style="display:block;position:absolute;right:20px") 提交评论
                 br
@@ -111,4 +116,9 @@ block content
                 div
                     p 说明
                     p #{work.description}
-        
+        script.
+            $(window).resize(function(e) {
+                var Pic = document.getElementsByTagName("canvas")[0];
+                 $(".controls").css({'width': (Pic.width + 'px')});
+            });
+

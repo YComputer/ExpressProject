@@ -72,3 +72,5 @@ process.on('uncaughtException', function (err) {
 
 
 module.exports = app;
+
+global.myHost = "127.0.0.1:5000";

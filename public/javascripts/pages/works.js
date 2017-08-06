@@ -11,7 +11,8 @@ $(function () {
             success: function (data) {
                 if (data) {
                     var count = data.data;
-                    pageNum = count / pageSize
+                    pageNum = Math.ceil(count / pageSize);
+                    generatePageNav(pageNum);
                     console.log("作品总数：" + count);
                 }
                 else {
@@ -24,15 +25,96 @@ $(function () {
         })
     }
     getworkcount();
-    window.onscroll = function () {
-        if ($(document).height() == $(window).height() + $(window).scrollTop()) {
-            if (currentPage < pageNum) {
-                currentPage++;
-                getNextPageWorks(currentPage);
-            }
+
+    // window.onscroll = function () {
+    //     if ($(document).height() == $(window).height() + $(window).scrollTop()) {
+    //         if (currentPage < pageNum) {
+    //             currentPage++;
+    //             getNextPageWorks(currentPage);
+    //         }
+    //     }
+    // }
+
+    var generatePageNav = function (pageCount) {
+        var pagenavs;
+        for (var i = 0; i < pageCount; i++) {
+            var li = document.createElement("li");
+            li.id = i;
+            li.className = 'mui-table-view-cell';
+            li.innerHTML = '<a>' + i + '</a>';
+            $("#pageNavLast").before(li);
+            //var s = '<li><a onlick="getPageWorks()">' + i + '</a></li>';
+            //pagenavs += s;
         }
+        //$("#pageNavFirst").after(pagenavs);
     }
 
+    $('#pageNavs').on('click', 'li', function () {
+
+        if (this.id == "pageNavFirst") {
+            currentPageId = currentPageId-- < 0 ? 0 : currentPageId;
+        }
+        else if (this.id == "pageNavLast") {
+            currentPageId = currentPageId++ > pageNum - 1 ? pageNum - 1 : currentPageId;
+        }
+        else
+            currentPageId = this.id;
+        console.log(currentPageId);
+        getPageWorks(currentPageId);
+    })
+
+    $("#searchWorkBtn").on('click', function () {
+        var keyWord = $("#keyworkInput")[0].value;
+        if (keyWord == undefined || keyWord == "") {
+            return;
+        }
+        $.ajax({
+            type: "get",
+            url: "/works/search/" + keyWord + "/0",
+            success: function (data) {
+                if (data) {
+                    var newPageWorks = data.data;
+                    if (newPageWorks.length > 0) {
+                        var html = generateNewRows(newPageWorks);
+                        $("#allWorks").empty();
+                        $("#allWorks").append(html);
+                    }
+                }
+                else {
+                    console.log("获取失败");
+                }
+            },
+            failed: function (data) {
+                console.log("获取失败");
+            }
+        })
+    })
+
+    var currentPageId = 0;
+
+    function getPageWorks(nextPage) {
+        $.ajax({
+            type: "get",
+            url: "/works/nextpage?pageid=" + nextPage,
+            success: function (data) {
+                if (data) {
+                    var newPageWorks = data.data;
+                    if (newPageWorks.length > 0) {
+                        var html = generateNewRows(newPageWorks);
+                        $("#allWorks").empty();
+                        $("#allWorks").append(html);
+                    }
+                }
+                else {
+                    console.log("获取失败");
+                }
+            },
+            failed: function (data) {
+                console.log("获取失败");
+            }
+        })
+    }
+    getPageWorks(0);
     var getNextPageWorks = function (nextPage) {
         $.ajax({
             type: "get",
@@ -105,7 +187,7 @@ $(function () {
     var input, uploader;
 
     input = $('#xfile')[0];
-    
+
     var filesb;
 
     uploader = new FileUp({
@@ -128,7 +210,8 @@ $(function () {
         if (lightContent) document.body.className += ' light-content';
         document.body.className += hasUI ? ' has-ui' : ' hide-ui';
         document.title = 'run the sb2';
-        P.IO.SOUNDBANK_URL = 'http://127.0.0.1:5000/';
+        //P.IO.PROJECT_URL = '#{Url}';
+        //P.IO.SOUNDBANK_URL = '#{Url}';
         var request = P.IO.loadSB2File(this.files[0]);
         P.player.showProgress(request, function (stage) {
             //    stage.triggerGreenFlag();
@@ -140,22 +223,22 @@ $(function () {
     });
 
     uploader.on('done', function (item) {
-            //alert("上传done");
+        //alert("上传done");
     });
-
-    var responseId = "";
 
     uploader.on("success", function (item) {
         //alert("上传success");
         responseId = JSON.parse(item.xhr.response).id;
-        
+
+        var workRelativePath = responseId;
         var workName = $("#worknametext")[0].value;
         var workDiscription = $("#workdiscription")[0].value;
-        
+
         $.ajax({
             url: "/works/" + responseId,
             method: "post",
             data: {
+                relativeDestPath: workRelativePath,
                 name: workName,
                 description: workDiscription
             },
@@ -185,16 +268,16 @@ $(function () {
                         alert("缩略图上传完毕.");
                     }
                 });
-               
+
 
                 alert("上传成功");
-                window.location.href='/works';
+                window.location.href = '/works';
             },
             error: function () {
                 alert("上传失败");
             }
         })
-      
+
     })
 
     uploader.on("error", function (item) {

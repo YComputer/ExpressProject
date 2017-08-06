@@ -56,8 +56,9 @@ exports.listAll = function (req, res, next) {
                         workList.push(work);
                         //work.description = docs[j].description;
                     }
+                    var Url = config.config.host;
                     res.render("composition/works", {
-                        list: workList
+                        list: workList, Url: Url
                     });
                 }
             })
@@ -68,8 +69,8 @@ exports.listAll = function (req, res, next) {
 exports.showDetail = function (req, res, next) {
     var id = req.params.workid;
     var ep = new eventproxy();
-    ep.all("work", "comments", "evaluation", function (work, comments) {
-        res.render('composition/work', { work: work, commentList: comments });
+    ep.all("work", "comments", "Url", "evaluation", function (work, comments, Url) {
+        res.render('composition/work', { work: work, commentList: comments, Url: Url });
     })
 
     Work.getdetail(id, function (err, docs) {
@@ -82,6 +83,9 @@ exports.showDetail = function (req, res, next) {
             ep.emit("work", docs[0]);
         }
     })
+
+    ep.emit("Url", config.config.host)
+
     Comment.getAllComments(2, id, function (err, docs) {
         if (err) {
             logger.error(err);
@@ -148,9 +152,11 @@ exports.showDetail = function (req, res, next) {
 exports.showFull = function (req, res, next) {
     var id = req.params.workid;
     var ep = new eventproxy();
-    ep.all("work", "comments", function (work, comments) {
-        res.render('composition/showfullScreen', { work: work, commentList: comments });
+    ep.all("work", "comments", "Url", function (work, comments, Url) {
+        res.render('composition/showfullScreen', { work: work, commentList: comments, Url: Url });
     })
+
+    ep.emit("Url", config.config.host)
 
     Work.getdetail(id, function (err, docs) {
         if (err) {
@@ -233,39 +239,44 @@ exports.upload = function (req, res, next) {
         userId = null;
     }
     form.parse(req, function (err, fields, files) {
-        var name = files.file.name;
 
-        var sourceFile = files.file.path;
-        var url = path.resolve('./');
-        var relativeDestPath = "public/avatar/" + name;
-        var destPath = config.config.project_base_path + relativeDestPath;
-        var readStream = fs.createReadStream(sourceFile);
-        var writeStream = fs.createWriteStream(destPath);
-        readStream.pipe(writeStream);
-        logger.info("收到文件：" + JSON.stringify(files));
-        Work.newAndSave("name", relativeDestPath, "description", userId, function (err, doc) {
+
+        var filename;
+        Work.newAndSave("name", "relativeDestPath", "description", userId, function (err, doc) {
             if (err) {
                 logger.error(err);
                 res.send(err);
                 return next(err);
             }
             else {
+                filename = doc._id.toString();
                 res.send({ id: doc._id });
+                var sourceFile = files.file.path;
+                var url = path.resolve('./');
+                var relativeDestPath = "public/avatar/" + filename + ".sb2";
+                var destPath = config.config.project_base_path + relativeDestPath;
+                var readStream = fs.createReadStream(sourceFile);
+                var writeStream = fs.createWriteStream(destPath);
+                readStream.pipe(writeStream);
+                logger.info("收到文件：" + JSON.stringify(files));
             }
         });
+
+
     });
 }
 
 exports.saveWork = function (req, res, next) {
     var id = req.params.workid;
     var name = req.body.name;
+    var relativeDestPath = "public/avatar/" + req.body.relativeDestPath + ".sb2";
     var description = req.body.description;
     var ep = new eventproxy();
     ep.all("saved", "evaluated", function (work, evaluated) {
         res.send(work);
     })
 
-    Work.save(id, name, description, function (err, doc) {
+    Work.save(id, relativeDestPath, name, description, function (err, doc) {
         if (err) {
             logger.error(err);
             res.send(err);
@@ -311,6 +322,7 @@ exports.getTotalCount = function (req, res, next) {
     })
 }
 
+
 /**
  * 点赞
  */
@@ -320,11 +332,22 @@ exports.thumbsUp = function (req, res, next) {
     var userName = req.body.userName;
 
     Work.thumbsUp(workId, userName, function (err, doc) {
+        res.send({ data: doc });
+    });
+}
+
+exports.search = function (req, res, next) {
+    var keyword = req.params.keyword;
+    var pageid = req.params.pageid;
+    Work.findAllWorkByKeyword(keyword, pageid, function (err, docs) {
+
         if (err) {
             res.send({ err: JSON.stringify(err) });
         }
         else {
-            res.send({ data: doc });
+
+            res.send({ data: docs });
         }
-    })
+    });
 }
+
