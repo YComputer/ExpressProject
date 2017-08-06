@@ -310,3 +310,21 @@ exports.getTotalCount = function (req, res, next) {
         }
     })
 }
+
+/**
+ * 点赞
+ */
+exports.thumbsUp = function (req, res, next) {
+
+    var workId = req.body.workId;
+    var userName = req.body.userName;
+
+    Work.thumbsUp(workId, userName, function (err, doc) {
+        if (err) {
+            res.send({ err: JSON.stringify(err) });
+        }
+        else {
+            res.send({ data: doc });
+        }
+    })
+}

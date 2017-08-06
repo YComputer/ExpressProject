@@ -35,7 +35,7 @@ exports.sendResetPwdMail = function (email, href) {
 /**
  * 发送邮件激活用户
  * @param email 用户邮箱地址
- * @param href  找回密码链接
+ * @param href 激活用户链接
  */
 exports.sendActiveMail = function (email, href) {
     smtpTransport.sendMail(

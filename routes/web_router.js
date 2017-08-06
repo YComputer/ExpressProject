@@ -41,7 +41,8 @@ router.get('/resetpwd', sign.page_reset_pwd);  // 重置密码
 router.post('/resetpwd', sign.reset_pwd);  // 重置密码
 router.get('/genVerifycode', sign.genVerifycode);  // 获取验证码
 
-router.get('/active_account', sign.activeAccount);  //帐号激活
+router.get('/activeAccount', sign.activeAccount);  //帐号激活
+
 //router.get('/works',auth.userRequired, works.listAll); //查看所有作品
 router.get('/works', works.listAll); //查看所有作品
 router.get('/works/nextpage', works.getNextPage);
@@ -55,6 +56,8 @@ router.get('/courses/:courseType', course.listAllCourse);
 router.get('/courses/:courseType/:courseId', course.showCourseDetail);
 router.get('/courses/:courseType/:courseId/description', course.getCourseDescriptionById);
 router.post('/comments', comment.postComment);
+router.post('/thumbsUp', works.thumbsUp);//点赞
+
 router.get('/user', user.listInfo);
 router.get('/getusernamebyid', user.getUserName);
 router.post('/user/updateInfo', user.updateInfo);

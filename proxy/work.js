@@ -61,4 +61,23 @@ exports.save = function (id, name, description, callback) {
             work.save(callback);
         }
     })
+};
+
+/**
+ * 点赞
+ */
+exports.thumbsUp = function (workId, userName, callback) {
+    Work.findById(workId, function (err, work) {
+        if (err) {
+            return;
+        }
+        else {
+
+            //点赞数量+1，点赞人增加当前用户
+            work.upCount += 1;
+            work.thumbsUp += userName + ";";
+
+            work.save(callback);
+        }
+    })
 }

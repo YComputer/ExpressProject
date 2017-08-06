@@ -56,11 +56,13 @@ block content
                         currentWorkId  = '#{work._id}'
                 
                 div
-                    button(style="display:inline" class="btn")
+                    button#thumbs-up(style="display:inline" class="btn")
                         span(class="glyphicon glyphicon-thumbs-up") 
-                    button(style="display:inline" class="btn")
-                        span(class="glyphicon glyphicon-thumbs-down") 
-                    button(style="display:inline" class="btn") 打赏 
+                        lable#thumbsUpCount #{work.upCount}
+                        lable#thumbsUpNames(style="display:none") #{work.thumbsUp}
+                    //- button#thumbs-down(style="display:inline" class="btn")
+                    //-     span(class="glyphicon glyphicon-thumbs-down") 
+                    //- button(style="display:inline" class="btn") 打赏 
                     a(href="/works/" + '#{work._id}' + "/downresource" class="btn") 
                         button(class="btn") 下载源码
                     a(href="/works/"+"#{work._id}"+ "/full" class="btn") 

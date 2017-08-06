@@ -165,5 +165,24 @@ exports.resetpwd = function (user_id, passwd, callback) {
             })
         }
     });
-}
+};
+
+exports.activeAccount = function (email, callback) {
+    User.findOne({ email: email }, function (err, doc) {
+        if (err) {
+            callback(err, null);
+        }
+        else {
+            doc.active = 1;
+            doc.save(function (err, doc) {
+                if (err) {
+                    callback(err, null);
+                }
+                else {
+                    callback(null, "激活成功");
+                }
+            })
+        }
+    });
+};
 

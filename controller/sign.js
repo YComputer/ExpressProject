@@ -101,10 +101,14 @@ exports.signup = function (req, res, next) {
                 if (err) {
                     return next(err);
                 }
-                // 发送激活邮件
-                //mail.sendActiveMail(email, utility.md5(email + passhash + config.session_secret), loginname);
+
+                //发送激活邮件
+                var expiredtime = Date.now().toString();
+                href = 'http://localhost:5000/activeAccount?' + 'email=' + email + '&expiredtime=' + expiredtime;
+                mail.sendActiveMail(email, href);
+
                 // res.render('sign/signup', {
-                //     success: '欢迎加入 ' + config.name + '！我们已给您的注册邮箱发送了一封邮件，请点击里面的链接来激活您的帐号。'
+                //     success: '欢迎加入 ' + loginname + '！我们已给您的注册邮箱发送了一封邮件，请点击里面的链接来激活您的帐号。'
                 // });
                 res.send({ message: "successed" });
                 //res.redirect('index');
@@ -165,12 +169,14 @@ exports.login = function (req, res, next) {
             if (!bool) {
                 return ep.emit('login_error');
             }
-            // if (!user.active) {
-            //     // 重新发送激活邮件
-            //     mail.sendActiveMail(user.email, utility.md5(user.email + passhash + config.session_secret), user.loginname);
-            //     res.status(403);
-            //     return res.render('sign/signin', { error: '此帐号还没有被激活，激活链接已发送到 ' + user.email + ' 邮箱，请查收。' });
-            // }
+            if (!user.active) {
+                // 重新发送激活邮件
+                var expiredtime = Date.now().toString();
+                href = 'http://localhost:5000/activeAccount?' + 'email=' + email + '&expiredtime=' + expiredtime;
+                mail.sendResetPwdMail(email, href);
+                res.status(403);
+                return res.render('sign/signin', { error: '此帐号还没有被激活，激活链接已发送到 ' + user.email + ' 邮箱，请查收。' });
+            }
 
             // store session cookie
             authMiddleWare.gen_session(user, res);
@@ -218,7 +224,30 @@ exports.signout = function (req, res, next) {
  * @param res
  * @param next
  */
-exports.activeAccount = function (req, res, next) { }
+exports.activeAccount = function (req, res, next) {
+
+
+    var email = req.query.email;
+    var expiredtime = req.query.expiredtime;
+
+    //判断链接有效性
+    var validTime = 2 * 60 * 60 * 1000;
+    if (Date.now().toString() < expiredtime || Date.now().toString() - expiredtime > validTime) {
+        res.send({ error: '当前链接已失效' });
+        return;
+    }
+
+    //激活用户
+    User.activeAccount(email, function (err, doc) {
+        if (err) {
+            ep.emit("prop_err", '用户激活失败');
+        } else {
+            //TODO-提示用户
+            res.render('sign/newSignin');
+        }
+    });
+
+}
 
 /**
  * 找回密码

@@ -13,7 +13,9 @@ var WorkSchema = new Schema({
     description: { type: String },
     author: { type: ObjectId },
     uploadTime: { type: Date, default: Date.now },
-    upCount: { type: Number, default: 0 }
+    upCount: { type: Number, default: 0 },
+    thumbsUp: { type: String, default: "" }
+
 });
 
 
