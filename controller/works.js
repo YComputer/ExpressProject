@@ -157,7 +157,7 @@ exports.showFull = function (req, res, next) {
     })
 
     ep.emit("Url", config.config.host)
-    
+
     Work.getdetail(id, function (err, docs) {
         if (err) {
             logger.error(err);
@@ -239,7 +239,7 @@ exports.upload = function (req, res, next) {
         userId = null;
     }
     form.parse(req, function (err, fields, files) {
-   
+
 
         var filename;
         Work.newAndSave("name", "relativeDestPath", "description", userId, function (err, doc) {
@@ -253,7 +253,7 @@ exports.upload = function (req, res, next) {
                 res.send({ id: doc._id });
                 var sourceFile = files.file.path;
                 var url = path.resolve('./');
-                var relativeDestPath = "public/avatar/" + filename+".sb2";
+                var relativeDestPath = "public/avatar/" + filename + ".sb2";
                 var destPath = config.config.project_base_path + relativeDestPath;
                 var readStream = fs.createReadStream(sourceFile);
                 var writeStream = fs.createWriteStream(destPath);
@@ -261,7 +261,7 @@ exports.upload = function (req, res, next) {
                 logger.info("收到文件：" + JSON.stringify(files));
             }
         });
-        
+
 
     });
 }
@@ -269,7 +269,7 @@ exports.upload = function (req, res, next) {
 exports.saveWork = function (req, res, next) {
     var id = req.params.workid;
     var name = req.body.name;
-    var relativeDestPath = "public/avatar/" + req.body.relativeDestPath+".sb2";
+    var relativeDestPath = "public/avatar/" + req.body.relativeDestPath + ".sb2";
     var description = req.body.description;
     var ep = new eventproxy();
     ep.all("saved", "evaluated", function (work, evaluated) {
@@ -318,6 +318,19 @@ exports.getTotalCount = function (req, res, next) {
         }
         else {
             res.send({ data: doc });
+        }
+    })
+}
+
+exports.search = function (req, res, next) {
+    var keyword = req.params.keyword;
+    var pageid = req.params.pageid;
+    Work.findAllWorkByKeyword(keyword, pageid, function (err, docs) {
+        if (err) {
+            res.send({ err: JSON.stringify(err) });
+        }
+        else {
+            res.send({ data: docs });
         }
     })
 }

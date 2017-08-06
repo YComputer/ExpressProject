@@ -63,6 +63,33 @@ $(function () {
         getPageWorks(currentPageId);
     })
 
+    $("#searchWorkBtn").on('click', function () {
+        var keyWord = $("#keyworkInput")[0].value;
+        if (keyWord == undefined || keyWord == "") {
+            return;
+        }
+        $.ajax({
+            type: "get",
+            url: "/works/search/" + keyWord + "/0",
+            success: function (data) {
+                if (data) {
+                    var newPageWorks = data.data;
+                    if (newPageWorks.length > 0) {
+                        var html = generateNewRows(newPageWorks);
+                        $("#allWorks").empty();
+                        $("#allWorks").append(html);
+                    }
+                }
+                else {
+                    console.log("获取失败");
+                }
+            },
+            failed: function (data) {
+                console.log("获取失败");
+            }
+        })
+    })
+
     var currentPageId = 0;
 
     function getPageWorks(nextPage) {

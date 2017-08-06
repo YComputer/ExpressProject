@@ -50,6 +50,7 @@ router.get('/works/:workid/full', works.showFull);    //全屏播放作品
 router.get('/works/:workid/evaluation', works.showEvaluation);
 router.get('/works/totalCount/get', works.getTotalCount);  //获取作品总量
 router.get('/create', create.showEditor);   //创作
+router.get('/works/search/:keyword/:pageid', works.search);
 
 router.get('/courses/:courseType', course.listAllCourse);
 router.get('/courses/:courseType/:courseId', course.showCourseDetail);

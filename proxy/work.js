@@ -29,7 +29,15 @@ exports.getNextPageWorks = function (pageid, callback) {
     query.exec(callback);
 }
 
-exports.getAllWorkByUserId 
+exports.getAllWorkByUserId;
+
+exports.findAllWorkByKeyword = function (keyword, pageid, callback) {
+    var reg = new RegExp(keyword, 'i');
+    var query = Work.find({ name: { $regex: reg } });
+    query.skip(pageid * 20);
+    query.limit(20);
+    query.exec(callback);
+}
 
 exports.getWorkSourcePath = function (id, callback) {
     Work.find({ _id: id }, 'sourcePath name', callback);
