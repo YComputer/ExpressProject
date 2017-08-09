@@ -16,6 +16,8 @@ var resource = require('../controller/resource');
 var create = require('../controller/create');
 var static = require('../controller/static');
 
+var mobile_works = require('../controller/mobile_works');
+
 var thumbnail = require('../controller/thumbnail');
 
 
@@ -65,6 +67,15 @@ router.post('/user/updateInfo', user.updateInfo);
 router.post('/works', works.upload);
 router.post('/works/:workid', works.saveWork);
 router.get('/works/:workid/downresource', works.downLoad);
+
+
+router.get('/mobile/works', mobile_works.listAll);
+router.get('/mobile/works/nextpage', mobile_works.getNextPage);
+router.get('/mobile/works/:workid', mobile_works.showDetail);
+router.get('/mobile/works/search/:keyword/:pageid', mobile_works.search);
+router.get('/mobile/works/totalCount/get', mobile_works.getTotalCount);  //获取作品总量
+router.get('/mobile/works/:workid/evaluation', mobile_works.showEvaluation);
+
 
 
 router.post('/thumbnail', thumbnail.upload); //上传缩略图

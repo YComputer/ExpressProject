@@ -1,10 +1,15 @@
-extends ../layout
+extends ../mobile_layout
 block content
-    div.container
+    div(class="container" style="margin-left:0px;padding-left:0px")
         div.row
             div(class="col-md-8")
                 div
-                    link(rel="stylesheet" href="/stylesheets/player.css")
+                    div
+                        h4 题目： #{work.name}
+                    div
+                        p 作者：  #{work.author} 
+                        //时间#{work.uploadTime}
+                    link(rel="stylesheet" href="/stylesheets/mobile_player.css")
                     div(class="area" id="title-area" style="margin-top:10px")
                     div(class="area" id="player-area")
                     div(class="controls")
@@ -13,7 +18,7 @@ block content
                         span(class="pause")
                         span(class="flag" title="Shift+click to enable turbo mode.")
                         div(class="turbo") Turbo Mode
-                        span(class="full-screen")
+                        span(class="full-screen" style="display:none")
                     div(class="player")
                     div(class="internal-error")
                     div(class="title")
@@ -23,7 +28,7 @@ block content
                     script(src="/javascripts/fonts.js")
                     script(src="/javascripts/jszip.js")
                     script(src="/javascripts/phosphorus.js")
-                    script(src="/javascripts/player.js")
+                    script(src="/javascripts/mobile_player.js")
                     script(src="/javascripts/pages/work.js")
                     script(type='text/javascript').
                         P.IO.PROJECT_URL = '#{Url}';
@@ -42,6 +47,8 @@ block content
                             id = '';
                             }
                             if ('#{work.sourcePath}'.indexOf('sb2') !== -1) {
+                                var w = window.innerWidth;
+                                P.player.setResolution(w);                            
                                 P.player.load(id, function (stage) {
                                 //stage.triggerGreenFlag();
                                 }, function (title) {
@@ -65,15 +72,19 @@ block content
                     //- button#thumbs-down(style="display:inline" class="btn")
                     //-     span(class="glyphicon glyphicon-thumbs-down") 
                     //- button(style="display:inline" class="btn") 打赏 
-                    a(href="/works/" + '#{work._id}' + "/downresource" class="btn") 
+                    //a(href="/works/" + '#{work._id}' + "/downresource" class="btn") 
                         button(class="btn") 下载源码
+                    //button(style="display:inline" class="btn")评论
+                    //button(style="display:inline" class="btn")作品描述  #{work.description}
+                    button(id="buttshare" style="display:inline" class="btn")分享
                     a(href="/works/"+"#{work._id}"+ "/full" class="btn" style="display:none") 
                         button(class="btn" style="display:none") 全屏
-                    a(href="/works/"+"#{work._id}"+"/evaluation" class="btn"  style="display:none")
-                        button(class="btn"  style="display:none") 查看评估报告
+                    a(href="/works/"+"#{work._id}"+"/evaluation" class="btn" style="display:none" )
+                        button(class="btn" style="display:none") 查看评估报告
                     script(type='text/javascript').   
                         load('works/'+ '#{work._id}'+'/downresource');
-        
+                div#qrcode(style="display:none")
+                    button(id="hiddenqrcode" class="btn")收起
                 div#textareawork
                     textarea#work_comment_text(rows=4 style="width:100%;height:100px;margin-top:20px" placeholder="想说点什么就写在这儿吧")
                     button#submit_comment_btn(class="btn" style="display:block;position:absolute;right:20px") 提交评论
@@ -99,23 +110,19 @@ block content
                                                     p #{obj.index+1}楼
                                 div  
                                     p #{obj.commentContent}
-
-            div(class="col-md-4" style="margin-top:40px")
-                div
-                    h4 题目： 
-                    p #{work.author}
-                div
-                    p 作者： 
-                    p #{work.author}
-                div
-                    p 时间：
-                    p #{work.uploadTime}
-                div
-                    p 说明
-                    p #{work.description}
+        
+        script(src="/javascripts/qrcode.js")
         script.
-            $(window).resize(function(e) {
-                var Pic = document.getElementsByTagName("canvas")[0];
-                 $(".controls").css({'width': (Pic.width + 'px')});
-            });
+            new QRCode(document.getElementById("qrcode"), '#{Url}'+"/works/#{work._id}");
+            $("#buttshare").on('click', function () {
+               $("#qrcode").css({'display': "block"});
+            })
+            $("#hiddenqrcode").on('click', function () {
+               $("#qrcode").css({'display': "none"});
+            })
+            hiddenqrcode
+            //$(window).resize(function(e) {
+            //    var Pic = document.getElementsByTagName("canvas")[0];
+            //     $(".controls").css({'width': (Pic.width + 'px')});
+            //});
 
