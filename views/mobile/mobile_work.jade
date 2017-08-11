@@ -113,7 +113,7 @@ block content
         
         script(src="/javascripts/qrcode.js")
         script.
-            new QRCode(document.getElementById("qrcode"), '#{Url}'+"/works/#{work._id}");
+            new QRCode(document.getElementById("qrcode"), '#{Url}'+"mobile/works/#{work._id}");
             $("#buttshare").on('click', function () {
                $("#qrcode").css({'display': "block"});
             })

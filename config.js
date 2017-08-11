@@ -16,7 +16,7 @@ var config = {
     session_secret: 'node_club_secret',
     auth_cookie_name: 'node_club',
     project_base_path: "/mnt/c/Users/xintao/Desktop/website/ExpressProject/",//"/Users/lijie/项目/git/ExpressProject/"//
-    host: 'http://127.0.0.1:5000/'
+    host: 'http://192.168.1.106:5000/'
 };
 
 exports.config = config;
