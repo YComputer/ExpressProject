@@ -104,7 +104,7 @@ exports.signup = function (req, res, next) {
 
                 //发送激活邮件
                 var expiredtime = Date.now().toString();
-                href = 'http://localhost:5000/activeAccount?' + 'email=' + email + '&expiredtime=' + expiredtime;
+                href = config.config.host + 'activeAccount?' + 'email=' + email + '&expiredtime=' + expiredtime;
                 mail.sendActiveMail(email, href);
 
                 // res.render('sign/signup', {
@@ -172,7 +172,7 @@ exports.login = function (req, res, next) {
             if (!user.active) {
                 // 重新发送激活邮件
                 var expiredtime = Date.now().toString();
-                href = 'http://localhost:5000/activeAccount?' + 'email=' + email + '&expiredtime=' + expiredtime;
+                href = config.config.host + 'activeAccount?' + 'email=' + email + '&expiredtime=' + expiredtime;
                 mail.sendResetPwdMail(email, href);
                 res.status(403);
                 return res.render('sign/signin', { error: '此帐号还没有被激活，激活链接已发送到 ' + user.email + ' 邮箱，请查收。' });
@@ -287,7 +287,7 @@ exports.sendResetPwdMail = function (req, res) {
             var userid = doc.id;
             var key = doc.accessToken;
             var expiredtime = Date.now().toString();
-            href = 'http://localhost:5000/resetpwd?' + 'userid=' + userid + '&key=' + key + '&expiredtime=' + expiredtime;
+            href = config.config.host + 'resetpwd?' + 'userid=' + userid + '&key=' + key + '&expiredtime=' + expiredtime;
             mail.sendResetPwdMail(email, href);
             res.send({
                 data: 'success'

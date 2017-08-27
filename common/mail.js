@@ -2,18 +2,10 @@
  * Created by yaohw@s2017年7月19日21:22:21
  */
 var nodemailer = require("nodemailer");
-
-var user = '01_space@sina.cn',
-    pass = 'lijie1108';
-var smtpTransport = nodemailer.createTransport({
-    host: 'smtp.sina.cn',
-    secureConnection: true,
-    port: 25,
-    auth: {
-        user: '01_space@sina.cn',
-        pass: 'lijie1108'
-    }
-});
+var config = require('../config');
+var user = config.config.mailSystem.auth.user,
+    pass = config.config.mailSystem.auth.pass;
+var smtpTransport = nodemailer.createTransport(config.config.mailSystem);
 
 /**
  * 发送邮件找回密码
