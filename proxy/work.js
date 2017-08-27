@@ -88,3 +88,21 @@ exports.thumbsUp = function (workId, userName, callback) {
         }
     })
 }
+
+/**
+ * 浏览次数+1
+ */
+exports.addPageViews = function (workId, callback) {
+    Work.findById(workId, function (err, work) {
+        if (err) {
+            return;
+        }
+        else {
+
+            //浏览次数+1
+            work.pageViews += 1;
+
+            work.save(callback);
+        }
+    })
+}
