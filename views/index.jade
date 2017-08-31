@@ -16,6 +16,17 @@ block content
       span(class="glyphicon glyphicon-chevron-left" id="prevbtn" aria-hidden="true")
     a(class="carousel-control right" href="#carousel" role="button" data-slide="next")
       span(class="glyphicon glyphicon-chevron-right" id="nextbtn" aria-hidden="true")
+      
+  div.row(style="text-align:center;font-size:20px;line-height:25pt;margin-top:15px")
+    p 01psace少儿编程开课了！
+  div.row
+      div(class="col-md-7" style="position: relative;top: 0;left: 0;  margin:0 padding-right:0px;padding-left: 0px")
+          div(style="text-align:left;")
+              img(src="/images/promotion.png" style="position: relative;top: 0;left: 0;width:750px" alt="image0")
+          div
+              img(src="/images/play.svg" id="playvedio" style=" position:absolute;top: 460px;left: 620px;width:100px" alt="image0" class="btn")                   
+      div(class="col-md-5" style="position: relative;top: 0;left: 0; margin:0 padding-right:0px;padding-left: 0px")
+              img(src="/images/01sample.png" style="height:554.5px") 
   div.row(style="text-align:center;font-size:20px;line-height:25pt;margin-top:15px")
     p 我们致力于发掘少儿潜能，通过体系的训练，让孩子掌握一门和机器交流的语言
     p 搭建起通往人工智能世界的桥梁
@@ -50,3 +61,19 @@ block content
       p(style="color:rgb(255,255,255)") 软硬兼施的机器人课程
       p(style="color:rgb(255,255,255);font-size:20px;")  app inventor
     //- div(class='col-md-3' style="background:rgb(245,250,133);height:200px;text-align:center;font-size:30px;line-height:25pt;padding-top:15px;")
+    
+    div#vedioshow(class="modal" style=" display: none;width:1000px;margin-left:auto;margin-right:auto;text-align:center;")
+            video(id='idforvideo' src="/video/promotion.mp4" controls="controls" style="float:left;height: 630px;" )
+            img(src="/images/cross.svg" id="closevedio" style="float:left;width:100px" alt="image0" class="btn")
+        div(class="modal-footer")
+  script.
+        $('#playvedio').on('click',  function () {
+          $('#vedioshow').modal("show");
+          var vv = document.getElementById("idforvideo");
+          vv.play();
+        })
+        $('#closevedio').on('click',  function () {
+          $('#vedioshow').modal("hide");
+          var vv = document.getElementById("idforvideo");
+          vv.pause();
+        })
