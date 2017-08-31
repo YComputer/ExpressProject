@@ -3,4 +3,5 @@ bin/*
 public/resource/*
 public/avatar/*
 public/thumbnail/*
+config.js
 *.sb2
