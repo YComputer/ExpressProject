@@ -25,8 +25,8 @@ app.use(require('cookie-parser')(config.session_secret));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: config.session_secret,
-    store: new RedisStore({ host: 'localhost', port: 6379 }),
-    resave: false,
+    store: new RedisStore({ host: '127.0.0.1', port: 6379 })
+    //resave: false,
 }));
 
 app.use('/', webRouter);

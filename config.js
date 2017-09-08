@@ -2,7 +2,7 @@
  * Created by hr on 2016/11/23.
  */
 var config = {
-    port: 80,
+    port: 5000,
     // mongodb 配置
     mongo_db: 'mongodb://127.0.0.1:27017/test',
 
@@ -16,7 +16,7 @@ var config = {
     session_secret: '01space_org',
     auth_cookie_name: '01space',
     project_base_path: "/com/bin/ExpressProject/",
-    host: 'http://121.196.202.96:80/',
+    host: 'http://127.0.0.1:5000/',
     mailSystem: {
         host: 'smtp.sina.cn',
         secureConnection: true,
