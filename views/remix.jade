@@ -1,0 +1,116 @@
+html
+  head
+    title 零壹空间-少儿编程
+    meta(charset='utf8')
+    meta(content='text/html', http-equiv='content-type')
+    link(rel='stylesheet' href="/stylesheets/bootstrap.css")
+    link(rel='stylesheet', href='/stylesheets/create.css')
+    script(src="/javascripts/jquery-3.1.1.min.js")
+    script(src="/javascripts/bootstrap.js")
+    script(src='/javascripts/swfobject.js')
+  body
+    #scratch-loader
+    #scratch(style='text-align:center;margin-top:30px;visibility:hidden;position:relative;')
+      .scratch_unsupported(style='display: none;')
+        p(style='color:#aaa;font-size:22px;margin-top:14px;line-height:28px;')
+          | Oh no! We're having trouble displaying this Scratch project.
+          br
+          |             If you are on a mobile phone or tablet, try visiting this project on a computer.
+          br
+          |             If you're on a computer, your Flash player might be disabled, missing, or out of date. Visit 
+          a(href='https://get.adobe.com/flashplayer/') this page
+          |  to update Flash.
+          br
+        a(href='http://www.adobe.com/go/getflashplayer')
+          img(src='//www.adobe.com/images/shared/download_buttons/get_flash_player.gif', alt='Get Adobe Flash player', target='_blank')
+      .scratch_loading Loading...
+    //
+      divembed(id="scratch" width='1319', height='652', src='/swf/Scratch.swf', style='visibility: visible;', allowfullscreen='true')
+    script(type='text/javascript').
+      window.SWFready=$.Deferred(); // Deferred makes sure we don't call ASSetEditMode before SWF is ready.
+      function JSeditorReady() {
+      try {
+      SWFready.resolve();
+      var Scratch = document.getElementById('scratch');
+      Scratch.ASshowEditor(1);
+      Scratch.ASloadProject('#{Url}' + 'avatar/' + '#{work._id}' + '.sb2', '#{work._id}', '#{work.name}');
+      //Scratch.ASloadExtension('LEGO WeDo 2.0');
+      //Scratch.ASsetEditMode(1);
+      //Scratch.ASsetIsEditMode(0);
+      //Scratch.ASsetFrom('adventure');
+      //Scratch.ASsetSavedCallback("projectSaved");
+      //Scratch.ASsetBeforeSaveCallback("saveProject");
+      //Scratch.ASsetLibVersion('20160708');
+      //Scratch.ASloadBaseProject('/avatar/getApple.sb2', "接苹果");
+      $('#scratch-loader').hide();
+      return true;
+      } catch (error) {
+      console.error(error.message, "\\\n", error.stack);
+      throw error;
+      }
+      }
+      var params = {
+      allowscriptaccess: 'always',
+      allowfullscreen: 'true',
+      wmode: 'direct',
+      menu: 'false'
+      };
+      //var flashvars = {
+      //project: '/avatar/getApple.sb2',
+      //autostart: 'false'
+      //};
+      var attributes = {};
+      swfobject.embedSWF('/swf/Scratch.swf', 'scratch', '100%', '100%', '10.0', false, null, params, attributes, null);
+      document.getElementById('scratch').style.visibility = 'visible';
+      //Dynamically add iframe for registration window
+      var filesb;
+      function postSB(file){
+        filesb = file;
+        $('#uploadResultModal').modal("show");
+        var autoStart = false;
+        var lightContent = false;
+        var hasUI = true;
+        var resolution = 480;
+        P.resolution = resolution;
+        P.player.setResolution(resolution);
+        document.body.style.width = resolution + 'px';
+        if (lightContent) document.body.className += ' light-content';
+        document.body.className += hasUI ? ' has-ui' : ' hide-ui';
+        document.title = 'run the sb2';
+        P.IO.PROJECT_URL = '#{Url}';
+        P.IO.SOUNDBANK_URL = '#{Url}';
+        var request = P.IO.loadSB2Project(file);
+        P.player.showProgress(request, function (stage) {
+            //    stage.triggerGreenFlag();
+        });
+      }
+    
+    div#uploadResultModal(class="modal")
+        div(class="modal-header")
+            a(class="close" data-dismiss="modal") ×
+            h3 上传作品
+        div(class="modal-body row" style="width:900px;height:400px" )
+            div(class="col-md-7")
+                div(class='controls')
+                    div(class='progress-bar')
+                        span(class='stop')
+                        span(class='pause')
+                        span(class='flag')
+                        div(class='turbo')
+                            span(class='full-screen')
+                div(style="border:solid 1px grey")
+                    div(class='player')
+            div(class="col-md-5" style="padding-right:10px")
+                div
+                    span(class="input-group-addon") 作品名：
+                    input(id="worknametext" type="text" class="form-control" placeholder="Twitterhandle")
+                div
+                    span(class="input-group-addon") 描述：
+                    textarea(id="workdiscription" type="text" style="height:270px" class="form-control" placeholder="Twitterhandle")
+            script(src="/javascripts/fonts.js")
+            script(src="/javascripts/jszip.js")
+            script(src="/javascripts/phosphorus.js")
+            script(src="/javascripts/player.js")
+        div(class="modal-footer")
+            button#createdWork(class="btn") 创建
+            button(class="btn" data-dismiss="modal") 取消上传

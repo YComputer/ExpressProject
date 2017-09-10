@@ -16,6 +16,9 @@ var resource = require('../controller/resource');
 var create = require('../controller/create');
 var static = require('../controller/static');
 
+
+var remix = require('../controller/remix');
+
 var mobile_works = require('../controller/mobile_works');
 
 var thumbnail = require('../controller/thumbnail');
@@ -67,6 +70,9 @@ router.post('/user/updateInfo', user.updateInfo);
 router.post('/works', works.upload);
 router.post('/works/:workid', works.saveWork);
 router.get('/works/:workid/downresource', works.downLoad);
+
+
+router.get('/remix/:workid', remix.remix);
 
 
 router.get('/mobile/works', mobile_works.listAll);
