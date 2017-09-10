@@ -27,8 +27,8 @@ app.use(session({
     secret: config.session_secret,
     saveUninitialized: true,
     cookie: { maxAge: 1000 * 60 * 60 * 24 },
-    store: new RedisStore({ host: 'localhost', port: 6379 }),
     resave: true,
+    store: new RedisStore({ host: '127.0.0.1', port: 6379 })
 }));
 
 app.use('/', webRouter);
