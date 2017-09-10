@@ -88,3 +88,22 @@ exports.thumbsUp = function (workId, userName, callback) {
         }
     })
 }
+
+exports.addViewCount = function (workId) {
+    Work.findById(workId, function (err, work) {
+        if (err) {
+            return;
+        }
+        else {
+            work.viewCount += 1;
+            wrok.save(function (err, doc) {
+                if (err) {
+                    return;
+                }
+                else {
+                    return;
+                }
+            });
+        }
+    })
+}

@@ -63,10 +63,10 @@ $(function () {
         getPageWorks(currentPageId);
     })
 
-//     $("#searchWorkBtn").on('click', function(){
-//         alert("hah");
-//     });
-    
+    //     $("#searchWorkBtn").on('click', function(){
+    //         alert("hah");
+    //     });
+
     $("#searchWorkBtn").on('click', function () {
         var keyWord = $("#keyworkInput")[0].value;
         if (keyWord == undefined || keyWord == "") {
@@ -168,7 +168,7 @@ $(function () {
             + '</a>'
             + '</div>'
             + '<div>'
-            + '<a href="/works/>' + work._id + '">'
+            + '<a href="/works/' + work._id + '">'
             + '<h3>' + work.name + '</h3>'
             + '</a>'
             + '<div class="row">'
@@ -177,7 +177,7 @@ $(function () {
             + '</div>'
             + '<div class="col-md-2">'
             + '<span>'
-            + '<p>' + work.upCount + '</p>'
+            + '<p>' + work.viewCount + '</p>'
             + '</span>'
             + '</div>'
             + '</div>'
@@ -201,13 +201,13 @@ $(function () {
     input.addEventListener('change', function () {
         //I think this line is bug, as we do not need to upload all the files we select from the button (we can cancel )
         // we need to put the code in unloader.on to show the sb2 file
-         $('#scratch-loader').show();
+        $('#scratch-loader').show();
         var pics = document.getElementsByTagName("canvas");
-        if(pics.length > 0){
-            parent= pics[0].parentNode;
+        if (pics.length > 0) {
+            parent = pics[0].parentNode;
             parent.parentNode.removeChild(parent);
         }
-        
+
         filesb = this.files[0];
         $('#uploadResultModal').modal("show");
         var autoStart = false;
@@ -225,7 +225,7 @@ $(function () {
         var request = P.IO.loadSB2File(this.files[0]);
         P.player.showProgress(request, function (stage) {
             //    stage.triggerGreenFlag();
-             $('#scratch-loader').hide();
+            $('#scratch-loader').hide();
         });
         //uploader.items = [];
         //uploader.queue = [];

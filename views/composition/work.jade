@@ -2,7 +2,7 @@ extends ../layout
 block content
     div.container
         div.row
-            div(class="col-md-8")
+            div(class="col-md-6 col-md-offset-1")
                 div
                     link(rel="stylesheet" href="/stylesheets/player.css")
                     div(class="area" id="title-area" style="margin-top:10px")
@@ -103,16 +103,16 @@ block content
             div(class="col-md-4" style="margin-top:40px")
                 div
                     h4 题目： 
-                    p #{work.author}
+                    p(style="margin-left:50px") #{work.name}
                 div
-                    p 作者： 
-                    p #{work.author}
+                    h4 作者： 
+                    p(style="margin-left:50px") #{work.author}
                 div
-                    p 时间：
-                    p #{work.uploadTime}
+                    h4 时间：
+                    p(style="margin-left:50px") #{work.uploadTime}
                 div
-                    p 说明
-                    p #{work.description}
+                    h4 说明
+                    p(style="margin-left:50px") #{work.description}
         script.
             $(window).resize(function(e) {
                 var Pic = document.getElementsByTagName("canvas")[0];
