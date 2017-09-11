@@ -18,6 +18,8 @@ var static = require('../controller/static');
 
 
 var remix = require('../controller/remix');
+var saveToSite = require('../controller/saveToSite');
+
 
 var mobile_works = require('../controller/mobile_works');
 
@@ -73,6 +75,8 @@ router.get('/works/:workid/downresource', works.downLoad);
 
 
 router.get('/remix/:workid', remix.remix);
+
+router.post('/saveWorkToSite', saveToSite.upload);
 
 
 router.get('/mobile/works', mobile_works.listAll);

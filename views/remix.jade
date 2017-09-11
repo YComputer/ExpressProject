@@ -84,33 +84,3 @@ html
             //    stage.triggerGreenFlag();
         });
       }
-    
-    div#uploadResultModal(class="modal")
-        div(class="modal-header")
-            a(class="close" data-dismiss="modal") ×
-            h3 上传作品
-        div(class="modal-body row" style="width:900px;height:400px" )
-            div(class="col-md-7")
-                div(class='controls')
-                    div(class='progress-bar')
-                        span(class='stop')
-                        span(class='pause')
-                        span(class='flag')
-                        div(class='turbo')
-                            span(class='full-screen')
-                div(style="border:solid 1px grey")
-                    div(class='player')
-            div(class="col-md-5" style="padding-right:10px")
-                div
-                    span(class="input-group-addon") 作品名：
-                    input(id="worknametext" type="text" class="form-control" placeholder="Twitterhandle")
-                div
-                    span(class="input-group-addon") 描述：
-                    textarea(id="workdiscription" type="text" style="height:270px" class="form-control" placeholder="Twitterhandle")
-            script(src="/javascripts/fonts.js")
-            script(src="/javascripts/jszip.js")
-            script(src="/javascripts/phosphorus.js")
-            script(src="/javascripts/player.js")
-        div(class="modal-footer")
-            button#createdWork(class="btn") 创建
-            button(class="btn" data-dismiss="modal") 取消上传
