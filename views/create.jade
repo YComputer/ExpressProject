@@ -35,7 +35,7 @@ html
       Scratch.FlashApp = Scratch.FlashApp || {};
       
       function handleEmbedStatus(e) {
-         $('#scratch-loader').hide();
+         //$('#scratch-loader').hide();
          var scratch = $(document.getElementById(editorId));
          if (!e.success) {
              scratch.css('marginTop', '10');
@@ -67,7 +67,7 @@ html
       //scratch.ASsetBeforeSaveCallback("saveProject");
       //scratch.ASsetLibVersion('20160708');
       //scratch.ASloadBaseProject('/avatar/getApple.sb2', "接苹果");
-      //$('#scratch-loader').hide();
+      $('#scratch-loader').hide();
       return true;
       } catch (error) {
       console.error(error.message, "\\\n", error.stack);
