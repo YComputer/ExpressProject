@@ -11,7 +11,7 @@ block content
             //form(class="bs-example bs-example-form" role="form")
             div(class="row")
                 div(class="col-md-4")
-                    label(for="xfile" class="btn btn-info btn-xs")
+                    label(id="upbutton" for="xfile" class="btn btn-info btn-xs")
                         span(class="fa fa-plus" style="font-size:20px") 上传作品
                 div(class="col-md-6")
                     div(class="row")
@@ -47,6 +47,7 @@ block content
                             span(class='full-screen')
                 div(style="border:solid 1px grey")
                     div(class='player')
+                    #scratch-loader
             div(class="col-md-5" style="padding-right:10px")
                 div
                     span(class="input-group-addon") 作品名：

@@ -26,7 +26,7 @@ $(function () {
                 }
                 else {
                     //window.history.back(-1);
-                    alert("我们已给您的注册邮箱发送了一封邮件，请点击里面的链接来激活您的帐号。");
+                    //alert("我们已给您的注册邮箱发送了一封邮件，请点击里面的链接来激活您的帐号。");
                     window.location.href = "/newsignin";
                 }
             },

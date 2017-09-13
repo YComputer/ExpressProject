@@ -14,6 +14,7 @@ var Comment = require('../proxy/comment');
 var Evaluation = require('../proxy/evaluation');
 var moment = require('moment');
 var config = require('../config');
+var tools = require('../common/tools');
 
 exports.listAll = function (req, res, next) {
 
@@ -42,6 +43,7 @@ exports.listAll = function (req, res, next) {
                         work.name = docs[j].name;
                         work.upCount = docs[j].upCount;
                         work.author = docs[j].author;
+                        work.viewCount = docs[j].viewCount;
                         var finduser = false;
                         for (var k = 0; k < users.length; k++) {
                             if ("" + work._id == "" + users[k]._id) {
@@ -68,6 +70,7 @@ exports.listAll = function (req, res, next) {
 
 exports.showDetail = function (req, res, next) {
     var id = req.params.workid;
+    Work.addViewCount(id);
     var ep = new eventproxy();
     ep.all("work", "comments", "Url", "evaluation", function (work, comments, Url) {
 
@@ -88,7 +91,24 @@ exports.showDetail = function (req, res, next) {
             return next(err);
         }
         else {
-            ep.emit("work", docs[0]);
+            User.getUserById(docs[0].author, function (err, doc) {
+                var work = {};
+                work._id = docs[0]._id;
+                work.name = docs[0].name;
+                work.upCount = docs[0].upCount;
+                work.description = docs[0].description;
+                work.uploadTime = tools.formatDate(docs[0].uploadTime, false);
+                work.sourcePath = docs[0].sourcePath;
+
+                if (err || doc == undefined) {
+                    work.author = "游客";
+                }
+                else {
+                    work.author = docs.name;
+                }
+                ep.emit("work", work);
+            })
+
         }
     })
 

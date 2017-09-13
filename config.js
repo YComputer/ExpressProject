@@ -2,7 +2,7 @@
  * Created by hr on 2016/11/23.
  */
 var config = {
-
+    port: 5000,
     // mongodb 配置
     mongo_db: 'mongodb://127.0.0.1:27017/test',
 
@@ -13,10 +13,19 @@ var config = {
         redis_db: 0,
         redis_password: ""
     },
-    session_secret: 'node_club_secret',
-    auth_cookie_name: 'node_club',
-    project_base_path: "/mnt/c/Users/xintao/Desktop/website/ExpressProject/",//"/Users/lijie/项目/git/ExpressProject/"//
-    host: 'http://192.168.1.106:5000/'
+    session_secret: '01space_org',
+    auth_cookie_name: '01space',
+    project_base_path: "/mnt/c/Users/xintao/Desktop/website/ExpressProject/",//"/com/bin/ExpressProject/",
+    host: 'http://127.0.0.1:5000/',
+    mailSystem: {
+        host: 'smtp.sina.cn',
+        secureConnection: true,
+        port: 25,
+        auth: {
+            user: '01_space@sina.cn',
+            pass: 'lijie19871108'
+        }
+    }
 };
 
 exports.config = config;

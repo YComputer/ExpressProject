@@ -18,15 +18,17 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 app.use(logger('dev'));
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(require('cookie-parser')(config.session_secret));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: config.session_secret,
-    store: new RedisStore({ host: 'localhost', port: 6379 }),
-    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
+    resave: true,
+    store: new RedisStore({ host: '127.0.0.1', port: 6379 })
 }));
 
 app.use('/', webRouter);

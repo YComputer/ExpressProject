@@ -15,7 +15,7 @@ var WorkSchema = new Schema({
     uploadTime: { type: Date, default: Date.now },
     upCount: { type: Number, default: 0 },
     thumbsUp: { type: String, default: "" },
-    pageViews: { type: Number, default: 0 }
+    viewCount: { type: Number, default: 0 }
 
 });
 
