@@ -73,14 +73,6 @@ exports.showDetail = function (req, res, next) {
     Work.addViewCount(id);
     var ep = new eventproxy();
     ep.all("work", "comments", "Url", "evaluation", function (work, comments, Url) {
-
-        //增加当前页面的浏览次数
-        Work.addPageViews(id, function (err, doc) {
-            if (err) {
-                logger.error(err);
-            }
-        })
-
         res.render('composition/work', { work: work, commentList: comments, Url: Url });
     })
 
