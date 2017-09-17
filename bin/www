@@ -44,8 +44,8 @@ server.on('listening', onListening);
  */
 var sslPort = 443;
 var options = {
-  key: fs.readFileSync('./privatekey.pem', 'utf-8'),
-  cert: fs.readFileSync('./certificate.pem', 'utf-8')
+  key: fs.readFileSync('./privatekey.key'),
+  cert: fs.readFileSync('./certificate.pem')
 }
 
 https.createServer(options, app).listen(sslPort, function () {
