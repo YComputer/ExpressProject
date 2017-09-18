@@ -252,17 +252,20 @@ exports.downLoad = function (req, res, next) {
 exports.upload = function (req, res, next) {
     var form = new formidable.IncomingForm();
     var userId = undefined;
+    var userName = undefined;
     if (req.session.user) {
         userId = req.session.user._id;
+        userName = req.session.userName;
     }
     else {
         userId = null;
+        userName = "外星人";
     }
     form.parse(req, function (err, fields, files) {
 
 
         var filename;
-        Work.newAndSave("name", "relativeDestPath", "description", userId, function (err, doc) {
+        Work.newAndSave("name", "relativeDestPath", "description", userId, userName, function (err, doc) {
             if (err) {
                 logger.error(err);
                 res.send(err);

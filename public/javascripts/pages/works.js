@@ -173,7 +173,7 @@ $(function () {
             + '</a>'
             + '<div class="row">'
             + '<div class="col-md-10">'
-            + '<a href="/user/' + work.author + '">作者：' + work.author + '</a>'
+            + '<a href="/user/' + work.authorID + '">作者：' + work.authorName + '</a>'
             + '</div>'
             + '<div class="col-md-2">'
             + '<span>'

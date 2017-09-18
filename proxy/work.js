@@ -47,12 +47,13 @@ exports.getdetail = function (id, callback) {
     Work.find({ _id: id }, callback);
 }
 
-exports.newAndSave = function (name, path, description, author, callback) {
+exports.newAndSave = function (name, path, description, authorID, authorName, callback) {
     var work = new Work();
     work.name = name;
     work.sourcePath = path;
     work.description = description;
-    work.author = author;
+    work.authorID = authorID;
+    work.authorName = authorName;
     work.save(callback);
 };
 
@@ -96,7 +97,7 @@ exports.addViewCount = function (workId) {
         }
         else {
             work.viewCount += 1;
-            wrok.save(function (err, doc) {
+            work.save(function (err, doc) {
                 if (err) {
                     return;
                 }
