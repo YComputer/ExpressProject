@@ -255,7 +255,7 @@ exports.upload = function (req, res, next) {
     var userName = undefined;
     if (req.session.user) {
         userId = req.session.user._id;
-        userName = req.session.userName;
+        userName = req.session.user.name;
     }
     else {
         userId = null;
