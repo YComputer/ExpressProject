@@ -27,69 +27,68 @@ exports.upload = function (req, res, next) {
     else {
         userId = null;
     }
+    var name = req.body.name;
+    var description = req.body.description;
+    var picdata = req.body.picdata;
+    var programdata = req.body.programdata
+    logger.info("参数取完毕");
 
-    Work.newAndSave("name", "relativeDestPath", "description", userId, "游客", function (err, doc) {
+    User.getUserById(userId, function (err, doc) {
         if (err) {
-            logger.info("出现错误");
-            logger.error(err);
-            res.send(err);
-            return next(err);
+            log.err(err);
         }
-        else {
-            logger.info("数据库新建成功");
-            var resId = doc._id.toString();
-            logger.info("新的id" + resId);
-            //////////////////////
-            var name = req.body.name;
-            var description = req.body.description;
 
-            var picdata = req.body.picdata;
-            var programdata = req.body.programdata
-
-            logger.info("参数取完毕");
-
-            var folder1 = config.config.project_base_path + "public/thumbnail/";
-            var folder2 = config.config.project_base_path + "public/avatar/";
-
-
-            fs.stat(folder1, function (err, stat) {
-                if (err) {
-                    fs.mkdir(folder1, 0777, function () {
+        Work.newAndSave(name, "relativeDestPath", "description", userId, doc.name, function (err, doc) {
+            if (err) {
+                logger.info("出现错误");
+                logger.error(err);
+                res.send(err);
+                return next(err);
+            }
+            else {
+                logger.info("数据库新建成功");
+                var resId = doc._id.toString();
+                logger.info("新的id" + resId);
+                var folder1 = config.config.project_base_path + "public/thumbnail/";
+                var folder2 = config.config.project_base_path + "public/avatar/";
+                fs.stat(folder1, function (err, stat) {
+                    if (err) {
+                        fs.mkdir(folder1, 0777, function () {
+                            save1(resId, picdata, res);
+                        });
+                    } else {
                         save1(resId, picdata, res);
-                    });
-                } else {
-                    save1(resId, picdata, res);
-                }
-            })
+                    }
+                })
 
 
-            fs.stat(folder2, function (err, stat) {
-                if (err) {
-                    fs.mkdir(folder2, 0777, function () {
+                fs.stat(folder2, function (err, stat) {
+                    if (err) {
+                        fs.mkdir(folder2, 0777, function () {
+                            save2(resId, programdata, res);
+                        });
+                    } else {
                         save2(resId, programdata, res);
-                    });
-                } else {
-                    save2(resId, programdata, res);
-                }
-            })
+                    }
+                })
 
 
-            var id = resId;
-            var relativeDestPath = "public/avatar/" + id + ".sb2";
+                var id = resId;
+                var relativeDestPath = "public/avatar/" + id + ".sb2";
 
-            Work.save(id, relativeDestPath, name, description, function (err, doc) {
-                if (err) {
-                    logger.error(err);
-                    res.send(err);
-                    return next(err);
-                }
-            })
+                Work.save(id, relativeDestPath, name, description, function (err, doc) {
+                    if (err) {
+                        logger.error(err);
+                        res.send(err);
+                        return next(err);
+                    }
+                })
 
-            res.send("ok");
-        }
-    });
+                res.send("ok");
+            }
+        });
+    })
     //readStream.pipe(writeStream);
-
 }
 
 var save1 = function (resId, picdata, res) {
