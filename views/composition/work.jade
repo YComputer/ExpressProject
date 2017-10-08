@@ -26,8 +26,12 @@ block content
                     script(src="/javascripts/player.js")
                     script(src="/javascripts/pages/work.js")
                     script(type='text/javascript').
-                        P.IO.PROJECT_URL = '#{Url}';
-                        P.IO.SOUNDBANK_URL = '#{Url}';
+                        var uurl = '#{Url}';
+                        if("https:" == document.location.protocol){
+                            uurl=uurl.replace("http","https");
+                        }
+                        P.IO.PROJECT_URL = uurl;
+                        P.IO.SOUNDBANK_URL = uurl;
                         function show(id) {
                             //     titleArea.style.height = id ? 0 : titleAreaHeight + 'px';
                             //   playerArea.style.height = id ? playerAreaHeight + 'px' : 0
@@ -126,6 +130,7 @@ block content
         script(src="/javascripts/jquery.scrollTo.js") 
         script(src="/javascripts/qrcode.js")
         script.
+
             new QRCode(document.getElementById("qrcode"), '#{Url}'+"mobile/works/#{work._id}");
             $("#buttshare").on('click', function () {
                $("#qrcode").css({'display': "block"});
