@@ -131,8 +131,12 @@ block content
         script(src="/javascripts/jquery.scrollTo.js") 
         script(src="/javascripts/qrcode.js")
         script.
-
-            new QRCode(document.getElementById("qrcode"), '#{Url}'+"mobile/works/#{work._id}");
+            var uurl = '#{Url}';
+            if("https:" == document.location.protocol){
+                uurl=uurl.replace("http","https");
+                uurl=uurl.replace("80","443");
+            }
+            new QRCode(document.getElementById("qrcode"), ""+uurl+"mobile/works/#{work._id}");
             $("#buttshare").on('click', function () {
                $("#qrcode").css({'display': "block"});
                $("#hiddenqrcode").css({'display': "inline"});
