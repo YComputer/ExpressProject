@@ -29,7 +29,10 @@ exports.getNextPageWorks = function (pageid, callback) {
     query.exec(callback);
 }
 
-exports.getAllWorkByUserId;
+exports.getAllWorkByUserId = function (userId, callback) {
+    var query = Work.find({ author: userId });
+    query.exec(callback);
+}
 
 exports.findAllWorkByKeyword = function (keyword, pageid, callback) {
     var reg = new RegExp(keyword, 'i');

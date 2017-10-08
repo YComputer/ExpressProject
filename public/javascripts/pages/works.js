@@ -70,7 +70,7 @@ $(function () {
     $("#searchWorkBtn").on('click', function () {
         var keyWord = $("#keyworkInput")[0].value;
         if (keyWord == undefined || keyWord == "") {
-            return;
+            getPageWorks(0);
         }
         $.ajax({
             type: "get",
