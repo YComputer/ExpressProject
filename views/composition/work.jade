@@ -29,6 +29,7 @@ block content
                         var uurl = '#{Url}';
                         if("https:" == document.location.protocol){
                             uurl=uurl.replace("http","https");
+                            uurl=uurl.replace("80","443");
                         }
                         P.IO.PROJECT_URL = uurl;
                         P.IO.SOUNDBANK_URL = uurl;
