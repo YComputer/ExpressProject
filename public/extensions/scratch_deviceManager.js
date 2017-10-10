@@ -29,8 +29,7 @@ window.ScratchDeviceManager = new (function () {
             spec: device_spec
         };
         
-         callback([], ext_type, ext_name);
-        /*$.ajax(url, {
+        $.ajax(url, {
             data: {data: JSON.stringify(data)},
             dataType: 'json',
             success: function (data, textStatus, jqXHR) {
@@ -42,7 +41,7 @@ window.ScratchDeviceManager = new (function () {
             error: function (jqXHR, textStatus, errorThrown) {
                 isConnected = false;
             }
-        }); */
+        });
     };
 
     // Attempt to open a device-specific socket connection to the Device Manager.
