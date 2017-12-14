@@ -75,6 +75,8 @@ router.post('/works', works.upload);
 router.post('/works/:workid', works.saveWork);
 router.get('/works/:workid/downresource', works.downLoad);
 
+//获取作品详细信息4ajax
+router.get('/work/getWorkDetail', works.getWorkDetail);
 
 router.get('/remix/:workid', remix.remix);
 

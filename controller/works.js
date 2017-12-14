@@ -374,3 +374,36 @@ exports.search = function (req, res, next) {
     });
 }
 
+exports.getWorkDetail = function (req, res, next) {
+    var id = req.query.workid;
+    Work.addViewCount(id);
+
+    Work.getdetail(id, function (err, docs) {
+        if (err) {
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        else {
+            User.getUserById(docs[0].author, function (err, doc) {
+                var work = {};
+                work._id = docs[0]._id;
+                work.name = docs[0].name;
+                work.upCount = docs[0].upCount;
+                work.description = docs[0].description;
+                work.uploadTime = tools.formatDate(docs[0].uploadTime, false);
+                work.sourcePath = docs[0].sourcePath;
+
+                if (err || doc == undefined) {
+                    work.author = "游客";
+                }
+                else {
+                    work.author = docs.name;
+                }
+                res.send({ data: work });
+            })
+
+        }
+    })
+}
+
