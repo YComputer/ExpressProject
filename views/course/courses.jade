@@ -4,85 +4,260 @@
 extends ../layout
 block content
    div.container
-      script(src="/javascripts/pages/courses.js")
-      div.row(style="margin-top:10px")
-            ul(class="nav nav-tabs")
-                li#startcourse
-                    a(href="/courses/1") scratch入门
-                li#gamestart 
-                    a(href="/courses/2") 游戏入门
-                li#upgames
-                    a(href="/courses/3") 高级游戏
-                li#startAlgorithm
-                    a(href="/courses/4") 初级算法
-                li#upAlgorithm
-                    a(href="/courses/5") 高级算法
-                script(type='text/javascript').
-                    var type = '#{coursetype}'
-                    if(type=="1"){
-                        var li = $("#startcourse")[0].className = "active";
-                    }
-                    else if(type=="2"){
-                        $("#gamestart")[0].className = "active";
-                    }
-                    else if(type=="3"){
-                        $("#upgames")[0].className = "active";
-                    }
-                    else if(type=="4"){
-                        $("#startAlgorithm")[0].className = "active";
-                    }
-                    else if(type=="5"){
-                        $("#upAlgorithm")[0].className = "active";
-                    }
-      div.row(style="border-bottom:3px grey solid")
-        div(class="col-md-8")
-            - for(var i=0;i<list.length;i++)
-                div(class="courseListDiv" id=list[i]._id style="padding-left:10px;padding-right:10px")
-                    a(href='/courses/'+coursetype+'/'+list[i]._id)
-                        div.row(style="border-bottom:1px #f3f3f3 solid;height:50px; padding:15px;")
-                            div(class="col-md-10")
-                                p #{list[i].title}
-                            div(class="col-md-2")
-                                - var difficultyLevel = list[i].difficultyLevel
-                                case difficultyLevel
-                                    when 0
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                    when 1
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                    when 2
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                    when 3
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                    when 4
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star-empty")
-                                    when 5
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star")
-                                        span(class="glyphicon glyphicon glyphicon-star")
-        div(class="col-md-1" style="height:100px; width:1px; border-left:1px grey solid")
+        script(src="/javascripts/pages/courses.js")
+        link(rel='stylesheet' href="/stylesheets/works.css")
+        div.row(style="background:url(/images/VCG211cfc24b32.jpg);height:500px;opacity:0.6;")
+            div(class="col-md-offset-7 col-xs-6" style="margin-top:150px")
+                p(style="color:white;font-size:24px") 软硬件结合的授课方式
+                p(style="color:white;font-size:24px") 主题式的课程体系
+                p(style="color:white;font-size:24px") 惯插其中的计算思维培养
+                p(style="color:white;font-size:24px") 让您的孩子学得更轻松
+                p(style="color:white;font-size:24px;margin-left:120px") 学的更深入！
+                button.btn(type="button")
+                    a 免费试听
+                    span(class="glyphicon glyphicon-play")
+        div.row
+            h1 scratch课程体系
+        div(class="row well")
+            div(class="col-md-4")
+                img(src="/images/scratch.jpeg" style="width:100%")
+                div
+                    p scratch 是麻省理工大学开发的一款图形化编程工具
+                button.btn
+                    a(href="/courses/scratch/") 查看详情
+                    span(class="glyphicon glyphicon-play")
+            div(class="col-md-4")
+                img(src="/images/arduino-uno.png" style="width:100%")
+                div
+                    p arduino是世界出名的开源硬件集成板，在其上能集成电机、超声波雷达、红外监控等硬件；能无缝的与scratch结合，编写出图形化的脚本代码控制机器人完成各种复杂的任务。
+                button.btn
+                    a 查看详情
+                    span(class="glyphicon glyphicon-play")
+            div(class="col-md-4")
+                img(src="/images/searchroad.jpg" style="width:100%")
+                div
+                    p 寻径是以寻找路径为主题的编程课程，该课程结合了软硬件，以模拟算法实现为主要手段，让孩子掌握最短路径、最优路径等一系列计算机算法的思想。
+                button.btn
+                    a 查看详情
+                    span(class="glyphicon glyphicon-play")
+        div.row
+            h1 python课程体系
+        div(class="row well")
+            div(class="col-md-4")
+                img(src="/images/pythonlogo.jpg" style="width:100%")
+                div
+                    p python基础
+                button.btn
+                    a 查看详情
+                    span(class="glyphicon glyphicon-play")
+            div(class="col-md-4")
+                img(src="/images/algorithm.jpeg" style="width:100%")
+                div
+                    p python算法
+                button.btn
+                    a 查看详情
+                    span(class="glyphicon glyphicon-play")  
+            div(class="col-md-4")
+                img(src="/images/pythonwebbugs.jpeg" style="width:100%")
+                div
+                    p python游戏与爬虫
+                button.btn
+                    a 查看详情
+                    span(class="glyphicon glyphicon-play")
+        div.row
+            h1 课程规划
+            div.divider
+            div(class="row well")
+                div(class="levels")
+                    div( class="level-text level") 级别
+                    div(class="level level-1") Level 1
+                        div( class="triangel")
+                    div(class="level level-2") Level 2
+                        div(class="triangel-null")
+                        div(class="triangel")
+                    div(class="level level-3") Level 3
+                        div(class="triangel-null")
+                        div(class="triangel")
+                    div( class="level level-4") Level 4
+                        div(class="triangel-null")
+                        div(class="triangel")
+                    div(class="level level-5") Level 5
+                        div(class="triangel-null")
+                        div(class="triangel second")
+                    div(class="level level-6") Level 6
+                        div(class="triangel-null")
+                        div(class="triangel second")
+                    div(class="level level-7") Level 7
+                        div(class="triangel-null")
+                        div(class="triangel second")
+                    div(class="level level-8") Level 8
+                        div( class="triangel-null")
+                        div(class="triangel second")
+                    //- div(class="level level-9") Level 9
+                    //-     div(class="triangel-null")
+                    //-     div(class="triangel third")
+                    //- div(class="level level-10") Level 10
+                    //-     div(class="triangel-null")
+                    //-     div(class="triangel third")
+                    //- div(class="level level-11") Level 11
+                    //-     div(class="triangel-null")
+                    //-     div(class="triangel third")
+                    //- div(class="level level-12") Level 12
+                    //-     div(class="triangel-null")
+                div(class="stages")
+                    div( class="stage-text") 阶段
+                    div(class="stage stage-1") 图形编程
+                    div(class="stage stage-2") 代码编程
+                    //- div(class="stage stage-3") 算法编程
+                    div(class="clear")
+                
+                div(class="ages")
+                    div(class="age-text") 建议年龄
+                    div(class="age age-1-1 age-1") 7岁以上
+                    div(class="age age-1-1 age-1") 8岁以上
+                    div(class="age age-2") 9岁以上
+                    //- div(class="age age-3") 10岁以上
+                    div(class="clear")
+                div(class="times")
+                    div(class="time-text") 建议时长
+                    div(class="time time-1-1 time-1") 三个月
+                    div(class="time time-1-1 time-1") 三个月
+                    div(class="time time-1-1 time-1") 三个月
+                    div(class="time time-1-1 time-1") 三个月
+                    div(class="time time-1-1 time-2") 三个月
+                    div(class="time time-1-1 time-2") 三个月
+                    div(class="time time-1-1 time-2") 三个月
+                    div(class="time time-1-1 time-2") 三个月
+                    //- div(class="time time-1-1 time-3") 三个月
+                    //- div(class="time time-1-1 time-3") 三个月
+                    //- div(class="time time-1-1 time-3") 三个月
+                    //- div(class="time time-1-1 time-3") 三个月
+                    div(class="clear")
+                div(class="lessons")
+                    div(class="lesson-text") 课程
+                    div(class="lesson lesson-1-1 lesson-1") Scratch
+                        br 
+                        p Level 1
+                    div(class="lesson lesson-1-1 lesson-1") Scratch
+                        br 
+                        p Level 2
+                    div(class="lesson lesson-1-1 lesson-1") Scratch
+                        br 
+                        p Level 3
+                    div(class="lesson lesson-1-1 lesson-1") Scratch
+                        br 
+                        p Level 4
+                    div(class="lesson lesson-1-1 lesson-2") Python
+                        br 
+                        p Level 1
+                    div(class="lesson lesson-1-1 lesson-2") Python
+                        br 
+                        p Level 2
+                    div(class="lesson lesson-1-1 lesson-2") Python
+                        br 
+                        p Level 3
+                    div(class="lesson lesson-1-1 lesson-2") Python
+                        br 
+                        p Level 4
+                    //- div(class="lesson lesson-1-1 lesson-3") NOIP
+                    //-     br 
+                    //-     p Level 1
+                    //- div(class="lesson lesson-1-1 lesson-3") NOIP
+                    //-     br 
+                    //-     p Level 2
+                    //- div(class="lesson lesson-1-1 lesson-3") NOIP
+                    //-     br 
+                    //-     p Level 3
+                    //- div(class="lesson lesson-1-1 lesson-3") NOIP
+                    //-     br 
+                    //-     p Level 4
+                    div(class="clear")
+                div(class="powers")
+                    div(class="power-text")能力达成
+                    div(class="power power-1") Scratch：学习图形化编程工具Scratch，以及Picoboard和Arduino等硬件，完成软硬件结合的编程项目，创作有趣和实用的作品。
+                    div(class="power power-2") Python：学习Python基础语法，运用Python编写小游戏、网络爬虫，完成网页制作等，为学习人工智能知识建立坚实的基础。
+                    //- div(class="power power-3") NOIP：学习C++基础理论，掌握NOIP核心知识和算法，开展专题训练，成就青少年编程精英，为国外留学、国内升学添砖加瓦。
+                    div(class="clear")
+    div
+        br
+    //-   div.row(style="margin-top:10px")
+    //-         ul(class="nav nav-tabs")
+    //-             li#startcourse
+    //-                 a(href="/courses/1") scratch入门
+    //-             li#gamestart 
+    //-                 a(href="/courses/2") 游戏入门
+    //-             li#upgames
+    //-                 a(href="/courses/3") 高级游戏
+    //-             li#startAlgorithm
+    //-                 a(href="/courses/4") 初级算法
+    //-             li#upAlgorithm
+    //-                 a(href="/courses/5") 高级算法
+    //-             script(type='text/javascript').
+    //-                 var type = '#{coursetype}'
+    //-                 if(type=="1"){
+    //-                     var li = $("#startcourse")[0].className = "active";
+    //-                 }
+    //-                 else if(type=="2"){
+    //-                     $("#gamestart")[0].className = "active";
+    //-                 }
+    //-                 else if(type=="3"){
+    //-                     $("#upgames")[0].className = "active";
+    //-                 }
+    //-                 else if(type=="4"){
+    //-                     $("#startAlgorithm")[0].className = "active";
+    //-                 }
+    //-                 else if(type=="5"){
+    //-                     $("#upAlgorithm")[0].className = "active";
+    //-                 }
+    //-   div.row(style="border-bottom:3px grey solid")
+    //-     div(class="col-md-8")
+    //-         - for(var i=0;i<list.length;i++)
+    //-             div(class="courseListDiv" id=list[i]._id style="padding-left:10px;padding-right:10px")
+    //-                 a(href='/courses/'+coursetype+'/'+list[i]._id)
+    //-                     div.row(style="border-bottom:1px #f3f3f3 solid;height:50px; padding:15px;")
+    //-                         div(class="col-md-10")
+    //-                             p #{list[i].title}
+    //-                         div(class="col-md-2")
+    //-                             - var difficultyLevel = list[i].difficultyLevel
+    //-                             case difficultyLevel
+    //-                                 when 0
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                 when 1
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                 when 2
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                 when 3
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                 when 4
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star-empty")
+    //-                                 when 5
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-                                     span(class="glyphicon glyphicon glyphicon-star")
+    //-     div(class="col-md-1" style="height:100px; width:1px; border-left:1px grey solid")
 
-        div(class="col-md-3")
-            h4 课程说明
-            p(id="courseDescription") #{list[0].discription}
+    //-     div(class="col-md-3")
+    //-         h4 课程说明
+    //-         p(id="courseDescription") #{list[0].discription}

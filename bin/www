@@ -42,15 +42,15 @@ server.on('listening', onListening);
 /**
  * Create HTTPS Server
  */
-var sslPort = 443;
-var options = {
-  key: fs.readFileSync('./privatekey.key'),
-  cert: fs.readFileSync('./certificate.pem')
-}
+// var sslPort = 443;
+// var options = {
+//   key: fs.readFileSync('./privatekey.key'),
+//   cert: fs.readFileSync('./certificate.pem')
+// }
 
-https.createServer(options, app).listen(sslPort, function () {
-  console.log('HTTPS Server is running on: https://www.01space.cn:%s', sslPort);
-});
+// https.createServer(options, app).listen(sslPort, function () {
+//   console.log('HTTPS Server is running on: https://www.01space.cn:%s', sslPort);
+// });
 
 /**
  * Event listener for HTTP server "error" event.

@@ -25,6 +25,10 @@ exports.listAllCourse = function (req, res, next) {
 
 }
 
+exports.scratchpage = function (req, res, next) {
+    res.render('course/scratch');
+}
+
 exports.getCourseDescriptionById = function (req, res, next) {
     var courseId = req.params.courseId;
     Course.getCourseDetail(courseId, function (err, docs) {

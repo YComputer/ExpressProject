@@ -1,0 +1,343 @@
+.levels {
+    width: 100%;
+    height: 185px;
+    margin-top: 40px;
+    position: relative;
+}
+
+.level {
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    border-radius: 4px;
+}
+
+.level-text {
+    left: 0;
+    height: 40px;
+    background-color: #999999;
+    line-height: 40px;
+}
+
+.triangel {
+    position: absolute;
+    top: 0;
+    left: 98%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 17.3px;
+    border-color: transparent transparent transparent #ffc600;
+}
+
+.triangel-null {
+    position: absolute;
+    top: 15px;
+    left: 0%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 17.3px;
+    border-color: transparent transparent transparent #fff;
+}
+
+.second {
+    border-color: transparent transparent transparent #2ba5f7;
+}
+
+.third {
+    border-color: transparent transparent transparent #f07336;
+}
+
+.level-1 {
+    height: 20px;
+    line-height: 20px;
+    background-color: #ffc600;
+    left: 85px;
+    z-index: 110;
+}
+
+.level-2 {
+    height: 35px;
+    line-height: 30px;
+    background-color: #ffc600;
+    left: 170px;
+    z-index: 100;
+}
+
+.level-3 {
+    height: 50px;
+    line-height: 30px;
+    background-color: #ffc600;
+    left: 255px;
+    z-index: 90;
+}
+
+.level-4 {
+    height: 65px;
+    line-height: 30px;
+    background-color: #ffc600;
+    left: 340px;
+    z-index: 80;
+}
+
+.level-5 {
+    height: 80px;
+    line-height: 30px;
+    background-color: #2ba5f7;
+    left: 425px;
+    z-index: 70;
+}
+
+.level-6 {
+    height: 95px;
+    line-height: 30px;
+    background-color: #2ba5f7;
+    left: 510px;
+    z-index: 60;
+}
+
+.level-7 {
+    height: 110px;
+    line-height: 30px;
+    background-color: #2ba5f7;
+    left: 595px;
+    z-index: 50;
+}
+
+.level-8 {
+    height: 125px;
+    line-height: 30px;
+    background-color: #2ba5f7;
+    left: 680px;
+    z-index: 40;
+}
+
+.level-9 {
+    height: 140px;
+    line-height: 30px;
+    background-color: #f07336;
+    left: 765px;
+    z-index: 30;
+}
+
+.level-10 {
+    height: 155px;
+    line-height: 30px;
+    background-color: #f07336;
+    left: 850px;
+    z-index: 20;
+}
+
+.level-11 {
+    height: 170px;
+    line-height: 30px;
+    background-color: #f07336;
+    left: 935px;
+    z-index: 10;
+}
+
+.level-12 {
+    height: 185px;
+    line-height: 30px;
+    background-color: #f07336;
+    left: 1020px;
+    z-index: 0;
+}
+
+.stages {
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    line-height: 40px;
+}
+
+.stage {
+    height: 100%;
+    border-radius: 5px;
+    margin-left: 5px;
+    float: left;
+    width: 335px;
+}
+
+.stage-text {
+    background-color: #999999;
+    height: 100%;
+    border-radius: 5px;
+    float: left;
+    width: 80px;
+}
+
+.stage-1 {
+    background-color: #ffc600;
+}
+
+.stage-2 {
+    background-color: #2ba5f7;
+}
+
+.stage-3 {
+    background-color: #f07336;
+}
+
+.clear {
+    clear: both;
+}
+
+.ages {
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    line-height: 40px;
+}
+
+.age {
+    height: 100%;
+    border-radius: 5px;
+    margin-left: 5px;
+    float: left;
+    width: 335px;
+}
+
+.age-text {
+    background-color: #999999;
+    height: 100%;
+    border-radius: 5px;
+    float: left;
+    width: 80px;
+}
+
+.age-1 {
+    background-color: #ffc600;
+}
+
+.age-1-1 {
+    width: 165px;
+}
+
+.age-2 {
+    background-color: #2ba5f7;
+}
+
+.age-3 {
+    background-color: #f07336;
+}
+
+.times {
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    line-height: 40px;
+}
+
+.time-text {
+    background-color: #999999;
+    height: 100%;
+    border-radius: 5px;
+    float: left;
+    width: 80px;
+}
+
+.time {
+    height: 100%;
+    border-radius: 5px;
+    margin-left: 5px;
+    float: left;
+    width: 335px;
+}
+
+.time-1 {
+    background-color: #ffc600;
+}
+
+.time-1-1 {
+    width: 80px;
+}
+
+.time-2 {
+    background-color: #2ba5f7;
+}
+
+.time-3 {
+    background-color: #f07336;
+}
+
+.lessons {
+    width: 100%;
+    height: 60px;
+    margin-top: 5px;
+    line-height: 20px;
+}
+
+.lesson {
+    height: 100%;
+    border-radius: 5px;
+    margin-left: 5px;
+    float: left;
+    width: 335px;
+    padding-top: 10px;
+}
+
+.lesson-text {
+    background-color: #999999;
+    height: 100%;
+    border-radius: 5px;
+    float: left;
+    width: 80px;
+    line-height: 60px;
+}
+
+.lesson-1-1 {
+    width: 80px;
+}
+
+.lesson-1 {
+    background-color: #ffc600;
+}
+
+.lesson-2 {
+    background-color: #2ba5f7;
+}
+
+.lesson-3 {
+    background-color: #f07336;
+}
+
+.powers {
+    width: 100%;
+    height: 80px;
+    margin-top: 5px;
+    line-height: 20px;
+}
+
+.power-text {
+    background-color: #999999;
+    height: 100%;
+    border-radius: 5px;
+    float: left;
+    width: 80px;
+    line-height: 80px;
+}
+
+.power {
+    height: 100%;
+    border-radius: 5px;
+    margin-left: 5px;
+    float: left;
+    width: 335px;
+    padding: 10px 5px 0 5px;
+    text-align: left;
+    letter-spacing: 2px;
+}
+
+.power-1 {
+    background-color: #ffc600;
+}
+
+.power-2 {
+    background-color: #2ba5f7;
+}
+
+.power-3 {
+    background-color: #f07336;
+}
