@@ -68,6 +68,7 @@ exports.listAll = function (req, res, next) {
 
 exports.showDetail = function (req, res, next) {
     var id = req.params.workid;
+    Work.addViewCount(id);
     var ep = new eventproxy();
     ep.all("work", "comments", "Url", "evaluation", function (work, comments, Url) {
         res.render('mobile/mobile_work', { work: work, commentList: comments, Url: Url });
@@ -212,6 +213,9 @@ exports.thumbsUp = function (req, res, next) {
 
 exports.search = function (req, res, next) {
     var keyword = req.params.keyword;
+    if (keyword == "undefined") {
+        keyword = "";
+    }
     var pageid = req.params.pageid;
     Work.findAllWorkByKeyword(keyword, pageid, function (err, docs) {
 

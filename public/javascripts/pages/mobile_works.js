@@ -66,7 +66,7 @@ $(function () {
     $("#searchWorkBtn").on('click', function () {
         var keyWord = $("#keyworkInput")[0].value;
         if (keyWord == undefined || keyWord == "") {
-            return;
+            keyWord = "undefined";
         }
         $.ajax({
             type: "get",

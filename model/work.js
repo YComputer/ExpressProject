@@ -14,9 +14,9 @@ var WorkSchema = new Schema({
     authorID: { type: ObjectId },
     authorName: { type: String },
     uploadTime: { type: Date, default: Date.now },
-    upCount: { type: Number, default: 0 },
+    upCount: { type: Number, default: Math.round(Math.random() * 100) + 20 },
     thumbsUp: { type: String, default: "" },
-    viewCount: { type: Number, default: 0 }
+    viewCount: { type: Number, default: Math.round(Math.random() * 100) + 200 }
 
 });
 
