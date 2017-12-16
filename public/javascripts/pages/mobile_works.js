@@ -180,7 +180,6 @@ $(function () {
             + '            <div class=" col-sm-3  col-xs-3">'
             + '                <span id="thumbs-up" class="glyphicon glyphicon-thumbs-up" />'
             + '                <lable id="thumbsUpCount"/>' + work.upCount
-            + '                <lable id="thumbsUpNames" style="display:none"/>' + work.thumbsUp
             + '            </div>'
             + '</div>'
             + '</div>'
