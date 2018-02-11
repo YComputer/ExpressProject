@@ -10,7 +10,7 @@ var tools = require('../common/tools');
 //var utility        = require('utility');
 var authMiddleWare = require('../middlewares/auth');
 var uuid = require('uuid');
-
+var httpProxy = require('../proxy/httpProxy');
 var mail = require('../common/mail');
 var svgCaptcha = require("svg-captcha");
 
@@ -29,7 +29,43 @@ exports.checkLoginStatus = function (req, res) {
  * @param res
  */
 exports.newsignup = function (req, res) {
+
     res.render('sign/newSignup');
+}
+
+/**
+ * 微信登录回调
+ */
+exports.wechartlogincallback = function (req, res) {
+    var code = req.params.code;
+    var state = state;
+    var sid = req.session.connect.sid;
+    var appid = config.config.appid;
+    var appSecret = config.config.app_secret;
+    var accesstokenurl = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=' + appid + '&secret=' + appSecret + '&code=' + code + '&grant_type=authorization_code';
+    httpProxy.get(accesstokenurl, function (data) {
+        var access_token = data.access_token;
+        var expires_in = data.expires_in;
+        var refresh_token = data.refresh_token;
+        var openid = data.openid;
+        var scope = data.scope;
+        var unionid = data.unionid;
+        var userInfourl = 'https://api.weixin.qq.com/sns/userinfo?access_token=' + access_token + '&openid=' + openid;
+        httpProxy.get(userInfourl, function (data) {
+            var nickname = data.nickname;
+            var sex = data.sex;
+            var language = data.language;
+            var city = data.city;
+            var province = data.province;
+            var country = data.country;
+            var headimgurl = data.headimgurl;
+            var privilege = data.privilege;
+            var unionid = data.unionid;
+            res.render('sign/logincallback');
+        })
+    })
+
+    //res.render('sign/logincallback');
 }
 
 /**

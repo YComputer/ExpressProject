@@ -23,7 +23,7 @@ exports.getTotalCount = function (callback) {
 }
 
 exports.getNextPageWorks = function (pageid, callback) {
-    var query = Work.find({});
+    var query = Work.find({}).sort({ viewCount: -1 });
     query.skip(pageid * 20);
     query.limit(20)
     query.exec(callback);

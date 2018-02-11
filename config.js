@@ -25,7 +25,9 @@ var config = {
             user: '01_space@sina.cn',
             pass: 'lijie19871108'
         }
-    }
+    },
+    appid: 'wx687a3a4018ba8653',
+    app_secret: 'wx687a3a4018ba8653'
 };
 
 exports.config = config;
