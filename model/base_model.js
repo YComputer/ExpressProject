@@ -4,6 +4,8 @@
 var tools = require('../common/tools');
 var mongoose = require('mongoose');
 var config = require('../config').config;
+var logger = require('../common/logger');
+
 mongoose.connect(config.mongo_db, {
     server: { poolSize: 20 }
 }, function (err) {
