@@ -37,13 +37,14 @@ exports.newsignup = function (req, res) {
  * 微信登录回调
  */
 exports.wechartlogincallback = function (req, res) {
-    var code = req.params.code;
-    var state = state;
-    var sid = req.session.connect.sid;
+    var code = req.query.code;
+    var state = req.query.state;
+    var sid = req.session.id;
     var appid = config.config.appid;
     var appSecret = config.config.app_secret;
     var accesstokenurl = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=' + appid + '&secret=' + appSecret + '&code=' + code + '&grant_type=authorization_code';
-    httpProxy.get(accesstokenurl, function (data) {
+    httpProxy.get(accesstokenurl, function (returndata) {
+        var data = JSON.parse(returndata);
         var access_token = data.access_token;
         var expires_in = data.expires_in;
         var refresh_token = data.refresh_token;
@@ -51,7 +52,8 @@ exports.wechartlogincallback = function (req, res) {
         var scope = data.scope;
         var unionid = data.unionid;
         var userInfourl = 'https://api.weixin.qq.com/sns/userinfo?access_token=' + access_token + '&openid=' + openid;
-        httpProxy.get(userInfourl, function (data) {
+        httpProxy.get(userInfourl, function (returndata) {
+            var data = JSON.parse(returndata);
             var nickname = data.nickname;
             var sex = data.sex;
             var language = data.language;

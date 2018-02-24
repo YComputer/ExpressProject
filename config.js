@@ -27,7 +27,7 @@ var config = {
         }
     },
     appid: 'wx687a3a4018ba8653',
-    app_secret: 'wx687a3a4018ba8653'
+    app_secret: '99d2f0cfb9a2c542a336beaf600bf312'
 };
 
 exports.config = config;
