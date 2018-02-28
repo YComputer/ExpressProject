@@ -1,5 +1,56 @@
 extends ../layout
 block content
     div.container
-        a 请您完善个人信息
-        a 暂时跳过
+        script(src="/javascripts/pages/wechartlogincallback.js" type="text/javascript")
+        p(id='unionid' style="display:none;") #{unionid}
+        div.row
+            div(class="col-md-4 col-md-offset-4")
+                h1(style="text-align:center;") 完善资料信息
+                p(style="color:#F00;text-align:center;") (*零壹空间承诺妥善保管您的个人资料，不会将个人信息交于第三方牟利*)
+                div.row
+                    div(class="col-md-4 col-md-offset-4")
+                        img(src='#{headimgurl}', alt="")
+                br
+                div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:5px")
+                        span( class="input-group-addon" id="basic-addon1" style="top: 0px;") 昵称
+                        input(type="text" id="nickname" class="form-control" value='#{nickname}' aria-describedby="basic-addon1")
+                div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:5px") 
+                        span( class="input-group-addon" id="basic-addon1" style="top: 0px;") 国家
+                        input(type="text" id="country" class="form-control" value='#{country}' aria-describedby="basic-addon1")
+                div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:5px") 
+                        span( class="input-group-addon" id="basic-addon1" style="top: 0px;") 省份
+                        input(type="text" id="province" class="form-control" value='#{province}' aria-describedby="basic-addon1")
+                div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:5px")
+                        span( class="input-group-addon" id="basic-addon1" style="top: 0px;") 城市
+                        input(type="text" id="city" class="form-control" value='#{city}' aria-describedby="basic-addon1")
+                div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:5px")
+                        span( class="input-group-addon" id="basic-addon1" style="top: 0px;") 性别
+                        input(type="text" id="sex" class="form-control" value='#{sex}' aria-describedby="basic-addon1")
+                div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:5px")
+                        span( class="input-group-addon" id="basic-addon1" style="top: 0px;") *电话
+                        input(type="text" id="phonenumber" class="form-control"  aria-describedby="basic-addon1")
+                div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:5px")
+                        span( class="input-group-addon" id="basic-addon1" style="top: 0px;") *邮箱
+                        input(type="text" id="email" class="form-control"  aria-describedby="basic-addon1")
+                br
+                div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:5px")
+                        span( class="input-group-addon" id="basic-addon1" style="top: 0px;") 姓名
+                        input(type="password" id="name" class="form-control"  aria-describedby="basic-addon1")
+                div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:5px")
+                        span( class="input-group-addon" id="basic-addon1" style="top: 0px;") 年龄
+                        input(type="password" id="age" class="form-control"  aria-describedby="basic-addon1")
+                p(style="text-align:center;") 设置密码，下次可用邮箱密码登录
+                div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:1px")
+                        span( class="input-group-addon glyphicon glyphicon-lock" id="basic-addon1" style="top: 0px;")
+                        input(type="password" id="pass" class="form-control" placeholder="密码" aria-describedby="basic-addon1")
+                div(class="input-group input-group-lg" style="margin-top:1px;margin-bottom:5px")
+                        span( class="input-group-addon glyphicon glyphicon-lock" id="basic-addon1" style="top: 0px;")
+                        input(type="password" id="re_pass" class="form-control" placeholder="确认密码" aria-describedby="basic-addon1")
+                p(id="submitWechartLoginInfoMessage" style="color:#F00;text-align:center;")
+                div(class="row" style="margin-top:1px;margin-bottom:5px")
+                    button(id="submitWechartLoginInfo" type="button" disabled="true" class="btn btn-success btn-lg btn-block" style="width:100%;") 提交资料
+                div.row
+                    div(class="col-md-4")
+                        a(href="/") 绑定已有账号
+                    div(class="col-md-4 col-md-offset-4")
+                        a(href="/") >>暂时跳过

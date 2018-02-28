@@ -47,6 +47,13 @@ exports.getUserById = function (id, callback) {
     User.findOne({ _id: id }, callback);
 };
 
+exports.getUserByWechartUnionid = function (unionid, callback) {
+    if (!unionid) {
+        return callback();
+    }
+    User.findOne({ wechart_unionid: unionid }, callback);
+}
+
 /**
  * 根据邮箱，查找用户
  * Callback:
@@ -187,3 +194,19 @@ exports.activeAccount = function (email, callback) {
     });
 };
 
+exports.newUserWithWechartCount = function (unionid, headimgurl, nickname, sex, country, province, city, access_token, callback) {
+    var user = new User();
+    user.wechart_unionid = unionid;
+    user.loginname = unionid;
+    user.email = unionid;      //必须给定初始值，以防没有填写信息时，用户的loginname和email为空，这两个字段设定了唯一性约束，会导致新用户用微信登录不上。
+    user.name = nickname;
+    user.avatar = headimgurl;
+    user.active = true;
+    user.accessToken = access_token;
+    user.UserInfo = {};
+    user.UserInfo.country = country;
+    user.UserInfo.province = province;
+    user.UserInfo.city = city;
+    user.UserInfo.sex = sex;
+    user.save(callback);
+}

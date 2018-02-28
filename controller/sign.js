@@ -16,10 +16,10 @@ var svgCaptcha = require("svg-captcha");
 
 exports.checkLoginStatus = function (req, res) {
     if (!req.session || !req.session.user || !req.session.user._id) {
-        return res.send(false);
+        return res.send({ logined: false });  //没有登录
     }
     else {
-        return res.send(true);
+        return res.send({ logined: true, user: req.session.user });
     }
 }
 
@@ -36,7 +36,7 @@ exports.newsignup = function (req, res) {
 /**
  * 微信登录回调
  */
-exports.wechartlogincallback = function (req, res) {
+exports.wechartlogincallback = function (req, res, next) {
     var code = req.query.code;
     var state = req.query.state;
     var sid = req.session.id;
@@ -63,11 +63,104 @@ exports.wechartlogincallback = function (req, res) {
             var headimgurl = data.headimgurl;
             var privilege = data.privilege;
             var unionid = data.unionid;
-            res.render('sign/logincallback');
+            User.getUserByWechartUnionid(unionid, function (err, doc) {
+                if (err) {
+                    res.render('sign/newSignin', { error: '微信登录出错，请用账号密码登录' });
+                    return next(err);
+                }
+                if (doc != null) {
+                    var user = doc;
+                    authMiddleWare.gen_session(user, res);
+                    req.session.user = user;
+                    res.render('index');
+                }
+                else {
+                    User.newUserWithWechartCount(unionid, headimgurl,
+                        nickname, sex, country, province, city, access_token, function (err) {
+                            if (err) {
+                                res.render('sign/newSignin', { error: '微信登录出错，请用账号密码登录' });
+                                return next(err);
+                            }
+                            User.getUserByWechartUnionid(unionid, function (err, doc) {
+                                var user = doc;
+                                authMiddleWare.gen_session(user, res);
+                                req.session.user = user;
+                                res.render('sign/logincallback',
+                                    { nickname: nickname, sex: sex, country: country, province: province, city: city, headimgurl: headimgurl, unionid: unionid });
+                            })
+                        });
+                }
+            })
         })
     })
 
     //res.render('sign/logincallback');
+}
+
+exports.thirdloginsubmitinfo = function (req, res, next) {
+    var unionid = req.body.unionid;
+    var email = req.body.email;
+    var loginname = email;
+    var pass = req.body.pass;
+    var nickname = req.body.nickname;
+    var country = req.body.country;
+    var province = req.body.province;
+    var city = req.body.city;
+    var headimgurl = req.body.headimgurl;
+    var sex = req.body.sex;
+    var phonenumber = req.body.phonenumber;
+    var name = req.body.name;
+    var age = req.body.age;
+
+    var ep = new eventproxy();
+    ep.fail(next);
+    ep.on('thirdloginsubmitinfo_err', function (msg) {
+        res.send({ error: msg });
+    });
+
+    User.getUsersByQuery({
+        '$or': [
+            { 'loginname': loginname },
+            { 'email': email }
+        ]
+    }, {}, function (err, users) {
+        if (err) {
+            ep.emit('thirdloginsubmitinfo_err', '提交信息异常，请先跳过');
+            return next(err);
+        }
+        if (users.length > 0) {
+            ep.emit('thirdloginsubmitinfo_err', '邮箱已被占用。');
+            return;
+        }
+        else {
+            User.getUserByWechartUnionid(unionid, function (err, doc) {
+                if (err || doc == undefined || doc == null) {
+                    ep.emit('thirdloginsubmitinfo_err', '提交信息异常，请先跳过');
+                    return next(err);
+                }
+                else {
+                    doc.email = email;
+                    doc.loginname = loginname;
+                    doc.pass = pass;
+                    doc.phonenumber = phonenumber;
+                    doc.name = name;
+                    doc.age = age;
+                    doc.save(function (err, doc) {
+                        if (err) {
+                            ep.emit('thirdloginsubmitinfo_err', '提交信息异常，请先跳过');
+                            return next(err);
+                        }
+                        else {
+                            res.send({ message: "successed" });
+                            return;
+                        }
+                    })
+                }
+            })
+        }
+    });
+
+
 }
 
 /**

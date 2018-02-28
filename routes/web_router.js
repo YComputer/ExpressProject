@@ -44,6 +44,7 @@ router.get('/signout', sign.signout);  // 登出
 router.post('/signin', sign.login);  // 登录校验
 router.get('/findpwd', sign.findpwd);  // 找回密码
 router.get('/wechartlogincallback', sign.wechartlogincallback);
+router.post('/thirdloginsubmitinfo', sign.thirdloginsubmitinfo);
 router.post('/sendResetPwdMail', sign.sendResetPwdMail);  // 发送邮件-找回密码链接
 router.get('/resetpwd', sign.page_reset_pwd);  // 重置密码
 router.post('/resetpwd', sign.reset_pwd);  // 重置密码

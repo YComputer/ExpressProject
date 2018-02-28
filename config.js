@@ -27,7 +27,8 @@ var config = {
         }
     },
     appid: 'wx687a3a4018ba8653',
-    app_secret: '99d2f0cfb9a2c542a336beaf600bf312'
+    app_secret: '99d2f0cfb9a2c542a336beaf600bf312',
+    third_callback_region: '037b004e.ngrok.io'
 };
 
 exports.config = config;

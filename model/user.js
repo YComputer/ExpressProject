@@ -14,6 +14,7 @@ var UserInfoSchema = new Schema({
     address: { type: String },
     province: { type: String },
     city: { type: String },
+    country: { type: String },
     phoneNumber: { type: String },
     school: { type: String },
     gread: { type: String },
@@ -32,6 +33,7 @@ var UserSchema = new Schema({
     weibo: { type: String },
     avatar: { type: String },
     is_block: { type: Boolean, default: false },
+    wechart_unionid: { type: String },
     UserInfo: { type: UserInfoSchema },
 
     score: { type: Number, default: 0 },
