@@ -2,8 +2,7 @@
  * Created by hr on 2016/11/30.
  */
 $(function () {
-    var third_callback_region = config.third_callback_region;
-    var appid = config.appid;
+
     $('#wechartLoginButton').on('click', function () {
         window.location.href = 'https://open.weixin.qq.com/connect/qrconnect?appid=wx687a3a4018ba8653&redirect_uri=http%3A%2F%2F037b004e.ngrok.io%2Fwechartlogincallback&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect';
         //window.navigate('https://open.weixin.qq.com/connect/qrconnect?appid=wx687a3a4018ba8653&redirect_uri=http%3A%2F%2Fwww.01space.cn%2Fwechartlogincallback&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect');
