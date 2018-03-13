@@ -62,11 +62,18 @@ router.get('/works/totalCount/get', works.getTotalCount);  //获取作品总量
 router.get('/create', create.showEditor);   //创作
 router.get('/works/search/:keyword/:pageid', works.search);
 
-router.get('/courses/', course.listAllCourse);
+//router.get('/courses/', course.listAllCourse);
+router.get('/courses/', course.getAllCourse);
+router.get('/addLabel', course.addLabel);
+router.post('/addCourse', course.addCourse);
 router.get('/courses/scratch/', course.scratchpage);
+router.get('/courses/view/:courseid', course.viewCourse);
+router.get('/courses/checkRights/:courseid', course.checkUserRight);
+router.get('/courses/getcourseById', course.getCourseInfoById);
 //router.get('/courses/:courseType', course.listAllCourse);
 //router.get('/courses/:courseType/:courseId', course.showCourseDetail);
 //router.get('/courses/:courseType/:courseId/description', course.getCourseDescriptionById);
+
 router.post('/comments', comment.postComment);
 router.post('/thumbsUp', works.thumbsUp);//点赞
 

@@ -1,4 +1,47 @@
 $(function () {
+
+    var url = location.href;
+    var currentCourse;
+    var courseId;
+    var hasRight = true;
+    var myPlayer = videojs('example_video_1');
+    function getUserRight() {
+        $.ajax({
+            type: "get",
+            url: "/courses/checkRights/" + courseId,
+            success: function (data) {
+                if (data == "true") {
+                    hasRight = true;
+                }
+                else {
+                    hasRight = false;
+                }
+            },
+            failed: function (err) {
+                console.error(err);
+                hasRight = true;
+            }
+        });
+    }
+
+    if (url.indexOf('/') != -1) {
+        courseId = url.substr(url.lastIndexOf('/') + 1);
+        $.ajax({
+            type: 'get',
+            url: '/courses/getcourseById?courseid=' + courseId,
+            success: function (data) {
+                currentCourse = data;
+                if (currentCourse.coursePrise != 0) {
+                    getUserRight();
+                }
+                console.info(data);
+            },
+            failed: function (err) {
+                console.error(err);
+            }
+        });
+    }
+
     $('#submit_comment_btn').on('click', function () {
         var commentContent = $('#course_comment_text')[0].value;
         $.ajax({
@@ -74,4 +117,14 @@ $(function () {
     var postCommentFailed = function () {
         alert("failed")
     }
+
+    videojs("example_video_1").ready(function () {
+        var myPlayer = this;
+        myPlayer.on('play', function () {
+            if (!hasRight) {
+                myPlayer.pause();
+                $('#myModal').modal('show');
+            }
+        })
+    });
 })

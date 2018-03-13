@@ -8,6 +8,43 @@ var formidable = require("formidable");
 var eventproxy = require('eventproxy');
 var moment = require('moment');
 
+exports.addLabel = function (req, res, next) {
+    var name = req.query.name;
+    var discription = req.query.discription;
+    var dispName = req.query.dispName;
+    Course.newLabel(name, dispName, discription, function (err) {
+        if (err) {
+            res.send(err);
+        }
+        res.send("new label added.")
+    })
+}
+
+exports.addCourse = function (req, res, next) {
+    var title = req.query.title;
+    var discription = req.query.discription;
+    var detialContentPath = req.query.detialContentPath;
+    var coursePrise = req.query.coursePrise;
+    var courseType = req.query.courseType;
+    var courseVideoPath = req.query.courseVideoPath;
+    var labels = req.query.labels;
+    Course.getLabel(labels, function (err, docs) {
+        if (err) {
+            res.send(err);
+        }
+        Course.addNewCourse(title, discription, detialContentPath,
+            coursePrise, courseType, courseVideoPath, docs, function (err) {
+                if (err) {
+                    res.send(err);
+                }
+                else {
+                    res.send("添加成功")
+                }
+            })
+    })
+
+}
+
 exports.listAllCourse = function (req, res, next) {
     var courseType = req.params.courseType;
     Course.listAllCourse(courseType, function (err, docs) {
@@ -25,6 +62,52 @@ exports.listAllCourse = function (req, res, next) {
 
 }
 
+exports.getAllCourse = function (req, res, next) {
+    var label = req.params.selectedLabel;
+    var searchParameter = req.params.searchParameter;
+
+    var ep = new eventproxy();
+    ep.fail(next);
+    ep.on('prop_err', function (msg) {
+        logger.error(msg);
+        res.send({ error: msg });
+    });
+    ep.all('getLabelFinished', "getCoursesFinished", function (labels, labelCourses) {
+        logger.info(JSON.stringify(labels));
+        logger.info(JSON.stringify(labelCourses));
+        res.render("course/courses_new", { labels: labels, labelCourses: labelCourses });
+    });
+
+    Course.getAllLabels(function (err, labels) {
+        if (err) {
+            logger.error('获取标签列表失败');
+            ep.emit("prop_err", "获取标签列表失败");
+        }
+        else {
+            ep.emit("getLabelFinished", labels);
+            var courseEP = new eventproxy();
+            courseEP.after('getPopularCourseByLabel', labels.length, function (labelCourses) {
+                ep.emit('getCoursesFinished', labelCourses);
+            })
+            for (let i = 0; i < labels.length; i++) {
+                Course.getCourseByLabel(labels[i], 5, function (err, docs) {
+                    if (err) {
+                        logger.error(err);
+                        ep.emit("prop_err", "获取标签下的优秀课程失败");
+                    }
+                    else {
+                        var labelCourse = {
+                            label: labels[i],
+                            couses: docs
+                        };
+                        courseEP.emit('getPopularCourseByLabel', labelCourse);
+                    }
+                });
+            }
+        }
+    })
+}
+
 exports.scratchpage = function (req, res, next) {
     res.render('course/scratch');
 }
@@ -40,6 +123,39 @@ exports.getCourseDescriptionById = function (req, res, next) {
         else {
             logger.info(docs[0]);
             res.send(docs[0].discription);
+        }
+    })
+}
+
+exports.viewCourse = function (req, res, next) {
+    var courseId = req.params.courseid;
+    Course.getCourseById(courseId, function (err, doc) {
+        if (err) {
+            res.render("error");
+        }
+        else {
+            logger.info(doc);
+            res.render('course/course', { course: doc, commentList: [] });
+        }
+    })
+}
+
+exports.checkUserRight = function (req, res, next) {
+    var courseId = req.params.courseid;
+    res.send("false");
+}
+
+exports.getCourseInfoById = function (req, res, next) {
+    var courseId = req.query.courseid;
+    Course.getCourseDetail(courseId, function (err, docs) {
+        if (err) {
+            logger.error(err);
+            res.send(err);
+            return next(err);
+        }
+        else {
+            logger.info(docs[0]);
+            res.send(docs[0]);
         }
     })
 }

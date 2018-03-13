@@ -2,24 +2,78 @@ extends ../layout
 block content
         div.container
             script(src="/javascripts/pages/course.js")
+
             div.row(style="margin-top:10px")
                 div(class="col-md-8")
                     script(type='text/javascript').
-                        currentCourseId = '#{course._id}'
+                        var currentCourseId = #{course._id};
+                        var currentCourse = #{course};
                     div(style="border:grey 1px solid;padding:5px")
-                        video#courseVideo(src='#{course.courseVideoPath}' style="width:100%")
-                        div#courseVideoPlayBtn(style="background:grey;border-radius:5px; width:150px;height:40px; border:solid yellow 0; font-size:20px;position:absolute;left:40%;top:40%;padding:auto;cursor:pointer")
-                            span(class="glyphicon glyphicon-play")  点击播放
-                        div#videoplayprocess(class="progress")
-                            div#progress-bar(class="progress-bar")
-                        div#controlPanel(class="row" style="background:grey;width:100%;margin-left:2px")
-                            div(class="col-md-1")
-                                span#playspan(class="glyphicon glyphicon-play")
-                                span#pausespan(class="glyphicon glyphicon-pause" style="display:none")
-                            div(class="col-md-2")
-                                span#videotime 00.00 / 0:00
-                            div(class="col-md-1 pull-right")
-                                span(class="glyphicon glyphicon-resize-full")
+                        //- video#courseVideo(src='#{course.courseVideoPath}' style="width:100%")
+                        //- div#courseVideoPlayBtn(style="background:grey;border-radius:5px; width:150px;height:40px; border:solid yellow 0; font-size:20px;position:absolute;left:40%;top:40%;padding:auto;cursor:pointer")
+                        //-     span(class="glyphicon glyphicon-play")  点击播放
+                        //- div#videoplayprocess(class="progress")
+                        //-     div#progress-bar(class="progress-bar")
+                        //- div#controlPanel(class="row" style="background:grey;width:100%;margin-left:2px")
+                        //-     div(class="col-md-1")
+                        //-         span#playspan(class="glyphicon glyphicon-play")
+                        //-         span#pausespan(class="glyphicon glyphicon-pause" style="display:none")
+                        //-     div(class="col-md-2")
+                        //-         span#videotime 00.00 / 0:00
+                        //-     div(class="col-md-1 pull-right")
+                        //-         span(class="glyphicon glyphicon-resize-full")
+                        video(id="example_video_1" class="video-js vjs-default-skin vjs-big-play-centered" 
+                            poster="http://video-js.zencoder.com/oceans-clip.png"
+                            data-setup="{}" controls preload="none" width="740" height="464")
+                            source(src='#{course.courseVideoPath}' type='video/mp4')  
+                            //- <source src="http://视频地址格式2.webm" type='video/webm' />
+                            //- <source src="http://视频地址格式3.ogv" type='video/ogg' />
+                            //- track(kind="captions" src="demo.captions.vtt" srclang="en" label="English")
+                            //- track(kind="subtitles" src="demo.captions.vtt" srclang="en" label="English")
+                        script(type="text/javascript").
+                            var currentCourse = #{course};
+                            var myPlayer = videojs('example_video_1');
+                            videojs("example_video_1").ready(function(){
+                                var myPlayer = this;
+                                myPlayer.on('play',function(){
+                                    hasRight(function(data){
+                                        if(!data){
+                                            myPlayer.pause();
+                                            alert("您还没有权限播放");
+                                        }
+                                    })
+                                })
+                            });
+                            function hasRight(callback){
+                                if(currentCourse.coursePrise==0)
+                                    return true;
+                                hasBuy(function(data){
+                                    if(data){
+                                        callback(true);
+                                    }
+                                    else{  
+                                        callback(false);
+                                    }
+                                });
+                            }
+                            function hasBuy(callback){
+                                $.ajax({
+                                    type: "get",
+                                    url: "/courses/checkRights/"+currentCourseId,
+                                    //- data: {
+                                    //-     id: currentCourseId
+                                    //- },
+                                    success: function(data){
+                                        if(data=="true"){
+                                            callback(true);
+                                        }
+                                        else{
+                                            callback(false);
+                                        }
+                                    },
+                                    failed: callback(false)
+                                });
+                            }
                     div
                         button(style="display:inline" class="btn")
                             span(class="glyphicon glyphicon-thumbs-up") #{course.upCount}
@@ -28,6 +82,7 @@ block content
                         a(style="position:absolute;right:20px;text-align:right") #{course.watchCount}次浏览
                 div(class="col-md-4")
                     div
+                        Label VIP
                         h4 课程简介：
                         p #{course.discription}
             div(class="col-md-8")
@@ -56,3 +111,10 @@ block content
                                                 p #{obj.index+1}楼
                                     div  
                                         p #{obj.commentContent}
+            div(class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+                div(class="modal-dialog")
+                    div(class="modal-content")
+                        div(class="modal-body") 您还没有付费，请用微信扫描付费后观看
+                            button(type="button" class="close" data-dismiss="modal" aria-hidden="true") &times;
+                            img(id="weichartPayCode" src="/images/404_1.png")
+                            label 本视频课程￥15

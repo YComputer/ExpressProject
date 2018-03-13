@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var BaseModel = require("./base_model");
 var Schema = mongoose.Schema;
 var config = require('../config').config;
+var LabelSchema = require('./label').LabelSchema;
 
 var CourseSchema = new Schema({
     title: { type: String },
@@ -13,7 +14,8 @@ var CourseSchema = new Schema({
     watchCount: { type: Number, default: 0 },
     upCount: { type: Number, default: 0 },
     difficultyLevel: { type: Number, default: 1 },
-    uploadTime: { type: Date, default: Date.now }
+    uploadTime: { type: Date, default: Date.now },
+    lables: [{ lableid: { type: Schema.Types.ObjectId, ref: 'Label', require: true }, lableName: { type: String } }]
 });
 
 CourseSchema.pre('save', function (next) {

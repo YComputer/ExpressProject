@@ -1,0 +1,32 @@
+extends ../layout
+block content
+    div.container
+        div(class="row" style="margin-top:20px")
+            div(class="col-md-6 col-md-offset-3" style="padding:0px")
+                input(id="keyworkInput" type="text" style="width:100%;height:35px" placeholder="输入作品名字")
+            div(class="col-md-1" style="padding:0px")
+                span(class="input-group-btn" style="margin-left:2px")
+                    button(class="btn btn-default glyphicon glyphicon-search" type="button" id="searchWorkBtn") 搜索
+        br
+        div.row
+            div(class="col-md-7 col-md-offset-3")
+                div.row
+                    - each obj in labels
+                        a(href="/courses/lables/#{obj._id}" style="margin:20px") #{obj.dispName}
+        br
+        div
+            -each obj in labelCourses
+                .row
+                    div(class="col-md-2")
+                        h2 #{obj.label.name}
+                        p #{obj.label.discription}
+                    -each courseObj in obj.couses
+                        div(class="col-md-2")
+                            div
+                                img.img-thumbnail(src="#{courseObj.detialContentPath}", alt="" style="width:100%;cursor:pointer" onclick="javascript:location.href='/courses/view/#{courseObj._id}'")
+                                div.row
+                                    div(class="col-md-8")
+                                        p #{courseObj.title}
+                                    div(class="col-md-2")
+                                        p ￥#{courseObj.coursePrise}
+                br
