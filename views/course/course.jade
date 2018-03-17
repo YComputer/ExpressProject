@@ -1,6 +1,7 @@
 extends ../layout
 block content
         div.container
+            script(src="/javascripts/jquery.qrcode.min.js")
             script(src="/javascripts/pages/course.js")
 
             div.row(style="margin-top:10px")
@@ -32,48 +33,48 @@ block content
                             //- track(kind="subtitles" src="demo.captions.vtt" srclang="en" label="English")
                         script(type="text/javascript").
                             var currentCourse = #{course};
-                            var myPlayer = videojs('example_video_1');
-                            videojs("example_video_1").ready(function(){
-                                var myPlayer = this;
-                                myPlayer.on('play',function(){
-                                    hasRight(function(data){
-                                        if(!data){
-                                            myPlayer.pause();
-                                            alert("您还没有权限播放");
-                                        }
-                                    })
-                                })
-                            });
-                            function hasRight(callback){
-                                if(currentCourse.coursePrise==0)
-                                    return true;
-                                hasBuy(function(data){
-                                    if(data){
-                                        callback(true);
-                                    }
-                                    else{  
-                                        callback(false);
-                                    }
-                                });
-                            }
-                            function hasBuy(callback){
-                                $.ajax({
-                                    type: "get",
-                                    url: "/courses/checkRights/"+currentCourseId,
-                                    //- data: {
-                                    //-     id: currentCourseId
-                                    //- },
-                                    success: function(data){
-                                        if(data=="true"){
-                                            callback(true);
-                                        }
-                                        else{
-                                            callback(false);
-                                        }
-                                    },
-                                    failed: callback(false)
-                                });
-                            }
+                            //- var myPlayer = videojs('example_video_1');
+                            //- videojs("example_video_1").ready(function(){
+                            //-     var myPlayer = this;
+                            //-     myPlayer.on('play',function(){
+                            //-         hasRight(function(data){
+                            //-             if(!data){
+                            //-                 myPlayer.pause();
+                            //-                 alert("您还没有权限播放");
+                            //-             }
+                            //-         })
+                            //-     })
+                            //- });
+                            //- function hasRight(callback){
+                            //-     if(currentCourse.coursePrise==0)
+                            //-         return true;
+                            //-     hasBuy(function(data){
+                            //-         if(data){
+                            //-             callback(true);
+                            //-         }
+                            //-         else{  
+                            //-             callback(false);
+                            //-         }
+                            //-     });
+                            //- }
+                            //- function hasBuy(callback){
+                            //-     $.ajax({
+                            //-         type: "get",
+                            //-         url: "/courses/checkRights/"+currentCourseId,
+                            //-         //- data: {
+                            //-         //-     id: currentCourseId
+                            //-         //- },
+                            //-         success: function(data){
+                            //-             if(data=="true"){
+                            //-                 callback(true);
+                            //-             }
+                            //-             else{
+                            //-                 callback(false);
+                            //-             }
+                            //-         },
+                            //-         failed: callback(false)
+                            //-     });
+                            //- }
                     div
                         button(style="display:inline" class="btn")
                             span(class="glyphicon glyphicon-thumbs-up") #{course.upCount}
@@ -116,5 +117,10 @@ block content
                     div(class="modal-content")
                         div(class="modal-body") 您还没有付费，请用微信扫描付费后观看
                             button(type="button" class="close" data-dismiss="modal" aria-hidden="true") &times;
-                            img(id="weichartPayCode" src="/images/404_1.png")
-                            label 本视频课程￥15
+                            //-img(id="weichartPayCode" src="/images/404_1.png")
+                            div.row
+                                div(class="col-md-7 col-md-offset-3")
+                                    div(id="paycode")
+                                        //-canvas(width="256" height="256")
+                                    p(id="payreturnmessage")
+                                    label 本视频课程￥15

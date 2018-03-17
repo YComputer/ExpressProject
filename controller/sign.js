@@ -10,7 +10,7 @@ var tools = require('../common/tools');
 //var utility        = require('utility');
 var authMiddleWare = require('../middlewares/auth');
 var uuid = require('uuid');
-var httpProxy = require('../proxy/httpProxy');
+var httpProxy = require('../common/httpProxy');
 var mail = require('../common/mail');
 var svgCaptcha = require("svg-captcha");
 
@@ -300,14 +300,14 @@ exports.login = function (req, res, next) {
             if (!bool) {
                 return ep.emit('login_error');
             }
-            if (!user.active) {
-                // 重新发送激活邮件
-                var expiredtime = Date.now().toString();
-                href = config.config.host + 'activeAccount?' + 'email=' + email + '&expiredtime=' + expiredtime;
-                mail.sendResetPwdMail(email, href);
-                res.status(403);
-                return res.render('sign/signin', { error: '此帐号还没有被激活，激活链接已发送到 ' + user.email + ' 邮箱，请查收。' });
-            }
+            // if (!user.active) {
+            //     // 重新发送激活邮件
+            //     var expiredtime = Date.now().toString();
+            //     href = config.config.host + 'activeAccount?' + 'email=' + email + '&expiredtime=' + expiredtime;
+            //     mail.sendResetPwdMail(email, href);
+            //     res.status(403);
+            //     return res.render('sign/signin', { error: '此帐号还没有被激活，激活链接已发送到 ' + user.email + ' 邮箱，请查收。' });
+            // }
 
             // store session cookie
             authMiddleWare.gen_session(user, res);
@@ -319,6 +319,9 @@ exports.login = function (req, res, next) {
             //         break;
             //     }
             // }
+            if (!req.session) {
+                req.session = {};
+            }
             req.session.user = user
             res.send({ message: "successed" });
         }));

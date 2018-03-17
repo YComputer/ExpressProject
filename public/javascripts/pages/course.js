@@ -1,5 +1,4 @@
 $(function () {
-
     var url = location.href;
     var currentCourse;
     var courseId;
@@ -124,6 +123,43 @@ $(function () {
             if (!hasRight) {
                 myPlayer.pause();
                 $('#myModal').modal('show');
+                $.ajax({
+                    type: 'get',
+                    url: '/courses/wxpay?courseid=' + courseId + '&fee=' + currentCourse.coursePrise,
+                    success: function (data) {
+                        if (data.err) {
+                            console.error(err);
+                        }
+                        else {
+                            $('#paycode').empty();
+                            $('#paycode').qrcode({
+                                render: 'table',
+                                width: 256,
+                                height: 256,
+                                text: data.data
+                            });
+                            var socket = io.connect('http://127.0.0.1:5000');
+                            socket.on('paiedResult', function (data) {
+                                console.log(data);
+                                if (data.result == true) {
+                                    $('#payreturnmessage')[0].innerHTML = "支付成功";
+                                    hasRight = true;
+                                    setTimeout(function () {
+                                        console.log("支付成功，3秒后关闭支付页面。")
+                                        $('#myModal').modal('hide');
+                                    }, 3000)
+                                }
+                                else {
+                                    $('#payreturnmessage')[0].innerHTML = "支付失败";
+                                }
+                                socket.close();
+                            });
+                        }
+                    },
+                    failed: function (err) {
+                        console.error(err);
+                    }
+                });
             }
         })
     });

@@ -8,7 +8,7 @@ var app = require('../app');
 var debug = require('debug');
 var http = require('http');
 var config = require('../config.js');
-
+var websocket = require('../common/websocket.js');
 var fs = require("fs");
 var https = require('https');
 
@@ -33,12 +33,33 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
+var io = require('socket.io')(server);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-
+io.on('connection', websocket.socketOnConnection);
+// io.set('authorization', function (handshakeData, callback) {
+//   // 通过客户端的cookie字符串来获取其session数据
+//   handshakeData.cookie = parseCookie(handshakeData.headers.cookie)
+//   var connect_sid = handshakeData.cookie['connect.sid'];
+//   if (connect_sid) {
+//     storeMemory.get(connect_sid, function (error, session) {
+//       if (error) {
+//         // if we cannot grab a session, turn down the connection
+//         callback(error.message, false);
+//       }
+//       else {
+//         // save the session data and accept the connection
+//         handshakeData.session = session;
+//         callback(null, true);
+//       }
+//     });
+//   }
+//   else {
+//     callback('nosession');
+//  }
+//});
 /**
  * Create HTTPS Server
  */

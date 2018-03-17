@@ -7,6 +7,7 @@ var path = require("path");
 var formidable = require("formidable");
 var eventproxy = require('eventproxy');
 var moment = require('moment');
+var userRight = require('../proxy/userRight');
 
 exports.addLabel = function (req, res, next) {
     var name = req.query.name;
@@ -140,9 +141,27 @@ exports.viewCourse = function (req, res, next) {
     })
 }
 
-exports.checkUserRight = function (req, res, next) {
+exports.checkUserCourseRight = function (req, res, next) {
     var courseId = req.params.courseid;
-    res.send("false");
+    if (!req.session.user) {
+        res.send("false");
+    }
+    else {
+        var userId = req.session.user._id;
+        userRight.checkRight(userId, courseId, 1, function (err, docs) {
+            if (err) {
+                logger.error("获取用户对课程的权限失败", err);
+                res.send("false");
+            }
+            else if (docs.length == 0) {
+                res.send("false");
+            }
+            else {
+                res.send("true");
+            }
+        })
+    }
+
 }
 
 exports.getCourseInfoById = function (req, res, next) {

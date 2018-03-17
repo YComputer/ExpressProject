@@ -5,3 +5,4 @@ public/avatar/*
 public/thumbnail/*
 config.js
 *.sb2
+logs/*

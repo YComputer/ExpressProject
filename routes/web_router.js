@@ -15,6 +15,7 @@ var message = require('../controller/message');
 var resource = require('../controller/resource');
 var create = require('../controller/create');
 var static = require('../controller/static');
+var thirdpay = require('../controller/thirdpay');
 
 
 var remix = require('../controller/remix');
@@ -68,8 +69,10 @@ router.get('/addLabel', course.addLabel);
 router.post('/addCourse', course.addCourse);
 router.get('/courses/scratch/', course.scratchpage);
 router.get('/courses/view/:courseid', course.viewCourse);
-router.get('/courses/checkRights/:courseid', course.checkUserRight);
+router.get('/courses/checkRights/:courseid', course.checkUserCourseRight);
 router.get('/courses/getcourseById', course.getCourseInfoById);
+router.get('/courses/wxpay', thirdpay.initpay);
+router.post('/courses/paycallback', thirdpay.payedCallback);
 //router.get('/courses/:courseType', course.listAllCourse);
 //router.get('/courses/:courseType/:courseId', course.showCourseDetail);
 //router.get('/courses/:courseType/:courseId/description', course.getCourseDescriptionById);

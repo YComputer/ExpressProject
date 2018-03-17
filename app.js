@@ -9,7 +9,8 @@ var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 
 var webRouter = require('./routes/web_router');
-
+var bodyParse = require("body-parser");
+require("body-parser-xml")(bodyParse);
 var app = express();
 
 // view engine setup
@@ -20,6 +21,22 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.xml({
+    limit: "1mb",   // Reject payload bigger than 1 MB
+    xmlParseOptions: {
+        normalize: true,     // Trim whitespace inside text nodes
+        normalizeTags: true, // Transform tags to lowercase
+        explicitArray: false // Only put nodes in array if >1
+    },
+    verify: function (req, res, buf, encoding) {
+        if (buf && buf.length) {
+            // Store the raw XML
+            req.rawBody = buf.toString(encoding || "utf8");
+        }
+    }
+}));
+
+app.use(bodyParser.json());
 
 app.use(require('cookie-parser')(config.session_secret));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -69,7 +86,9 @@ app.use(function (err, req, res, next) {
 process.on('uncaughtException', function (err) {
     console.log('Caught exception: ' + err);
     console.error(err.message);
+    console.error(err.stack);
 });
+
 
 
 module.exports = app;
