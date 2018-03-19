@@ -23,6 +23,26 @@ $(function () {
         });
     }
 
+
+    var video;
+    var scale = 0.8;
+    var initialize = function () {
+        video = document.getElementById("example_video_1_html5_api");
+        video.addEventListener('loadeddata', captureImage);
+    };
+
+    var captureImage = function () {
+        var canvas = document.createElement("canvas");
+        canvas.width = 740;
+        canvas.height = 464;
+        canvas.getContext('2d').drawImage(video, 0, 0, 740, 464);
+        $("#example_video_1_html5_api").attr("poster", canvas.toDataURL("image/png"))
+    };
+
+    initialize();
+
+
+
     if (url.indexOf('/') != -1) {
         courseId = url.substr(url.lastIndexOf('/') + 1);
         $.ajax({

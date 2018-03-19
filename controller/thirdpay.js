@@ -21,6 +21,7 @@ exports.initpay = function (req, res, next) {
     }
     else {
         res.send({ err: "您还没有登录，请先登录。" });
+        return;
     }
 
     var courseId = req.query.courseid;

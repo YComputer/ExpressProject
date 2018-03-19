@@ -37,17 +37,18 @@ exports.getLabel = function (name, callback) {
 exports.getCourseByLabel = function (lable, number, callback) {
     //sort: { watchCount: -1 },
     //CourseModel.find({ 'lables.lableName': { '$in': [lable.name] } }, { limit: number }, callback);
-    CourseModel.$where(function () {
-        if (this.lables == undefined || this.lables == null || this.lables.length == 0) {
-            return 0;
-        }
-        for (var i = 0; i < this.lables.length; i++) {
-            if (this.lables[i].lableName == "python") {
-                return 1;
-            }
-        }
-        return 0;
-    }).limit(number).exec(callback);
+    // CourseModel.$where(lable.name, function () {
+    //     if (this.lables == undefined || this.lables == null || this.lables.length == 0) {
+    //         return 0;
+    //     }
+    //     for (var i = 0; i < this.lables.length; i++) {
+    //         if (this.lables[i].lableName == lable) {
+    //             return 1;
+    //         }
+    //     }
+    //     return 0;
+    // }).limit(number).exec(callback);
+    CourseModel.where({ 'lables.lableName': lable.name }).limit(number).exec(callback);
 }
 
 exports.getCourseById = function (id, callback) {
