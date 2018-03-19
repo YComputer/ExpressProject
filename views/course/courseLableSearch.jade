@@ -20,18 +20,12 @@ block content
                         a(href="/courses/lables/#{obj._id}" style="margin:20px") #{obj.dispName}
         br
         div
-            -each obj in labelCourses
-                .row
-                    div(class="col-md-2")
-                        h2 #{obj.label.name}
-                        p #{obj.label.discription}
-                    -each courseObj in obj.couses
-                        div(class="col-md-2")
-                            div
-                                img.img-thumbnail(src="#{courseObj.detialContentPath}", alt="" style="width:100%;cursor:pointer" onclick="javascript:location.href='/courses/view/#{courseObj._id}'")
-                                div.row
-                                    div(class="col-md-8")
-                                        p #{courseObj.title}
-                                    div(class="col-md-2")
-                                        p ￥#{courseObj.coursePrise}
-                br
+            -each courseObj in courses
+                div(class="col-md-2" style="height:200px")
+                    div
+                        img.img-thumbnail(src="/#{courseObj.detialContentPath}", alt="" style="width:100%;cursor:pointer" onclick="javascript:location.href='/courses/view/#{courseObj._id}'")
+                        div.row
+                            div(class="col-md-8")
+                                p #{courseObj.title}
+                            div(class="col-md-2")
+                                p ￥#{courseObj.coursePrise}

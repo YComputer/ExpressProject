@@ -34,6 +34,10 @@ exports.getLabel = function (name, callback) {
     LabelModel.find({ name: name }, {}, callback);
 }
 
+exports.getLableById = function (id, callback) {
+    LabelModel.findById(id, callback);
+}
+
 exports.getCourseByLabel = function (lable, number, callback) {
     //sort: { watchCount: -1 },
     //CourseModel.find({ 'lables.lableName': { '$in': [lable.name] } }, { limit: number }, callback);
@@ -66,4 +70,18 @@ exports.addNewCourse = function (title, discription, detialContentPath,
     course.courseVideoPath = courseVideoPath;
     course.lables = [{ lableid: labels[0]._id, lableName: labels[0].name }];
     course.save(callback);
+}
+
+exports.getCourseByKeywords = function (keyword, callback) {
+    var reg = new RegExp(keyword, 'i');
+    CourseModel.find({
+        $or: [{ title: { $regex: reg } },
+        { discription: { $regex: reg } },
+        { 'lables.lableName': { $regex: reg } }
+        ]
+    }, callback);
+}
+
+exports.getAllCourse = function (callback) {
+    CourseModel.find({}, callback);
 }

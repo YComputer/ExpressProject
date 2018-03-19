@@ -219,3 +219,98 @@ exports.showCourseDetail = function (req, res, next) {
         }
     })
 }
+
+exports.getLableCourses = function (req, res, next) {
+    var lableId = req.params.lableid;
+
+    var ep = new eventproxy();
+    ep.fail(next);
+    ep.on('prop_err', function (msg) {
+        logger.error(msg);
+        res.send({ error: msg });
+    });
+    ep.all('getLabelFinished', "getCoursesFinished", function (labels, labelCourses) {
+        logger.info(JSON.stringify(labels));
+        logger.info(JSON.stringify(labelCourses));
+        res.render("course/courseLableSearch", { labels: labels, courses: labelCourses });
+    });
+
+    Course.getAllLabels(function (err, labels) {
+        if (err) {
+            logger.error('获取标签列表失败');
+            ep.emit("prop_err", "获取标签列表失败");
+        }
+        else {
+            ep.emit("getLabelFinished", labels);
+        }
+    })
+
+    Course.getLableById(lableId, function (err, doc) {
+        if (err) {
+            logger.error("获取标签相关课程失败", err);
+            res.render('error');
+        }
+        else {
+            Course.getCourseByLabel(doc, 1000, function (err, docs) {
+                if (err) {
+                    logger.error("获取标签相关课程失败", err);
+                    res.render('error');
+                }
+                else {
+                    ep.emit('getCoursesFinished', docs);
+                }
+            })
+        }
+    })
+
+
+}
+
+exports.searchCourseByKeywords = function (req, res, next) {
+    var keywords = req.query.keywords;
+
+    var ep = new eventproxy();
+    ep.fail(next);
+    ep.on('prop_err', function (msg) {
+        logger.error(msg);
+        res.send({ error: msg });
+    });
+    ep.all('getLabelFinished', "getCoursesFinished", function (labels, labelCourses) {
+        logger.info(JSON.stringify(labels));
+        logger.info(JSON.stringify(labelCourses));
+        res.render("course/courseLableSearch", { labels: labels, courses: labelCourses });
+    });
+
+    Course.getAllLabels(function (err, labels) {
+        if (err) {
+            logger.error('获取标签列表失败');
+            ep.emit("prop_err", "获取标签列表失败");
+        }
+        else {
+            ep.emit("getLabelFinished", labels);
+        }
+    })
+
+    if (keywords == "") {
+        Course.getAllCourse(function (err, docs) {
+            if (err) {
+                logger.error(err);
+            }
+            else {
+                ep.emit('getCoursesFinished', docs);
+            }
+        });
+    }
+    else {
+        Course.getCourseByKeywords(keywords, function (err, docs) {
+            if (err) {
+                logger.error(err);
+            }
+            else {
+                ep.emit('getCoursesFinished', docs);
+            }
+        });
+    }
+
+
+}
