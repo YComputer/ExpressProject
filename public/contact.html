@@ -19,7 +19,32 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 
     <link rel="shortcut icon" href="img/favicon.ico" />
-  	<title>Education</title>
+      <title>零壹空间-少儿编程</title>
+      <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .iw_poi_title {
+            color: #CC5522;
+            font-size: 14px;
+            font-weight: bold;
+            overflow: hidden;
+            padding-right: 13px;
+            white-space: nowrap
+        }
+
+        .iw_poi_content {
+            font: 12px arial, sans-serif;
+            overflow: visible;
+            padding-top: 4px;
+            white-space: -moz-pre-wrap;
+            word-wrap: break-word
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
 </head>
 <body>
 
@@ -30,103 +55,103 @@
         </div>
     </div>
 
-    <!-- HEADER -->
-    <header class="tt-header">
-        <div class="container">
-            <div class="top-inner">
-                <a class="logo" href="index.html"><img src="img/header/logo.png" height="60" width="258" alt=""></a>
+   <!-- HEADER -->
+   <header class="tt-header">
+    <div class="container">
+        <div class="top-inner">
+            <a class="logo" href="index.html"><img src="img/header/logo.png" height="60" width="258" alt=""></a>
+        </div>
+        <button class="cmn-toggle-switch"><span></span></button>
+        <div class="toggle-block">
+            <nav class="main-nav clearfix">
+                <ul>
+                    <li class="active"><a href="index.html">首页</a></li>
+                    <li><a href="courses.html">课程</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li class="parent">
+                        <a href="#">更多 <i class="menu-toggle fa fa-angle-down"></i></a>
+                        <ul>
+                            <li class="parent">
+                                <a href="index.html">个性首页 <i class="menu-toggle fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="index.html">首页 1</a></li>
+                                    <li><a href="index_2.html">首页 2</a></li>
+                                    <li><a href="index_3.html">首页 3</a></li>
+                                </ul>
+                            </li>
+                            <li class="parent">
+                                <a href="blog_left_sidebar.html">博客 <i class="menu-toggle fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="blog_left_sidebar.html">左侧边栏</a></li>
+                                    <li><a href="blog_right_sidebar.html">右侧边栏</a></li>
+                                    <li><a href="blog_detail.html">博客详情</a></li>
+                                </ul>
+                            </li>
+                            <li class="parent">
+                                <a href="shop.html">商城 <i class="menu-toggle fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="shop.html">在线商城</a></li>
+                                    <li><a href="shop_detail.html">商城详情</a></li>
+                                    <li><a href="cart.html">购物车</a></li>
+                                    <li><a href="checkout.html">收银台</a></li>
+                                </ul>
+                            </li>
+                            <li class="parent">
+                                <a href="gallery_1.html">展览厅 <i class="menu-toggle fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="gallery_1.html">展厅 1</a></li>
+                                    <li><a href="gallery_2.html">展厅 2</a></li>
+                                </ul>
+                            </li>
+                            <li class="parent">
+                                <a href="courses.html">课程 <i class="menu-toggle fa fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="courses.html">更多课程</a></li>
+                                    <li><a href="single_course.html">我的课程</a></li>
+                                    <li><a href="membership.html">VIP会员</a></li>
+                                    <li><a href="events.html">大事件</a></li>
+                                    <li><a href="teacher.html">师资团队</a></li>
+                                    <li><a href="teacher_detail.html">教师详情</a></li>
+                                    <li><a href="faq.html">疑问解答</a></li>
+                                    <li><a href="testimonials.html">获奖证书</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="about.html">关于我们</a></li>
+                            <li><a href="contact.html">联系我们</a></li>
+                            <li><a href="404.html">404</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="events.html">大事记</a></li>
+                    <li><a href="blog_left_sidebar.html">博客</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </nav>
+            <div class="nav-more">
+                <a class="tt-top-search" href="#">
+                    <i class="stroke-icon icon-Search"></i>
+                </a>
             </div>
-            <button class="cmn-toggle-switch"><span></span></button>
-            <div class="toggle-block">
-                <nav class="main-nav clearfix">
-                    <ul>
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="courses.html">Courses</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li class="parent">
-                            <a href="#">Pages <i class="menu-toggle fa fa-angle-down"></i></a>
-                            <ul>
-                                <li class="parent">
-                                    <a href="index.html">Home Types <i class="menu-toggle fa fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="index.html">Home 1</a></li>
-                                        <li><a href="index_2.html">Home 2</a></li>
-                                        <li><a href="index_3.html">Home 3</a></li>
-                                    </ul>
-                                </li>
-                                <li class="parent">
-                                    <a href="blog_left_sidebar.html">Blog <i class="menu-toggle fa fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="blog_left_sidebar.html">Left sidebar</a></li>
-                                        <li><a href="blog_right_sidebar.html">Right sidebar</a></li>
-                                        <li><a href="blog_detail.html">Blog Detail</a></li>
-                                    </ul>
-                                </li>
-                                <li class="parent">
-                                    <a href="shop.html">Shop <i class="menu-toggle fa fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="shop.html">Shop</a></li>
-                                        <li><a href="shop_detail.html">Shop detail</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                    </ul>
-                                </li>
-                                <li class="parent">
-                                    <a href="gallery_1.html">Gallery <i class="menu-toggle fa fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="gallery_1.html">Gallery 1</a></li>
-                                        <li><a href="gallery_2.html">Gallery 2</a></li>
-                                    </ul>
-                                </li>
-                                <li class="parent">
-                                    <a href="courses.html">Courses <i class="menu-toggle fa fa-angle-down"></i></a>
-                                    <ul>
-                                        <li><a href="courses.html">Courses</a></li>
-                                        <li><a href="single_course.html">Single course</a></li>
-                                        <li><a href="membership.html">Membership</a></li>
-                                        <li><a href="events.html">Events</a></li>
-                                        <li><a href="teacher.html">Teacher</a></li>
-                                        <li><a href="teacher_detail.html">Teacher detail</a></li>
-                                        <li><a href="faq.html">faq</a></li>
-                                        <li><a href="testimonials.html">testimonials</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="404.html">404</a></li>
-                            </ul>                             
-                        </li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="blog_left_sidebar.html">Blog</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </nav>
-                <div class="nav-more">
-                    <a class="tt-top-search" href="#">
-                        <i class="stroke-icon icon-Search"></i>
-                    </a>                    
-                </div>
-                <div class="top-line">
-                    <div class="container">
-                        <div class="top-info">
-                            <i class="stroke-icon icon-Timer"></i>
-                            <span>Mon - Fri : 9.00AM - 06.00PM</span>                  
-                        </div>                    
-                        <div class="top-info">
-                            <i class="fa fa-phone"></i>
-                            <a href="tel:18004567890">+ (123) 456 7890</a> 
-                        </div>                        
+            <div class="top-line">
+                <div class="container">
+                    <div class="top-info">
+                        <i class="stroke-icon icon-Timer"></i>
+                        <span>周一 - 周六 : 上午9.00 - 下午06.00</span>
+                    </div>
+                    <div class="top-info">
+                        <i class="fa fa-phone"></i>
+                        <a href="tel:18004567890">+ 025-85981626</a>
+                    </div>
 
-                        <div class="top-info">
-                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                            <a href="#">Register</a>
-                            <a href="#">Login</a>
-                        </div>                    
+                    <div class="top-info">
+                        <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                        <a href="#">注册</a>
+                        <a href="#">登录</a>
                     </div>
                 </div>
             </div>
-        </div>       
-    </header>
+        </div>
+    </div>
+</header>
     <div class="tt-search-popup">
         <div class="tt-search-popup-vertical">
           <div class="container">
@@ -236,10 +261,106 @@
                     <div class="empty-space marg-xs-b30"></div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="tt-contact-map map-block" id="map-canvas"  data-lat="38.934274" data-lng="-78.198075" data-zoom="10"></div>
-                    <div class="addresses-block">
+                    <!-- <div class="tt-contact-map map-block" id="map-canvas"  data-lat="38.934274" data-lng="-78.198075" data-zoom="10"></div> -->
+                    <div class="tt-contact-map map-block" style="width:100%;border:#ccc solid 1px;" id="dituContent"></div>
+                    <script type="text/javascript">
+                        //创建和初始化地图函数：
+                        function initMap() {
+                            createMap();//创建地图
+                            setMapEvent();//设置地图事件
+                            addMapControl();//向地图添加控件
+                            addMarker();//向地图中添加marker
+                        }
+                    
+                        //创建地图函数：
+                        function createMap() {
+                            var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+                            var point = new BMap.Point(118.746024, 32.056094);//定义一个中心点坐标
+                            map.centerAndZoom(point, 18);//设定地图的中心点和坐标并将地图显示在地图容器中
+                            window.map = map;//将map变量存储在全局
+                        }
+                    
+                        //地图事件设置函数：
+                        function setMapEvent() {
+                            map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+                            map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+                            map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+                            map.enableKeyboard();//启用键盘上下左右键移动地图
+                        }
+                    
+                        //地图控件添加函数：
+                        function addMapControl() {
+                            //向地图中添加缩放控件
+                            var ctrl_nav = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
+                            map.addControl(ctrl_nav);
+                            //向地图中添加缩略图控件
+                            var ctrl_ove = new BMap.OverviewMapControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 1 });
+                            map.addControl(ctrl_ove);
+                        }
+                    
+                        //标注点数组
+                        var markerArr = [{ title: "零壹空间", content: "南京市秦淮区紫丹路9号", point: "118.882119|32.018627", isOpen: 1, icon: { w: 23, h: 25, l: 69, t: 21, x: 9, lb: 12 } }
+                        ];
+                        //创建marker
+                        function addMarker() {
+                            for (var i = 0; i < markerArr.length; i++) {
+                                var json = markerArr[i];
+                                var p0 = json.point.split("|")[0];
+                                var p1 = json.point.split("|")[1];
+                                var point = new BMap.Point(p0, p1);
+                                var iconImg = createIcon(json.icon);
+                                var marker = new BMap.Marker(point, { icon: iconImg });
+                                var iw = createInfoWindow(i);
+                                var label = new BMap.Label(json.title, { "offset": new BMap.Size(json.icon.lb - json.icon.x + 10, -20) });
+                                marker.setLabel(label);
+                                map.addOverlay(marker);
+                                label.setStyle({
+                                    borderColor: "#808080",
+                                    color: "#333",
+                                    cursor: "pointer"
+                                });
+                    
+                                (function () {
+                                    var index = i;
+                                    var _iw = createInfoWindow(i);
+                                    var _marker = marker;
+                                    _marker.addEventListener("click", function () {
+                                        this.openInfoWindow(_iw);
+                                    });
+                                    _iw.addEventListener("open", function () {
+                                        _marker.getLabel().hide();
+                                    })
+                                    _iw.addEventListener("close", function () {
+                                        _marker.getLabel().show();
+                                    })
+                                    label.addEventListener("click", function () {
+                                        _marker.openInfoWindow(_iw);
+                                    })
+                                    if (!!json.isOpen) {
+                                        label.hide();
+                                        _marker.openInfoWindow(_iw);
+                                    }
+                                })()
+                            }
+                        }
+                        //创建InfoWindow
+                        function createInfoWindow(i) {
+                            var json = markerArr[i];
+                            var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>" + json.content + "</div>");
+                            return iw;
+                        }
+                        //创建一个Icon
+                        function createIcon(json) {
+                            var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w, json.h), { imageOffset: new BMap.Size(-json.l, -json.t), infoWindowOffset: new BMap.Size(json.lb + 5, 1), offset: new BMap.Size(json.x, json.h) })
+                            return icon;
+                        }
+                    
+                        initMap();//创建和初始化地图
+                    
+                    </script>
+                    <!-- <div class="addresses-block">
                         <a data-lat="38.934274" data-lng="-78.198075" data-string="1. Here is some address or email or phone or something else..."></a>                 
-                    </div>                    
+                    </div>                     -->
                 </div>
             </div>
             <div class="empty-space marg-lg-b135 marg-md-b120 marg-sm-b100 marg-xs-b60"></div>
@@ -247,33 +368,30 @@
  
     </div>
 
-
-    <!-- FOOTER -->
-    <footer class="tt-footer">
+<!-- FOOTER -->
+<footer class="tt-footer">
         <div class="container">
-
-            <!-- TT-BANNER-2 -->
             <div class="tt-banner-2">
                 <div class="row">
                     <div class="col-md-6">
-                        <h5 class="tt-banner-2-title c-h5">STAY TUNED WITH US</h5>
+                        <h5 class="tt-banner-2-title c-h5">订阅我们</h5>
                         <div class="simple-text color-6">
-                            <p>Get our updates educational materials, new courses and more!</p>
+                            <p>获取少儿编程科技教育的最新资讯</p>
                         </div>
-                        <div class="empty-space marg-sm-b20"></div>
+                        <div class="empty-space marg-sm-b5"></div>
                     </div>
                     <div class="col-md-6">
                         <div class="tt-banner-2-right">
                             <form>
                                 <div class="row">
                                     <div class="col-sm-8">
-                                        <input class="c-input type-2" type="text" required="" placeholder="Enter your email address">
+                                        <input class="c-input type-2" type="text" required="" placeholder="输入邮件地址">
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="c-btn type-1 color-3 full">
-                                            <input type="submit" value="subscribe">
+                                            <input type="submit" value="订阅">
                                             <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -281,20 +399,20 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-6 col-md-3">
                     <div class="tt-footer-logo">
-                        <img class="img-responsive" src="img/footer/f_logo.png" height="55" width="258" alt="">
+                        <img class="img-responsive" src="img/header/logo.png" height="55" width="258" alt="">
                     </div>
                     <div class="empty-space marg-lg-b25"></div>
 
                     <div class="simple-text size-3 color-7">
-                        <p>Lorem ipsum dolor sit amet, consectet ur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+                        <p>零壹空间-专注少儿编程教育
+                        </p>
                     </div>
                     <div class="empty-space marg-lg-b15"></div>
 
-                    <a class="tt-more-link" href="#">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    <a class="tt-more-link" href="#">阅读更多内容 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                     <div class="empty-space marg-lg-b20"></div>
 
                     <div class="tt-footer-social">
@@ -304,74 +422,73 @@
                         <a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-pinterest-square" aria-hidden="true"></i></a>
                     </div>
-                    <div class="empty-space marg-sm-b30"></div>                
+                    <div class="empty-space marg-sm-b30"></div>
                 </div>
                 <div class="col-sm-6 col-md-3">
-                    <h4 class="tt-footer-title">Our Courses</h4>
+                    <h4 class="tt-footer-title">我们的体系课程</h4>
                     <div class="empty-space marg-lg-b25"></div>
 
                     <ul class="tt-footer-list clearfix">
-                        <li><a href="#">Master Of Taxation</a></li>                       
-                        <li><a href="#">Master of IT</a></li>                       
-                        <li><a href="#">Master Of Accounting</a></li>                       
-                        <li><a href="#">MBA Degree</a></li>                
-                        <li><a href="#">Master of Geology</a></li>               
-                        <li><a href="#">Diploma</a></li>                
-                        <li><a href="#">Other Degrees</a></li>                 
+                        <li><a href="#">Scratch</a></li>
+                        <li><a href="#">LEGO Wedo</a></li>
+                        <li><a href="#">Android</a></li>
+                        <li><a href="#">树莓派</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">NIO</a></li>
+                        <li><a href="#">其他</a></li>
                     </ul>
                     <div class="empty-space marg-sm-b30"></div>
                 </div>
                 <div class="clearfix visible-sm-block"></div>
                 <div class="col-sm-6 col-md-2">
-                    <h4 class="tt-footer-title">Quick Links</h4>
+                    <h4 class="tt-footer-title">快速链接</h4>
                     <div class="empty-space marg-lg-b25"></div>
 
                     <ul class="tt-footer-list clearfix">
-                        <li><a href="#">Home</a></li>                       
-                        <li><a href="#">Courses</a></li>                       
-                        <li><a href="#">About Us</a></li>                       
-                        <li><a href="#">Events</a></li>                      
-                        <li><a href="#">Professors</a></li>                     
-                        <li><a href="#">Job Opportunities</a></li>                     
-                        <li><a href="#">Contact Us</a></li>                     
+                        <li><a href="#">主页</a></li>
+                        <li><a href="#">课程</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">大事记</a></li>
+                        <li><a href="#">Professors</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系我们</a></li>
                     </ul>
-                    <div class="empty-space marg-xs-b30"></div>                 
+                    <div class="empty-space marg-xs-b30"></div>
                 </div>
                 <div class="col-sm-6 col-md-4">
-                    <h4 class="tt-footer-title">Our Courses</h4>
+                    <h4 class="tt-footer-title">我们的联系方式</h4>
                     <div class="empty-space marg-lg-b25"></div>
 
                     <ul class="tt-footer-contact">
                         <li>
                             <i class="fa fa-map-marker"></i>
-                            <strong>EDUCATION & LEARNING PVT.  LTD.</strong> 54B, Tailstoi Town 5238 MT, Wordwide Country                          
+                            <strong>南京见义思编教育科技有限公司</strong><br> 南京市鼓楼区江东中路209号永嘉年华603
                         </li>
                         <li class="style-2">
                             <i class="fa fa-phone"></i>
-                            <a href="tel:018655248503">+ 01865 524 8503</a> / <a href="tel:12549547854">1254 954 7854</a>                            
+                            <a href="tel:02585981626">+ 025-85981626</a> / <a href="tel:13776416562">137 7641 6562</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope-o"></i>
-                            <a href="mailto:info@education&learning.com">info@education&learning.com</a>                
+                            <a href="mailto:lijie1108@126.com">lijie1108@126.com</a>
                         </li>
                         <li>
-                            <i class="stroke-icon icon-Timer"></i>
-                            Monday - Friday : 9.00AM - 6.00PM                      
-                        </li>                      
-                    </ul>                               
-                </div>                
+                            <i class="stroke-icon icon-Timer"></i> 周一 - 周六 : 上午9.00 - 下午6.00
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="empty-space marg-lg-b50 marg-sm-b30"></div>
             <div class="tt-footer-line">
                 <div class="row">
                     <div class="col-sm-6">
-                        <div class="tt-footer-copy">Copyright © Education&Learning 2016. All rights reserved. </div>
+                        <div class="tt-footer-copy">零壹空间 © 少儿编程 2017. 版权所有. </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="tt-footer-author">Created by: <a href="#">DesignArc</a></div>
+                        <div class="tt-footer-author">创作团队: <a href="#">零壹空间</a></div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
     </footer>
     <script src="js/jquery-1.12.1.min.js"></script>
@@ -379,7 +496,7 @@
     <script src="js/idangerous.swiper.min.js"></script>
     <script src="js/jquery.countTo.js"></script>
     <script src="js/jquery.viewportchecker.min.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <!-- <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=en"></script> -->
     <script src="js/map.js"></script>  
     <script src="js/global.js"></script>
     <script >
