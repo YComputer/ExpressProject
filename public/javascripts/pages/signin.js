@@ -4,7 +4,7 @@
 $(function () {
 
     $('#wechartLoginButton').on('click', function () {
-        window.location.href = 'https://open.weixin.qq.com/connect/qrconnect?appid=wx687a3a4018ba8653&redirect_uri=http%3A%2F%2F9c8a0276.ngrok.io%2Fwechartlogincallback&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect';
+        window.location.href = 'https://open.weixin.qq.com/connect/qrconnect?appid=wx687a3a4018ba8653&redirect_uri=http%3A%2F%2Ffe3575e3.ngrok.io%2Fwechartlogincallback&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect';
         //window.navigate('https://open.weixin.qq.com/connect/qrconnect?appid=wx687a3a4018ba8653&redirect_uri=http%3A%2F%2Fwww.01space.cn%2Fwechartlogincallback&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect');
         var obj = new WxLogin({
             id: "weichartImageDiv",

@@ -42,6 +42,7 @@
                     <ul>
                         <li class="active"><a href="index.html">首页</a></li>
                         <li><a href="courses.html">课程</a></li>
+                        <li><a href="works.html">作品展示</a></li>
                         <li><a href="about.html">关于我们</a></li>
                         <li class="parent">
                             <a href="#">更多 <i class="menu-toggle fa fa-angle-down"></i></a>
@@ -57,8 +58,8 @@
                                 <li class="parent">
                                     <a href="blog_left_sidebar.html">博客 <i class="menu-toggle fa fa-angle-down"></i></a>
                                     <ul>
-                                        <li><a href="blog_left_sidebar.html">左侧边栏</a></li>
-                                        <li><a href="blog_right_sidebar.html">右侧边栏</a></li>
+                                        <li><a href="blog_left_sidebar.html">博客概览</a></li>
+                                        <!-- <li><a href="blog_right_sidebar.html">右侧边栏</a></li> -->
                                         <li><a href="blog_detail.html">博客详情</a></li>
                                     </ul>
                                 </li>
@@ -91,9 +92,9 @@
                                         <li><a href="testimonials.html">获奖证书</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about.html">关于我们</a></li>
+                                <!-- <li><a href="about.html">关于我们</a></li>
                                 <li><a href="contact.html">联系我们</a></li>
-                                <li><a href="404.html">404</a></li>
+                                <li><a href="404.html">404</a></li> -->
                             </ul>
                         </li>
                         <li><a href="events.html">大事记</a></li>
@@ -119,8 +120,8 @@
 
                         <div class="top-info">
                             <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                            <a href="#">注册</a>
-                            <a href="#">登录</a>
+                            <a href="newSignin.html">注册</a>
+                            <a href="newSignup.html">登录</a>
                         </div>
                     </div>
                 </div>
@@ -156,10 +157,10 @@
         <!-- TT-TOPHEADING -->
         <div class="tt-topheading background-block" style="background-image:url(img/heading/heading.jpg);">
             <div class="container">
-                <h2 class="tt-topheading-title c-h3"><span>checkout</span></h2>
+                <h2 class="tt-topheading-title c-h3"><span>收银台</span></h2>
                 <ul class="tt-breadcrumbs">
-                    <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i> HOME</a></li>
-                    <li><span>checkout</span></li>
+                    <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i> 首页</a></li>
+                    <li><span>收银台</span></li>
                 </ul>
             </div>
         </div>        
@@ -167,14 +168,14 @@
 
         <div class="container">
             <!-- TT-MESSAGE -->      
-            <div class="tt-message mbottom50">Returning customer? <a href="#">Click here to login</a></div>
+            <div class="tt-message mbottom50">老顾客回顾? <a href="newSignup.html">点此登陆</a></div>
             <div class="empty-space marg-lg-b50 marg-sm-b30"></div>
 
             <div class="row">
                 <div class="col-md-6">
                     <!-- TT-HEDING -->
                     <div class="tt-heding type-2">
-                        <h4 class="tt-heding-title c-h4 txt-uppercase"><span>Billing Details</span></h4>
+                        <h4 class="tt-heding-title c-h4 txt-uppercase"><span>账单明细</span></h4>
                     </div>
                     <div class="empty-space marg-lg-b25"></div>                                        
                     <!-- tt-checkout -->
@@ -182,85 +183,85 @@
                         <form>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="input-label">First Name <span>*</span></div>
-                                    <input class="c-input type-4 size-2 color-2" type="text" placeholder="First Name">
+                                    <div class="input-label">请输入您的姓名 <span>*</span></div>
+                                    <input class="c-input type-4 size-2 color-2" type="text" placeholder="请输入您的姓名">
                                     <div class="empty-space marg-lg-b20"></div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="input-label">Last Name <span>*</span></div>
-                                    <input class="c-input type-4 size-2 color-2" type="text" placeholder="Last Name">
+                                <!-- <div class="col-sm-6">
+                                    <div class="input-label">名 <span>*</span></div>
+                                    <input class="c-input type-4 size-2 color-2" type="text" placeholder="名">
                                     <div class="empty-space marg-lg-b20"></div>
-                                </div>                        
+                                </div>                         -->
                             </div>
                             
-                            <div class="input-label">Company Name</div>
-                            <input class="c-input type-4 size-2 color-2" type="text" placeholder="Company Name"> 
+                            <div class="input-label">请输入您的公司名称</div>
+                            <input class="c-input type-4 size-2 color-2" type="text" placeholder="请输入您的公司名称"> 
                             <div class="empty-space marg-lg-b20"></div>
 
-                            <div class="input-label color-2">Address <span>*</span></div>
-                            <input class="c-input type-4 size-2 color-2" type="text" placeholder="Street address">
+                            <div class="input-label color-2">请输入您的公司地址 <span>*</span></div>
+                            <input class="c-input type-4 size-2 color-2" type="text" placeholder="请输入街道名称">
                             <div class="empty-space marg-lg-b10"></div>
-                            <input class="c-input type-4 size-2 color-2" type="text" placeholder="Apartment, Suit unit etc (optional)">
+                            <input class="c-input type-4 size-2 color-2" type="text" placeholder="请输入详细地址">
                             <div class="empty-space marg-lg-b20"></div>
 
-                            <div class="input-label">Town / City <span>*</span></div>
-                            <input class="c-input type-4 size-2 color-2" type="text" placeholder="Town /City">
+                            <div class="input-label">城 / 镇 <span>*</span></div>
+                            <input class="c-input type-4 size-2 color-2" type="text" placeholder="城 / 镇 ">
                             <div class="empty-space marg-lg-b20"></div>
 
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="input-label">State / Country <span>*</span></div>
+                                    <div class="input-label">省 <span>*</span></div>
                                     <div class="c-select-2">
                                         <div class="select-arrow"><i class="fa fa-angle-down"></i></div>
                                         <select>
-                                            <option selected="">Select an option</option>
-                                            <option>Option 1</option>
-                                            <option>Option 2</option>
-                                            <option>Option 3</option>
-                                            <option>Option 4</option>
-                                            <option>Option 5</option>
+                                            <option selected="">选择您所在的省份</option>
+                                            <option>江苏</option>
+                                            <option>安徽</option>
+                                            <option>云南</option>
+                                            <option>福建</option>
+                                            <option>浙江</option>
                                         </select>             
                                     </div>
                                     <div class="empty-space marg-lg-b20"></div>                  
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="input-label">Postcode / Zip <span>*</span></div>
-                                    <input class="c-input type-4 size-2 color-2" type="text" placeholder="Postcode / Zip">
+                                    <div class="input-label">邮政编码 <span>*</span></div>
+                                    <input class="c-input type-4 size-2 color-2" type="text" placeholder="邮政编码">
                                     <div class="empty-space marg-lg-b20"></div>    
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="input-label mbottom5">Email Address <span>*</span></div>
-                                    <input class="c-input type-4 size-2 color-2" type="text" placeholder="Email Address">
+                                    <div class="input-label mbottom5">邮箱地址 <span>*</span></div>
+                                    <input class="c-input type-4 size-2 color-2" type="text" placeholder="邮箱地址">
                                     <div class="empty-space marg-lg-b20"></div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="input-label mbottom5">Phone <span>*</span></div>
-                                    <input class="c-input type-4 size-2 color-2" type="text" placeholder="Select an option">
+                                    <div class="input-label mbottom5">联系电话 <span>*</span></div>
+                                    <input class="c-input type-4 size-2 color-2" type="text" placeholder="请输入您的联系电话">
                                     <div class="empty-space marg-lg-b20"></div>
                                 </div>
                             </div>
 
                             <label class="tt-checkbox-entry clearfix">
                                 <input class="tt-checkbox-form" type="checkbox" name="checkbox" value="">
-                                <span class="tt-checkbox-text">Create an account?</span>
+                                <span class="tt-checkbox-text">创建账单?</span>
                             </label>
                             <div class="empty-space marg-lg-b105 marg-sm-50 marg-xs-b30"></div>
 
                             <!-- TT-HEDING -->
                             <div class="tt-heding type-2">
-                                <h4 class="tt-heding-title c-h4 txt-uppercase"><span>Billing Details</span></h4>
+                                <h4 class="tt-heding-title c-h4 txt-uppercase"><span>账单明细</span></h4>
                             </div>
                             <div class="empty-space marg-lg-b30"></div>
 
                             <div class="simple-text font-2 size-3 color-9">
-                                <p>Order Notes</p>
+                                <p>添加备注</p>
                             </div>
                             <div class="empty-space marg-lg-b15"></div>
 
-                            <textarea class="c-area type-2" placeholder="Note about your order. e.g. special note for delivery"></textarea>          
+                            <textarea class="c-area type-2" placeholder="如有备注请在此添加"></textarea>          
                         </form>
                     </div>
                     <div class="empty-space marg-sm-b30"></div>
@@ -270,7 +271,7 @@
 
                     <!-- TT-HEDING -->
                     <div class="tt-heding type-2">
-                        <h4 class="tt-heding-title c-h4 txt-uppercase"><span>Your order</span></h4>
+                        <h4 class="tt-heding-title c-h4 txt-uppercase"><span>您的订单</span></h4>
                     </div>
                     <div class="empty-space marg-lg-b55 marg-sm-b30"></div>
                         
@@ -278,17 +279,17 @@
                     <div class="tt-order">
                         <div class="row">
                             <div class="col-xs-8">
-                                <div class="tt-order-label">PRODCUT</div>
+                                <div class="tt-order-label">商品</div>
                             </div>
                             <div class="col-xs-4">
-                                <div class="tt-order-count">TOTAL</div>
+                                <div class="tt-order-count">总计</div>
                             </div>
                         </div>
                         <div class="empty-space marg-lg-b20"></div>
 
                         <div class="row">
                             <div class="col-xs-8">
-                                <div class="tt-order-label">Electric Hummer x 1</div>
+                                <div class="tt-order-label">魔音耳机 x 1</div>
                             </div>
                             <div class="col-xs-4">
                                 <div class="tt-order-count">$65.00</div>
@@ -298,7 +299,7 @@
 
                         <div class="row">
                             <div class="col-xs-8">
-                                <div class="tt-order-label">SUBTOTAL</div>
+                                <div class="tt-order-label">小计</div>
                             </div>
                             <div class="col-xs-4">
                                 <div class="tt-order-count total">$65.00</div>
@@ -308,10 +309,10 @@
 
                         <div class="row">
                             <div class="col-xs-8">
-                                <div class="tt-order-label">Shipping And Handling</div>
+                                <div class="tt-order-label">运费</div>
                             </div>
                             <div class="col-xs-4">
-                                <div class="tt-order-count">Free Shipping</div>
+                                <div class="tt-order-count">包邮</div>
                             </div>
                         </div>
                         <div class="empty-space marg-lg-b20"></div>
@@ -320,7 +321,7 @@
                         <div class="empty-space marg-lg-b10"></div>
                         <div class="row">
                             <div class="col-xs-8">
-                                <div class="tt-order-label">TOTAL</div>
+                                <div class="tt-order-label">总计</div>
                             </div>
                             <div class="col-xs-4">
                                 <div class="tt-order-count total">$65.00</div>
@@ -332,20 +333,20 @@
 
                         <label class="tt-radio-entry clearfix">
                             <input class="tt-radio-form" type="radio" name="radio" checked="" value="">
-                            <span class="tt-radio-text">Direct Bank Transfer</span>
+                            <span class="tt-radio-text">银行转账</span>
                         </label>
                         <div class="empty-space marg-lg-b20"></div>
 
                         <div class="tt-order-info">
                             <div class="simple-text size-3 color-3">
-                                <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                <p>把你的付款直接存入我们的银行账户。请使用您的订单ID作为付款参考。您的订单在我们的帐户清算之前不会发货。</p>
                             </div>
                         </div>
                         <div class="empty-space marg-lg-b20"></div>
 
                         <label class="tt-radio-entry clearfix">
                             <input class="tt-radio-form" type="radio" name="radio" value="">
-                            <span class="tt-radio-text">Check Payment</span>
+                            <span class="tt-radio-text">微信付款</span>
                         </label>
                         <div class="empty-space marg-lg-b20"></div>
 
@@ -353,7 +354,7 @@
                             <div class="col-sm-3">
                                 <label class="tt-radio-entry clearfix">
                                     <input class="tt-radio-form" type="radio" name="radio" value="">
-                                    <span class="tt-radio-text">Paypal</span>
+                                    <span class="tt-radio-text">贝宝</span>
                                 </label> 
                                 <div class="empty-space marg-lg-b20"></div>                    
                             </div>
@@ -364,12 +365,12 @@
                             </div>
                             <div class="col-sm-5">
                                 <div class="tt-order-faq">
-                                    <a class="tt-order-link" href="#">What is PayPal?</a>
+                                    <a class="tt-order-link" href="#">什么是贝宝?</a>
                                 </div>
                             </div>
                         </div>
                         <div class="c-btn type-1 color-2">
-                            <input type="submit" value="place ordE">
+                            <input type="submit" value="提交订单">
                             <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         </div>                                     
                     </div>                    
