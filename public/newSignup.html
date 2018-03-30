@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+
+    <!-- FONTS -->
+    <link href="font-awesome/4.6.1/css/font-awesome.min.css"  rel="stylesheet">
+    <link href="css/stroke-gap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,400italic' rel='stylesheet' type='text/css'>
+
+    <!-- CSS -->
+    <link href="bootstrap/3.3.6/css/bootstrap.min.css"  rel="stylesheet">
+    <link href="css/idangerous.swiper.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+    <link rel="shortcut icon" href="img/favicon.ico" />
+  	<title>零壹空间-少儿编程</title>
+</head>
+<body>
+    <!-- LOADER -->
+    <div id="loader-wrapper">
+            <div id="loader-container">
+                <p id="loadingText">Loading</p>
+            </div>
+        </div>
+    
+    <!-- HEADER -->
+    <header class="tt-header">
+            <div class="container">
+                <div class="top-inner">
+                    <a class="logo" href="index.html"><img src="img/header/logo.png" height="60" width="258" alt=""></a>
+                </div>
+                <button class="cmn-toggle-switch"><span></span></button>
+                <div class="toggle-block">
+                    <nav class="main-nav clearfix">
+                        <ul>
+                            <li class="active"><a href="index.html">首页</a></li>
+                            <li><a href="courses.html">课程</a></li>
+                            <li><a href="about.html">关于我们</a></li>
+                            <li class="parent">
+                                <a href="#">更多 <i class="menu-toggle fa fa-angle-down"></i></a>
+                                <ul>
+                                    <!-- <li class="parent">
+                                        <a href="index.html">个性首页 <i class="menu-toggle fa fa-angle-down"></i></a>
+                                        <ul>
+                                            <li><a href="index.html">首页 1</a></li>
+                                            <li><a href="index_2.html">首页 2</a></li>
+                                            <li><a href="index_3.html">首页 3</a></li>
+                                        </ul>
+                                    </li> -->
+                                    <li class="parent">
+                                        <a href="blog_left_sidebar.html">博客 <i class="menu-toggle fa fa-angle-down"></i></a>
+                                        <ul>
+                                            <li><a href="blog_left_sidebar.html">左侧边栏</a></li>
+                                            <li><a href="blog_right_sidebar.html">右侧边栏</a></li>
+                                            <li><a href="blog_detail.html">博客详情</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="parent">
+                                        <a href="shop.html">商城 <i class="menu-toggle fa fa-angle-down"></i></a>
+                                        <ul>
+                                            <li><a href="shop.html">在线商城</a></li>
+                                            <li><a href="shop_detail.html">商城详情</a></li>
+                                            <li><a href="cart.html">购物车</a></li>
+                                            <li><a href="checkout.html">收银台</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="parent">
+                                        <a href="gallery_1.html">展览厅 <i class="menu-toggle fa fa-angle-down"></i></a>
+                                        <ul>
+                                            <li><a href="gallery_1.html">展厅 1</a></li>
+                                            <li><a href="gallery_2.html">展厅 2</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="parent">
+                                        <a href="courses.html">课程 <i class="menu-toggle fa fa-angle-down"></i></a>
+                                        <ul>
+                                            <li><a href="courses.html">更多课程</a></li>
+                                            <li><a href="single_course.html">我的课程</a></li>
+                                            <li><a href="membership.html">VIP会员</a></li>
+                                            <li><a href="events.html">大事件</a></li>
+                                            <li><a href="teacher.html">师资团队</a></li>
+                                            <li><a href="teacher_detail.html">教师详情</a></li>
+                                            <li><a href="faq.html">疑问解答</a></li>
+                                            <li><a href="testimonials.html">获奖证书</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="about.html">关于我们</a></li>
+                                    <li><a href="contact.html">联系我们</a></li>
+                                    <li><a href="404.html">404</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="events.html">大事记</a></li>
+                            <li><a href="blog_left_sidebar.html">博客</a></li>
+                            <li><a href="contact.html">联系我们</a></li>
+                        </ul>
+                    </nav>
+                    <div class="nav-more">
+                        <a class="tt-top-search" href="#">
+                            <i class="stroke-icon icon-Search"></i>
+                        </a>
+                    </div>
+                    <div class="top-line">
+                        <div class="container">
+                            <div class="top-info">
+                                <i class="stroke-icon icon-Timer"></i>
+                                <span>周一 - 周六 : 上午9.00 - 下午06.00</span>
+                            </div>
+                            <div class="top-info">
+                                <i class="fa fa-phone"></i>
+                                <a href="tel:18004567890">+ 025-85981626</a>
+                            </div>
+    
+                            <div class="top-info">
+                                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                                <a href="#">注册</a>
+                                <a href="/newSignup.html">登录</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </header>
+    <div class="tt-search-popup">
+        <div class="tt-search-overlay"></div>
+        <div class="tt-search-popup-vertical">
+            <div class="container">
+                <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+                    <form>
+                        <h3 class="tt-search-popup-title">Search</h3>
+                        <div class="tt-search-popup-field">
+                            <input type="text" placeholder="Enter keyword" class="input" required>
+                            <div class="tt-search-popup-devider"></div>
+                            <div class="tt-search-popup-submit">
+                                <i class="fa fa-search"></i>
+                                <input type="submit" value="">
+                            </div>    
+                        </div>
+                        <a href="#" class="close"><span>+</span></a>
+                    </form> 
+                </div> 
+                </div>
+            </div>
+        </div>
+    </div>    
+    <div class="tt-header-margin">
+        
+    </div>
+    <div id="content-wrapper" style="background:#f6f6f9">
+        <br><br>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6 loginForm col-sm-offset-1 col-sm-10">
+                <div class=" row " id="signinDiv">
+                    
+                    <div class=" row " action="/signin" method="post">
+                        <div style="text-align:10px" class="col-md-8 col-md-offset-2">
+                            <div class=" row " style="width:100%;" class="input-group">
+                                <span style="font-size:24px; float:left;">账号登陆</span>
+                                <!-- <a href="/" style="float:right;" class="navbar-brand">                           
+                                    <img src="/images/logo.png" style="height:40px;" class="img-responsive">
+                                </a> -->
+                            </div>
+                            <div class="input-group">
+                                <span id="signininfo" style="color:#ef4123;visibility:hidden" class="glyphicon glyphicon-remove">用户名或密码错误</span>
+                            </div>
+                            <div style="margin:20px" class="input-group input-group-lg">
+                                <span id="basic-addon1"  class="input-group-addon glyphicon glyphicon-user">
+
+                                </span>
+                                <input type="text" id="loginname" placeholder="用户名或注册邮箱" aria-describedby="basic-addon1" class="form-control">
+                            </div>
+                            <p>
+
+                            </p>
+                            <div style="margin:20px" class="input-group input-group-lg">
+                                <span id="basic-addon1"  class="input-group-addon glyphicon glyphicon-lock"></span>
+                                <input type="password" id="pass" placeholder="密码" aria-describedby="basic-addon1" class="form-control">
+                            </div>
+                            <div class="col-sm-4" style="margin:20px">
+                                <div class="c-btn type-1 color-3 full ">
+                                    <a href="/findpwd">忘记密码</a>
+                                </div>
+                            </div>
+                            
+                            <div style="width:100%;" class="input-group">
+                                <a href="/newsignup">
+                                    <input id="signUp" type="btn" readonly="readonly" style="width:150px;" value="立即注册" aria-describedby="basic-addon1" class="btn c-btn type-1 color-5 full">
+                                </a>
+                                <input id="submitsignin" type="button" style="width:150px; float: right !important;" value="登录" aria-describedby="basic-addon1" class="btn c-btn type-1 color-5 full">
+                            </div>
+                            <div style="width:100%;" class="row">
+                                <a >第三方账号登录</a>
+                                <a href="#">
+                                    <img id="wechartLoginButton" src="/images/weixin_icon.png" style="width:80px;height:80px">
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- FOOTER -->
+    <footer class="tt-footer">
+        <div class="container">
+            <br>
+            <!-- <div class="tt-banner-2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="tt-banner-2-title c-h5">订阅我们</h5>
+                        <div class="simple-text color-6">
+                            <p>获取少儿编程科技教育的最新资讯</p>
+                        </div>
+                        <div class="empty-space marg-sm-b5"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="tt-banner-2-right">
+                            <form>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <input class="c-input type-2" type="text" required="" placeholder="输入邮件地址">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="c-btn type-1 color-3 full">
+                                            <input type="submit" value="订阅">
+                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="tt-footer-logo">
+                        <img class="img-responsive" src="img/header/logo.png" height="55" width="258" alt="">
+                    </div>
+                    <div class="empty-space marg-lg-b25"></div>
+
+                    <div class="simple-text size-3 color-7">
+                        <p>零壹空间-专注少儿编程教育
+                        </p>
+                    </div>
+                    <div class="empty-space marg-lg-b15"></div>
+
+                    <a class="tt-more-link" href="#">阅读更多内容 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    <div class="empty-space marg-lg-b20"></div>
+
+                    <div class="tt-footer-social">
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-pinterest-square" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="empty-space marg-sm-b30"></div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <h4 class="tt-footer-title">我们的体系课程</h4>
+                    <div class="empty-space marg-lg-b25"></div>
+
+                    <ul class="tt-footer-list clearfix">
+                        <li><a href="#">Scratch</a></li>
+                        <li><a href="#">LEGO Wedo</a></li>
+                        <li><a href="#">Android</a></li>
+                        <li><a href="#">树莓派</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">NIO</a></li>
+                        <li><a href="#">其他</a></li>
+                    </ul>
+                    <div class="empty-space marg-sm-b30"></div>
+                </div>
+                <div class="clearfix visible-sm-block"></div>
+                <div class="col-sm-6 col-md-2">
+                    <h4 class="tt-footer-title">快速链接</h4>
+                    <div class="empty-space marg-lg-b25"></div>
+
+                    <ul class="tt-footer-list clearfix">
+                        <li><a href="#">主页</a></li>
+                        <li><a href="#">课程</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">大事记</a></li>
+                        <li><a href="#">Professors</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                    <div class="empty-space marg-xs-b30"></div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <h4 class="tt-footer-title">我们的联系方式</h4>
+                    <div class="empty-space marg-lg-b25"></div>
+
+                    <ul class="tt-footer-contact">
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+                            <strong>南京见义思编教育科技有限公司</strong><br> 南京市秦淮区紫丹路9号
+                        </li>
+                        <li class="style-2">
+                            <i class="fa fa-phone"></i>
+                            <a href="tel:02585981626">+ 025-85981626</a> / <a href="tel:13776416562">137 7641 6562</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope-o"></i>
+                            <a href="mailto:lijie1108@126.com">lijie1108@126.com</a>
+                        </li>
+                        <li>
+                            <i class="stroke-icon icon-Timer"></i> 周一 - 周六 : 上午9.00 - 下午6.00
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="empty-space marg-lg-b50 marg-sm-b30"></div>
+            <div class="tt-footer-line">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="tt-footer-copy">零壹空间 © 少儿编程 2017. 版权所有. </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="tt-footer-author">创作团队: <a href="#">零壹空间</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/jquery-1.12.1.min.js"></script>
+    <script src="bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+    <script src="js/idangerous.swiper.min.js"></script>
+    <script src="js/jquery.countTo.js"></script>
+    <script src="js/jquery.viewportchecker.min.js"></script> 
+    <script src="js/global.js"></script>   
+    <script src="/javascripts/pages/signin.js" type="text/javascript"></script>
+</body>
