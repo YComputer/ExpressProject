@@ -29,6 +29,11 @@ exports.getNextPageWorks = function (pageid, callback) {
     query.exec(callback);
 }
 
+exports.getWorkByid = function (workid, callback) {
+    Work.findById(workid, callback);
+}
+
+
 exports.getAllWorkByUserId = function (userId, callback) {
     var query = Work.find({ author: userId });
     query.exec(callback);

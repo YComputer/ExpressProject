@@ -334,6 +334,20 @@ exports.getNextPage = function (req, res, next) {
     })
 }
 
+exports.getworkinfo_api = function (req, res, next) {
+    var workid = req.query.workid;
+
+    Work.getWorkByid(workid, function (err, docs) {
+        if (err) {
+            res.send({ err: JSON.stringify(err) });
+        }
+        else {
+            res.send({ data: docs });
+        }
+    })
+}
+
+
 exports.getTotalCount = function (req, res, next) {
     Work.getTotalCount(function (err, doc) {
         if (err) {

@@ -57,6 +57,7 @@ router.get('/activeAccount', sign.activeAccount);  //帐号激活
 router.get('/works', works.listAll); //查看所有作品
 router.get('/works/nextpage', works.getNextPage);
 router.get('/works/:workid', works.showDetail);  //查看作品详情
+router.get('/api/work/getworkinfo', works.getworkinfo_api);
 router.get('/works/:workid/full', works.showFull);    //全屏播放作品
 router.get('/works/:workid/evaluation', works.showEvaluation);
 router.get('/works/totalCount/get', works.getTotalCount);  //获取作品总量

@@ -15,7 +15,7 @@ var config = {
     },
     session_secret: '01space_org',
     auth_cookie_name: '01space',
-    project_base_path: "/mnt/c/Users/xintao/Desktop/website/ExpressProject/",//"/com/bin/ExpressProject/",
+    project_base_path: "/Users/lijie/项目/git/ExpressProject_newHomePage/",
     host: 'http://127.0.0.1:5000/',
     mailSystem: {
         host: 'smtp.sina.cn',
