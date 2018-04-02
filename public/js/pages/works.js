@@ -51,6 +51,11 @@ $(function () {
         getPageWorks(currentPageId);
     })
 
+    $('#createButton').on('click', function () {
+        window.open("/create");
+        //window.location.href = "/create";
+    })
+
     $("#searchWorkBtn").on('click', function () {
         var keyWord = $("#keyworkInput")[0].value;
         if (keyWord == undefined || keyWord == "") {

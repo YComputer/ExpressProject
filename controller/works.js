@@ -347,6 +347,31 @@ exports.getworkinfo_api = function (req, res, next) {
     })
 }
 
+exports.getworkcomments_api = function (req, res, next) {
+    var workid = req.query.workid;
+
+    Comment.getAllComments(2, workid, function (err, docs) {
+        if (err) {
+            logger.error(err);
+            res.send({ err: err });
+            return next(err);
+        }
+        else {
+            var commentsList = new Array();
+            for (var i = 0; i < docs.length; i++) {
+                var doc = {}
+                doc._id = docs[i]._id;
+                doc.commentContent = docs[i].commentContent;
+                doc.workId = docs[i].workId;
+                doc.commentType = docs[i].commentType;
+                doc.commentTime = moment(docs[i].commentTime).format('YYYY-MM-DD, hh:mm:ss');
+                commentsList.push(doc);
+            }
+            res.send({ data: commentsList });
+        }
+    })
+}
+
 
 exports.getTotalCount = function (req, res, next) {
     Work.getTotalCount(function (err, doc) {

@@ -184,7 +184,7 @@
                     <script src="/javascripts/jszip.js"></script>
                     <script src="/javascripts/phosphorus.js"></script>
                     <script src="/javascripts/player.js"></script>
-                    <script src="/javascripts/pages/work.js"></script>
+                    <!-- <script src="/javascripts/pages/work.js"></script> -->
 
                     <script type='text/javascript'>
                         // var uurl = "http://127.0.0.1:5000/";
@@ -227,21 +227,21 @@
                 <div id='thumb-download-evluate'>
                     <button id='thumbs-up' style="display:inline" class="btn">
                             <span class="glyphicon glyphicon-thumbs-up"></span>
-                            <lable id='thumbsUpCount'># #{work.upCount}</lable>
-                            <lable id='thumbsUpNames' style="display:none">#{work.thumbsUp}</lable>
+                            <lable id='thumbsUpCount'></lable>
+                            <lable id='thumbsUpNames' style="display:none"></lable>
                     </button>
-                    <a href="/works/" + '#{work._id}' + "/downresource" class="btn">
+                    <a id="downloadsource" class="btn">
                         <button class="btn">下载源码</button>
                     </a>
                     <!-- <button id="buttshare" style="display:inline" class="btn">分享</button> -->
-                    <button id="hiddenqrcode" style="display:none" class="btn">收起</button>
-                    <a href="/remix/" + "#{work._id}" class="btn" style="display:inline">
+                    <!-- <button id="hiddenqrcode" style="display:none" class="btn">收起</button> -->
+                    <a id="editWork" class="btn" style="display:inline">
                         <button class="btn" style="display:inline">编辑</button>
                     </a>
-                    <a href="/works/" + "#{work._id}"+ "/full" class="btn" style="display:none">
+                    <a id="fullScreen" class="btn" style="display:none">
                         <button class="btn" style="display:none">全屏</button>
                     </a>
-                    <a href="/works/" + "#{work._id}"+ "/evaluation" class="btn" style="display:none">
+                    <a id="viewEvaluation" class="btn">
                         <button class="btn"  style="display:none">查看评估报告</button>
                     </a>
                     <script type='text/javascript'>
@@ -254,27 +254,27 @@
                     <div class="col-md-6">
                         <div>
                             <h4>作品名：</h4>
-                            <p style="margin-left:50px">#{work.name}</p>
+                            <p id="workname" style="margin-left:50px"></p>
                         </div>
                         <div>
                             <h4>作者：</h4>
-                            <p style="margin-left:50px">#{work.authorName}</p>
+                            <p id="authorname" style="margin-left:50px"></p>
                         </div>
                         <div>
                             <h4>创作时间：</h4>
-                            <p style="margin-left:50px">#{work.uploadTime}</p>
+                            <p id="createtime" style="margin-left:50px"></p>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div id="qrcode">
                         </div>
-                        <p style="text-align:center">扫码分享给你的朋友看吧</p>
+                        <p style="text-align:center"></p>
                     </div>
                 </div>
 
                 <div>
                     <h4>说明:</h4>
-                    <p style="margin-left:50px">#{work.description}</p>
+                    <p id="discription" style="margin-left:50px"></p>
                 </div>
 
             </div>
@@ -297,27 +297,26 @@
             //     $(".controls").css({ 'width': (Pic.width + 'px') });
             // });
         </script>
-        <script src="/javascripts/jquery.scrollTo.js"></script>
-        <script src="/javascripts/qrcode.js"></script>
+
         <script>
-            var uurl = 'http://127.0.0.1:5000/';
-            if ("https:" == document.location.protocol) {
-                uurl = uurl.replace("http", "https");
-                uurl = uurl.replace("80", "443");
-            }
-            new QRCode(document.getElementById("qrcode"), "" + uurl + "mobile/works/#{work._id}");
-            $("#buttshare").on('click', function () {
-                $("#qrcode").css({ 'display': "block" });
-                $("#hiddenqrcode").css({ 'display': "inline" });
-                $("#buttshare").css({ 'display': "none" });
-                $.scrollTo('+350px', 500);
-            })
-            $("#hiddenqrcode").on('click', function () {
-                $("#qrcode").css({ 'display': "none" });
-                $("#buttshare").css({ 'display': "inline" });
-                $("#hiddenqrcode").css({ 'display': "none" });
-                $.scrollTo('-350px', 500);
-            })
+            // var uurl = 'http://127.0.0.1:5000/';
+            // if ("https:" == document.location.protocol) {
+            //     uurl = uurl.replace("http", "https");
+            //     uurl = uurl.replace("80", "443");
+            // }
+            // new QRCode(document.getElementById("qrcode"), "" + uurl + "mobile/works/#{work._id}");
+            // $("#buttshare").on('click', function () {
+            //     $("#qrcode").css({ 'display': "block" });
+            //     $("#hiddenqrcode").css({ 'display': "inline" });
+            //     $("#buttshare").css({ 'display': "none" });
+            //     $.scrollTo('+350px', 500);
+            // })
+            // $("#hiddenqrcode").on('click', function () {
+            //     $("#qrcode").css({ 'display': "none" });
+            //     $("#buttshare").css({ 'display': "inline" });
+            //     $("#hiddenqrcode").css({ 'display': "none" });
+            //     $.scrollTo('-350px', 500);
+            // })
         </script>
         <br>
         <br>
@@ -464,4 +463,6 @@
     <script src="js/global.js"></script>
     <script src="js/checkLoginState.js"></script>
     <script src="js/pages/work_info.js"></script>
+    <script src="/javascripts/jquery.scrollTo.js"></script>
+    <script src="/javascripts/qrcode.js"></script>
 </body>
