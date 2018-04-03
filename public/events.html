@@ -252,8 +252,7 @@
                 <div class="tt-event-2-info-cell">
                     <a class="tt-event-2-title c-h5" href="#">零壹空间-暑期编程主题游学营 </a>
                     <div class="simple-text size-4 color-3">
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                            magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                        <p>在行走的世界课堂上探索、思考、寻找答案，将南京人文精华收入囊中，让成长告别枯燥！</p>
                     </div>
                     <div class="tt-event-2-label">
                         <span>
@@ -278,8 +277,8 @@
                 <div class="tt-event-2-info-cell">
                     <a class="tt-event-2-title c-h5" href="#">零壹空间-暑期编程主题游学营 </a>
                     <div class="simple-text size-4 color-3">
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                            magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                        <p>八分学，二分游。以学为主、突出功能性，提高名校面试成功率，提供良好的背景及素质提升，打造更加自由、开放、智能的游学模式。
+                        </p>
                     </div>
                     <div class="tt-event-2-label">
                         <span>
@@ -304,8 +303,8 @@
                 <div class="tt-event-2-info-cell">
                     <a class="tt-event-2-title c-h5" href="#">零壹空间-暑期编程主题游学营 </a>
                     <div class="simple-text size-4 color-3">
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                            magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                        <p>参观江苏名校， 提前体验心仪学校的核心课程 参观游览江苏的主要城市和著名景点，提前感知实景大学环境，极大的拓宽孩子的眼界。
+                        </p>
                     </div>
                     <div class="tt-event-2-label">
                         <span>
@@ -421,7 +420,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="c-btn type-1 color-3 full">
-                                            <input type="submit" value="订阅">
+                                            <input type="button" value="订阅" id="subscribe_btn" data-toggle="modal" data-target="#myModal">
                                             <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                         </div>
                                     </div>
@@ -450,21 +449,29 @@
                     <div class="empty-space marg-lg-b20"></div>
 
                     <div class="tt-footer-social">
-                        <a href="#">
-                            <i class="fa fa-twitter" aria-hidden="true"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-skype" aria-hidden="true"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fa fa-pinterest-square" aria-hidden="true"></i>
-                        </a>
+                        <div class="weibocode col-md-6">
+                            <a style="display:block;font-size:14px" class="staticlink">新浪微博 </a>
+                            <img src="/images/weibo_code.png" style="height:100px;width:100px">
+                        </div>
+                        <div class="weixincode col-md-6">
+                            <a style="display:block;font-size:14px" class="staticlink">微信扫码 </a>
+                            <img src="/images/qrcode_for_gh_25f0d3b93e04_430.jpg" style="height:100px;width:100px">
+                        </div>
+                        <!-- <a href="couses.html">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                                <a href="couses.html">
+                                    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                                </a>
+                                <a href="couses.html">
+                                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                                </a>
+                                <a href="couses.html">
+                                    <i class="fa fa-skype" aria-hidden="true"></i>
+                                </a>
+                                <a href="couses.html">
+                                    <i class="fa fa-pinterest-square" aria-hidden="true"></i>
+                                </a> -->
                     </div>
                     <div class="empty-space marg-sm-b30"></div>
                 </div>
@@ -504,25 +511,25 @@
 
                     <ul class="tt-footer-list clearfix">
                         <li>
-                            <a href="#">主页</a>
+                            <a href="index.html">主页</a>
                         </li>
                         <li>
-                            <a href="#">课程</a>
+                            <a href="courses.html">课程</a>
                         </li>
                         <li>
-                            <a href="#">关于我们</a>
+                            <a href="about.html">关于我们</a>
                         </li>
                         <li>
-                            <a href="#">最新活动</a>
+                            <a href="events.html">最新活动</a>
                         </li>
                         <li>
-                            <a href="#">Professors</a>
+                            <a href="works.html">作品展示</a>
                         </li>
+                        <!-- <li>
+                            <a href="shop.html">课程</a>
+                        </li> -->
                         <li>
-                            <a href="#">加入我们</a>
-                        </li>
-                        <li>
-                            <a href="#">联系我们</a>
+                            <a href="contact.html">联系我们</a>
                         </li>
                     </ul>
                     <div class="empty-space marg-xs-b30"></div>
@@ -573,6 +580,24 @@
     <script src="js/jquery.countTo.js"></script>
     <script src="js/jquery.viewportchecker.min.js"></script>
     <script src="js/global.js"></script>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">订阅结果</h4>
+                </div>
+                <div class="modal-body">恭喜您，订阅成功！</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!-- <button type="button" class="btn btn-primary">提交更改</button> -->
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
 </body>
 
 </html>
