@@ -2,6 +2,7 @@ $(function () {
     var url = location.href;
     var currentWorkid = url.substr(url.lastIndexOf('=') + 1);
     var currentWork;
+    var workComments
     if (!currentWorkid) {
         alert("无法获取当前作品的id");
     }
@@ -18,7 +19,10 @@ $(function () {
                     console.error(data.err);
                 }
                 else {
-                    var currentWork = data.data;
+                    currentWork = data.data;
+                    load('works/' + currentWorkid + '/downresource');
+                    console.info(currentWork);
+                    fillWorkInfo(currentWork);
 
                 }
             },
@@ -28,10 +32,79 @@ $(function () {
         })
     }
 
-    function getWorkComments(workid) {
+    function fillWorkInfo(work) {
+        $('#thumbsUpCount')[0].innerHTML = work.upCount;
+        $('#thumbsUpNames')[0].innerHTML = work.thumbsUp;
+        $('#downloadsource')[0].href = "/works/" + work._id + "/downresource";
+        $('#editWork')[0].href = "/remix/" + work._id;
+        $('#fullScreen')[0].href = "/works/" + work._id + "/full";
+        $('#viewEvaluation')[0].href = "/works/" + work._id + "/evaluation";
 
+        $('#workname')[0].innerHTML = work.name;
+        $('#authorname')[0].innerHTML = work.authorName;
+        $('#createtime')[0].innerHTML = work.uploadTime;
+        $('#discription')[0].innerHTML = work.description;
     }
 
+    getWorkInfo(currentWorkid);
+    function getWorkComments(workid) {
+        $.ajax({
+            type: "get",
+            url: "/api/work/getworkcomments?workid=" + currentWorkid,
+            success: function (data) {
+                if (data.err) {
+                    console.error("获取作品评论信息失败");
+                    console.error(data.err);
+                }
+                else {
+                    workComments = data.data;
+                    showComments();
+                }
+            },
+            failed: function (data) {
+                console.error("获取作品评论信息失败", data);
+            }
+        })
+    }
+    getWorkComments(currentWorkid);
+
+    function showComments() {
+        for (var i = 0; i < workComments.length; i++) {
+            var comment = document.createElement("li");
+            //comment.style = "list-style-type:none;";
+            comment.className = "list-group-item";
+            comment.innerHTML = generateCommentDiv(workComments[i], i);
+            $('#workCommentList').append(comment);
+        }
+    }
+
+    function generateCommentDiv(comment, i) {
+        var user;
+        if (!comment.commentUser) {
+            user = "游客";
+        }
+
+        var newcommenthtml = '<div>'
+            + '<div class="row">'
+            + '<div class="col-md-3">'
+            + '<p>作者：'
+            + '<a href="/user/' + comment.commentUser + '">' + user + '</a>'
+            + '</p>'
+            + '</div>'
+            + '<div class="col-md-5">'
+            + '<p style="display:inline">时间：</p>'
+            + '<p style="display:inline">' + comment.commentTime + '</p>'
+            + '</div>'
+            + '<div class="col-md-1 pull-right">'
+            + '<p>' + i + ' 楼</p>'
+            + '</div>'
+            + '</div>'
+            + '<div>'
+            + '<p>' + comment.commentContent + '</p>'
+            + '</div>'
+            + '</div>';
+        return newcommenthtml;
+    }
 
     var uurl = "http://127.0.0.1:5000/";
     if ("https:" == document.location.protocol) {
@@ -66,7 +139,7 @@ $(function () {
 
     }
 
-    load('works/' + currentWork._id + '/downresource');
+
 
     $(window).resize(function (e) {
         var Pic = document.getElementsByTagName("canvas")[0];
