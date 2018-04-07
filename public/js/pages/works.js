@@ -271,7 +271,7 @@ $(function () {
 
 
                 alert("上传成功");
-                window.location.href = '/works';
+                window.location.href = '/works.html';
             },
             error: function () {
                 alert("上传失败");
