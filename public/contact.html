@@ -205,10 +205,15 @@
                             <a href="tel:18004567890">+ 025-85981626</a>
                         </div>
 
-                        <div class="top-info">
+                        <div class="top-info" id="login-link">
                             <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                             <a href="newSignin.html">注册</a>
                             <a href="newSignup.html">登录</a>
+                        </div>
+                        <div class="top-info" id="user-info" style="display:none">
+                            <img id="user-avatar">
+
+                            <a id="user-name" href="#"></a>
                         </div>
                     </div>
                 </div>
@@ -633,6 +638,7 @@
     <!-- <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=en"></script> -->
     <script src="js/map.js"></script>
     <script src="js/global.js"></script>
+    <script src="js/checkLoginState.js"></script>
     <script>
         function submitForm() {
             $.ajax({

@@ -179,10 +179,15 @@
                             <a href="tel:18004567890">+ 025-85981626</a>
                         </div>
 
-                        <div class="top-info">
+                        <div class="top-info" id="login-link">
                             <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                             <a href="newSignin.html">注册</a>
                             <a href="newSignup.html">登录</a>
+                        </div>
+                        <div class="top-info" id="user-info" style="display:none">
+                            <img id="user-avatar">
+
+                            <a id="user-name" href="#"></a>
                         </div>
                     </div>
                 </div>
@@ -255,7 +260,7 @@
                             </div>
 
                             <div style="width:100%;" class="input-group">
-                                <a href="/newsignup">
+                                <a href="/newSignin">
                                     <input id="signUp" type="btn" readonly="readonly" style="width:150px;" value="立即注册" aria-describedby="basic-addon1" class="btn c-btn type-1 color-5 full">
                                 </a>
                                 <input id="submitsignin" type="button" style="width:150px; float: right !important;" value="登录" aria-describedby="basic-addon1"
@@ -459,4 +464,5 @@
     <script src="js/jquery.viewportchecker.min.js"></script>
     <script src="js/global.js"></script>
     <script src="/javascripts/pages/signin.js" type="text/javascript"></script>
+    <script src="js/checkLoginState.js"></script>
 </body>

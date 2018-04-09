@@ -180,10 +180,15 @@
                             <a href="tel:18004567890">+ 025-85981626</a>
                         </div>
 
-                        <div class="top-info">
+                        <div class="top-info" id="login-link">
                             <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                             <a href="newSignin.html">注册</a>
                             <a href="newSignup.html">登录</a>
+                        </div>
+                        <div class="top-info" id="user-info" style="display:none">
+                            <img id="user-avatar">
+
+                            <a id="user-name" href="#"></a>
                         </div>
                     </div>
                 </div>
@@ -665,6 +670,7 @@
     <script src="js/jquery.countTo.js"></script>
     <script src="js/jquery.viewportchecker.min.js"></script>
     <script src="js/global.js"></script>
+    <script src="js/checkLoginState.js"></script>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

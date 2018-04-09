@@ -614,11 +614,11 @@
 
                             <form class="tt-sign-form">
                                 <input class="c-input type-1" type="text" required="" placeholder="姓名">
-                                <input class="c-input type-1" type="text" required="" placeholder="邮箱">
-                                <input class="c-input type-1" type="text" required="" placeholder="密码">
+                                <input class="c-input type-1" type="text" required="" placeholder="邮箱" id="email1">
+                                <input class="c-input type-1" type="password" required="" placeholder="密码">
                                 <div class="c-btn type-1 color-2">
                                     <a href="/newSignin.html">
-                                        <input type="button" value="获取免费课程" onclick="window.location.href('newSignin.html')">
+                                        <input type="button" value="获取免费课程" onclick="window.location.href('newSignin.html')" id="bt">
                                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                     </a>
                                 </div>
@@ -1173,7 +1173,7 @@
                             <form>
                                 <div class="row">
                                     <div class="col-sm-8">
-                                        <input class="c-input type-2" type="text" required="" placeholder="输入邮件地址">
+                                        <input class="c-input type-2" type="text" required="" placeholder="输入邮件地址" id="email1">
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="c-btn type-1 color-3 full">
@@ -1349,6 +1349,25 @@
     <script src="js/revolution.extension.video.min.js"></script>
     <script src="js/global.js"></script>
     <script src="js/checkLoginState.js"></script>
+    <!-- <script src="js/checkEmail.js"></script> -->
+
+    <!-- <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#subscribe_btn").click(function () {
+                if ($("#email1").val() == "") {
+                    alert("邮箱不能为空");
+                    return false;
+                }
+                var email = $("#email1").val();
+                if (!email.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)) {
+                    alert("邮箱格式不正确！请重新输入");
+                    $("#email1").focus();
+                }
+            })
+        })
+
+    </script> -->
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
